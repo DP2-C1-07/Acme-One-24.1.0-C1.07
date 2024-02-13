@@ -24,7 +24,7 @@
 	<name>Acme One</name>
 	<description>This is my first project in Design &amp; Testing.</description>
 
-	<artifactId>Acme-One</artifactId>
+	<artifactId>Acme-SF-D01</artifactId>
 	
 	<packaging>war</packaging>
 	
