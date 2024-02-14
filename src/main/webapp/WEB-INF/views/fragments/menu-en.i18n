@@ -18,9 +18,10 @@ master.menu.sign-out = Sign out
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
-master.menu.anonymous.favourite-link = 31878881F: Caballero María, Pablo
-master.menu.anonymous.juagarcar4 = 48123111G: García Carballo, Juan
-master.menu.anonymous.mararnmon = 49034820Q: Arnáiz Montero, Marco Antonio
+master.menu.anonymous.favourite-link.pabcabmar3 = 31878881F: Caballero María, Pablo
+master.menu.anonymous.favourite-link.juagarcar4 = 48123111G: García Carballo, Juan
+master.menu.anonymous.favourite-link.mararnmon = 49034820Q: Arnáiz Montero, Marco Antonio
+master.menu.anonymous.favourite-link.albsanmim = 53932912M: Sánchez Mimbrero, Alberto
 
 # master.menu.administrator ###################################################
 
