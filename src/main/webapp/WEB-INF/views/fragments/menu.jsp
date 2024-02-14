@@ -21,6 +21,7 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.twitch.tv/orslok"/>
 			<acme:menu-suboption code="master.menu.anonymous.juagarcar4" action = "https://orteil.dashnet.org/cookieclicker/"/>
+			<acme:menu-suboption code="master.menu.anonymous.mararnmon" action = "https://giphy.com/clips/studiosoriginals-kiss-kissing-e8QxeaBMVvMbd0BrPv"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
