@@ -20,6 +20,7 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.twitch.tv/orslok"/>
+			<acme:menu-suboption code="master.menu.anonymous.juagarcar4" action = "https://orteil.dashnet.org/cookieclicker/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
