@@ -19,7 +19,7 @@
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.pabcabmar3" action="https://www.twitch.tv/orslok"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link.pabcabmar3" action="https://www.twitch.tv/illojuan"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.juagarcar4" action = "https://orteil.dashnet.org/cookieclicker/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.mararnmon" action = "https://giphy.com/clips/studiosoriginals-kiss-kissing-e8QxeaBMVvMbd0BrPv"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.albsanmim" action = "https://github.com/networkers-group/rimor"/>
