@@ -23,6 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.juagarcar4" action = "https://orteil.dashnet.org/cookieclicker/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.mararnmon" action = "https://giphy.com/clips/studiosoriginals-kiss-kissing-e8QxeaBMVvMbd0BrPv"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.albsanmim" action = "https://github.com/networkers-group/rimor"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link.alfalolan" action = "https://open.spotify.com/intl-es/artist/0jeYkqwckGJoHQhhXwgzk3?si=I7H7zYfJTvqaXdXUzH05tA"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
