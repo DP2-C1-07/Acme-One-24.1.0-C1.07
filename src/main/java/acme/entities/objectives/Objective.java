@@ -45,10 +45,13 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	ObjectivePriority			priority;
 
+	//TODO: no tengo claro de que tipo tiene que ser este atributo
 	@NotNull
 	Date						duration;
 
-	@NotBlank
+	@NotNull
+	Boolean						status;
+
 	@URL
 	String						link;
 }
