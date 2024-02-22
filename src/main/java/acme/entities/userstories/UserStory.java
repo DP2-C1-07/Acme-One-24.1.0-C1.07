@@ -39,7 +39,8 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 101)
 	String						acceptanceCriteria;
 
-	Priority					priority;
+	@NotNull
+	UserStoryPriority			priority;
 
 	@URL
 	String						link;
