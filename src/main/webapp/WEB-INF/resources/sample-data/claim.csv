@@ -1,0 +1,5 @@
+key,code,instantiationMoment,heading,description,department,emailAddress,link
+claim-01,"C-1234",2022/07/30 00:00,"sample heading 1","sample description 1","sample department 1",pabcabmar3@alum.us.es,https://www.google.com
+claim-02,"C-5678",2021/07/30 00:00,"sample heading 2","sample description 2","sample department 2",alfalolan@alum.us.es,https://www.youtube.com
+claim-03,"C-4321",2020/07/30 00:00,"sample heading 3","sample description 3","sample department 3",sanferrom@alum.us.es,https://www.instagram.com
+claim-04,"C-8765",2019/07/30 00:00,"sample heading 4","sample description 4","sample department 4",alvvazcon@alum.us.es,https://www.informatica.us.es/
