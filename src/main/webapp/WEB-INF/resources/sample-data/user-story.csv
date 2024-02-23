@@ -1,0 +1,5 @@
+key,title,description,estimatedCost,acceptanceCriteria,priority,link
+userstory-01,"sample title 1","sample description 1",10,"sample acceptance criteria 1",MUST,https://www.youtube.com
+userstory-02,"sample title 2","sample description 2",20,"sample acceptance criteria 2",COULD,https://www.instagram.com
+userstory-03,"sample title 3","sample description 3",30,"sample acceptance criteria 3",SHOULD,https://www.quora.com
+userstory-04,"sample title 4","sample description 4",40,"sample acceptance criteria 4",WONT,https://www.reddit.com
