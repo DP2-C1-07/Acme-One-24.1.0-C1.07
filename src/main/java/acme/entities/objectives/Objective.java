@@ -45,9 +45,14 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	ObjectivePriority			priority;
 
-	//TODO: no tengo claro de que tipo tiene que ser este atributo
+	//TODO: como se ha respondido en el foro period se implementa con dos atributos de tipo date
+	// queda implementar las restricciones de que la duracion debe ser superior a una hora
+	// el momento de inicio debe ser posterior al de creacion y el de finalizacion posterior al de inicio
 	@NotNull
-	Date						duration;
+	Date						initiateMoment;
+
+	@NotNull
+	Date						finalizationMoment;
 
 	@NotNull
 	Boolean						status;
