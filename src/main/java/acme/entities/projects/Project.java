@@ -36,7 +36,7 @@ public class Project extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
-	String						_abstract;
+	String						projectAbstract;
 
 	@NotNull
 	Boolean						indication;
