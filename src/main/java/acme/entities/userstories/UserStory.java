@@ -2,9 +2,9 @@
 package acme.entities.userstories;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -51,9 +51,7 @@ public class UserStory extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 	@NotNull
-
 	@Valid
-
 	@ManyToOne()
 	private Project				project;
 
