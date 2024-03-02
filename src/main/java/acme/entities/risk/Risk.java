@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
@@ -17,6 +18,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,16 +48,20 @@ public class Risk extends AbstractEntity {
 		
 		@NotNull
 		@Min(0)
-		@Max(100)
+		@Max(1)
 		Double probability;
 		
-		@NotNull
-		Double value = impact * probability;
-		
 		@NotBlank
-		@Length(max = 101)
+		@Length(max = 100)
 		String description;
 		
 		@URL
-		String optionalLink;
+		String link;
+		
+		@ManyToOne
+		Project project;
+		
+		public Double getValue() {
+			return this.impact * this.probability;
+		}
 }
