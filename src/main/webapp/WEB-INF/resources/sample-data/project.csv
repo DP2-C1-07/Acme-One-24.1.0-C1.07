@@ -1,4 +1,4 @@
-key,code,title,projectAbstract,indication,cost,link,key:manager
+key,code,title,project-abstract,indication,cost,link,key:manager
 project-01,AAA-1111,"L","iS",0,10,https://www.google.com,manager-01
 project-02,BBB-2222,"LL","iS",1,20,https://www.youtube.com,manager-02
 project-03,CCC-3333,"LLwrBRmSgMwECjxLRTdjFKeSpHCAMYcwgUNGktkwYJrjSUDhahqgQRXUeGdpiiaEauBaWXzpRvj","iS",0,30,https://www.instagram.com,manager-03
