@@ -1,4 +1,4 @@
-package acme.entities.client;
+package acme.roles.client;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

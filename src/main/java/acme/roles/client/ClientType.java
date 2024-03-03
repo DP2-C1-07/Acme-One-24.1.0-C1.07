@@ -1,4 +1,4 @@
-package acme.entities.client;
+package acme.roles.client;
 
 
 public enum ClientType {
