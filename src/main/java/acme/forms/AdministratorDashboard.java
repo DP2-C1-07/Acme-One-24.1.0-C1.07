@@ -16,6 +16,7 @@ public class AdministratorDashboard extends AbstractForm{
 	// Attributes -------------------------------------------------------------
 	private Integer totalAdministrator;
 	private Integer totalAuditor;
+	private Integer totalClient;
 	private Integer totalConsumer;
 	private Integer totalDeveloper;
     private Integer totalManager;
