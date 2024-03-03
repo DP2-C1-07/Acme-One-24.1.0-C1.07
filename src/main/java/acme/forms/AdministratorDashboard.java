@@ -20,6 +20,7 @@ public class AdministratorDashboard extends AbstractForm{
 	private Integer totalDeveloper;
     private Integer totalManager;
     private Integer totalProvider;
+    private Integer totalSponsor;
     private Double ratioNoticesWithEmailAndLink;
     private Double ratioCriticalObjectives;
     private Double ratioNonCriticalObjectives;
