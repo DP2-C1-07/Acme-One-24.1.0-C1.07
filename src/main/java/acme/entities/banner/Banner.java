@@ -49,7 +49,7 @@ public class Banner extends AbstractEntity {
 	String						pictureLink;
 
 	@NotBlank
-	@Max(75)
+	@Length(max = 75)
 	String						slogan;
 
 	@URL
