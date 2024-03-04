@@ -1,6 +1,7 @@
+
 package acme.entities.risk;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,41 +28,42 @@ import lombok.Setter;
 @Setter
 public class Risk extends AbstractEntity {
 
-		//Serialisation identifier -----------------------------------------------------------------
+	//Serialisation identifier -----------------------------------------------------------------
 
-		private static final long	serialVersionUID	= 1L;
+	private static final long	serialVersionUID	= 1L;
 
-		//Attributes --------------------------------------------------------------------------------
-		@NotBlank
-		@Column(unique = true)
-		@Pattern(regexp = "R-[0-9]{3}")
-		String reference;
-		
-		@NotNull
-		@Temporal(TemporalType.TIMESTAMP)
-		@Past
-		Date identificationDate;
-		
-		@NotNull
-		@Min(0)
-		Integer impact;
-		
-		@NotNull
-		@Min(0)
-		@Max(1)
-		Double probability;
-		
-		@NotBlank
-		@Length(max = 100)
-		String description;
-		
-		@URL
-		String link;
-		
-		@ManyToOne
-		Project project;
-		
-		public Double getValue() {
-			return this.impact * this.probability;
-		}
+	//Attributes --------------------------------------------------------------------------------
+	@NotBlank
+	@Column(unique = true)
+	@Pattern(regexp = "R-[0-9]{3}")
+	String						reference;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	@Past
+	Date						identificationDate;
+
+	@NotNull
+	@Min(0)
+	Integer						impact;
+
+	@NotNull
+	@Min(0)
+	@Max(1)
+	Double						probability;
+
+	@NotBlank
+	@Length(max = 100)
+	String						description;
+
+	@URL
+	String						link;
+
+	@ManyToOne
+	Project						project;
+
+
+	public Double getValue() {
+		return this.impact * this.probability;
+	}
 }
