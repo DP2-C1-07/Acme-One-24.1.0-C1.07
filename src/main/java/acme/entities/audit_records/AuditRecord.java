@@ -58,6 +58,7 @@ public class AuditRecord extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 	@ManyToOne(optional = false)
+	@NotNull
 	@Valid
 	CodeAudit					codeAudit;
 }
