@@ -2,7 +2,7 @@
 package acme.entities.banner;
 
 import java.time.Duration;
-import java.time.Instant;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
@@ -32,12 +32,12 @@ public class Banner extends AbstractEntity {
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	Instant						instantiationMoment;
+	Date						instantiationMoment;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	Instant						lastUpdateMoment;
+	Date						lastUpdateMoment;
 
 	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
 	@DurationMin(days = 7)
