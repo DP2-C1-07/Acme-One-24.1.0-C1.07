@@ -31,17 +31,21 @@ public class Banner extends AbstractEntity {
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	Instant						instantiationMoment;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	Instant						lastUpdateMoment;
 
 	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
 	@DurationMin(days = 7)
+	@NotNull
 	Duration					displayPeriod;
 
 	@URL
+	@NotNull
 	String						pictureLink;
 
 	@NotBlank
