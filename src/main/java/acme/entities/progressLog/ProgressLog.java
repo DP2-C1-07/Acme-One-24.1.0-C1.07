@@ -1,5 +1,4 @@
-
-package acme.entities.risk;
+package acme.entities.progressLog;
 
 import java.util.Date;
 
@@ -17,18 +16,17 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.projects.Project;
+import acme.entities.contract.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Risk extends AbstractEntity {
-
+public class ProgressLog extends AbstractEntity {
+	
 		//Serialisation identifier -----------------------------------------------------------------
 
 		private static final long	serialVersionUID	= 1L;
@@ -36,36 +34,29 @@ public class Risk extends AbstractEntity {
 		//Attributes --------------------------------------------------------------------------------
 		@NotBlank
 		@Column(unique = true)
-		@Pattern(regexp = "R-[0-9]{3}")
-		String reference;
-		
-		@NotNull
-		@Temporal(TemporalType.TIMESTAMP)
-		@Past
-		Date identificationDate;
-		
-		@NotNull
-		@Min(0)
-		Integer impact;
+		@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
+		String recordIn;
 		
 		@NotNull
 		@Min(0)
 		@Max(1)
-		Double probability;
-		
+		Double completeness;
+
 		@NotBlank
 		@Length(max = 100)
-		String description;
+		String comment;
 		
-		@URL
-		String link;
+		@Temporal(TemporalType.TIMESTAMP)
+		@Past
+		@NotNull
+		Date registrationMoment;
+		
+		@NotBlank
+		@Length(max = 75)
+		String responsiblePerson;
 		
 		@ManyToOne
 		@NotNull
 		@Valid
-		Project project;
-		
-		public Double getValue() {
-			return this.impact * this.probability;
-		}
+		Contract contract;
 }
