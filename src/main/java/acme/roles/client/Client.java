@@ -8,14 +8,14 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.client.data.AbstractEntity;
+import acme.client.data.AbstractRole;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Client extends AbstractEntity{
+public class Client extends AbstractRole{
 	
 	//Serialisation identifier -----------------------------------------------------------------
 
