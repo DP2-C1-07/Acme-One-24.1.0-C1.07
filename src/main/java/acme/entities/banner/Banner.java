@@ -1,7 +1,6 @@
 
 package acme.entities.banner;
 
-import java.time.Duration;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
-import org.hibernate.validator.constraints.time.DurationMin;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -40,9 +38,14 @@ public class Banner extends AbstractEntity {
 	Date						lastUpdateMoment;
 
 	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
-	@DurationMin(days = 7)
+	//TODO: comprobar que tiene una duracion minima de 7 dias entre el beginning y el end
 	@NotNull
-	Duration					displayPeriod;
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						displayPeriodBeginning;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						displayPeriodEnd;
 
 	@URL
 	@NotNull
