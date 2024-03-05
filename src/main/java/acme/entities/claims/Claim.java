@@ -53,8 +53,10 @@ public class Claim extends AbstractEntity {
 	String						department;
 
 	@Email
+	@Length(max = 255)
 	String						emailAddress;
 
 	@URL
+	@Length(max = 255)
 	String						link;
 }
