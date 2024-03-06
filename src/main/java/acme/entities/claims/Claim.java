@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -32,11 +32,11 @@ public class Claim extends AbstractEntity {
 	//Attributes --------------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "C-[0-9]{4}")
+	@Pattern(regexp = "^C-[0-9]{4}$", message = "claim.code.error")
 	String						code;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	@NotNull
 	Date						instantiationMoment;
 
