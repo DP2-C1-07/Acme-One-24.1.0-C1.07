@@ -12,7 +12,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,7 +40,7 @@ public class CodeAudit extends AbstractEntity {
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	String						code;
 
-	@Past
+	@PastOrPresent
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	Date						executionDate;
@@ -51,16 +52,22 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 100)
 	String						correctiveAction;
 
-	@Valid
 	@NotNull
 	Mark						mark;
 
 	@Nullable
 	@URL
+	@Length(max = 255)
 	String						link;
 
 	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
 	Project						project;
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	Auditor						auditor;
+
 }
