@@ -1,2 +1,4 @@
 claim.code.error = Error en campo "code", no sigue el patrón ^C-[0-9]{4}$
 project.code.error = Error en campo "code", no sigue el patrón ^[A-Z]{3}-[0-9]{4}$
+codeAudit.code.error = Error en campo "code", no sigue el patrón ^[A-Z]{1,3}-[0-9]{3}$
+auditRecord.code.error = Error en campo "code", no sigue el patrón ^AU-[0-9]{4}-[0-9]{3}$
