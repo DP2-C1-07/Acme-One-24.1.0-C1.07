@@ -8,11 +8,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -34,12 +35,12 @@ public class ProgressLog extends AbstractEntity {
 		//Attributes --------------------------------------------------------------------------------
 		@NotBlank
 		@Column(unique = true)
-		@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
+		@Pattern(regexp = "^PG-[A-Z]{1,2}-[0-9]{4}$", message = "{progressLog.recordIn.error}")
 		String recordIn;
 		
-		@NotNull
 		@Min(0)
 		@Max(1)
+		@Digits(fraction = 2, integer = 1)
 		Double completeness;
 
 		@NotBlank
@@ -47,7 +48,7 @@ public class ProgressLog extends AbstractEntity {
 		String comment;
 		
 		@Temporal(TemporalType.TIMESTAMP)
-		@Past
+		@PastOrPresent
 		@NotNull
 		Date registrationMoment;
 		
