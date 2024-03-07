@@ -1,4 +1,8 @@
 claim.code.error = Error in field "code", it does not follow pattern ^C-[0-9]{4}$
 project.code.error = Error in field "code", it does not follow pattern ^[A-Z]{3}-[0-9]{4}$
+client.identification.error = Error in field "code", it does not follow pattern ^CLI-[0-9]{4}$
+progressLog.recordIn.error = Error in field "recordIn", it does not follow pattern ^PG-[A-Z]{1,2}-[0-9]{4}$
+contract.code.error = Error in field "code", it does not follow pattern ^[A-Z]{1,3}-[0-9]{3}$
+risk.reference.error = Error in field "reference", it does not follow pattern ^R-[0-9]{3}$
 codeAudit.code.error = Error in field "code", it does not follow pattern ^[A-Z]{1,3}-[0-9]{3}$
 auditRecord.code.error = Error in field "code", it does not follow pattern ^AU-[0-9]{4}-[0-9]{3}$
