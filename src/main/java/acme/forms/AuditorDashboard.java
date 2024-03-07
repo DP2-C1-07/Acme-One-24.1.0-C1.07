@@ -14,8 +14,8 @@ public class AuditorDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-	Integer						totalStaticCodeAudits;
-	Integer						totalDynamicCodeAudits;
+	int							totalStaticCodeAudits;
+	int							totalDynamicCodeAudits;
 
 	Double						averageAuditRecord;
 	Double						deviationAuditRecord;
