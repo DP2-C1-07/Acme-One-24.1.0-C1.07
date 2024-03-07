@@ -1,0 +1,11 @@
+key,instantiationMoment,lastUpdateMoment,displayPeriodBeginning,displayPeriodEnd,pictureLink,slogan,link
+banner-01,2010/01/15 08:00,2010/01/20 12:00,2010/01/18 10:00,2010/01/25 14:00,https://www.example.com/picture-01,"Slogan 01",https://www.example.com/link-01
+banner-02,2010/02/10 10:30,2010/02/17 14:30,2010/02/15 12:30,2010/02/22 16:30,https://www.example.com/picture-02,"Slogan 02",https://www.example.com/link-02
+banner-03,2010/03/05 15:45,2010/03/12 19:45,2010/03/10 17:45,2010/03/17 21:45,https://www.example.com/picture-03,"Slogan 03",https://www.example.com/link-03
+banner-04,2010/04/01 20:15,2010/04/08 00:15,2010/04/06 22:15,2010/04/13 02:15,https://www.example.com/picture-04,"Slogan 04",https://www.example.com/link-04
+banner-05,2010/05/18 08:30,2010/05/25 12:30,2010/05/23 10:30,2010/05/30 14:30,https://www.example.com/picture-05,"Slogan 05",https://www.example.com/link-05
+banner-06,2010/06/22 14:00,2010/06/29 18:00,2010/06/27 16:00,2010/07/04 20:00,https://www.example.com/picture-06,"Slogan 06",https://www.example.com/link-06
+banner-07,2010/07/07 19:45,2010/07/14 23:45,2010/07/12 21:45,2010/07/19 01:45,https://www.example.com/picture-07,"Slogan 07",https://www.example.com/link-07
+banner-08,2010/08/03 09:30,2010/08/10 13:30,2010/08/08 11:30,2010/08/15 15:30,https://www.example.com/picture-08,"Slogan 08",https://www.example.com/link-08
+banner-09,2010/09/20 16:15,2010/09/27 20:15,2010/09/25 18:15,2010/10/02 22:15,https://www.example.com/picture-09,"Slogan 09",https://www.example.com/link-09
+banner-10,2010/10/15 21:00,2010/10/22 01:00,2010/10/20 23:00,2010/10/27 03:00,https://www.example.com/picture-10,"Slogan 10",https://www.example.com/link-10
