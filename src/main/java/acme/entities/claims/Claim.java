@@ -32,7 +32,7 @@ public class Claim extends AbstractEntity {
 	//Attributes --------------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "^C-[0-9]{4}$", message = "claim.code.error")
+	@Pattern(regexp = "^C-[0-9]{4}$", message = "{claim.code.error}")
 	String						code;
 
 	@Temporal(TemporalType.TIMESTAMP)
