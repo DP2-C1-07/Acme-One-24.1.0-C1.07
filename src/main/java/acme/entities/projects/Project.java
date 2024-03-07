@@ -3,6 +3,9 @@ package acme.entities.projects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,6 +15,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +31,7 @@ public class Project extends AbstractEntity {
 	//Attributes --------------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$", message = "{project.code.error}")
 	String						code;
 
 	@NotBlank
@@ -39,13 +43,21 @@ public class Project extends AbstractEntity {
 	String						projectAbstract;
 
 	@NotNull
-	Boolean						indication;
+	boolean						indication;
 
 	@NotNull
 	@Min(value = 0)
-	Integer						cost;
+	@Max(value = 100000)
+	int							cost;
 
 	@URL
+	@Length(max = 255)
 	String						link;
 
+	// Relationships ----------------------------------------------------------
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Manager				manager;
 }
