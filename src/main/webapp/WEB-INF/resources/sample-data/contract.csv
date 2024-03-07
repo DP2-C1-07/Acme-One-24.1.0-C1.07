@@ -16,6 +16,6 @@ contract-14,ZXC-014,2014/02/15 13:30,"Fournisseur N","Client 14","Objectifs du c
 contract-15,QWE-015,2015/03/20 14:45,"Fornitore O","Cliente 15","Obiettivi del contratto 15 in italiano",30000.00,project-15
 contract-16,PLM-016,2016/04/25 15:00,"Leverandør P","Kunde 16","Kontraktmål 16 på dansk",6000.24,project-16
 contract-17,OKN-017,2017/05/30 16:15,"Fornecedor Q","Cliente 17","Objetivos do contrato 17 em português",2000.73,project-17
-contract-18,REW-018,2018/06/05 09:30,"Поставщик R","Клиент 18","Цели контракта 18 на русском языке",40000.43,project-18
+contract-18,REW-018,2018/06/05 09:30,"Поставщик R","Клиент 18","<div>First div</div><div>Second div</div>",40000.43,project-18
 contract-19,TYU-019,2019/07/10 09:45,"Provider S","Customer 19","console.log("AAAAHHHH")",70000.3,project-19
 contract-20,GHI-020,2020/08/15 10:00,"Proveedor T","Cliente 20","SELECT * FROM Contract",10000.1,project-20
