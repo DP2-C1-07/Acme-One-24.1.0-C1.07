@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -27,12 +27,12 @@ public class Banner extends AbstractEntity {
 
 	//Attributes --------------------------------------------------------------------------------
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	Date						instantiationMoment;
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	Date						lastUpdateMoment;
@@ -40,15 +40,18 @@ public class Banner extends AbstractEntity {
 	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
 	//TODO: comprobar que tiene una duracion minima de 7 dias entre el beginning y el end
 	@NotNull
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	Date						displayPeriodBeginning;
 
 	@NotNull
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	Date						displayPeriodEnd;
 
 	@URL
-	@NotNull
+	@NotBlank
+	@Length(max = 255)
 	String						pictureLink;
 
 	@NotBlank
@@ -56,6 +59,7 @@ public class Banner extends AbstractEntity {
 	String						slogan;
 
 	@URL
-	@NotNull
+	@NotBlank
+	@Length(max = 255)
 	String						link;
 }
