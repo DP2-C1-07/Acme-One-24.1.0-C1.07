@@ -1,5 +1,5 @@
-key,code,executionDate,type,correctiveAction,mark,link,key:project
-code-audit-01,CA-001,2022/07/30 00:00,STATIC,"Fix security vulnerability",A,https://example.com/project-1,project-01
-code-audit-02,CA-002,2020/08/31 00:00,DYNAMIC,"լոռեմ իպսում",B,https://example.com/project-2,project-02
-code-audit-03,CA-003,2021/12/15 00:00,STATIC,"Resolve code quality issues",C,https://example.com/project-3,project-03
-code-audit-04,CA-004,2000/05/10 00:00,DYNAMIC,"Optimize database queries",F,https://example.com/project-4,project-04
+key,code,executionDate,type,correctiveAction,mark,link,key:project,key:auditor
+code-audit-01,CA-001,2022/07/30 00:00,STATIC,"Fix security vulnerability",A,https://example.com/project-1,project-01,auditor-01
+code-audit-02,CA-002,2020/08/31 00:00,DYNAMIC,"լոռեմ իպսում",B,https://example.com/project-2,project-02,auditor-01
+code-audit-03,CA-003,2021/12/15 00:00,STATIC,"Resolve code quality issues",C,https://example.com/project-3,project-03,auditor-01
+code-audit-04,CA-004,2000/05/10 00:00,DYNAMIC,"Optimize database queries",F,https://example.com/project-4,project-04,auditor-01
