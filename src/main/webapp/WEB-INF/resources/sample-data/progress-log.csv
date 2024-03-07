@@ -1,0 +1,16 @@
+key,recordIn,completeness,comment,registrationMoment,responsiblePerson,key:contract
+progress-01,PG-A-0001,0.8,This task is almost completed.,2022/01/15 09:00,John Doe,contract-01
+progress-02,PG-B-0002,0.5,Work in progress.,2022/01/20 10:30,Jane Smith,contract-02
+progress-03,PG-C-0003,0.3,Still a lot to be done.,2022/01/25 11:45,Michael Johnson,contract-03
+progress-04,PG-D-0004,0.9,This task is nearly finished.,2022/02/01 13:15,Emily Williams,contract-04
+progress-05,PG-E-0005,0.6,We're making good progress.,2022/02/05 14:45,David Brown,contract-05
+progress-06,PG-F-0006,0.2,Need to speed up the work.,2022/02/10 16:00,Sarah Miller,contract-06
+progress-07,PG-G-0007,0.7,Task is progressing well.,2022/02/15 17:30,Christopher Taylor,contract-07
+progress-08,PG-H-0008,0.4,Still facing some challenges.,2022/02/20 18:45,Amanda Wilson,contract-08
+progress-09,PG-I-0009,0.8,Almost done.,2022/02/25 20:00,Andrew Martinez,contract-09
+progress-10,PG-J-0010,0.5,We're halfway through.,2022/03/01 21:15,Jessica Garcia,contract-10
+progress-11,PG-K-0011,0.1,Work has just started.,2022/03/05 22:30,James Rodriguez,contract-11
+progress-12,PG-L-0012,0.3,Progress is slower than expected.,2022/03/10 23:45,Olivia Martinez,contract-12
+progress-13,PG-M-0013,0.9,Final touches remaining.,2022/03/15 01:00,Daniel Anderson,contract-13
+progress-14,PG-N-0014,0.6,We're making steady progress.,2022/03/20 02:15,Isabella Brown,contract-14
+progress-15,PG-O-0015,0.8,Task is almost complete.,2022/03/25 03:30,Alexander Davis,contract-15

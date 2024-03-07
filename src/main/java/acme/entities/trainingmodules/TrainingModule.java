@@ -1,14 +1,16 @@
 
-package acme.entities.banner;
+package acme.entities.trainingmodules;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -20,42 +22,38 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Banner extends AbstractEntity {
+public class TrainingModule extends AbstractEntity {
+
 	//Serialisation identifier -----------------------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	//Attributes --------------------------------------------------------------------------------
 
+	@NotBlank
+	@Column(unique = true)
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	String							code;
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	Date						instantiationMoment;
-
-	@Past
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	Date						lastUpdateMoment;
-
-	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
-	//TODO: comprobar que tiene una duracion minima de 7 dias entre el beginning y el end
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	Date						displayPeriodBeginning;
-
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	Date						displayPeriodEnd;
-
-	@URL
-	@NotNull
-	String						pictureLink;
+	Date							creationMoment;
 
 	@NotBlank
-	@Length(max = 75)
-	String						slogan;
+	@Length(max = 100)
+	String							details;
+
+	@NotNull
+	TrainingModuleDifficultyLevel	difficultyLevel;
+
+	//TODO: cuando sepamos hacer servicios añadir la restricción de que el updateMoment debe ser posterior al creationMoment
+	@Past
+	Date							updateMoment;
 
 	@URL
+	String							link;
+
 	@NotNull
-	String						link;
+	Integer							totalTime;
+
 }

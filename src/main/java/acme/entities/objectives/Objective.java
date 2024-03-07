@@ -1,5 +1,5 @@
 
-package acme.entities.banner;
+package acme.entities.objectives;
 
 import java.util.Date;
 
@@ -20,42 +20,46 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Banner extends AbstractEntity {
+
+public class Objective extends AbstractEntity {
+
 	//Serialisation identifier -----------------------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Attributes --------------------------------------------------------------------------------
+	//Atributes --------------------------------------------------------------------------------
 
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@Past
 	@NotNull
 	Date						instantiationMoment;
 
-	@Past
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	Date						lastUpdateMoment;
-
-	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
-	//TODO: comprobar que tiene una duracion minima de 7 dias entre el beginning y el end
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	Date						displayPeriodBeginning;
-
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	Date						displayPeriodEnd;
-
-	@URL
-	@NotNull
-	String						pictureLink;
-
 	@NotBlank
 	@Length(max = 75)
-	String						slogan;
+	String						title;
+
+	@NotBlank
+	@Length(max = 100)
+	String						description;
+
+	@NotNull
+	ObjectivePriority			priority;
+
+	//TODO: como se ha respondido en el foro period se implementa con dos atributos de tipo date
+	// queda implementar las restricciones de que la duracion debe ser superior a una hora
+	// el momento de inicio debe ser posterior al de creacion y el de finalizacion posterior al de inicio
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	Date						initiateMoment;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	Date						finalizationMoment;
+
+	@NotNull
+	Boolean						status;
 
 	@URL
-	@NotNull
 	String						link;
 }
