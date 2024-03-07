@@ -1,32 +1,31 @@
 
-package acme.entities.audit_records;
+package acme.entities.trainingsessions;
 
 import java.util.Date;
 
-import javax.annotation.Nullable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.code_audits.CodeAudit;
-import acme.entities.code_audits.Mark;
+import acme.entities.trainingmodules.TrainingModule;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class AuditRecord extends AbstractEntity {
+public class TrainingSession extends AbstractEntity {
 
 	//Serialisation identifier -----------------------------------------------------------------
 
@@ -36,32 +35,40 @@ public class AuditRecord extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
+	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	String						code;
 
-	//TODO:Comprobar si hay 1 hora de diferencia entre el principio y el final del periodo
-	@Past
-	@Temporal(TemporalType.TIMESTAMP)
-	Date						periodBeginning;
-
-	@Past
-	@Temporal(TemporalType.TIMESTAMP)
-	Date						periodEnd;
+	//como se ha reusuelto en el foro el atributo period se implementa como dos atributos, uno que indique el
+	//comienzo del periodo y otro que indique el final.
+	//TODO: implementar una restriccion en el servicio que compruebe que la duración mínima sea de una semana
+	//y que el inicio sea una semana despues del momento de creacion del trainingmodule asociado
 
 	@NotNull
-	@Valid
-	Mark						mark;
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						initiateMoment;
 
-	@Nullable
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						finalizationMoment;
+
+	@NotBlank
+	@Length(max = 75)
+	String						location;
+
+	@NotBlank
+	@Length(max = 75)
+	String						instructor;
+
+	@NotNull
+	@Email
+	String						contactEmail;
+
 	@URL
 	String						link;
 
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
-
-	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	CodeAudit					codeAudit;
+	@ManyToOne()
+	private TrainingModule		trainingModule;
+
 }
