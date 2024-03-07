@@ -1,16 +1,21 @@
 key,code,instantiationMoment,providerName,customerName,goals,budget,key:project
-contract-01,C-001,2022/01/15 00:00,Provider A,Customer X,Deliver product A,100000,project-01
-contract-02,C-002,2022/01/20 00:00,Provider B,Customer Y,Deliver service B,150000,project-02
-contract-03,C-003,2022/01/25 00:00,Provider C,Customer Z,Provide consulting services,80000,project-03
-contract-04,C-004,2022/02/01 00:00,Provider D,Customer W,Develop software solution,200000,project-04
-contract-05,C-005,2022/02/05 00:00,Provider E,Customer V,Provide maintenance services,120000,project-05
-contract-06,C-006,2022/02/10 00:00,Provider F,Customer U,Deliver product B,180000,project-06
-contract-07,C-007,2022/02/15 00:00,Provider G,Customer T,Provide training services,90000,project-07
-contract-08,C-008,2022/02/20 00:00,Provider H,Customer S,Develop mobile application,250000,project-08
-contract-09,C-009,2022/02/25 00:00,Provider I,Customer R,Provide marketing services,100000,project-09
-contract-10,C-010,2022/03/01 00:00,Provider J,Customer Q,Design website,150000,project-10
-contract-11,C-011,2022/03/05 00:00,Provider K,Customer P,Deliver product C,200000,project-11
-contract-12,C-012,2022/03/10 00:00,Provider L,Customer O,Provide legal services,180000,project-12
-contract-13,C-013,2022/03/15 00:00,Provider M,Customer N,Develop e-commerce platform,300000,project-13
-contract-14,C-014,2022/03/20 00:00,Provider N,Customer M,Provide accounting services,120000,project-14
-contract-15,C-015,2022/03/25 00:00,Provider O,Customer L,Deliver product D,250000,project-15
+contract-01,ABC-001,2000/01/01 09:00,"Proveedor A","Cliente 1","Objetivos del contrato 01 en español",1.00,project-01
+contract-02,XYZ-002,2001/02/15 10:30,"Provider B","Customer 2","Objectives of contract 02 in English",250.20,project-02
+contract-03,QWE-003,2002/03/20 11:45,"Anbieter C","Kunde 3","Vertragsziele 03 auf Deutsch",50000.00,project-03
+contract-04,DEF-004,2003/04/25 12:00,"Fournisseur D","Client 4","Objectifs du contrat 04 en français",750.34,project-04
+contract-05,JKL-005,2004/05/30 13:15,"Fornitore E","Cliente 5","Obiettivi del contratto 05 in italiano",2000.00,project-05
+contract-06,MNO-006,2005/06/05 14:30,"Leverandør F","Kunde 6","Kontraktmål 06 på dansk",15000.00,project-06
+contract-07,PQR-007,2006/07/10 15:45,"Fornecedor G","Cliente 7","Objetivos do contrato 07 em português",30000.00,project-07
+contract-08,RST-008,2007/08/15 16:00,"Поставщик H","Клиент 8","Цели контракта 08 на русском языке",17000.00,project-08
+contract-09,TUV-009,2008/09/20 09:15,"Provider I","Customer 9","Objectives of contract 09 in English",40000.00,project-09
+contract-10,WXY-010,2009/10/25 09:30,"Proveedor J","Cliente 10","Objetivos del contrato 10 en español",80000.00,project-10
+contract-11,FGH-011,2010/11/30 10:45,"Leverandør K","Kunde 11","Kontraktmål 11 på dansk",12000.00,project-11
+contract-12,VBN-012,2011/12/05 11:00,"Fornecedor L","Cliente 12","Objetivos do contrato 12 em português",60000.00,project-12
+contract-13,ASD-013,2013/01/10 12:15,"Anbieter M","Kunde 13","Vertragsziele 13 auf Deutsch",90000.00,project-13
+contract-14,ZXC-014,2014/02/15 13:30,"Fournisseur N","Client 14","Objectifs du contrat 14 en français",10000.00,project-14
+contract-15,QWE-015,2015/03/20 14:45,"Fornitore O","Cliente 15","Obiettivi del contratto 15 in italiano",30000.00,project-15
+contract-16,PLM-016,2016/04/25 15:00,"Leverandør P","Kunde 16","Kontraktmål 16 på dansk",6000.24,project-16
+contract-17,OKN-017,2017/05/30 16:15,"Fornecedor Q","Cliente 17","Objetivos do contrato 17 em português",2000.73,project-17
+contract-18,REW-018,2018/06/05 09:30,"Поставщик R","Клиент 18","Цели контракта 18 на русском языке",40000.43,project-18
+contract-19,TYU-019,2019/07/10 09:45,"Provider S","Customer 19","console.log("AAAAHHHH")",70000.3,project-19
+contract-20,GHI-020,2020/08/15 10:00,"Proveedor T","Cliente 20","SELECT * FROM Contract",10000.1,project-20
