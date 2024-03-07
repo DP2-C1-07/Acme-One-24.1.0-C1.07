@@ -60,5 +60,4 @@ public class Project extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Manager				manager;
-
 }
