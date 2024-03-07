@@ -1,2 +1,3 @@
 claim.code.error = Error in field "code", it does not follow pattern ^C-[0-9]{4}$
 project.code.error = Error in field "code", it does not follow pattern ^[A-Z]{3}-[0-9]{4}$
+risk.reference.error = Error in field "reference", it does not follow pattern ^R-[0-9]{3}$
