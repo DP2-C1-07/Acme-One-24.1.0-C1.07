@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -37,7 +38,7 @@ public class Risk extends AbstractEntity {
 		//Attributes --------------------------------------------------------------------------------
 		@NotBlank
 		@Column(unique = true)
-		@Pattern(regexp = "^R-[0-9]{3}$", message="risk.reference.error")
+		@Pattern(regexp = "^R-[0-9]{3}$", message="{risk.reference.error}")
 		String reference;
 		
 		@NotNull
@@ -50,6 +51,7 @@ public class Risk extends AbstractEntity {
 		
 		@Min(0)
 		@Max(1)
+		@Digits(fraction = 2, integer = 1)
 		double probability;
 		
 		@NotBlank
