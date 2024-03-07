@@ -56,7 +56,7 @@ public class AuditRecord extends AbstractEntity {
 
 	@Nullable
 	@URL
-	@Length(max = 225)
+	@Length(max = 255)
 	String						link;
 
 	// Derived attributes -----------------------------------------------------
