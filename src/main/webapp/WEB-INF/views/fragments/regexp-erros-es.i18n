@@ -1,5 +1,6 @@
 claim.code.error = Error en campo "code", no sigue el patrón ^C-[0-9]{4}$
 project.code.error = Error en campo "code", no sigue el patrón ^[A-Z]{3}-[0-9]{4}$
+progressLog.recordIn.error = Error en campo "recordIn", no sigue el patrón ^PG-[A-Z]{1,2}-[0-9]{4}$
 contract.code.error = Error en campo "code", no sigue el patrón ^[A-Z]{1,3}-[0-9]{3}$
 risk.reference.error = Error en campo "reference", no sigue el patrón ^R-[0-9]{3}$
 codeAudit.code.error = Error en campo "code", no sigue el patrón ^[A-Z]{1,3}-[0-9]{3}$
