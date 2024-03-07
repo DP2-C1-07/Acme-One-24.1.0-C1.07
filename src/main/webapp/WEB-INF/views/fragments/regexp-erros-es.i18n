@@ -1,0 +1,2 @@
+claim.code.error = Error en campo "code", no sigue el patrón ^C-[0-9]{4}$
+project.code.error = Error en campo "code", no sigue el patrón ^[A-Z]{3}-[0-9]{4}$
