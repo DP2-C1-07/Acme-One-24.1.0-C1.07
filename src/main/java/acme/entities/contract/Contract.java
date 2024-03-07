@@ -8,10 +8,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -33,11 +34,11 @@ public class Contract extends AbstractEntity{
 		//Attributes --------------------------------------------------------------------------------
 		@NotBlank
 		@Column(unique = true)
-		@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+		@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message="{contract.code.error}")
 		String code;
 		
 		@Temporal(TemporalType.TIMESTAMP)
-		@Past
+		@PastOrPresent
 		@NotNull
 		Date instantiationMoment;
 		
@@ -53,9 +54,9 @@ public class Contract extends AbstractEntity{
 		@Length(max = 100)
 		String goals;
 		
-		@NotNull
 		@Min(0)
-		Double budget;
+		@Digits(fraction = 2, integer = 5)
+		double budget;
 		
 		@ManyToOne
 		@NotNull

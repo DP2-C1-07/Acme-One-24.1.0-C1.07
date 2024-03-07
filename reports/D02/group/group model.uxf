@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>150</y>
+      <w>380</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++code: String {Unique, NotBlank, Pattern(^C-[0-9]{4}$)}
++instantiationMoment: Date {NotNull, PastOrPresent}
++heading: String {NotBlank, Length(0,75)}
++description: String {NotBlank, Length(0,100)}
++department: String {NotBlank, Length(0,100)}
++link: String {Length(0,255)}
++emailAddress: String {Length(0,255)}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>390</y>
+      <w>350</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Objective
+--
++instantiationMoment: Date {Past}
++title: String {NotBlank, Length(1,75)}
++description: String {NotBlank, Length(1,100)}
++priority: ObjectivePriority
++initiateMoment: Date {Temporal(TIMESTAMP)}
++finalizationMoment: Date {Temporal(TIMESTAMP)}
++critical: boolean
++link: String {lentgh(1,255)}
+
+
+
+
+
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -6,3 +6,4 @@ contract.code.error = The string must start with 1 to 3 uppercase letters, follo
 risk.reference.error = The string must be "R-", followed by exactly 3 digits.
 codeAudit.code.error=The string must start with 1 to 3 uppercase letters, followed by "-", and then exactly 3 digits.
 auditRecord.code.error= The string must be "AU-", followed by exactly 4 digits, "-", and then exactly 3 digits.
+

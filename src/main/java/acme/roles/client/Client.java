@@ -24,7 +24,7 @@ public class Client extends AbstractRole{
 	//Attributes --------------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "CLI-[0-9]{4}")
+	@Pattern(regexp = "^CLI-[0-9]{4}$", message = "{client.identification.error}")
 	String identification;
 	
 	@NotBlank
@@ -35,8 +35,10 @@ public class Client extends AbstractRole{
 	ClientType type;
 	
 	@NotBlank
+	@Length(max = 255)
 	String email;
 	
 	@URL
+	@Length(max = 255)
 	String link;
 }

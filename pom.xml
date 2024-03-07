@@ -25,7 +25,7 @@
 	<description>This is my first project in Design &amp; Testing.</description>
 
 	<artifactId>Acme-SF</artifactId>
-	<version>D01</version>
+	<version>D02</version>
 	<packaging>war</packaging>
 	
 	<parent>
