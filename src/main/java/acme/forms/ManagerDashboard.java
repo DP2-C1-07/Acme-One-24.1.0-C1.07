@@ -14,10 +14,10 @@ public class ManagerDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-	Integer						totalCouldUserStories;
-	Integer						totalShouldUserStories;
-	Integer						totalMustUserStories;
-	Integer						totalWontUserStories;
+	int							totalCouldUserStories;
+	int							totalShouldUserStories;
+	int							totalMustUserStories;
+	int							totalWontUserStories;
 	Double						userStoryEstimatedCostAverage;
 	Double						userStoryEstimatedCostDeviation;
 	Integer						maximumUserStoryEstimatedCost;

@@ -48,9 +48,12 @@ public class Objective extends AbstractEntity {
 	//TODO: como se ha respondido en el foro period se implementa con dos atributos de tipo date
 	// queda implementar las restricciones de que la duracion debe ser superior a una hora
 	// el momento de inicio debe ser posterior al de creacion y el de finalizacion posterior al de inicio
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	Date						initiateMoment;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	Date						finalizationMoment;
 

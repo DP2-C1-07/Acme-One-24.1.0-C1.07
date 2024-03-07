@@ -1,0 +1,11 @@
+key,code,periodBeginning,periodEnd,mark,link,key:codeAudit
+audit-record-01,AU-0001-001,2022/01/15 12:00,2022/01/15 12:45,A,https://www.example.com/audit-01,code-audit-01
+audit-record-02,AU-0002-002,2000/01/01 00:00,2000/01/01 00:01,B,https://www.example.com/audit-02,code-audit-01
+audit-record-03,AU-0003-003,2000/01/01 00:01,2000/01/01 00:02,C,https://www.example.com/audit-03,code-audit-02
+audit-record-04,AU-0004-004,2022/07/29 23:00,2022/07/30 00:00,A_PLUS,https://www.example.com/audit-04,code-audit-02
+audit-record-05,AU-0005-005,2022/01/19 13:30,2022/01/19 14:15,F_MINUS,https://www.example.com/audit-05,code-audit-03
+audit-record-06,AU-0006-006,2022/01/20 08:00,2022/01/20 08:45,B,https://www.google.com/upTo254--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,code-audit-03
+audit-record-07,AU-0007-007,2022/01/21 15:45,2022/01/21 16:30,C,https://www.google.com/upTo255---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,code-audit-04
+audit-record-08,AU-0000-000,2022/01/22 10:30,2022/01/22 11:15,A_PLUS,https://www.example.com/audit-08,code-audit-04
+audit-record-09,AU-9999-999,2022/01/23 11:45,2022/01/23 12:30,B,https://www.example.com/audit-09,code-audit-01
+audit-record-10,AU-9998-998,2022/01/24 14:00,2022/01/24 14:45,C,https://www.example.com/audit-10,code-audit-01

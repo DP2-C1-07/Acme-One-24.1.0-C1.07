@@ -1,20 +1,22 @@
 
 package acme.entities.audit_records;
 
-import java.time.Duration;
+import java.util.Date;
 
 import javax.annotation.Nullable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
-import org.hibernate.validator.constraints.time.DurationMax;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.code_audits.CodeAudit;
@@ -35,19 +37,26 @@ public class AuditRecord extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
+	@Pattern(regexp = "^AU-[0-9]{4}-[0-9]{3}$", message = "{auditRecord.code.error}")
 	String						code;
 
-	@Past
-	@DurationMax(hours = 1)
-	Duration					period;
+	//TODO:Comprobar si hay 1 hora de diferencia entre el principio y el final del periodo
+	@PastOrPresent
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						periodBeginning;
+
+	@PastOrPresent
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						periodEnd;
 
 	@NotNull
-	@Valid
 	Mark						mark;
 
 	@Nullable
 	@URL
+	@Length(max = 255)
 	String						link;
 
 	// Derived attributes -----------------------------------------------------

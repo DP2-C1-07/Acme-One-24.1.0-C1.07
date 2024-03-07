@@ -1,4 +1,4 @@
-key,code,creation-moment,difficulty,details,update-moment,link,total-time
+key,code,creation-moment,difficulty-level,details,update-moment,link,total-time
 training-module-01,"A-001",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",2
 training-module-02,"A-000",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",2
 training-module-03,"AB-777",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",2
