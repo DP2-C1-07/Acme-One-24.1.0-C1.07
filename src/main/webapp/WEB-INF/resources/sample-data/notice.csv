@@ -1,0 +1,11 @@
+key,instantiationMoment,title,author,message,email,link
+notice-01,2022/01/15 00:00,Notice 01,"johnnoticer2 - Noticer, John",This is a notice with both email and link,notices@example.com,https://notices.example.com/notice-01
+notice-02,2022/01/20 00:00,Notice 02,"stellanoticer - Noticer, Stella",This is a notice with email but no link,notices@example.com,null
+notice-03,2022/01/25 00:00,Notice 03,"marcoanarmo - Anarmo, Marco",This is a notice with neither email or link,null,null
+notice-04,2022/02/01 00:00,Notice 04,"stellanoticer - Noticer, Stella",This is a notice with link but no email,null,https://notices.example.com/notice-04
+notice-05,2022/02/05 00:00,Notice 05,"stellanoticer - Noticer, Stella",This is a notice with both email and link,notices@example.com,https://notices.example.com/notice-05
+notice-06,2022/02/10 00:00,Notice 06,"mimbrero - Mimbrero, Alberto",This is a notice with neither email or link,null,null
+notice-07,2022/02/15 00:00,Notice 07,"pabcabmar3 - Caballero, Pablo",This is a notice with both email and link,notices@example.com,https://notices.example.com/notice-07
+notice-08,2022/02/20 00:00,Notice 08,"johnnoticer2 - Noticer, John",This is a notice with neither email or link,null,null
+notice-09,2022/02/25 00:00,Notice 09,"juangarcar - García, Juan",This is a notice with email but no link,notices@example.com,null
+notice-10,2022/03/01 00:00,Notice 10,"alfonlan - Lan, Alfonso",This is a notice with link but no email,null,https://notices.example.com/notice-10
