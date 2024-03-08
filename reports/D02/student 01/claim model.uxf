@@ -14,11 +14,11 @@ Claim
 --
 +code: String {Unique, NotBlank, Pattern(^C-[0-9]{4}$)}
 +instantiationMoment: Date {NotNull, PastOrPresent}
-+heading: String {NotBlank, Length(0,75)}
-+description: String {NotBlank, Length(0,100)}
-+department: String {NotBlank, Length(0,100)}
--link: String {Length(0,255)}
--emailAddress: String {Length(0,255)}
++heading: String {NotBlank, Length(1,75)}
++description: String {NotBlank, Length(1,100)}
++department: String {NotBlank, Length(1,100)}
++link: String {Length(1,255)}
++emailAddress: String {Length(1,255)}
 </panel_attributes>
     <additional_attributes/>
   </element>

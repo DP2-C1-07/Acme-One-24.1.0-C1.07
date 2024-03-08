@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>150</y>
-      <w>380</w>
-      <h>170</h>
+      <x>420</x>
+      <y>174</y>
+      <w>300</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Claim
 --
 +code: String {Unique, NotBlank, Pattern(^C-[0-9]{4}$)}
-+instantiationMoment: Date {NotNull, PastOrPresent}
-+heading: String {NotBlank, Length(0,75)}
-+description: String {NotBlank, Length(0,100)}
-+department: String {NotBlank, Length(0,100)}
-+link: String {Length(0,255)}
-+emailAddress: String {Length(0,255)}
++instantiationMoment: Date {NotNull, PastOrPresent,Temporal(TIMESTAMP)}
++heading: String {NotBlank, Length(1,75)}
++description: String {NotBlank, Length(1,100)}
++department: String {NotBlank, Length(1,100)}
++link: String {Length(1,255)}
++emailAddress: String {Length(1,255)}
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>390</y>
-      <w>350</w>
-      <h>190</h>
+      <x>306</x>
+      <y>456</y>
+      <w>210</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Objective
@@ -37,8 +37,8 @@ Objective
 +title: String {NotBlank, Length(1,75)}
 +description: String {NotBlank, Length(1,100)}
 +priority: ObjectivePriority
-+initiateMoment: Date {Temporal(TIMESTAMP)}
-+finalizationMoment: Date {Temporal(TIMESTAMP)}
++initiateMoment: Date {NotNull, PastOrPresent, Temporal(TIMESTAMP)}
++finalizationMoment: Date {NotNull, PastOrPresent Temporal(TIMESTAMP)}
 +critical: boolean
 +link: String {lentgh(1,255)}
 
@@ -48,6 +48,67 @@ Objective
 
 
 --</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>312</y>
+      <w>330</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Banner
+--
++ instantiationMoment:  Date{PastOrPresent, NotNull, TemporalType.TIMESTAMP}
++ lastUpdateMoment:  Date{PastOrPresent, NotNull, TemporalType.TIMESTAMP}
++ displayPeriodBeginning:  Date{PastOrPresent, NotNull, TemporalType.TIMESTAMP}
++ displayPeriodEnd:  Date{PastOrPresent, NotNull, TemporalType.TIMESTAMP}
++ pictureLink: String {URL, Nullable, Lenght(1,255)}
++ slogan: String {NotBlank, Length(1, 75)}
++ link: String {URL, Nullable, Lenght(1,255)}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>168</y>
+      <w>300</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++instantiationMoment: Date{PastOrPresent, Temporal(TIMESTAMP)}
++title: String{NotBlank, Length(0,75)}
++author: String{NotBlank, Length(0,75)}
++message: String{NotBlank, Length(0,100)}
+-email: String{Email, Length(0,255)}
+-link: String{URL, Length(0,255)}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>312</y>
+      <w>270</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Risk
+--
++reference: String{Unique, NotBlank, Pattern(^R-[0-9]{3}$)}
++identificationDate: Date{Temporal(TIMESTAMP), PastOrPresent}
++impact: int{Min(0)}
++probability: double{Min(0), Max(1), Digits(fraction = 2, integer = 1)}
++description: String{NotBlank, Length(0,100)}
+-link: String{URL, Length(0,255)}
+--
+-getValue(): Double</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
