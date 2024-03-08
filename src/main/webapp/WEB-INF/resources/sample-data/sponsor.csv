@@ -1,0 +1,3 @@
+key,key:userAccount,name,expectedBenefits,email,webPage
+sponsor-01,user-account-sponsor-01,Sponsor Smith,Basic benefit,sponsorsmith@gmail.com,https://example.com
+sponsor-02,user-account-sponsor-02,สวัสดีชาวโลก,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed lectus eget ma, consectetur adip","",https://example.com
