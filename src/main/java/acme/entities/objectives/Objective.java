@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -30,7 +30,7 @@ public class Objective extends AbstractEntity {
 	//Atributes --------------------------------------------------------------------------------
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	@NotNull
 	Date						instantiationMoment;
 
@@ -57,9 +57,9 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	Date						finalizationMoment;
 
-	@NotNull
-	Boolean						status;
+	boolean						critical;
 
 	@URL
+	@Length(max = 255)
 	String						link;
 }

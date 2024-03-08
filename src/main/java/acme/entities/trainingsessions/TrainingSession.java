@@ -35,7 +35,7 @@ public class TrainingSession extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "^TS-[A-Z]{1,3}-[0-9]{3}$", message = "{trainingSession.code.error}")
 	String						code;
 
 	//como se ha reusuelto en el foro el atributo period se implementa como dos atributos, uno que indique el
@@ -64,11 +64,12 @@ public class TrainingSession extends AbstractEntity {
 	String						contactEmail;
 
 	@URL
+	@Length(max = 255)
 	String						link;
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 
 }

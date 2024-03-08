@@ -40,6 +40,7 @@ public class Developer extends AbstractRole {
 	String						email;
 
 	@URL
+	@Length(max = 255)
 	String						link;
 
 }
