@@ -47,10 +47,12 @@ public class TrainingModule extends AbstractEntity {
 	TrainingModuleDifficultyLevel	difficultyLevel;
 
 	//TODO: cuando sepamos hacer servicios añadir la restricción de que el updateMoment debe ser posterior al creationMoment
+	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
 	Date							updateMoment;
 
 	@URL
+	@Length(max = 255)
 	String							link;
 
 	int								totalTime;
