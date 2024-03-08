@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text>&lt;&lt;Entity&gt;&gt;
+Risk
+--
++reference: String{Unique, NotBlank, Pattern(^R-[0-9]{3}$)}
++identificationDate: Date{Temporal(TIMESTAMP), PastOrPresent}
++impact: int{Min(0)}
++probability: double{Min(0), Max(1), Digits(fraction = 2, integer = 1)}
++description: String{NotBlank, Length(0,100)}
+-link: String{URL, Length(0,255)}
+--
+-getValue(): Double</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>140</y>
+      <w>470</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++instantiationMoment: Date{PastOrPresent, Temporal(TIMESTAMP)}
++title: String{NotBlank, Length(0,75)}
++author: String{NotBlank, Length(0,75)}
++message: String{NotBlank, Length(0,100)}
+-email: String{Email, Length(0,255)}
+-link: String{URL, Length(0,255)}</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
