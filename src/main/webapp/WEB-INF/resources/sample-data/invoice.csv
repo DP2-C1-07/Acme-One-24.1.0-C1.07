@@ -1,0 +1,24 @@
+key,code,registration-time,due-date,quantity,tax,currency,link
+invoice-01,IN-0001-0001,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-02,IN-9999-9999,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-03,IN-0001-0003,2000/01/01 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-04,IN-0001-0004,2000/01/01 00:15,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-05,IN-0001-0005,2002/05/20 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-06,IN-0001-0006,2022/07/29 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-07,IN-0001-0007,2022/07/29 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-08,IN-0001-0008,2022/07/29 23:59,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-09,IN-0001-0009,2021/07/30 00:00,2000/01/01 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-10,IN-0001-0010,2021/07/30 00:00,2000/01/01 00:15,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-11,IN-0001-0011,2021/07/30 00:00,2002/05/20 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-12,IN-0001-0012,2021/07/30 00:00,2022/07/29 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-13,IN-0001-0013,2021/07/30 00:00,2022/07/29 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-14,IN-0001-0014,2021/07/30 00:00,2022/07/29 23:59,2500,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-15,IN-0001-0015,2021/07/30 00:00,2021/08/30 00:00,1,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-16,IN-0001-0016,2021/07/30 00:00,2021/08/30 00:00,9999999999.99,0.20,EUR,https://cajarural.com/invoice0982137
+invoice-17,IN-0001-0017,2021/07/30 00:00,2021/08/30 00:00,2500,0,EUR,https://cajarural.com/invoice0982137
+invoice-18,IN-0001-0018,2021/07/30 00:00,2021/08/30 00:00,2500,1,EUR,https://cajarural.com/invoice0982137
+invoice-19,IN-0001-0019,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,USD,https://cajarural.com/invoice0982137
+invoice-20,IN-0001-0020,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,GBP,https://cajarural.com/invoice0982137
+invoice-21,IN-0001-0021,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,
+invoice-22,IN-0001-0022,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://t.ly
+invoice-23,IN-0001-0023,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://pdjqxqydibodqqzxtococqybygllvfnocwirixvvismirniwmovvidxipgrpcdkoxpqmunjjudzthmxxjzuabgwcsinaowqxtlvvejencuiwvaskozgipsqqjsqoouirhkczozxqmdmanpsyohemifibdtvpeeflqlbvxrvvvfultygerbxuckpsklwiqvdmjjlvqwrqymbygbtibomarltfrwqbwrbweklkjbdusdcsmddeldt.com
