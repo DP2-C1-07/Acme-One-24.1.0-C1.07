@@ -1,7 +1,7 @@
 any.claim.list.label.code = Code
-any.claim.list.label.instantiationMoment = Instantiation moment
+any.claim.list.label.instantiation-moment = Instantiation moment
 any.claim.list.label.heading = Heading
 any.claim.list.label.description = Description
 any.claim.list.label.department = Department
-any.claim.list.label.emailAddress = Email address
+any.claim.list.label.email-address = Email address
 any.claim.list.label.link = Link
