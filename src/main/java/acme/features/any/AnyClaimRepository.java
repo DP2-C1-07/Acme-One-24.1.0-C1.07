@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.claims.Claim;
 
 @Repository
-public interface AuthenticatedClaimRepository extends AbstractRepository {
+public interface AnyClaimRepository extends AbstractRepository {
 
 	@Query("select c from Claim c")
 	List<Claim> findAllClaims();
