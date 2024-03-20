@@ -1,7 +1,7 @@
 
 package acme.features.any;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,5 +13,5 @@ import acme.entities.claims.Claim;
 public interface AnyClaimRepository extends AbstractRepository {
 
 	@Query("select c from Claim c")
-	List<Claim> findAllClaims();
+	Collection<Claim> findAllClaims();
 }

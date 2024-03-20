@@ -1,7 +1,7 @@
 
 package acme.features.any;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class AnyClaimListService extends AbstractService<Any, Claim> {
 
 	@Override
 	public void load() {
-		List<Claim> objects;
+		Collection<Claim> objects;
 		objects = this.repository.findAllClaims();
 
 		super.getBuffer().addData(objects);
