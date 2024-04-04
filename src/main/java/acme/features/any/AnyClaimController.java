@@ -27,6 +27,6 @@ public class AnyClaimController extends AbstractController<Any, Claim> {
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("publish", this.publishService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 }
