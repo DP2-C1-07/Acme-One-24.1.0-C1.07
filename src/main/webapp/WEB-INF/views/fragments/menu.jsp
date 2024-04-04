@@ -42,6 +42,11 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.any.claims">
+			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>		
+		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>

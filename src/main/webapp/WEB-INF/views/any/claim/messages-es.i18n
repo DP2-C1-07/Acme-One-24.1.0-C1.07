@@ -1,3 +1,5 @@
+any.claim.list.title = Lista de demandas
+
 any.claim.list.label.code = Código
 any.claim.list.label.instantiation-moment = Momento de instanciación
 any.claim.list.label.heading = Cabecera
@@ -5,3 +7,5 @@ any.claim.list.label.description = Descripción
 any.claim.list.label.department = Departamento
 any.claim.list.label.email-address = Dirección de correo
 any.claim.list.label.link = Enlace
+
+any.claim.publish.error.duplicated = Ya existe una demanda con este código
