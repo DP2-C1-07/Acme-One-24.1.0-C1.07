@@ -1,5 +1,5 @@
 
-package acme.features.any;
+package acme.features.any.claim;
 
 import java.util.Collection;
 
@@ -16,8 +16,8 @@ public interface AnyClaimRepository extends AbstractRepository {
 	Collection<Claim> findAllClaims();
 
 	@Query("select c from Claim c where c.id = :id")
-	Claim findOneClaimById(int id);
+	Claim findOneById(int id);
 
 	@Query("select c from Claim c where c.code = :code")
-	Claim findOneClaimByCode(String code);
+	Claim findOneByCode(String code);
 }

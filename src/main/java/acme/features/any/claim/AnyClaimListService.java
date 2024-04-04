@@ -1,5 +1,7 @@
 
-package acme.features.any;
+package acme.features.any.claim;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,8 @@ import acme.client.services.AbstractService;
 import acme.entities.claims.Claim;
 
 @Service
-public class AnyClaimShowService extends AbstractService<Any, Claim> {
+public class AnyClaimListService extends AbstractService<Any, Claim> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -20,26 +23,15 @@ public class AnyClaimShowService extends AbstractService<Any, Claim> {
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		boolean status;
-		int claimId;
-		Claim claim;
-
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findOneClaimById(claimId);
-		status = claim != null;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Claim object;
-		int id;
+		Collection<Claim> objects;
+		objects = this.repository.findAllClaims();
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneClaimById(id);
-
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(objects);
 	}
 
 	@Override

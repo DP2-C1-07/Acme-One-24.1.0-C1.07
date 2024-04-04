@@ -1,5 +1,5 @@
 
-package acme.features.any;
+package acme.features.any.claim;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 		Claim claim;
 
 		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findOneClaimById(claimId);
+		claim = this.repository.findOneById(claimId);
 		status = claim != null;
 
 		super.getResponse().setAuthorised(status);
@@ -37,7 +37,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneClaimById(id);
+		object = this.repository.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -54,7 +54,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Claim existing;
 
-			existing = this.repository.findOneClaimByCode(object.getCode());
+			existing = this.repository.findOneByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "any.claim.publish.error.duplicated");
 		}
 	}
