@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.userstories;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ import acme.entities.userstories.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryListService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryListMineService extends AbstractService<Manager, UserStory> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -32,7 +32,7 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		objects = this.repository.findAllUserStoriesByManagerId(principal.getActiveRoleId());
+		objects = this.repository.findAllByManagerId(principal.getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}

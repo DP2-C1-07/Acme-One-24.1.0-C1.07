@@ -1,5 +1,7 @@
 
-package acme.features.manager;
+package acme.features.manager.project;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,9 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
+import acme.entities.userstories.UserStory;
+import acme.features.manager.ManagerRepository;
+import acme.features.manager.userstories.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -18,6 +23,9 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 	@Autowired
 	private ManagerRepository			managerRepository;
+
+	@Autowired
+	private ManagerUserStoryRepository	managerUserStoryRepository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -33,8 +41,10 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		project = this.managerProjectRepository.findOneById(projectId);
 		managerId = project.getManager().getId();
 		manager = this.managerRepository.findOneById(managerId);
-
-		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		
+		Collection<UserStory> userStories = managerUserStoryRepository.findAllByProjectId(projectId);
+		
+		status = project != null && userStories.size() > 0 && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}

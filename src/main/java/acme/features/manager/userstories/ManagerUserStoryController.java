@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.userstories;
 
 import javax.annotation.PostConstruct;
 
@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.projects.Project;
+import acme.entities.userstories.UserStory;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerProjectController extends AbstractController<Manager, Project> {
+public class ManagerUserStoryController extends AbstractController<Manager, UserStory> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectListMineService	listMineService;
+	private ManagerUserStoryListMineService	listMineService;
 
 	@Autowired
-	private ManagerProjectPublishService	publishService;
+	private ManagerUserStoryPublishService	publishService;
 
 	@Autowired
-	private ManagerProjectShowService		showService;
+	private ManagerUserStoryShowService		showService;
 
 	// Constructors -----------------------------------------------------------
 

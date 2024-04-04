@@ -1,26 +1,24 @@
 
-package acme.features.manager;
-
-import java.util.Collection;
+package acme.features.manager.userstories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.projects.Project;
+import acme.entities.userstories.UserStory;
+import acme.features.manager.ManagerRepository;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectListMineService extends AbstractService<Manager, Project> {
+public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository	managerProjectRepository;
+	private ManagerRepository			managerRepository;
 
 	@Autowired
-	private ManagerRepository			managerRepository;
+	private ManagerUserStoryRepository	managerUserStoryRepository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -39,22 +37,22 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 	@Override
 	public void load() {
-		Collection<Project> objects;
-		Principal principal;
+		UserStory object;
+		int id;
 
-		principal = super.getRequest().getPrincipal();
-		objects = this.managerProjectRepository.findAllProjectsByManagerId(principal.getActiveRoleId());
+		id = super.getRequest().getData("id", int.class);
+		object = this.managerUserStoryRepository.findOneById(id);
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final UserStory object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "manager");
 
 		super.getResponse().addData(dataset);
 	}
