@@ -1,40 +1,48 @@
 
 package acme.features.manager;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectListService extends AbstractService<Manager, Project> {
+public class ManagerProjectShowService extends AbstractService<Manager, Project> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerRepository			managerRepository;
+
+	@Autowired
+	private ManagerProjectRepository	managerProjectRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int managerId;
+		Manager manager;
+
+		managerId = super.getRequest().getData("id", int.class);
+		manager = this.managerRepository.findOneById(managerId);
+
+		status = super.getRequest().getPrincipal().hasRole(manager);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Project> objects;
-		Principal principal;
+		Project object;
+		int id;
 
-		principal = super.getRequest().getPrincipal();
-		objects = this.repository.findAllProjectsByManagerId(principal.getActiveRoleId());
+		id = super.getRequest().getData("id", int.class);
+		object = this.managerProjectRepository.findOneById(id);
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override

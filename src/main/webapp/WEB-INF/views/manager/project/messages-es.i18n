@@ -5,3 +5,5 @@ manager.project.list.label.indication = Indicación
 manager.project.list.label.cost = Coste
 manager.project.list.label.link = Enlace
 manager.project.list.label.manager = Manager
+
+manager.project.publish.error.duplicated = Ya existe un proyecto con este código
