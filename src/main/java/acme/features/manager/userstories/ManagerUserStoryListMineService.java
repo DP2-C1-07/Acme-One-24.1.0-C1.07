@@ -17,13 +17,24 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerUserStoryRepository managerUserStoryRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int userStoryId;
+		Manager manager;
+		UserStory userStory;
+
+		userStoryId = super.getRequest().getData("id", int.class);
+		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
+		manager = userStory.getManager();
+
+		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -32,7 +43,7 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		objects = this.repository.findAllByManagerId(principal.getActiveRoleId());
+		objects = this.managerUserStoryRepository.findAllByManagerId(principal.getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}
@@ -41,10 +52,12 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 	public void unbind(final UserStory object) {
 		assert object != null;
 
+		Manager manager;
+		manager = object.getManager();
+
 		Dataset dataset;
-
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-
+		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }
