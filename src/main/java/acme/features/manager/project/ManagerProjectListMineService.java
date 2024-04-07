@@ -30,10 +30,11 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.managerProjectRepository.findOneById(projectId);
-		manager = project.getManager();
+		manager = project == null ? null : project.getManager();
 
-		status = super.getRequest().getPrincipal().hasRole(manager);
+		status = project == null && super.getRequest().getPrincipal().hasRole(manager);
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		objects = this.managerProjectRepository.findAllProjectsByManagerId(principal.getActiveRoleId());
+		objects = this.managerProjectRepository.findAllByManagerId(principal.getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}

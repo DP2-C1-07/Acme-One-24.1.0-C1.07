@@ -1,3 +1,5 @@
+manager.project.list.title = Lista de proyectos
+
 manager.project.list.label.code = Código
 manager.project.list.label.title = Título
 manager.project.list.label.project-abstract = Resumen
@@ -5,5 +7,20 @@ manager.project.list.label.indication = Indicación
 manager.project.list.label.cost = Coste
 manager.project.list.label.link = Enlace
 manager.project.list.label.manager = Manager
+
+manager.project.form.label.code = Código:
+manager.project.form.label.title = Título:
+manager.project.form.label.abstractProject = Resumen:
+manager.project.form.label.indication = Indicación
+manager.project.form.label.cost = Coste:
+manager.project.form.label.link = Enlace:
+
+manager.project.form.button.user-stories = Historias de usuario
+manager.project.form.button.create = Crear
+manager.project.form.button.update = Actualizar
+manager.project.form.button.delete = Borrar
+manager.project.form.button.publish = Publicar
+
+manager.project.list.button.create = Crear
 
 manager.project.publish.error.duplicated = Ya existe un proyecto con este código
