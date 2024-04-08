@@ -1,0 +1,6 @@
+manager.user-story.list.label.title = Title
+manager.user-story.list.label.description = Description 
+manager.user-story.list.label.estimated-cost = Estimated cost
+manager.user-story.list.label.acceptance-criteria = Acceptance criteria
+manager.user-story.list.label.cost = Cost
+manager.user-story.list.label.link = Link

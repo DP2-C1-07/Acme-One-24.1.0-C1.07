@@ -55,3 +55,7 @@ master.menu.user-account.become-consumer = Hazte consumidor
 # master.menu.any ############################################################
 master.menu.any.claims = Claims
 master.menu.any.list-claim = Listar demandas
+# master.menu.manager ########################################################
+master.menu.manager = Manager
+master.menu.manager.my-projects = Listar mis proyectos
+master.menu.manager.my-user-stories = Listar mis historias de usuario
