@@ -8,3 +8,5 @@ codeAudit.code.error=The string must start with 1 to 3 uppercase letters, follow
 auditRecord.code.error= The string must be "AU-", followed by exactly 4 digits, "-", and then exactly 3 digits.
 trainingSession.code.error = The string must be "TS-", followed by 1 to 3 uppercase, "-", and then exactly 3 digits.
 trainingModule.code.error = The string must start with 1 to 3 uppercase, "-", and then exactly 3 digits.
+configuration.systemCurrency.error = The system currency must be 3 consecutive capital letters
+configuration.acceptedCurrencies.error = The accepted currencies must be a sequence of groups (of 3 consecutive capital letters each), separated by a comma and a blank space
