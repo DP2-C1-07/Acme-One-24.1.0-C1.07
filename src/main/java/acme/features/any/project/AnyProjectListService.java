@@ -6,17 +6,17 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
-import acme.roles.Manager;
 
 @Service
-public class AnyProjectListService extends AbstractService<Manager, Project> {
+public class AnyProjectListService extends AbstractService<Any, Project> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectRepository managerProjectRepository;
+	private AnyProjectRepository repository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -31,7 +31,7 @@ public class AnyProjectListService extends AbstractService<Manager, Project> {
 	public void load() {
 		Collection<Project> objects;
 
-		objects = this.managerProjectRepository.findAllProjects();
+		objects = this.repository.findAllProjects();
 
 		super.getBuffer().addData(objects);
 	}

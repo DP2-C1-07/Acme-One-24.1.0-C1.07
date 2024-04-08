@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
+import acme.client.data.accounts.Any;
 import acme.entities.projects.Project;
-import acme.roles.Manager;
 
 @Controller
-public class AnyProjectController extends AbstractController<Manager, Project> {
+public class AnyProjectController extends AbstractController<Any, Project> {
 
 	// Internal state ---------------------------------------------------------
 
