@@ -21,7 +21,11 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Manager.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

@@ -10,16 +10,16 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("select count(u) from UserStory u where u.priority = COULD")
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.COULD")
 	int totalCouldUserStories();
 
-	@Query("select count(u) from UserStory u where u.priority = SHOULD")
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.SHOULD")
 	int totalShouldUserStories();
 
-	@Query("select count(u) from UserStory u where u.priority = MUST")
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.MUST")
 	int totalMustUserStories();
 
-	@Query("select count(u) from UserStory u where u.priority = WONT")
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.WONT")
 	int totalWontUserStories();
 
 	@Query("select avg(u.estimatedCost) from UserStory u")
@@ -53,6 +53,6 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 		return this.calculateProjectCostDeviation(avgCost);
 	}
 
-	@Query("SELECT SQRT(SUM((u.estimatedCost - :avgCost) * (u.estimatedCost - :avgCost)) / COUNT(u)) FROM UserStory u")
+	@Query("SELECT SQRT(SUM((p.cost - :avgCost) * (p.cost - :avgCost)) / COUNT(p)) FROM Project p")
 	Double calculateProjectCostDeviation(@Param("avgCost") Double avgCost);
 }

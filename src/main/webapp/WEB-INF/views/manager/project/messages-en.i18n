@@ -7,7 +7,6 @@ manager.project.list.label.project-abstract = Abstract
 manager.project.list.label.indication = Indication
 manager.project.list.label.cost = Cost
 manager.project.list.label.link = Link
-manager.project.list.label.manager = Manager
 
 manager.project.form.label.code = Code:
 manager.project.form.label.title = Title:
