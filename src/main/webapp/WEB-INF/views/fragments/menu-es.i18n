@@ -59,3 +59,5 @@ master.menu.any.list-claim = Listar demandas
 master.menu.manager = Manager
 master.menu.manager.my-projects = Listar mis proyectos
 master.menu.manager.my-user-stories = Listar mis historias de usuario
+master.menu.manager.dashboard = Panel de indicadores
+
