@@ -56,6 +56,7 @@ master.menu.user-account.become-manager = Hazte manager
 # master.menu.any ############################################################
 master.menu.any = Any
 master.menu.any.list-claim = Listar demandas
+master.menu.any.list-project = Listar proyectos
 # master.menu.manager ########################################################
 master.menu.manager = Manager
 master.menu.manager.my-projects = Listar mis proyectos

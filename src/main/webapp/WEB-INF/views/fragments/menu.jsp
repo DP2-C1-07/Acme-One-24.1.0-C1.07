@@ -44,7 +44,8 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.any">
-			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>	
+			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>
+			<acme:menu-suboption code="master.menu.any.list-project" action="/any/project/list"/>	
     </acme:menu-option>
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.my-projects" action="/manager/project/list-mine"/>	
