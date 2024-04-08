@@ -10,7 +10,6 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
-import acme.features.manager.ManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -18,24 +17,24 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository	managerProjectRepository;
-
-	@Autowired
-	private ManagerRepository			managerRepository;
+	private ManagerProjectRepository managerProjectRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
 		boolean status;
-		int managerId;
+		int projectId;
 		Manager manager;
+		Project project;
 
-		managerId = super.getRequest().getData("id", int.class);
-		manager = this.managerRepository.findOneById(managerId);
+		projectId = super.getRequest().getData("id", int.class);
+		project = this.managerProjectRepository.findOneById(projectId);
+		manager = project == null ? null : project.getManager();
 
-		status = super.getRequest().getPrincipal().hasRole(manager);
+		status = project == null && super.getRequest().getPrincipal().hasRole(manager);
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		objects = this.managerProjectRepository.findAllProjectsByManagerId(principal.getActiveRoleId());
+		objects = this.managerProjectRepository.findAllByManagerId(principal.getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}
@@ -53,10 +52,12 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	public void unbind(final Project object) {
 		assert object != null;
 
+		Manager manager;
+		manager = object.getManager();
+
 		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager");
-
+		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }

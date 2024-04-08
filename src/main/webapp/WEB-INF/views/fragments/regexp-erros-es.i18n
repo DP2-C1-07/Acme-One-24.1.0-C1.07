@@ -8,3 +8,5 @@ codeAudit.code.error = La cadena debe empezar con 1 a 3 letras mayúsculas, segu
 auditRecord.code.error = La cadena debe ser "AU-", seguida de exactamente 4 dígitos, "-", y luego exactamente 3 dígitos.
 trainingSession.code.error = La cadena debe ser "TS-", seguido de entre 1 y 3 letras mayúsculas, "-", y luego exactamente 3 dígitos.
 trainingModule.code.error = La cadena debe ser entre 1 y 3 letras mayúsculas, "-", y luego exactamente 3 dígitos.
+configuration.systemCurrency.error = La divisa del sistema debe ser 3 letras mayúsculas seguidas
+configuration.acceptedCurrencies.error = Las divisas aceptadas deben ser una secuencia de grupos (de 3 letras mayúsculas consecutivas cada uno), separados por una coma y un espacio en blanco

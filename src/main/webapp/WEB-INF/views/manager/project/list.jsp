@@ -12,3 +12,7 @@
 	<acme:list-column code="manager.project.list.label.link" path="link" width="10%"/>
 	<acme:list-column code="manager.project.list.label.manager" path="manager" width="10%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list-mine'}">
+	<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
+</jstl:if>

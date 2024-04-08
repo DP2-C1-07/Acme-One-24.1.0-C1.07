@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.userstories.UserStory;
-import acme.features.manager.ManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -15,23 +14,23 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerRepository			managerRepository;
-
-	@Autowired
-	private ManagerUserStoryRepository	managerUserStoryRepository;
+	private ManagerUserStoryRepository managerUserStoryRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
 		boolean status;
-		int managerId;
+		int userStoryId;
 		Manager manager;
+		UserStory userStory;
 
-		managerId = super.getRequest().getData("id", int.class);
-		manager = this.managerRepository.findOneById(managerId);
+		userStoryId = super.getRequest().getData("id", int.class);
+		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
+		manager = userStory.getManager();
 
-		status = super.getRequest().getPrincipal().hasRole(manager);
+		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -50,10 +49,12 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void unbind(final UserStory object) {
 		assert object != null;
 
+		Manager manager;
+		manager = object.getManager();
+
 		Dataset dataset;
-
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "manager");
-
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }
