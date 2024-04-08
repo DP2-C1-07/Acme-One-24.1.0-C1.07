@@ -10,19 +10,15 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.entities.userstories.UserStory;
-import acme.features.manager.ManagerRepository;
 import acme.features.manager.userstories.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
 public class ManagerProjectPublishService extends AbstractService<Manager, Project> {
-	// Internal state ---------------------------------------------------------
 
+	// Internal state ---------------------------------------------------------
 	@Autowired
 	private ManagerProjectRepository	managerProjectRepository;
-
-	@Autowired
-	private ManagerRepository			managerRepository;
 
 	@Autowired
 	private ManagerUserStoryRepository	managerUserStoryRepository;
@@ -32,18 +28,16 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void authorise() {
 		boolean status;
-		int managerId;
 		int projectId;
 		Manager manager;
 		Project project;
 
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.managerProjectRepository.findOneById(projectId);
-		managerId = project.getManager().getId();
-		manager = this.managerRepository.findOneById(managerId);
-		
-		Collection<UserStory> userStories = managerUserStoryRepository.findAllByProjectId(projectId);
-		
+		manager = project.getManager();
+
+		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllByProjectId(projectId);
+
 		status = project != null && userStories.size() > 0 && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -64,15 +58,21 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager");
+		Manager manager;
+		manager = object.getManager();
+
+		super.bind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		object.setManager(manager);
 	}
 
 	@Override
 	public void validate(final Project object) {
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
 
-			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
+			existing = this.managerProjectRepository.findOneByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "manager.project.publish.error.duplicated");
 		}
 	}
@@ -88,8 +88,13 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void unbind(final Project object) {
 		assert object != null;
 
+		Manager manager;
+		manager = object.getManager();
+
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager");
+		dataset.put("manager", manager);
+
 		super.getResponse().addData(dataset);
 	}
 }

@@ -10,7 +10,7 @@ import acme.entities.userstories.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -36,17 +36,6 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	}
 
 	@Override
-	public void load() {
-		UserStory object;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		object = this.managerUserStoryRepository.findOneById(id);
-
-		super.getBuffer().addData(object);
-	}
-
-	@Override
 	public void bind(final UserStory object) {
 		assert object != null;
 
@@ -58,15 +47,26 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	}
 
 	@Override
+	public void load() {
+		UserStory object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.managerUserStoryRepository.findOneById(id);
+
+		super.getBuffer().addData(object);
+	}
+
+	@Override
 	public void validate(final UserStory object) {
-		// TODO: qué hay que poner aquí?
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		this.managerUserStoryRepository.save(object);
+		this.managerUserStoryRepository.delete(object);
 	}
 
 	@Override
