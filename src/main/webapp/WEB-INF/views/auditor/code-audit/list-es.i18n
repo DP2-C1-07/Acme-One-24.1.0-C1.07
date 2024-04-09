@@ -1,7 +1,0 @@
-
-auditor.code-audit.list.title = Mis auditorias de código
-auditor.code-audit.list.label.code = Código
-auditor.code-audit.list.label.executionDate = Fecha de ejecución
-auditor.code-audit.list.label.type = Tipo
-auditor.code-audit.list.label.mark = Nota
-

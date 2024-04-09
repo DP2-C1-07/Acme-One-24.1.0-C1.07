@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.code_audits.AuditorCodeAuditListService;
 import acme.entities.code_audits.CodeAudit;
 import acme.roles.Auditor;
 
@@ -17,7 +16,10 @@ public class AuditorCodeAuditController extends AbstractController<Auditor, Code
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuditorCodeAuditListService listService;
+	protected AuditorCodeAuditListService	listService;
+
+	@Autowired
+	protected AuditorCodeAuditShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -25,5 +27,6 @@ public class AuditorCodeAuditController extends AbstractController<Auditor, Code
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 }
