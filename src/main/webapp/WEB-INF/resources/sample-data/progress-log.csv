@@ -1,21 +1,21 @@
 key,recordIn,completeness,comment,registrationMoment,responsiblePerson,key:contract
-progressLog-01,PG-AB-0001,0.8,"Comentario sobre el progreso del registro 01 en español",2000/01/01 09:00,"Persona responsable A",contract-01
-progressLog-02,PG-XY-0002,0.6,"Comment on progress of record 02 in English",2001/02/15 10:30,"Responsible Person B",contract-02
-progressLog-03,PG-QW-0003,0.9,"Kommentar zum Fortschritt des Datensatzes 03 auf Deutsch",2002/03/20 11:45,"Verantwortliche Person C",contract-03
-progressLog-04,PG-DE-0004,0.7,"Commentaire sur l'avancement de l'enregistrement 04 en français",2003/04/25 12:00,"Personne responsable D",contract-04
-progressLog-05,PG-JK-0005,0.5,"Commento sul progresso del record 05 in italiano",2004/05/30 13:15,"Persona responsabile E",contract-05
-progressLog-06,PG-MN-0006,0.4,"Kommentar til fremskridt af record 06 på dansk",2005/06/05 14:30,"Ansvarlig person F",contract-06
-progressLog-07,PG-PQ-0007,0.85,"Comentário sobre o progresso do registro 07 em português",2006/07/10 15:45,"Pessoa responsável G",contract-07
-progressLog-08,PG-RS-0008,0.92,"Комментарий о прогрессе записи 08 на русском языке",2007/08/15 16:00,"Ответственное лицо H",contract-08
-progressLog-09,PG-TU-0009,0.75,"Comment on progress of record 09 in English",2008/09/20 09:15,"Responsible Person I",contract-09
-progressLog-10,PG-WX-0010,0.65,"Comentario sobre el progreso del registro 10 en español",2009/10/25 09:30,"Persona responsable J",contract-10
-progressLog-11,PG-FG-0011,0.55,"Kommentar til fremskridt af record 11 på dansk",2010/11/30 10:45,"Ansvarlig person K",contract-11
-progressLog-12,PG-VB-0012,0.68,"Comentário sobre o progresso do registro 12 em português",2011/12/05 11:00,"Pessoa responsável L",contract-12
-progressLog-13,PG-AS-0013,0.88,"Kommentar zum Fortschritt des Datensatzes 13 auf Deutsch",2013/01/10 12:15,"Verantwortliche Person M",contract-13
-progressLog-14,PG-ZX-0014,0.93,"Commentaire sur l'avancement de l'enregistrement 14 en français",2014/02/15 13:30,"Personne responsable N",contract-14
-progressLog-15,PG-QW-0015,0.76,"Commento sul progresso del record 15 in italiano",2015/03/20 14:45,"Persona responsabile O",contract-15
-progressLog-16,PG-PL-0016,0.45,"Kommentar til fremskridt af record 16 på dansk",2016/04/25 15:00,"Ansvarlig person P",contract-13
-progressLog-17,PG-OK-0017,0.85,"Comentário sobre o progresso do registro 17 em português",2017/05/30 16:15,"Pessoa responsável Q",contract-12
-progressLog-18,PG-RE-0018,0.77,"Комментарий о прогрессе записи 18 на русском языке",2018/06/05 09:30,"Ответственное лицо R",contract-13
-progressLog-19,PG-TY-0019,0.79,"console.log("Te he hackeado jaja")",2019/07/10 09:45,"Responsible Person S",contract-11
-progressLog-20,PG-GH-0020,0.63,"SELECT * FROM ProgressLog",2022/07/30 00:00,"Persona responsable T",contract-15
+progressLog-01,PG-AB-0001,0.50,"Comment",2010/01/01 00:00,"Responsible Person",contract-01
+progressLog-02,PG-XY-0002,0.00,"Comment",2010/01/01 00:00,"Responsible Person",contract-02
+progressLog-03,PG-QW-0003,0.01,"Comment",2010/01/01 00:00,"Responsible Person",contract-03
+progressLog-04,PG-DE-0004,0.50,"Comment",2010/01/01 00:00,"Responsible Person",contract-04
+progressLog-05,PG-JK-0005,0.99,"Comment",2010/01/01 00:00,"Responsible Person",contract-05
+progressLog-06,PG-MN-0006,1.00,"Comment",2010/01/01 00:00,"Responsible Person",contract-06
+progressLog-07,PG-PQ-0007,0.50,"C",2010/01/01 00:00,"R",contract-07
+progressLog-08,PG-RS-0008,0.50,"Co",2010/01/01 00:00,"Re",contract-08
+progressLog-09,PG-TU-0009,0.50,"Comment",2010/01/01 00:00,"Responsible Person",contract-09
+progressLog-10,PG-WX-0010,0.50,"abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwyzabcdefghyjklmnñopqrstuvw",2010/01/01 00:00,"abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwy",contract-10
+progressLog-11,PG-FG-0011,0.50,"abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwyzabcdefghyjklmnñopqrstuvwx",2010/01/01 00:00,"abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwyz",contract-11
+progressLog-12,PG-VB-0012,0.50,"サンプル",2010/01/01 00:00,"サンプル",contract-12
+progressLog-13,PG-AS-0013,0.50,"требовать",2010/01/01 00:00,"требовать",contract-13
+progressLog-14,PG-ZX-0014,0.50,"<script>console.log('javascript')</script>",2010/01/01 00:00,"<script>console.log('javascript')</script>",contract-14
+progressLog-15,PG-QW-0015,0.50,"or 'A'='A",2010/01/01 00:00,"or 'A'='A",contract-15
+progressLog-16,PG-PL-0016,0.50,"Comment",2000/01/01 00:00,"Responsible Person",contract-13
+progressLog-17,PG-OK-0017,0.50,"Comment",2000/01/01 00:01,"Responsible Person",contract-12
+progressLog-18,PG-RE-0018,0.50,"Comment",2010/01/01 00:00,"Responsible Person",contract-13
+progressLog-19,PG-TY-0019,0.50,"Comment",2022/07/29 23:59,"Responsible Person",contract-11
+progressLog-20,PG-GH-0020,0.50,"Comment",2022/07/30 00:00,"Responsible Person",contract-15

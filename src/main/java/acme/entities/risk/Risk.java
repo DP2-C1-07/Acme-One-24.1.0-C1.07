@@ -62,7 +62,7 @@ public class Risk extends AbstractEntity {
 		@Length(max = 255)
 		String link;
 		
-		@ManyToOne
+		@ManyToOne(optional = false)
 		@NotNull
 		@Valid
 		Project project;

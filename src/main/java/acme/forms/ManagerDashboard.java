@@ -24,6 +24,6 @@ public class ManagerDashboard extends AbstractForm {
 	Integer						minimumUserStoryEstimatedCost;
 	Double						projectCostAverage;
 	Double						projectCostDeviation;
-	Integer						maximumprojectCost;
-	Integer						minimumprojectCost;
+	Integer						maximumProjectCost;
+	Integer						minimumProjectCost;
 }

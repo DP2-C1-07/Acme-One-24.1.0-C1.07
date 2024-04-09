@@ -56,7 +56,7 @@ public class ProgressLog extends AbstractEntity {
 		@Length(max = 75)
 		String responsiblePerson;
 		
-		@ManyToOne
+		@ManyToOne(optional = false)
 		@NotNull
 		@Valid
 		Contract contract;
