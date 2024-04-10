@@ -27,6 +27,6 @@ public class Configuration extends AbstractEntity {
 
 	@NotBlank
 	@Length(min = 3)
-	@Pattern(regexp = "([A-Z]{3},\\s)+", message = "{configuration.acceptedCurrencies.error}")
+	@Pattern(regexp = "([A-Z]{3},\\s)*([A-Z]{3})?", message = "{configuration.acceptedCurrencies.error}")
 	String						acceptedCurrencies;
 }
