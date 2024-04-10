@@ -10,7 +10,7 @@ import acme.entities.code_audits.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -22,17 +22,28 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	@Override
 	public void authorise() {
 		boolean status;
-		int userStoryId;
+		int codeAuditId;
 		Auditor auditor;
 		CodeAudit codeAudit;
 
-		userStoryId = super.getRequest().getData("id", int.class);
-		codeAudit = this.auditorCodeAuditRepository.findOneById(userStoryId);
+		codeAuditId = super.getRequest().getData("id", int.class);
+		codeAudit = this.auditorCodeAuditRepository.findOneById(codeAuditId);
 		auditor = codeAudit.getAuditor();
 
 		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
 
 		super.getResponse().setAuthorised(status);
+	}
+
+	@Override
+	public void bind(final CodeAudit object) {
+		assert object != null;
+
+		Auditor auditor;
+		auditor = object.getAuditor();
+
+		super.bind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		object.setAuditor(auditor);
 	}
 
 	@Override
@@ -47,12 +58,26 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	}
 
 	@Override
+	public void validate(final CodeAudit object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final CodeAudit object) {
+		assert object != null;
+		this.auditorCodeAuditRepository.delete(object);
+	}
+
+	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
+		Auditor auditor;
+		auditor = object.getAuditor();
+
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
-
+		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}
 }

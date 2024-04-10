@@ -10,10 +10,9 @@ import acme.entities.code_audits.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private AuditorCodeAuditRepository auditorCodeAuditRepository;
 
@@ -36,6 +35,17 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	}
 
 	@Override
+	public void bind(final CodeAudit object) {
+		assert object != null;
+
+		Auditor auditor;
+		auditor = object.getAuditor();
+
+		super.bind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		object.setAuditor(auditor);
+	}
+
+	@Override
 	public void load() {
 		CodeAudit object;
 		int id;
@@ -47,12 +57,27 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	}
 
 	@Override
+	public void validate(final CodeAudit object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final CodeAudit object) {
+		assert object != null;
+
+		this.auditorCodeAuditRepository.save(object);
+	}
+
+	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
+		Auditor auditor;
+		auditor = object.getAuditor();
+
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
-
+		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}
 }

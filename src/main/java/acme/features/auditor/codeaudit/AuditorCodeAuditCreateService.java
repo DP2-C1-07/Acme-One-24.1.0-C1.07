@@ -10,10 +10,9 @@ import acme.entities.code_audits.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditCreateService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private AuditorCodeAuditRepository auditorCodeAuditRepository;
 
@@ -21,38 +20,53 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		boolean status;
-		int userStoryId;
-		Auditor auditor;
-		CodeAudit codeAudit;
-
-		userStoryId = super.getRequest().getData("id", int.class);
-		codeAudit = this.auditorCodeAuditRepository.findOneById(userStoryId);
-		auditor = codeAudit.getAuditor();
-
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		CodeAudit object;
-		int id;
+		Auditor auditor;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.auditorCodeAuditRepository.findOneById(id);
+		auditor = this.auditorCodeAuditRepository.findAuditorByAuditorId(super.getRequest().getPrincipal().getActiveRoleId());
+		object = new CodeAudit();
+		object.setAuditor(auditor);
 
 		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final CodeAudit object) {
+		assert object != null;
+
+		Auditor auditor;
+		auditor = object.getAuditor();
+
+		super.bind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		object.setAuditor(auditor);
+	}
+
+	@Override
+	public void validate(final CodeAudit object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final CodeAudit object) {
+		assert object != null;
+		this.auditorCodeAuditRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
+		Auditor auditor;
+		auditor = object.getAuditor();
+
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
-
+		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}
 }

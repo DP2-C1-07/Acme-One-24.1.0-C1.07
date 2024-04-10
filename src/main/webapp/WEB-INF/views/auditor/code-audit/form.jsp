@@ -14,12 +14,12 @@
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
-			<acme:submit code="auditor.code-audit.form.button.update" action="/manager/project/update"/>
-			<acme:submit code="auditor.code-audit.project.form.button.delete" action="/manager/project/delete"/>
-			<acme:submit code="auditor.code-audit.project.form.button.publish" action="/manager/project/publish"/>
+			<acme:submit code="auditor.code-audit.form.button.update" action="/auditor/code-audit/update"/>
+			<acme:submit code="auditor.code-audit.form.button.delete" action="/auditor/code-audit/delete"/>
+			<acme:submit code="auditor.code-audit.form.button.publish" action="/auditor/code-audit/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
+			<acme:submit code="auditor.code-audit.form.button.create" action="/auditor/code-audit/create"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
