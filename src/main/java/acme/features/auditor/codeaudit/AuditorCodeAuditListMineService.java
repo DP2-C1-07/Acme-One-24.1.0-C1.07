@@ -1,5 +1,5 @@
 
-package acme.entities.code_audits;
+package acme.features.auditor.codeaudit;
 
 import java.util.Collection;
 
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
+import acme.entities.code_audits.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditListMineService extends AbstractService<Auditor, CodeAudit> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
