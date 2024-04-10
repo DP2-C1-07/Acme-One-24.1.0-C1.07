@@ -1,0 +1,8 @@
+sponsor.sponsorship.list.title = List of sponsorships
+
+sponsor.sponsorship.list.label.code = Code
+sponsor.sponsorship.list.label.project-code = Project
+sponsor.sponsorship.list.label.moment = Moment
+sponsor.sponsorship.list.label.duration = Duration (in days)
+sponsor.sponsorship.list.label.amount = Amount
+sponsor.sponsorship.list.label.type = Type
