@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="auditor.code-audit.form.label.code" path="code"/>
-	<acme:input-textbox code="auditor.code-audit.form.label.executionDate" path="executionDate"/>
+	<acme:input-moment code="auditor.code-audit.form.label.executionDate" path="executionDate"/>
 	<acme:input-textbox code="auditor.code-audit.form.label.type" path="type"/>	
 	<acme:input-textbox code="auditor.code-audit.form.label.correctiveAction" path="correctiveAction"/>	
 	<acme:input-textbox code="auditor.code-audit.form.label.mark" path="mark"/>	
@@ -17,6 +17,7 @@
 			<acme:submit code="auditor.code-audit.form.button.update" action="/auditor/code-audit/update"/>
 			<acme:submit code="auditor.code-audit.form.button.delete" action="/auditor/code-audit/delete"/>
 			<acme:submit code="auditor.code-audit.form.button.publish" action="/auditor/code-audit/publish"/>
+			<acme:button code="auditor.code-audit.form.button.list.audit-record" action="/auditor/audit-record/list?codeAuditId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="auditor.code-audit.form.button.create" action="/auditor/code-audit/create"/>

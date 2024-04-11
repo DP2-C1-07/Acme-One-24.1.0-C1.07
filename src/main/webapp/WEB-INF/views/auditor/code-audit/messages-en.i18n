@@ -21,3 +21,4 @@ auditor.code-audit.form.button.create = Create code audit
 auditor.code-audit.form.button.update = Update code audit
 auditor.code-audit.form.button.delete = Delete code audit
 auditor.code-audit.form.button.publish = Publish code audit
+auditor.code-audit.form.button.list.audit-record = See audit records
