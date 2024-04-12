@@ -6,11 +6,12 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.entities.userstories.UserStory;
-import acme.features.manager.userstories.ManagerUserStoryRepository;
+import acme.features.manager.userstory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -33,12 +34,14 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		Project project;
 
 		projectId = super.getRequest().getData("id", int.class);
-		project = this.managerProjectRepository.findOneById(projectId);
-		manager = project.getManager();
+		project = this.managerProjectRepository.findOneProjectById(projectId);
 
-		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllByProjectId(projectId);
+		Principal principal = super.getRequest().getPrincipal();
+		manager = this.managerProjectRepository.findManagerById(principal.getActiveRoleId());
 
-		status = project != null && userStories.size() > 0 && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(projectId);
+
+		status = project != null && !userStories.isEmpty() && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,7 +52,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerProjectRepository.findOneById(id);
+		object = this.managerProjectRepository.findOneProjectById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -58,11 +61,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void bind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		super.bind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		object.setManager(manager);
 	}
 
 	@Override
@@ -72,7 +71,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
 
-			existing = this.managerProjectRepository.findOneByCode(object.getCode());
+			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "manager.project.publish.error.duplicated");
 		}
 	}
@@ -88,12 +87,8 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager");
-		dataset.put("manager", manager);
 
 		super.getResponse().addData(dataset);
 	}

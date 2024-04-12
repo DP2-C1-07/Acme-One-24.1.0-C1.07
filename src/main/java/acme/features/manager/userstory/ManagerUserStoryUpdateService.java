@@ -1,12 +1,15 @@
 
-package acme.features.manager.userstories;
+package acme.features.manager.userstory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.userstories.UserStory;
+import acme.entities.userstories.UserStoryPriority;
 import acme.roles.Manager;
 
 @Service
@@ -25,9 +28,11 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		Manager manager;
 		UserStory userStory;
 
+		Principal principal = super.getRequest().getPrincipal();
+		manager = this.managerUserStoryRepository.findManagerById(principal.getActiveRoleId());
+
 		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
-		manager = userStory.getManager();
+		userStory = this.managerUserStoryRepository.findOneUserStoryById(userStoryId);
 
 		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
 
@@ -38,11 +43,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		object.setManager(manager);
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerUserStoryRepository.findOneById(id);
+		object = this.managerUserStoryRepository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -72,12 +73,12 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	public void unbind(final UserStory object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
+		SelectChoices choices;
+		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		Dataset dataset;
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("manager", manager);
+		dataset.put("statuses", choices);
 		super.getResponse().addData(dataset);
 	}
 }

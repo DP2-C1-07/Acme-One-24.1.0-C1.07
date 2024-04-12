@@ -82,7 +82,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		dataset = super.unbind(object, //
 			"totalCouldUserStories", "totalShouldUserStories", "totalMustUserStories", "totalWontUserStories", // 
 			"userStoryEstimatedCostAverage", "userStoryEstimatedCostDeviation", "maximumUserStoryEstimatedCost", "minimumUserStoryEstimatedCost", //
-			"projectCostAverage", "projectCostDeviation", "maximumprojectCost", "minimumprojectCost");
+			"projectCostAverage", "projectCostDeviation", "maximumProjectCost", "minimumProjectCost");
 
 		super.getResponse().addData(dataset);
 	}

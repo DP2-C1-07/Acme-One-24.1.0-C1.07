@@ -2,7 +2,6 @@
 package acme.features.manager.dashboard;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
@@ -40,19 +39,9 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("select min(p.cost) from Project p")
 	Integer minimumProjectCost();
 
-	default Double userStoryEstimatedCostDeviation() {
-		Double avgCost = this.userStoryEstimatedCostAverage();
-		return this.calculateUserStoryEstimatedCostDeviation(avgCost);
-	}
+	@Query("select stddev(u.estimatedCost) from UserStory u")
+	Double userStoryEstimatedCostDeviation();
 
-	@Query("SELECT SQRT(SUM((u.estimatedCost - :avgCost) * (u.estimatedCost - :avgCost)) / COUNT(u)) FROM UserStory u")
-	Double calculateUserStoryEstimatedCostDeviation(@Param("avgCost") Double avgCost);
-
-	default Double projectCostDeviation() {
-		Double avgCost = this.projectCostAverage();
-		return this.calculateProjectCostDeviation(avgCost);
-	}
-
-	@Query("SELECT SQRT(SUM((p.cost - :avgCost) * (p.cost - :avgCost)) / COUNT(p)) FROM Project p")
-	Double calculateProjectCostDeviation(@Param("avgCost") Double avgCost);
+	@Query("select stddev(p.cost) from Project p")
+	Double projectCostDeviation();
 }

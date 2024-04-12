@@ -1,11 +1,22 @@
 any.claim.list.title = Lista de demandas
+any.claim.form.title = Lista de demandas
 
 any.claim.list.label.code = Código
-any.claim.list.label.instantiation-moment = Momento de instanciación
+any.claim.list.label.instantiationMoment = Momento de instanciación
 any.claim.list.label.heading = Cabecera
 any.claim.list.label.description = Descripción
 any.claim.list.label.department = Departamento
-any.claim.list.label.email-address = Dirección de correo
+any.claim.list.label.emailAddress = Dirección de correo
 any.claim.list.label.link = Enlace
+
+any.claim.form.label.code = Código
+any.claim.form.label.instantiationMoment = Momento de instanciación
+any.claim.form.label.heading = Cabecera
+any.claim.form.label.description = Descripción
+any.claim.form.label.department = Departamento
+any.claim.form.label.emailAddress = Dirección de correo
+any.claim.form.label.link = Enlace
+
+any.claim.form.button.publish = Publicar
 
 any.claim.publish.error.duplicated = Ya existe una demanda con este código

@@ -6,10 +6,10 @@
 <acme:form>
 	<acme:input-textbox code="manager.user-story.form.label.title" path="title"/>
 	<acme:input-textbox code="manager.user-story.form.label.description" path="description"/>
-	<acme:input-textbox code="manager.user-story.form.label.estimatedCost" path="estimatedCost"/>	
+	<acme:input-integer code="manager.user-story.form.label.estimatedCost" path="estimatedCost"/>	
 	<acme:input-textbox code="manager.user-story.form.label.acceptanceCriteria" path="acceptanceCriteria"/>	
-	<acme:input-url code="manager.user-story.form.label.priority" path="priority"/>
-	<acme:input-checkbox code="manager.user-story.form.label.link" path="link"/>	
+	<acme:input-select code="manager.user-story.form.label.priority" path="priority" choices="${statuses}"/>
+	<acme:input-url code="manager.user-story.form.label.link" path="link"/>	
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
