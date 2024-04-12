@@ -1,12 +1,11 @@
 
-package acme.features.manager.userstories;
+package acme.features.manager.userstory;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.userstories.UserStory;
@@ -23,27 +22,15 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		boolean status;
-		int userStoryId;
-		Manager manager;
-		UserStory userStory;
 
-		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
-		manager = userStory.getManager();
-
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		Collection<UserStory> objects;
-		Principal principal;
-
-		principal = super.getRequest().getPrincipal();
-		objects = this.managerUserStoryRepository.findAllByManagerId(principal.getActiveRoleId());
+		int projectId = super.getRequest().getData("projectId", int.class);
+		objects = this.managerUserStoryRepository.findAllUserStoriesByProjectId(projectId);
 
 		super.getBuffer().addData(objects);
 	}

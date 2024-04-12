@@ -1,5 +1,5 @@
 
-package acme.entities.code_audits;
+package acme.features.manager.userstory;
 
 import java.util.Collection;
 
@@ -9,40 +9,42 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
-import acme.roles.Auditor;
+import acme.entities.userstories.UserStory;
+import acme.roles.Manager;
 
 @Service
-public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAudit> {
+public class ManagerUserStoryListService extends AbstractService<Manager, UserStory> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuditorCodeAuditRepository auditorCodeAuditRepository;
+	private ManagerUserStoryRepository managerUserStoryRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
+
 		super.getResponse().setAuthorised(true);
+
 	}
 
 	@Override
 	public void load() {
-		Collection<CodeAudit> objects;
+		Collection<UserStory> objects;
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		objects = this.auditorCodeAuditRepository.findAllByAuditorId(principal.getActiveRoleId());
+		objects = this.managerUserStoryRepository.findAllUserStoriesByManagerId(principal.getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
-	public void unbind(final CodeAudit object) {
+	public void unbind(final UserStory object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "mark");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 		super.getResponse().addData(dataset);
 	}
 }

@@ -1,11 +1,22 @@
 any.claim.list.title = List of claims
+any.claim.form.title = Detail of claim
 
 any.claim.list.label.code = Code
-any.claim.list.label.instantiation-moment = Instantiation moment
+any.claim.list.label.instantiationMoment = Instantiation moment
 any.claim.list.label.heading = Heading
 any.claim.list.label.description = Description
 any.claim.list.label.department = Department
-any.claim.list.label.email-address = Email address
+any.claim.list.label.emailAddress = Email address
 any.claim.list.label.link = Link
+
+any.claim.form.label.code = Code
+any.claim.form.label.instantiationMoment = Instantiation moment
+any.claim.form.label.heading = Heading
+any.claim.form.label.description = Description
+any.claim.form.label.department = Department
+any.claim.form.label.emailAddress = Email address
+any.claim.form.label.link = Link
+
+any.claim.form.button.publish = Publish
 
 any.claim.publish.error.duplicated = There is an existing claim with this code

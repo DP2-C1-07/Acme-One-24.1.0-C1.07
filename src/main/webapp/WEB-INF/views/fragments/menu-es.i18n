@@ -67,7 +67,7 @@ master.menu.any.list-project = Listar proyectos
 master.menu.manager = Manager
 master.menu.manager.my-projects = Listar mis proyectos
 master.menu.manager.my-user-stories = Listar mis historias de usuario
-master.menu.manager.dashboard = Panel de indicadores
+master.menu.manager.manager-dashboard = Panel de indicadores
 
 # master.menu.sponsor ########################################################
 master.menu.sponsor = Patrocinador

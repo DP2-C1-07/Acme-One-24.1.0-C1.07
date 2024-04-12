@@ -1,0 +1,16 @@
+manager.manager-dashboard.form.title = Panel de indicadores de manager
+
+manager.manager-dashboard.form.title.general-indicators = Indicadores generales
+
+manager.manager-dashboard.form.label.total-could-user-stories = Total de historias de usuario con status "could"
+manager.manager-dashboard.form.label.total-should-user-stories = Total de historias de usuario con status "should"
+manager.manager-dashboard.form.label.total-must-user-stories = Total de historias de usuario con status "must"
+manager.manager-dashboard.form.label.total-wont-user-stories = Total de historias de usuario con status "wont"
+manager.manager-dashboard.form.label.user-story-estimated-cost-average = Media del coste estimado de las historias de usuario
+manager.manager-dashboard.form.label.user-story-estimated-cost-deviation = Desviación del coste estimado de las historias de usuario
+manager.manager-dashboard.form.label.maximum-user-story-estimated-cost = Máximo del coste estimado de las historias de usuario
+manager.manager-dashboard.form.label.minimum-user-story-estimated-cost = Mínimo del coste estimado de las historias de usuario
+manager.manager-dashboard.form.label.project-cost-average = Media del coste de los proyectos
+manager.manager-dashboard.form.label.project-cost-deviation = Desviación del coste de los proyectos
+manager.manager-dashboard.form.label.maximum-project-cost = Máximo del coste de los proyectos
+manager.manager-dashboard.form.label.minimum-project-cost = Mínimo del coste de los proyectos

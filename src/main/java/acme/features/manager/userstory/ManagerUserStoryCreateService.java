@@ -1,19 +1,21 @@
 
-package acme.features.manager.userstories;
+package acme.features.manager.userstory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.userstories.UserStory;
+import acme.entities.userstories.UserStoryPriority;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private ManagerUserStoryRepository managerUserStoryRepository;
 
@@ -21,40 +23,15 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		boolean status;
-		int userStoryId;
-		Manager manager;
-		UserStory userStory;
 
-		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
-		manager = userStory.getManager();
-
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		object.setManager(manager);
-	}
-
-	@Override
-	public void load() {
-		UserStory object;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		object = this.managerUserStoryRepository.findOneById(id);
-
-		super.getBuffer().addData(object);
 	}
 
 	@Override
@@ -66,19 +43,32 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		this.managerUserStoryRepository.delete(object);
+		this.managerUserStoryRepository.save(object);
+	}
+
+	@Override
+	public void load() {
+		UserStory object;
+		Manager manager;
+
+		Principal principal = super.getRequest().getPrincipal();
+		manager = this.managerUserStoryRepository.findManagerById(principal.getActiveRoleId());
+		object = new UserStory();
+		object.setManager(manager);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
+		SelectChoices choices;
+		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 		Dataset dataset;
+
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("manager", manager);
+		dataset.put("statuses", choices);
 		super.getResponse().addData(dataset);
 	}
 }

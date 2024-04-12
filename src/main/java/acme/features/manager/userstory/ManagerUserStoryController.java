@@ -1,5 +1,5 @@
 
-package acme.features.manager.userstories;
+package acme.features.manager.userstory;
 
 import javax.annotation.PostConstruct;
 
@@ -14,8 +14,12 @@ import acme.roles.Manager;
 public class ManagerUserStoryController extends AbstractController<Manager, UserStory> {
 	// Internal state ---------------------------------------------------------
 
+	// listMineService me da las userStories de un proyecto, y listService me da todas las mías
 	@Autowired
 	private ManagerUserStoryListMineService	listMineService;
+
+	@Autowired
+	private ManagerUserStoryListService		listService;
 
 	@Autowired
 	private ManagerUserStoryPublishService	publishService;
@@ -41,6 +45,7 @@ public class ManagerUserStoryController extends AbstractController<Manager, User
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("list", this.listService);
 
 		super.addCustomCommand("list-mine", "list", this.listMineService);
 		super.addCustomCommand("publish", "update", this.publishService);

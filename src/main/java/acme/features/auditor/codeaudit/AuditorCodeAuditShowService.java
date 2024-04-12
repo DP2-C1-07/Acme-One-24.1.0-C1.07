@@ -1,20 +1,21 @@
 
-package acme.features.manager.userstories;
+package acme.features.auditor.codeaudit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.userstories.UserStory;
-import acme.roles.Manager;
+import acme.entities.code_audits.CodeAudit;
+import acme.roles.Auditor;
 
 @Service
-public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
+public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository managerUserStoryRepository;
+	private AuditorCodeAuditRepository auditorCodeAuditRepository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -22,35 +23,36 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void authorise() {
 		boolean status;
 		int userStoryId;
-		Manager manager;
-		UserStory userStory;
+		Auditor auditor;
+		CodeAudit codeAudit;
 
 		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
-		manager = userStory.getManager();
+		codeAudit = this.auditorCodeAuditRepository.findOneById(userStoryId);
+		auditor = codeAudit.getAuditor();
 
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		UserStory object;
+		CodeAudit object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerUserStoryRepository.findOneById(id);
+		object = this.auditorCodeAuditRepository.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final UserStory object) {
+	public void unbind(final CodeAudit object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+
 		super.getResponse().addData(dataset);
 	}
 }

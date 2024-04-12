@@ -1,17 +1,19 @@
 
-package acme.features.manager.userstories;
+package acme.features.manager.userstory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.userstories.UserStory;
+import acme.entities.userstories.UserStoryPriority;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
-
+public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -25,10 +27,13 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		int userStoryId;
 		Manager manager;
 		UserStory userStory;
+		Principal principal;
+
+		principal = super.getRequest().getPrincipal();
 
 		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.managerUserStoryRepository.findOneById(userStoryId);
-		manager = userStory.getManager();
+		userStory = this.managerUserStoryRepository.findOneUserStoryById(userStoryId);
+		manager = this.managerUserStoryRepository.findManagerById(principal.getActiveRoleId());
 
 		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
 
@@ -41,44 +46,21 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerUserStoryRepository.findOneById(id);
+		object = this.managerUserStoryRepository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(object);
-	}
-
-	@Override
-	public void bind(final UserStory object) {
-		assert object != null;
-
-		Manager manager;
-		manager = object.getManager();
-
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		object.setManager(manager);
-	}
-
-	@Override
-	public void validate(final UserStory object) {
-		// TODO: qué hay que poner aquí?
-	}
-
-	@Override
-	public void perform(final UserStory object) {
-		assert object != null;
-
-		this.managerUserStoryRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
+		SelectChoices choices;
+		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		Dataset dataset;
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("manager", manager);
+		dataset.put("statuses", choices);
 		super.getResponse().addData(dataset);
 	}
 }

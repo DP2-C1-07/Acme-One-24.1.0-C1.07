@@ -1,0 +1,24 @@
+
+auditor.code-audit.list.title = Mis auditorias de código
+auditor.code-audit.list.label.code = Código
+auditor.code-audit.list.label.executionDate = Fecha de ejecución
+auditor.code-audit.list.label.type = Tipo
+auditor.code-audit.list.label.mark = Nota
+
+auditor.code-audit.list.button.create = Crear auditoria de código
+
+auditor.code-audit.form.title = Auditoria de código
+auditor.code-audit.form.label.code = Código
+auditor.code-audit.form.label.executionDate = Fecha de ejecución
+auditor.code-audit.form.label.type = Tipo
+auditor.code-audit.form.label.correctiveAction = Acciones correctivas
+auditor.code-audit.form.label.mark = Nota
+auditor.code-audit.form.label.link = Link opcional
+auditor.code-audit.form.label.project = Clave del proyecto
+
+auditor.code-audit.form.button.create = Crear auditoria
+auditor.code-audit.form.button.update = Actualizar auditoria
+auditor.code-audit.form.button.delete = Borrar auditoria
+auditor.code-audit.form.button.publish = Publicar auditoria
+auditor.code-audit.form.button.list.audit-record = Ver registros de auditoría
+
