@@ -30,12 +30,7 @@ public class Banner extends AbstractEntity {
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	Date						instantiationMoment;
-
-	@PastOrPresent
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	Date						lastUpdateMoment;
+	Date						instantiationLastUpdateMoment;
 
 	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
 	//TODO: comprobar que tiene una duracion minima de 7 dias entre el beginning y el end

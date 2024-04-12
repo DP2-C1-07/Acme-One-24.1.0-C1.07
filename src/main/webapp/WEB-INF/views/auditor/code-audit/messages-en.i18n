@@ -1,0 +1,24 @@
+
+
+auditor.code-audit.list.title = My code audits
+auditor.code-audit.list.label.code = Code
+auditor.code-audit.list.label.executionDate = Execution date
+auditor.code-audit.list.label.type = Type
+auditor.code-audit.list.label.mark = Mark
+
+auditor.code-audit.list.button.create = Create code audit
+
+auditor.code-audit.form.title = Code Audit
+auditor.code-audit.form.label.code = Code
+auditor.code-audit.form.label.executionDate = Execution date
+auditor.code-audit.form.label.type = Type
+auditor.code-audit.form.label.correctiveAction = Corrective action
+auditor.code-audit.form.label.mark = Mark
+auditor.code-audit.form.label.link = Optional Link
+auditor.code-audit.form.label.project = Project Key
+
+auditor.code-audit.form.button.create = Create code audit
+auditor.code-audit.form.button.update = Update code audit
+auditor.code-audit.form.button.delete = Delete code audit
+auditor.code-audit.form.button.publish = Publish code audit
+auditor.code-audit.form.button.list.audit-record = See audit records
