@@ -50,13 +50,17 @@
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.any.list-project" action="/any/project/list"/>	
-    </acme:menu-option>
+    	</acme:menu-option>
+    	
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.my-projects" action="/manager/project/list-mine"/>	
 			<acme:menu-suboption code="master.menu.manager.my-user-stories" action="/manager/user-story/list"/>	
 			<acme:menu-suboption code="master.menu.manager.manager-dashboard" action="/manager/manager-dashboard/show"/>		
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.my-sponsorships" action="/sponsor/sponsorship/list-mine"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

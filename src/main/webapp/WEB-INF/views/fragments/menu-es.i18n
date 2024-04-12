@@ -62,9 +62,13 @@ master.menu.user-account.become-manager = Hazte manager
 master.menu.any = Any
 master.menu.any.list-claim = Listar demandas
 master.menu.any.list-project = Listar proyectos
+
 # master.menu.manager ########################################################
 master.menu.manager = Manager
 master.menu.manager.my-projects = Listar mis proyectos
 master.menu.manager.my-user-stories = Listar mis historias de usuario
 master.menu.manager.manager-dashboard = Panel de indicadores
 
+# master.menu.sponsor ########################################################
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.my-sponsorships = Listar mis patrocinios

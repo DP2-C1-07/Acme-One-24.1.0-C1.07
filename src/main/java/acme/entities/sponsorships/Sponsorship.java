@@ -22,6 +22,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,11 +36,6 @@ public class Sponsorship extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	//Attributes --------------------------------------------------------------------------------
-
-	@Valid
-	@NotNull
-	@ManyToOne
-	private Project				project;
 
 	@NotBlank
 	@Column(unique = true)
@@ -67,5 +63,17 @@ public class Sponsorship extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+	// Relationships ----------------------------------------------------------
+
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Sponsor				sponsor;
 
 }
