@@ -10,4 +10,9 @@
 	<acme:input-textbox code="auditor.audit-record.form.label.mark" path="mark"/>	
 	<acme:input-url code="auditor.audit-record.form.label.link" path="link"/>
 
+	<jstl:choose>	 
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="auditor.audit-record.form.button.create" action="/auditor/audit-record/create?codeAuditId=${codeAuditId}"/>
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>
