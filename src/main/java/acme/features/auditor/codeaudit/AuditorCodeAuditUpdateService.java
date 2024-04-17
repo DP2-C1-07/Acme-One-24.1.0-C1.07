@@ -59,6 +59,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		assert object.getDraftMode();
 	}
 
 	@Override

@@ -59,7 +59,8 @@ public class AuditRecord extends AbstractEntity {
 	@Length(max = 255)
 	String						link;
 
-	Boolean						itsPublished		= false;
+	@NotNull
+	Boolean						draftMode			= true;
 
 	// Derived attributes -----------------------------------------------------
 

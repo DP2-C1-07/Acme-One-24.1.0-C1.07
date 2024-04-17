@@ -65,7 +65,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-
+		object.setDraftMode(false);
 		this.auditorCodeAuditRespository.save(object);
 	}
 

@@ -60,6 +60,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+		assert object.getDraftMode();
 	}
 
 	@Override

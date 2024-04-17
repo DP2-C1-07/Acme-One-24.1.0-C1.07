@@ -66,7 +66,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	@Override
 	public void perform(final AuditRecord object) {
 		assert object != null;
-		object.setItsPublished(true);
+		object.setDraftMode(false);
 		this.auditorAuditRecordRespository.save(object);
 	}
 

@@ -25,4 +25,7 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("select a from Auditor a where a.id = :auditorId")
 	Auditor findAuditorByAuditorId(int auditorId);
 
+	@Query("delete a from AuditRecord a where a.codeAudit.id = :codeAuditId")
+	Auditor deleteAuditRecordByCodeAuditId(int codeAuditId);
+
 }

@@ -70,4 +70,6 @@ public class CodeAudit extends AbstractEntity {
 	@Valid
 	Auditor						auditor;
 
+	@NotNull
+	Boolean						draftMode			= true;
 }
