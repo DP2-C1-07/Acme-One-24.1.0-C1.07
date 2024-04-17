@@ -41,7 +41,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		Auditor auditor;
 		auditor = object.getAuditor();
 
-		super.bind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		super.bind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
 		object.setAuditor(auditor);
 	}
 
@@ -77,7 +77,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		auditor = object.getAuditor();
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
 		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}
