@@ -1,12 +1,17 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.audit_records.AuditRecord;
 import acme.entities.code_audits.CodeAudit;
+import acme.entities.code_audits.Mark;
+import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -15,7 +20,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorCodeAuditRepository auditorCodeAuditRespository;
+	private AuditorCodeAuditRepository		auditorCodeAuditRespository;
+
+	@Autowired
+	private AuditorAuditRecordRepository	auditorAuditRecordRespository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -53,19 +61,20 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		Auditor auditor;
 		auditor = object.getAuditor();
 
-		super.bind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		super.bind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
 		object.setAuditor(auditor);
 	}
 
 	@Override
 	public void validate(final CodeAudit object) {
-		// TODO: comprobar que nota > C
+		Collection<AuditRecord> list = this.auditorAuditRecordRespository.findAllByCodeAuditId(object.getId());
+		assert object.getMark(list).getNumericMark() >= Mark.C.getNumericMark();
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-
+		object.setDraftMode(false);
 		this.auditorCodeAuditRespository.save(object);
 	}
 
@@ -77,7 +86,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		auditor = object.getAuditor();
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "mark", "link", "project");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
 		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}

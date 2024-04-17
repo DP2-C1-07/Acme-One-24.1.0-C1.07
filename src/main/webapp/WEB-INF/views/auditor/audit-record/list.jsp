@@ -8,4 +8,9 @@
 	<acme:list-column code="auditor.audit-record.list.label.periodBeginning" path="periodBeginning" width="10%"/>
 	<acme:list-column code="auditor.audit-record.list.label.periodEnd" path="periodEnd" width="10%"/>
 	<acme:list-column code="auditor.audit-record.list.label.mark" path="mark" width="10%"/>
+	<acme:list-column code="auditor.audit-record.list.label.mark" path="codeAuditId" width="10%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="auditor.audit-record.list.button.create" action="/auditor/audit-record/create?codeAuditId=${codeAuditId}"/>
+</jstl:if>

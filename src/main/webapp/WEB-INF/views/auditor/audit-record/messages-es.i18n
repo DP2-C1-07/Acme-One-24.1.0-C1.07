@@ -11,3 +11,8 @@ auditor.audit-record.form.label.periodBeginning = Comienzo del periodo
 auditor.audit-record.form.label.periodEnd = Final del periodo
 auditor.audit-record.form.label.mark = Nota
 auditor.audit-record.form.label.link = Link opcional 
+
+auditor.audit-record.list.button.create = Crear nuevo registro de auditoría
+auditor.audit-record.form.button.update = Actualizar el registro de auditoría
+auditor.audit-record.form.button.delete = Borrar registro de auditoría
+auditor.audit-record.form.button.publish = Publicar registro de auditoría
