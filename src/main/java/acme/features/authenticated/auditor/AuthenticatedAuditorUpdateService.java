@@ -26,7 +26,7 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 	public void authorise() {
 		boolean status;
 
-		status = !super.getRequest().getPrincipal().hasRole(Auditor.class);
+		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
 
 		super.getResponse().setAuthorised(status);
 	}
