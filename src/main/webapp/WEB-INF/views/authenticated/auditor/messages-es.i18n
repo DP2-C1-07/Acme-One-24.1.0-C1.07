@@ -4,3 +4,4 @@ authenticated.auditor.form.label.professionalID = ID profesional
 authenticated.auditor.form.label.certifications = Certificaciones
 authenticated.auditor.form.label.link = Link opcional
 authenticated.auditor.form.button.create = Registrar
+authenticated.auditor.form.button.update = Actualizar
