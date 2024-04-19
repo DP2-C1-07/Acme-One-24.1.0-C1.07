@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.manager;
+package acme.features.authenticated.auditor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,30 +10,27 @@ import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
-import acme.roles.Manager;
+import acme.roles.Auditor;
 
 @Service
-public class AuthenticatedManagerCreateService extends AbstractService<Authenticated, Manager> {
+public class AuthenticatedAuditorCreateService extends AbstractService<Authenticated, Auditor> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedManagerRepository repository;
+	private AuthenticatedAuditorRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = !super.getRequest().getPrincipal().hasRole(Manager.class);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Manager object;
+		Auditor object;
 		Principal principal;
 		int userAccountId;
 		UserAccount userAccount;
@@ -42,33 +39,33 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 		userAccountId = principal.getAccountId();
 		userAccount = this.repository.findOneUserAccountById(userAccountId);
 
-		object = new Manager();
+		object = new Auditor();
 		object.setUserAccount(userAccount);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void bind(final Manager object) {
+	public void bind(final Auditor object) {
 		assert object != null;
 
 		super.bind(object, "firm", "professionalID", "certifications", "link");
 	}
 
 	@Override
-	public void validate(final Manager object) {
+	public void validate(final Auditor object) {
 		assert object != null;
 	}
 
 	@Override
-	public void perform(final Manager object) {
+	public void perform(final Auditor object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final Manager object) {
+	public void unbind(final Auditor object) {
 		assert object != null;
 
 		Dataset dataset;
@@ -83,5 +80,4 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 		if (super.getRequest().getMethod().equals("POST"))
 			PrincipalHelper.handleUpdate();
 	}
-
 }
