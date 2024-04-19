@@ -38,7 +38,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		Principal principal = super.getRequest().getPrincipal();
 		manager = this.managerUserStoryRepository.findManagerById(principal.getActiveRoleId());
 
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -73,7 +73,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-
+		// assert object.isDraftMode();
 		Collection<ProjectUserStory> projectUserStories = this.managerUserStoryRepository.findProjectUserStoriesByUserStoryId(object.getId());
 		this.managerUserStoryRepository.deleteAll(projectUserStories);
 		this.managerUserStoryRepository.delete(object);

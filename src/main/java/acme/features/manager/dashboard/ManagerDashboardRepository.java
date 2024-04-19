@@ -9,39 +9,39 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.COULD")
-	int totalCouldUserStories();
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.COULD and u.manager.id = :managerId")
+	int totalCouldUserStories(int managerId);
 
-	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.SHOULD")
-	int totalShouldUserStories();
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.SHOULD and u.manager.id = :managerId")
+	int totalShouldUserStories(int managerId);
 
-	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.MUST")
-	int totalMustUserStories();
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.MUST and u.manager.id = :managerId")
+	int totalMustUserStories(int managerId);
 
-	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.WONT")
-	int totalWontUserStories();
+	@Query("select count(u) from UserStory u where u.priority = acme.entities.userstories.UserStoryPriority.WONT and u.manager.id = :managerId")
+	int totalWontUserStories(int managerId);
 
-	@Query("select avg(u.estimatedCost) from UserStory u")
-	Double userStoryEstimatedCostAverage();
+	@Query("select avg(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
+	Double userStoryEstimatedCostAverage(int managerId);
 
-	@Query("select max(u.estimatedCost) from UserStory u")
-	Integer maximumUserStoryEstimatedCost();
+	@Query("select max(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
+	Integer maximumUserStoryEstimatedCost(int managerId);
 
-	@Query("select min(u.estimatedCost) from UserStory u")
-	Integer minimumUserStoryEstimatedCost();
+	@Query("select min(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
+	Integer minimumUserStoryEstimatedCost(int managerId);
 
-	@Query("select avg(p.cost) from Project p")
-	Double projectCostAverage();
+	@Query("select avg(p.cost) from Project p where p.manager.id = :managerId")
+	Double projectCostAverage(int managerId);
 
-	@Query("select max(p.cost) from Project p")
-	Integer maximumProjectCost();
+	@Query("select max(p.cost) from Project p where p.manager.id = :managerId")
+	Integer maximumProjectCost(int managerId);
 
-	@Query("select min(p.cost) from Project p")
-	Integer minimumProjectCost();
+	@Query("select min(p.cost) from Project p where p.manager.id = :managerId")
+	Integer minimumProjectCost(int managerId);
 
-	@Query("select stddev(u.estimatedCost) from UserStory u")
-	Double userStoryEstimatedCostDeviation();
+	@Query("select stddev(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
+	Double userStoryEstimatedCostDeviation(int managerId);
 
-	@Query("select stddev(p.cost) from Project p")
-	Double projectCostDeviation();
+	@Query("select stddev(p.cost) from Project p where p.manager.id = :managerId")
+	Double projectCostDeviation(int managerId);
 }

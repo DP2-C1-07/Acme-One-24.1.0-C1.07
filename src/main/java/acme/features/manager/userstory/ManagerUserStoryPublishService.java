@@ -35,7 +35,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		userStoryId = super.getRequest().getData("id", int.class);
 		userStory = this.managerUserStoryRepository.findOneUserStoryById(userStoryId);
 
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -66,7 +66,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-
+		object.setDraftMode(false);
 		this.managerUserStoryRepository.save(object);
 	}
 
