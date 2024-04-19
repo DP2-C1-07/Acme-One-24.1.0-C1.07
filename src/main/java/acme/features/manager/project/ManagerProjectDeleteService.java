@@ -10,7 +10,7 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.audit_records.AuditRecord;
-import acme.entities.code_audits.CodeAudit;
+import acme.entities.codeaudits.CodeAudit;
 import acme.entities.contract.Contract;
 import acme.entities.progressLog.ProgressLog;
 import acme.entities.projects.Project;

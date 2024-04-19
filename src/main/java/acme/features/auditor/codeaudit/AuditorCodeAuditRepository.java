@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.code_audits.CodeAudit;
+import acme.entities.codeaudits.CodeAudit;
 import acme.roles.Auditor;
 
 @Repository

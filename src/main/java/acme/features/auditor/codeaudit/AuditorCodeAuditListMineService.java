@@ -10,8 +10,8 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.audit_records.AuditRecord;
-import acme.entities.code_audits.CodeAudit;
-import acme.entities.code_audits.Mark;
+import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.Mark;
 import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 

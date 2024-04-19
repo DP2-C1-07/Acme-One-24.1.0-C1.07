@@ -1,5 +1,5 @@
 
-package acme.entities.code_audits;
+package acme.entities.codeaudits;
 
 import java.util.Collection;
 import java.util.Date;

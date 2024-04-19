@@ -2,6 +2,7 @@
 package acme.entities.audit_records;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nullable;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -19,8 +21,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.code_audits.CodeAudit;
-import acme.entities.code_audits.Mark;
+import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.Mark;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -64,10 +66,17 @@ public class AuditRecord extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
+
+	@Transient
+	public Long getPeriodInMinutes() {
+		long diff = this.periodEnd.getTime() - this.periodBeginning.getTime();
+		return Long.valueOf(TimeUnit.MILLISECONDS.toMinutes(diff));
+	}
 	// Relationships ----------------------------------------------------------
+
 
 	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	CodeAudit					codeAudit;
+	CodeAudit codeAudit;
 }
