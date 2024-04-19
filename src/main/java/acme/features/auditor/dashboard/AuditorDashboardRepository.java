@@ -32,11 +32,4 @@ public interface AuditorDashboardRepository extends AbstractRepository {
 	//	@Query("select max(c.count) from (select count(a) as count from AuditRecord a where a.codeAudit.auditor.id = :auditorId group by a.codeAudit.id) c")
 	//	Integer maximumAuditRecord(int auditorId);
 
-	//	Double averageTimeOfPeriodInAuditRecord();
-	//
-	//	Double deviationTimeOfPeriodInAuditRecord();
-	//
-	//	Integer minimumTimeOfPeriodInAuditRecord();
-	//
-	//	Integer maximumTimeOfPeriodInAuditRecord();
 }
