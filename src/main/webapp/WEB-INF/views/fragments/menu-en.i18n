@@ -71,6 +71,7 @@ master.menu.manager = Manager
 master.menu.manager.my-projects = List my projects
 master.menu.manager.my-user-stories = List my user stories
 master.menu.manager.dashboard = Manager dashboard
+master.menu.manager.project-user-stories = Link user stories to projects
 
 # master.menu.sponsor ########################################################
 master.menu.sponsor = Sponsor
