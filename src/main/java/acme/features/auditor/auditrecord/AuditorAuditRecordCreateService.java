@@ -78,7 +78,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 			AuditRecord existing;
 
 			existing = this.auditorAuditRecordRepository.findOneByCode(object.getCode());
-			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "auditor.audit-record.error.code");
+			super.state(existing == null, "code", "auditor.audit-record.error.code");
 		}
 	}
 
