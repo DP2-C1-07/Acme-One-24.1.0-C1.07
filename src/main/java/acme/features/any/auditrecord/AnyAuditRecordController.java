@@ -1,5 +1,5 @@
 
-package acme.features.any.codeaudit;
+package acme.features.any.auditrecord;
 
 import javax.annotation.PostConstruct;
 
@@ -8,18 +8,18 @@ import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
 import acme.client.data.accounts.Any;
-import acme.entities.codeaudits.CodeAudit;
+import acme.entities.audit_records.AuditRecord;
 
 @Controller
-public class AnyCodeAuditController extends AbstractController<Any, CodeAudit> {
+public class AnyAuditRecordController extends AbstractController<Any, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyCodeAuditListService	listService;
+	private AnyAuditRecordListService	listService;
 
 	@Autowired
-	private AnyCodeAuditShowService	showService;
+	private AnyAuditRecordShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 

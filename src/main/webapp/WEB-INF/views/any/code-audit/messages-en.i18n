@@ -1,0 +1,14 @@
+any.code-audit.form.title = Code Audit
+any.code-audit.form.label.code = Code
+any.code-audit.form.label.executionDate = Execution date
+any.code-audit.form.label.type = Type
+any.code-audit.form.label.correctiveAction = Corrective action
+any.code-audit.form.label.mark = Mark
+any.code-audit.form.label.link = Optional Link
+any.code-audit.form.label.project  = Project key
+
+any.code-audit.list.label.code = Code
+any.code-audit.list.label.executionDate = Execution date
+any.code-audit.list.label.type = Type
+
+any.code-audit.form.button.list.audit-record = List audit records
