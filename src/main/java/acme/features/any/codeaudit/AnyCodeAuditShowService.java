@@ -1,8 +1,6 @@
 
 package acme.features.any.codeaudit;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +10,7 @@ import acme.client.services.AbstractService;
 import acme.entities.codeaudits.CodeAudit;
 
 @Service
-public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {
-
+public class AnyCodeAuditShowService extends AbstractService<Any, CodeAudit> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -25,16 +22,17 @@ public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {
 	public void authorise() {
 
 		super.getResponse().setAuthorised(true);
-
 	}
 
 	@Override
 	public void load() {
-		Collection<CodeAudit> objects;
+		CodeAudit object;
+		int id;
 
-		objects = this.repository.findAllPublishedCodeAudits();
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneById(id);
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
@@ -42,7 +40,7 @@ public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
 		super.getResponse().addData(dataset);
 	}
 

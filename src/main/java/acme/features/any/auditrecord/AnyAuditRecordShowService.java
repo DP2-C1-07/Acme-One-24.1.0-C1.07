@@ -1,7 +1,5 @@
 
-package acme.features.any.codeaudit;
-
-import java.util.Collection;
+package acme.features.any.auditrecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,40 +7,41 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.codeaudits.CodeAudit;
+import acme.entities.audit_records.AuditRecord;
 
 @Service
-public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {
+public class AnyAuditRecordShowService extends AbstractService<Any, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyCodeAuditRepository repository;
+	private AnyAuditRecordRepository anyAuditRecordRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-
 		super.getResponse().setAuthorised(true);
-
 	}
 
 	@Override
 	public void load() {
-		Collection<CodeAudit> objects;
+		AuditRecord object;
+		int id;
 
-		objects = this.repository.findAllPublishedCodeAudits();
+		id = super.getRequest().getData("id", int.class);
+		object = this.anyAuditRecordRepository.findOneById(id);
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final CodeAudit object) {
+	public void unbind(final AuditRecord object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type");
+		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+
 		super.getResponse().addData(dataset);
 	}
 
