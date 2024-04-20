@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.CodeAuditType;
 import acme.entities.codeaudits.Mark;
 import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
@@ -57,13 +59,17 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
+		Dataset dataset;
 
 		Collection<AuditRecord> list = this.auditorAuditRecordRespository.findAllByCodeAuditId(object.getId());
 		Mark mark = object.getMark(list);
 
-		Dataset dataset;
+		SelectChoices choicesType;
+		choicesType = SelectChoices.from(CodeAuditType.class, object.getType());
+
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
 		dataset.put("mark", mark);
+		dataset.put("type", choicesType);
 		super.getResponse().addData(dataset);
 	}
 }

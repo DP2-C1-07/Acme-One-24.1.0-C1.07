@@ -20,7 +20,6 @@ public class AnyCodeAuditShowService extends AbstractService<Any, CodeAudit> {
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-
 		super.getResponse().setAuthorised(true);
 	}
 
