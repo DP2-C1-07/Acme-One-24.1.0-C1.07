@@ -44,6 +44,7 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark");
 		dataset.put("codeAuditId", object.getCodeAudit().getId());
+		dataset.put("id", object.getCodeAudit().getId());
 		super.getResponse().addData(dataset);
 	}
 

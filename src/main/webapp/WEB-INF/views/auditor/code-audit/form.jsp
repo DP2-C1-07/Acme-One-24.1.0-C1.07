@@ -10,7 +10,7 @@
 	<acme:input-textbox code="auditor.code-audit.form.label.correctiveAction" path="correctiveAction"/>	
 	<acme:input-textbox code="auditor.code-audit.form.label.mark" path="mark"/>	
 	<acme:input-url code="auditor.code-audit.form.label.link" path="link"/>
-	<acme:input-textbox code="auditor.code-audit.form.label.project" path="project"/>	
+	<acme:input-select code="auditor.code-audit.form.label.project" path="project" choices="${projects}"/>	
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">

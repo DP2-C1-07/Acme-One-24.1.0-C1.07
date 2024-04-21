@@ -13,6 +13,7 @@ import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
 import acme.entities.codeaudits.CodeAuditType;
 import acme.entities.codeaudits.Mark;
+import acme.entities.projects.Project;
 import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
@@ -61,15 +62,23 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		assert object != null;
 		Dataset dataset;
 
+		Collection<Project> projects;
+		projects = this.auditorCodeAuditRepository.findAllProjects();	//TODO: cambiarlo por solo los projecto publicados
+
 		Collection<AuditRecord> list = this.auditorAuditRecordRespository.findAllByCodeAuditId(object.getId());
 		Mark mark = object.getMark(list);
 
 		SelectChoices choicesType;
 		choicesType = SelectChoices.from(CodeAuditType.class, object.getType());
 
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
+		SelectChoices choicesProyect;
+		choicesProyect = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link");
 		dataset.put("mark", mark);
 		dataset.put("type", choicesType);
+		dataset.put("project", choicesProyect.getSelected().getKey());
+		dataset.put("projects", choicesProyect);
 		super.getResponse().addData(dataset);
 	}
 }

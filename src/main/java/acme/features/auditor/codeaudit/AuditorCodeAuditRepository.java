@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Repository
@@ -27,4 +28,7 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("select c from CodeAudit c where c.code = :code")
 	CodeAudit findOneByCode(String code);
+
+	@Query("select p from Project p")
+	Collection<Project> findAllProjects();
 }
