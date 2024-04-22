@@ -6,9 +6,9 @@
 <acme:form>
 	<acme:input-textbox code="auditor.code-audit.form.label.code" path="code"/>
 	<acme:input-moment code="auditor.code-audit.form.label.executionDate" path="executionDate"/>
-	<acme:input-select code="auditor.code-audit.form.label.type" path="type" choices="${type}"/>	
+	<acme:input-select code="auditor.code-audit.form.label.type" path="type" choices="${types}"/>	
 	<acme:input-textbox code="auditor.code-audit.form.label.correctiveAction" path="correctiveAction"/>	
-	<acme:input-textbox code="auditor.code-audit.form.label.mark" path="mark"/>	
+	<acme:input-textbox code="auditor.code-audit.form.label.mark" readonly="true" path="mark"/>	
 	<acme:input-url code="auditor.code-audit.form.label.link" path="link"/>
 	<acme:input-select code="auditor.code-audit.form.label.project" path="project" choices="${projects}"/>	
 	

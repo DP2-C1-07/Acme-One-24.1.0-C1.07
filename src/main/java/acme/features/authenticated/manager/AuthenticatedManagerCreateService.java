@@ -52,7 +52,7 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 	public void bind(final Manager object) {
 		assert object != null;
 
-		super.bind(object, "firm", "professionalID", "certifications", "link");
+		super.bind(object, "degree", "overview", "certifications", "link");
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "firm", "professionalID", "certifications", "link");
+		dataset = super.unbind(object, "degree", "overview", "certifications", "link");
 
 		super.getResponse().addData(dataset);
 	}

@@ -22,3 +22,7 @@ auditor.code-audit.form.button.update = Update code audit
 auditor.code-audit.form.button.delete = Delete code audit
 auditor.code-audit.form.button.publish = Publish code audit
 auditor.code-audit.form.button.list.audit-record = See audit records
+
+auditor.code-audit.error.code =  A code audit already exists with that code
+auditor.audit-record.error.publish = Cannot delete a code audit that has already been published
+auditor.audit-record.error.publish.mark = A code audit that has a grade lower than C will not be published

@@ -36,8 +36,8 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		CodeAudit codeAudit;
 		int codeAuditId;
 
-		System.out.println("funcion1");
 		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
+		System.out.println("Id:" + codeAuditId);
 		codeAudit = this.auditorCodeAuditRepository.findOneById(codeAuditId);
 
 		System.out.println("funciona2");
