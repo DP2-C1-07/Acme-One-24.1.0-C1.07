@@ -1,0 +1,5 @@
+manager.project-user-story.form.title = Asocia historias de usuario a un proyecto
+
+manager.project-user-story.form.label.project = Seleccionar proyecto
+manager.project-user-story.form.label.user-stories = Seleccionar historia de usuario
+manager.project-user-story.form.button.create = Asociar
