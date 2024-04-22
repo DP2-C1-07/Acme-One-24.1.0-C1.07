@@ -72,7 +72,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void validate(final CodeAudit object) {
 		Collection<AuditRecord> list = this.auditorAuditRecordRepository.findAllByCodeAuditId(object.getId());
 		if (!super.getBuffer().getErrors().hasErrors("*"))
-			super.state(!list.isEmpty() || object.getMark(list).getNumericMark() >= Mark.C.getNumericMark(), "*", "auditor.audit-record.error.publish.mark");
+			super.state(!list.isEmpty() || object.getMark(list).getNumericMark() >= Mark.C.getNumericMark(), "*", "auditor.code-audit.error.publish.mark");
 	}
 
 	@Override

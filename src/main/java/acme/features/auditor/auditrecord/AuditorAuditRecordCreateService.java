@@ -1,6 +1,7 @@
 
 package acme.features.auditor.auditrecord;
 
+import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.Mark;
 import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
@@ -37,10 +40,8 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		int codeAuditId;
 
 		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
-		System.out.println("Id:" + codeAuditId);
 		codeAudit = this.auditorCodeAuditRepository.findOneById(codeAuditId);
 
-		System.out.println("funciona2");
 		object = new AuditRecord();
 		object.setCodeAudit(codeAudit);
 
@@ -55,23 +56,20 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		codeAudit = object.getCodeAudit();
 		super.bind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
 		object.setCodeAudit(codeAudit);
-		System.out.println(object);
 	}
 
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("consecutiveDates"))
-			super.state(object.getPeriodBeginning().before(object.getPeriodEnd()), "consecutiveDates", "auditor.audit-record.error.consecutiveDates");
-
-		if (!super.getBuffer().getErrors().hasErrors("duration")) {
+		if (!super.getBuffer().getErrors().hasErrors("periodEnd")) {
 			long diffInMili;
 			long diffInHour;
 
 			diffInMili = object.getPeriodEnd().getTime() - object.getPeriodBeginning().getTime();
-			diffInHour = TimeUnit.MILLISECONDS.toMinutes(diffInMili);
-			super.state(diffInHour < 1, "duration", "auditor.audit-record.error.duration");
+			diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
+			super.state(diffInHour >= 1, "periodEnd", "auditor.audit-record.error.duration");
+			super.state(object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
@@ -92,12 +90,27 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
+		SelectChoices choices;
+		Dataset dataset;
+
 		CodeAudit codeAudit;
 		codeAudit = object.getCodeAudit();
 
-		Dataset dataset;
-		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+		choices = SelectChoices.from(Mark.class, object.getMark());
+		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "link");
+		dataset.put("mark", choices);
 		dataset.put("codeAudit", codeAudit);
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<AuditRecord> objects) {
+		assert objects != null;
+
+		int codeAuditId;
+
+		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
+
+		super.getResponse().addGlobal("codeAuditId", codeAuditId);
 	}
 }

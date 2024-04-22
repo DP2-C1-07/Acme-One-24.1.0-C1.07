@@ -7,6 +7,8 @@ any.code-audit.form.label.mark = Mark
 any.code-audit.form.label.link = Optional Link
 any.code-audit.form.label.project  = Project key
 
+any.code-audit.list.title = List of Published code audits
+
 any.code-audit.list.label.code = Code
 any.code-audit.list.label.executionDate = Execution date
 any.code-audit.list.label.type = Type

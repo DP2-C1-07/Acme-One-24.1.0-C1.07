@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.Mark;
 import acme.roles.Auditor;
 
 @Service
@@ -63,27 +65,30 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("consecutiveDates"))
-			super.state(object.getPeriodBeginning().before(object.getPeriodEnd()), "consecutiveDates", "auditor.audit-record.error.consecutiveDates");
-
-		if (!super.getBuffer().getErrors().hasErrors("duration")) {
+		if (!super.getBuffer().getErrors().hasErrors("periodEnd")) {
 			long diffInMili;
 			long diffInHour;
 
 			diffInMili = object.getPeriodEnd().getTime() - object.getPeriodBeginning().getTime();
-			diffInHour = TimeUnit.MILLISECONDS.toMinutes(diffInMili);
-			super.state(diffInHour >= 1, "duration", "auditor.audit-record.error.duration");
+			diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
+			super.state(diffInHour >= 1, "periodEnd", "auditor.audit-record.error.duration");
+			super.state(object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			AuditRecord existing;
+			boolean status;
 
 			existing = this.auditorAuditRecordRepository.findOneByCode(object.getCode());
-			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "auditor.audit-record.error.code");
+			if (existing != null)
+				status = existing.getId() == object.getId();
+			else
+				status = false;
+			super.state(existing == null || status, "code", "auditor.audit-record.error.code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("publish"))
-			super.state(object.getDraftMode(), "publish", "auditor.audit-record.error.publish");
+		if (!super.getBuffer().getErrors().hasErrors("*"))
+			super.state(object.getDraftMode(), "*", "auditor.audit-record.error.publish");
 	}
 
 	@Override
@@ -99,10 +104,14 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 		CodeAudit codeAudit;
 		codeAudit = object.getCodeAudit();
+		SelectChoices choices;
+
+		choices = SelectChoices.from(Mark.class, object.getMark());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+		dataset = super.unbind(object, "code", "periodBeginning", "mark", "periodEnd", "link");
 		dataset.put("codeAudit", codeAudit);
+		dataset.put("mark", choices);
 		super.getResponse().addData(dataset);
 	}
 

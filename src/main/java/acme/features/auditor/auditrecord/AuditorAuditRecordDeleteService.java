@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.Mark;
 import acme.roles.Auditor;
 
 @Service
@@ -37,17 +39,6 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	}
 
 	@Override
-	public void bind(final AuditRecord object) {
-		assert object != null;
-
-		CodeAudit codeAudit;
-		codeAudit = object.getCodeAudit();
-
-		super.bind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
-		object.setCodeAudit(codeAudit);
-	}
-
-	@Override
 	public void load() {
 		AuditRecord object;
 		int id;
@@ -59,11 +50,22 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	}
 
 	@Override
+	public void bind(final AuditRecord object) {
+		assert object != null;
+
+		CodeAudit codeAudit;
+		codeAudit = object.getCodeAudit();
+
+		super.bind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+		object.setCodeAudit(codeAudit);
+	}
+
+	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("publish"))
-			super.state(object.getDraftMode(), "publish", "auditor.audit-record.error.publish");
+		if (!super.getBuffer().getErrors().hasErrors("*"))
+			super.state(object.getDraftMode(), "*", "auditor.audit-record.error.publish");
 	}
 
 	@Override
@@ -78,10 +80,14 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 		CodeAudit codeAudit;
 		codeAudit = object.getCodeAudit();
+		SelectChoices choices;
+
+		choices = SelectChoices.from(Mark.class, object.getMark());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+		dataset = super.unbind(object, "code", "periodBeginning", "mark", "periodEnd", "link");
 		dataset.put("codeAudit", codeAudit);
+		dataset.put("mark", choices);
 		super.getResponse().addData(dataset);
 	}
 }
