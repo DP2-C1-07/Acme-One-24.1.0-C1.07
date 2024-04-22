@@ -59,4 +59,7 @@ public class Claim extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	String						link;
+
+	@NotNull
+	boolean						draftMode			= true;
 }

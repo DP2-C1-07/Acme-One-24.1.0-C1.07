@@ -20,29 +20,27 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		boolean status;
-		int projectId;
+
+		super.getResponse().setAuthorised(true);
+	}
+
+	@Override
+	public void load() {
+		Project object;
 		Manager manager;
-		Project project;
 
-		projectId = super.getRequest().getData("id", int.class);
-		project = this.managerProjectRepository.findOneById(projectId);
-		manager = project.getManager();
+		manager = this.managerProjectRepository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		object = new Project();
+		object.setManager(manager);
 
-		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
-
-		super.getResponse().setAuthorised(status);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		super.bind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		object.setManager(manager);
 	}
 
 	@Override
@@ -52,8 +50,8 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
 
-			existing = this.managerProjectRepository.findOneByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "manager.project.publish.error.duplicated");
+			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
+			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
 		}
 	}
 
@@ -68,12 +66,8 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }

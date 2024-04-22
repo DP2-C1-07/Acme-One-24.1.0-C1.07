@@ -61,6 +61,7 @@ public class TrainingSession extends AbstractEntity {
 
 	@NotNull
 	@Email
+	@Length(max = 255)
 	String						contactEmail;
 
 	@URL
@@ -71,5 +72,7 @@ public class TrainingSession extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
+
+	boolean						draft;
 
 }

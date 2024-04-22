@@ -4,6 +4,7 @@ package acme.features.manager.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
@@ -26,10 +27,11 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		Project project;
 
 		projectId = super.getRequest().getData("id", int.class);
-		project = this.managerProjectRepository.findOneById(projectId);
-		manager = project.getManager();
+		project = this.managerProjectRepository.findOneProjectById(projectId);
+		Principal principal = super.getRequest().getPrincipal();
+		manager = this.managerProjectRepository.findManagerById(principal.getActiveRoleId());
 
-		status = super.getRequest().getPrincipal().hasRole(manager);
+		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -39,7 +41,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerProjectRepository.findOneById(id);
+		object = this.managerProjectRepository.findOneProjectById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -48,12 +50,8 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }

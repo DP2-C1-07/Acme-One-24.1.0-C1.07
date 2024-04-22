@@ -58,7 +58,7 @@ public class Contract extends AbstractEntity{
 		@Digits(fraction = 2, integer = 5)
 		double budget;
 		
-		@ManyToOne
+		@ManyToOne(optional = false)
 		@NotNull
 		@Valid
 		Project project;

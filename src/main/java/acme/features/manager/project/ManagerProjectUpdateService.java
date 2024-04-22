@@ -4,6 +4,7 @@ package acme.features.manager.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
@@ -25,11 +26,13 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		Manager manager;
 		Project project;
 
-		projectId = super.getRequest().getData("id", int.class);
-		project = this.managerProjectRepository.findOneById(projectId);
-		manager = project.getManager();
+		Principal principal = super.getRequest().getPrincipal();
+		manager = this.managerProjectRepository.findManagerById(principal.getActiveRoleId());
 
-		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		projectId = super.getRequest().getData("id", int.class);
+		project = this.managerProjectRepository.findOneProjectById(projectId);
+
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -38,11 +41,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void bind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		super.bind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		object.setManager(manager);
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerProjectRepository.findOneById(id);
+		object = this.managerProjectRepository.findOneProjectById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -63,15 +62,15 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
 
-			existing = this.managerProjectRepository.findOneByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "manager.project.publish.error.duplicated");
+			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
+			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
 		}
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
+		// assert object.isDraftMode();
 		this.managerProjectRepository.save(object);
 	}
 
@@ -79,12 +78,8 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }

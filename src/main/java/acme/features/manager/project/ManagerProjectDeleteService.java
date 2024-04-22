@@ -6,11 +6,19 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.audit_records.AuditRecord;
+import acme.entities.codeaudits.CodeAudit;
+import acme.entities.contract.Contract;
+import acme.entities.progressLog.ProgressLog;
 import acme.entities.projects.Project;
+import acme.entities.projects.ProjectUserStory;
+import acme.entities.risk.Risk;
+import acme.entities.sponsorships.Sponsorship;
 import acme.entities.userstories.UserStory;
-import acme.features.manager.userstories.ManagerUserStoryRepository;
+import acme.features.manager.userstory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -33,10 +41,12 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		Project project;
 
 		projectId = super.getRequest().getData("id", int.class);
-		project = this.managerProjectRepository.findOneById(projectId);
-		manager = project.getManager();
+		project = this.managerProjectRepository.findOneProjectById(projectId);
 
-		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		Principal principal = super.getRequest().getPrincipal();
+		manager = this.managerProjectRepository.findManagerById(principal.getActiveRoleId());
+
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,11 +55,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	public void bind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		super.bind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		object.setManager(manager);
 	}
 
 	@Override
@@ -58,7 +64,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.managerProjectRepository.findOneById(id);
+		object = this.managerProjectRepository.findOneProjectById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -71,13 +77,39 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
-		Collection<UserStory> userStories;
+		// assert object.isDraftMode();
 		int projectId;
 		projectId = super.getRequest().getData("id", int.class);
-		userStories = this.managerUserStoryRepository.findAllByProjectId(projectId);
 
-		this.managerProjectRepository.deleteAll(userStories);
+		Collection<ProjectUserStory> projectUserStories;
+		projectUserStories = this.managerProjectRepository.findAllProjectUserStoriesByProjectId(projectId);
+		this.managerProjectRepository.deleteAll(projectUserStories);
+
+		Collection<CodeAudit> codeAudits = this.managerProjectRepository.findAllCodeAuditsFromProjectId(projectId);
+		for (CodeAudit codeAudit : codeAudits) {
+			Collection<AuditRecord> auditRecords = this.managerProjectRepository.findAllAuditRecordsFromCodeAuditId(codeAudit.getId());
+			this.managerProjectRepository.deleteAll(auditRecords);
+		}
+
+		this.managerProjectRepository.deleteAll(codeAudits);
+
+		Collection<Contract> contracts = this.managerProjectRepository.findAllContractsByProjectId(projectId);
+		for (Contract contract : contracts) {
+			Collection<ProgressLog> progressLogs = this.managerProjectRepository.findAllProgressLogsByContractId(contract.getId());
+			this.managerProjectRepository.deleteAll(progressLogs);
+		}
+		this.managerProjectRepository.deleteAll(contracts);
+
+		Collection<Risk> risks = this.managerProjectRepository.findAllRisksByProjectId(projectId);
+		this.managerProjectRepository.deleteAll(risks);
+
+		Collection<Sponsorship> sponsorships = this.managerProjectRepository.findAllSponsorshipsByProjectId(projectId);
+		this.managerProjectRepository.deleteAll(sponsorships);
+
+		Collection<UserStory> userStories;
+		userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(projectId);
+		this.managerUserStoryRepository.deleteAll(userStories);
+
 		this.managerProjectRepository.delete(object);
 	}
 
@@ -85,12 +117,8 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Manager manager;
-		manager = object.getManager();
-
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
-		dataset.put("manager", manager);
 		super.getResponse().addData(dataset);
 	}
 }

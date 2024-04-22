@@ -55,14 +55,14 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 			Claim existing;
 
 			existing = this.repository.findOneByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "any.claim.publish.error.duplicated");
+			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "any.claim.publish.error.duplicated");
 		}
 	}
 
 	@Override
 	public void perform(final Claim object) {
 		assert object != null;
-
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
