@@ -47,9 +47,6 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from ProgressLog p where p.contract.id = :contractId")
 	Collection<ProgressLog> findAllProgressLogsByContractId(int contractId);
 
-	@Query("select r from Risk r where r.project.id = :projectId")
-	Collection<Risk> findAllRisksByProjectId(int projectId);
-
 	@Query("select s from Sponsorship s where s.project.id = :projectId")
 	Collection<Sponsorship> findAllSponsorshipsByProjectId(int projectId);
 }

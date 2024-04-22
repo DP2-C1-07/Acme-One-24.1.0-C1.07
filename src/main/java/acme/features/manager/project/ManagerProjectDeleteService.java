@@ -100,9 +100,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		}
 		this.managerProjectRepository.deleteAll(contracts);
 
-		Collection<Risk> risks = this.managerProjectRepository.findAllRisksByProjectId(projectId);
-		this.managerProjectRepository.deleteAll(risks);
-
 		Collection<Sponsorship> sponsorships = this.managerProjectRepository.findAllSponsorshipsByProjectId(projectId);
 		this.managerProjectRepository.deleteAll(sponsorships);
 
