@@ -1,47 +1,46 @@
 
-package acme.features.any.project;
+package acme.features.authenticated.risk;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Any;
+import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.projects.Project;
+import acme.entities.risk.Risk;
 
 @Service
-public class AnyProjectListService extends AbstractService<Any, Project> {
+public class AuthenticatedRiskListService extends AbstractService<Authenticated, Risk> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectRepository repository;
+	protected AuthenticatedRiskRepository authenticatedRiskRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-
 		super.getResponse().setAuthorised(true);
-
 	}
 
 	@Override
 	public void load() {
-		Collection<Project> objects;
+		Collection<Risk> object;
 
-		objects = this.repository.findAllPublishedProjects();
+		object = this.authenticatedRiskRepository.findAllRisks();
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final Risk object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "project");
 		super.getResponse().addData(dataset);
 	}
 }

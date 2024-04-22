@@ -51,6 +51,7 @@
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.any.list-project" action="/any/project/list"/>	
+			<acme:menu-suboption code="master.menu.any.list-code-audit" action="/any/code-audit/list"/>
     	</acme:menu-option>
     	
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
@@ -78,6 +79,8 @@
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+			<acme:menu-suboption code="master.menu.user-account.risk" action="/authenticated/risk/list"/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>

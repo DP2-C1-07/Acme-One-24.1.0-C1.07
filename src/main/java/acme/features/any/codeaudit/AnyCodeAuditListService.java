@@ -1,5 +1,5 @@
 
-package acme.features.any.project;
+package acme.features.any.codeaudit;
 
 import java.util.Collection;
 
@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.projects.Project;
+import acme.entities.codeaudits.CodeAudit;
 
 @Service
-public class AnyProjectListService extends AbstractService<Any, Project> {
+public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectRepository repository;
+	private AnyCodeAuditRepository repository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -29,19 +30,20 @@ public class AnyProjectListService extends AbstractService<Any, Project> {
 
 	@Override
 	public void load() {
-		Collection<Project> objects;
+		Collection<CodeAudit> objects;
 
-		objects = this.repository.findAllPublishedProjects();
+		objects = this.repository.findAllPublishedCodeAudits();
 
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final CodeAudit object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		dataset = super.unbind(object, "code", "executionDate", "type");
 		super.getResponse().addData(dataset);
 	}
+
 }

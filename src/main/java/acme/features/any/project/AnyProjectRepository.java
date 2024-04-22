@@ -12,8 +12,8 @@ import acme.entities.projects.Project;
 @Repository
 public interface AnyProjectRepository extends AbstractRepository {
 
-	@Query("select p from Project p")
-	Collection<Project> findAllProjects();
+	@Query("select p from Project p where p.draftMode = true")
+	Collection<Project> findAllPublishedProjects();
 
 	@Query("select p from Project p where p.id = :id")
 	Project findOneById(int id);

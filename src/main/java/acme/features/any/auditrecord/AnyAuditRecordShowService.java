@@ -1,23 +1,21 @@
 
-package acme.features.auditor.auditrecord;
-
-import java.util.Collection;
+package acme.features.any.auditrecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.audit_records.AuditRecord;
-import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordListService extends AbstractService<Auditor, AuditRecord> {
+public class AnyAuditRecordShowService extends AbstractService<Any, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuditorAuditRecordRepository auditorAuditRecordRepository;
+	private AnyAuditRecordRepository anyAuditRecordRepository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -28,11 +26,11 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 
 	@Override
 	public void load() {
-		Collection<AuditRecord> object;
-		int codeAuditId;
+		AuditRecord object;
+		int id;
 
-		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
-		object = this.auditorAuditRecordRepository.findAllByCodeAuditId(codeAuditId);
+		id = super.getRequest().getData("id", int.class);
+		object = this.anyAuditRecordRepository.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -42,9 +40,8 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark");
-		dataset.put("codeAuditId", object.getCodeAudit().getId());
-		dataset.put("id", object.getCodeAudit().getId());
+		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+
 		super.getResponse().addData(dataset);
 	}
 

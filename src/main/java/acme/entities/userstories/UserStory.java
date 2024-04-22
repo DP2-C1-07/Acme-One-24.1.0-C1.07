@@ -51,6 +51,9 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 255)
 	String						link;
 
+	@NotNull
+	boolean						draftMode			= true;
+
 	// Relationships ----------------------------------------------------------
 
 	@NotNull
