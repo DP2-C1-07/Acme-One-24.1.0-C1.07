@@ -51,7 +51,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 			Project existing;
 
 			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "manager.project.publish.error.duplicated");
+			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
 		}
 	}
 

@@ -1,0 +1,5 @@
+manager.project-user-story.form.title = Link user stories to a project
+
+manager.project-user-story.form.label.project = Select project
+manager.project-user-story.form.label.user-stories = Select user story
+manager.project-user-story.form.button.create = Link
