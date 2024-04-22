@@ -41,7 +41,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(projectId);
 
-		status = project != null && !userStories.isEmpty() && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		status = project != null && project.isDraftMode() && !userStories.isEmpty() && userStories.stream().noneMatch(u -> u.isDraftMode()) && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -70,16 +70,15 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
-
 			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "manager.project.publish.error.duplicated");
+			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
 		}
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
+		object.setDraftMode(false);
 		this.managerProjectRepository.save(object);
 	}
 

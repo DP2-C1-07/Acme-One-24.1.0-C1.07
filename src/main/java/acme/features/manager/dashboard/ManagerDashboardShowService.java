@@ -31,7 +31,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 	@Override
 	public void load() {
 		ManagerDashboard dashboard;
-
+		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		int totalCouldUserStories;
 		int totalShouldUserStories;
 		int totalMustUserStories;
@@ -45,18 +45,18 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		Integer maximumProjectCost;
 		Integer minimumProjectCost;
 
-		totalCouldUserStories = this.repository.totalCouldUserStories();
-		totalShouldUserStories = this.repository.totalShouldUserStories();
-		totalMustUserStories = this.repository.totalMustUserStories();
-		totalWontUserStories = this.repository.totalWontUserStories();
-		userStoryEstimatedCostAverage = this.repository.userStoryEstimatedCostAverage();
-		userStoryEstimatedCostDeviation = this.repository.userStoryEstimatedCostDeviation();
-		maximumUserStoryEstimatedCost = this.repository.maximumUserStoryEstimatedCost();
-		minimumUserStoryEstimatedCost = this.repository.minimumUserStoryEstimatedCost();
-		projectCostAverage = this.repository.projectCostAverage();
-		projectCostDeviation = this.repository.projectCostDeviation();
-		maximumProjectCost = this.repository.maximumProjectCost();
-		minimumProjectCost = this.repository.minimumProjectCost();
+		totalCouldUserStories = this.repository.totalCouldUserStories(managerId);
+		totalShouldUserStories = this.repository.totalShouldUserStories(managerId);
+		totalMustUserStories = this.repository.totalMustUserStories(managerId);
+		totalWontUserStories = this.repository.totalWontUserStories(managerId);
+		userStoryEstimatedCostAverage = this.repository.userStoryEstimatedCostAverage(managerId);
+		userStoryEstimatedCostDeviation = this.repository.userStoryEstimatedCostDeviation(managerId);
+		maximumUserStoryEstimatedCost = this.repository.maximumUserStoryEstimatedCost(managerId);
+		minimumUserStoryEstimatedCost = this.repository.minimumUserStoryEstimatedCost(managerId);
+		projectCostAverage = this.repository.projectCostAverage(managerId);
+		projectCostDeviation = this.repository.projectCostDeviation(managerId);
+		maximumProjectCost = this.repository.maximumProjectCost(managerId);
+		minimumProjectCost = this.repository.minimumProjectCost(managerId);
 
 		dashboard = new ManagerDashboard();
 		dashboard.setTotalCouldUserStories(totalCouldUserStories);
