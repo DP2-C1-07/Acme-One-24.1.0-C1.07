@@ -54,6 +54,7 @@
 			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.any.list-project" action="/any/project/list"/>	
 			<acme:menu-suboption code="master.menu.any.list-code-audit" action="/any/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.any.list-contract" action="/any/contract/list"/>
     	</acme:menu-option>
     	
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
