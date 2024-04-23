@@ -13,7 +13,17 @@
 	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>	
 	
 	<jstl:choose>
-		<jstl:when test="${_command == 'show'}">
+		<jstl:when test="${not published}">
+			<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
+			
+			<jstl:choose><jstl:when test="${_command == 'show'}">
+				<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
+				<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
+				<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
+			</jstl:when></jstl:choose>
+		</jstl:when>
+		
+		<jstl:when test="${published}">
 			<acme:input-textbox code="sponsor.sponsorship.form.label.project" path="project.code"/>
 		</jstl:when>
 	</jstl:choose>

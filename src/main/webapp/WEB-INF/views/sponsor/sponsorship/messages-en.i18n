@@ -15,3 +15,9 @@ sponsor.sponsorship.form.label.amount = Amount
 sponsor.sponsorship.form.label.type = Type
 sponsor.sponsorship.form.label.email = Email
 sponsor.sponsorship.form.label.link = Link
+
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.publish = Publish
+
+sponsor.sponsorship.form.error.duplicated-code = The given code is already in use

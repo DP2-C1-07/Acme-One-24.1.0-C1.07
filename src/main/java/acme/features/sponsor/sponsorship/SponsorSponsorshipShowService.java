@@ -28,9 +28,9 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
-		Principal principal = super.getRequest().getPrincipal();
-
 		Sponsorship sponsorship = this.sponsorSponsorshipRepository.findSponsorshipById(id);
+
+		Principal principal = super.getRequest().getPrincipal();
 		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
 
 		boolean authorised = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor) && sponsorship.getSponsor().equals(sponsor);
@@ -49,11 +49,13 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "moment", "durationDays", "amount", "type", "contactEmail", "link", "project.code");
+		Dataset dataset = super.unbind(object, "code", "published", "moment", "durationDays", "amount", "type", "contactEmail", "link", "project.code");
 
 		Collection<Project> projects = this.sponsorSponsorshipRepository.findAllProjects();
 		dataset.put("types", SelectChoices.from(SponsorshipType.class, object.getType()));
-		dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
+
+		if (!object.isPublished())
+			dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
 
 		super.getResponse().addData(dataset);
 	}

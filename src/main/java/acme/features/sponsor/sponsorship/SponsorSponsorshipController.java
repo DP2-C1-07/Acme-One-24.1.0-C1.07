@@ -21,6 +21,9 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 	@Autowired
 	private SponsorSponsorshipShowService		showService;
 
+	@Autowired
+	private SponsorSponsorshipUpdateService		updateService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -28,5 +31,6 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 	protected void initialise() {
 		super.addCustomCommand("list-mine", "list", this.listMineService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("update", this.updateService);
 	}
 }
