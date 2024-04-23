@@ -42,7 +42,7 @@ public class AdministratorBannerListService extends AbstractService<Administrato
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "instantiationMoment", "lastUpdateMoment", "displayPeriodBeginning", "displayPeriodEnd", "pictureLink", "slogan", "link");
+		dataset = super.unbind(object, "instantiationLastUpdateMoment", "displayPeriodBeginning", "displayPeriodEnd", "pictureLink", "slogan", "link");
 
 		super.getResponse().addData(dataset);
 	}

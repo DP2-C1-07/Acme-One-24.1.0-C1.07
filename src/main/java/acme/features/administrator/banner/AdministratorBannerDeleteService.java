@@ -10,7 +10,7 @@ import acme.client.services.AbstractService;
 import acme.entities.banner.Banner;
 
 @Service
-public class AdministratorBannerShowService extends AbstractService<Administrator, Banner> {
+public class AdministratorBannerDeleteService extends AbstractService<Administrator, Banner> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -37,13 +37,33 @@ public class AdministratorBannerShowService extends AbstractService<Administrato
 	}
 
 	@Override
+	public void bind(final Banner object) {
+		assert object != null;
+
+		super.bind(object, "displayPeriodBeginning", "displayPeriodEnd", "pictureLink", "slogan", "link");
+	}
+
+	@Override
+	public void validate(final Banner object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Banner object) {
+		assert object != null;
+
+		this.repository.delete(object);
+	}
+
+	@Override
 	public void unbind(final Banner object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "instantiationLastUpdateMoment", "displayPeriodBeginning", "displayPeriodEnd", "pictureLink", "slogan", "link");
-
+		dataset = super.unbind(object, "displayPeriodBeginning", "displayPeriodEnd", "pictureLink", "slogan", "link");
+		dataset.put("instantiationLastUpdateMoment", object.getInstantiationLastUpdateMoment());
 		super.getResponse().addData(dataset);
 	}
+
 }
