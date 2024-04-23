@@ -1,0 +1,14 @@
+#Title
+
+client.client-dashboard.form.title = Client Dashboard
+
+#Subtitle
+
+client.dashboard.form.title.general-indicators = General indicators
+
+#Values of the form
+
+client.dashboard.form.label.contract-average = Average budget of published contracts
+client.dashboard.form.label.contract-deviation = Deviation of published contracts
+client.dashboard.form.label.contract-minimum = Minimum budget of every published contract
+client.dashboard.form.label.contract-maximum = Maximum budget of every published contract

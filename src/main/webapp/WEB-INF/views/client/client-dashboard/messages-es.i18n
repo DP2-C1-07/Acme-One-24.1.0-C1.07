@@ -1,0 +1,14 @@
+#Título
+
+client.client-dashboard.form.title = Panel de Indicadores de cliente
+
+#Subtítulo
+
+client.dashboard.form.title.general-indicators = Indicadores generales
+
+#Valores del formulario
+
+client.dashboard.form.label.contract-average = Presupuesto promedio de contratos publicados
+client.dashboard.form.label.contract-deviation = Desviación de los contratos publicados
+client.dashboard.form.label.contract-minimum = Presupuesto mínimo de cada contrato publicado
+client.dashboard.form.label.contract-maximum = Presupuesto máximo de cada contrato publicado
