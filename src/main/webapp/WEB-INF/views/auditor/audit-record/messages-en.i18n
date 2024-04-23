@@ -5,6 +5,7 @@ auditor.audit-record.list.label.code = Code
 auditor.audit-record.list.label.periodBeginning = Period beginning
 auditor.audit-record.list.label.periodEnd = Period end
 auditor.audit-record.list.label.mark = Mark
+auditor.audit-record.list.label.draftMode = Draft Mode
 
 auditor.audit-record.form.label.code = Code
 auditor.audit-record.form.label.periodBeginning = Period beginning

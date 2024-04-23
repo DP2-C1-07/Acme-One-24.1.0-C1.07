@@ -12,5 +12,6 @@ any.code-audit.list.title = Lista de auditorías de código publicadas
 any.code-audit.list.label.code = Código
 any.code-audit.list.label.executionDate = Fecha de ejecución
 any.code-audit.list.label.type = Tipo
+any.code-audit.list.label.mark = Nota
 
 any.code-audit.form.button.list.audit-record = Listar registros de auditoría

@@ -12,5 +12,6 @@ any.code-audit.list.title = List of Published code audits
 any.code-audit.list.label.code = Code
 any.code-audit.list.label.executionDate = Execution date
 any.code-audit.list.label.type = Type
+any.code-audit.list.label.mark = Mark
 
 any.code-audit.form.button.list.audit-record = List audit records
