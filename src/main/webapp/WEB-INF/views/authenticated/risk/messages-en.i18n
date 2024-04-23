@@ -15,4 +15,3 @@ authenticated.risk.list.label.impact = Impact
 authenticated.risk.list.label.probability = Probability
 authenticated.risk.list.label.description = Description
 authenticated.risk.list.label.link = Optional link
-authenticated.risk.list.label.project  = Project key
