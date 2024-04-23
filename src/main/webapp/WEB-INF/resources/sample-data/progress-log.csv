@@ -1,4 +1,4 @@
-key,recordIn,completeness,comment,registrationMoment,responsiblePerson,key:contract
+key,recordId,completeness,comment,registrationMoment,responsiblePerson,key:contract
 progressLog-01,PG-AB-0001,0.50,Comment,2010/01/01 00:00,Responsible Person,contract-01
 progressLog-02,PG-XY-0002,0.00,Comment,2010/01/01 00:00,Responsible Person,contract-02
 progressLog-03,PG-QW-0003,0.01,Comment,2010/01/01 00:00,Responsible Person,contract-03
