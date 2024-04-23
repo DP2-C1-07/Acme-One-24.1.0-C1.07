@@ -1,0 +1,26 @@
+administrator.banner.form.title = Detalles del cartel
+administrator.banner.list.title = Listado de carteles
+
+administrator.banner.form.label.instantiationLastUpdateMoment = Momento de instanciación/última actualización:
+administrator.banner.form.label.displayPeriodBeginning = Inicio del periodo de exhibición:
+administrator.banner.form.label.displayPeriodEnd = Fin del periodo de exhibición:
+administrator.banner.form.label.pictureLink = Enlace de la imagen:
+administrator.banner.form.label.slogan = Eslogan:
+administrator.banner.form.label.link = Enlace:
+
+administrator.banner.form.button.create = Crear
+administrator.banner.form.button.update = Actualizar
+administrator.banner.form.button.delete = Borrar
+
+administrator.banner.form.error.DisplayPeriodNotAfterILUMoment = El periodo de exhibición debe ser posterior al momento de instanciación/última actualización
+administrator.banner.form.error.too-close = El fin del periodo de exhibición debe ser al menos una semana posterior al inicio
+
+administrator.banner.list.label.instantiationLastUpdateMoment = Momento de instanciación/última actualización
+administrator.banner.list.label.displayPeriodBeginning = Inicio del periodo de exhibición
+administrator.banner.list.label.displayPeriodEnd = Fin del periodo de exhibición
+administrator.banner.list.label.slogan = Eslogan
+administrator.banner.list.label.pictureLink = Enlace de la imagen
+administrator.banner.list.label.link = Enlace
+
+
+administrator.banner.list.button.create = Crear
