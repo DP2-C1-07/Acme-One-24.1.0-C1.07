@@ -5,6 +5,7 @@ auditor.audit-record.list.label.code = Código
 auditor.audit-record.list.label.periodBeginning = Comienzo del periodo
 auditor.audit-record.list.label.periodEnd = Final del periodo
 auditor.audit-record.list.label.mark = Nota
+auditor.audit-record.list.label.draftMode = Borrador
 
 auditor.audit-record.form.label.code = Código
 auditor.audit-record.form.label.periodBeginning = Comienzo del periodo
@@ -13,6 +14,12 @@ auditor.audit-record.form.label.mark = Nota
 auditor.audit-record.form.label.link = Link opcional 
 
 auditor.audit-record.list.button.create = Crear nuevo registro de auditoría
+auditor.audit-record.form.button.create = Crear nuevo registro de auditoría
 auditor.audit-record.form.button.update = Actualizar el registro de auditoría
 auditor.audit-record.form.button.delete = Borrar registro de auditoría
 auditor.audit-record.form.button.publish = Publicar registro de auditoría
+
+auditor.audit-record.error.consecutiveDates= El final del periodo debe ocurrir despues que el principio del periodo
+auditor.audit-record.error.duration = El periodo debe ser como minimo de 1 hora
+auditor.audit-record.error.publish = No se puede borrar o editar un registro de auditoría que ya ha sido publicado
+auditor.audit-record.error.code =  Ya existe un registro de auditoría con ese código

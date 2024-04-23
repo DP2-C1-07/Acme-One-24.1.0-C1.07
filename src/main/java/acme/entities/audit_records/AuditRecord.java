@@ -42,7 +42,6 @@ public class AuditRecord extends AbstractEntity {
 	@Pattern(regexp = "^AU-[0-9]{4}-[0-9]{3}$", message = "{auditRecord.code.error}")
 	String						code;
 
-	//TODO:Comprobar si hay 1 hora de diferencia entre el principio y el final del periodo
 	@PastOrPresent
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)

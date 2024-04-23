@@ -5,6 +5,7 @@ auditor.audit-record.list.label.code = Code
 auditor.audit-record.list.label.periodBeginning = Period beginning
 auditor.audit-record.list.label.periodEnd = Period end
 auditor.audit-record.list.label.mark = Mark
+auditor.audit-record.list.label.draftMode = Draft Mode
 
 auditor.audit-record.form.label.code = Code
 auditor.audit-record.form.label.periodBeginning = Period beginning
@@ -13,7 +14,12 @@ auditor.audit-record.form.label.mark = Mark
 auditor.audit-record.form.label.link = Optional link
 
 auditor.audit-record.list.button.create = Create new audit record
+auditor.audit-record.form.button.create = Create new audit record
 auditor.audit-record.form.button.update = Update audit record
 auditor.audit-record.form.button.delete = Delete audit record
 auditor.audit-record.form.button.publish = Publish audit record
 
+auditor.audit-record.error.consecutiveDates= The end of the period must occur after the beginning of the period
+auditor.audit-record.error.duration = The period must be at least 1 hour
+auditor.audit-record.error.publish = Cannot delete or edit an audit record that has already been published
+auditor.audit-record.error.code =  An audit record already exists with that code

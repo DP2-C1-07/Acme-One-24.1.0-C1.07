@@ -5,6 +5,7 @@ auditor.code-audit.list.label.code = Code
 auditor.code-audit.list.label.executionDate = Execution date
 auditor.code-audit.list.label.type = Type
 auditor.code-audit.list.label.mark = Mark
+auditor.code-audit.list.label.draftMode = Draft Mode
 
 auditor.code-audit.list.button.create = Create code audit
 
@@ -22,3 +23,7 @@ auditor.code-audit.form.button.update = Update code audit
 auditor.code-audit.form.button.delete = Delete code audit
 auditor.code-audit.form.button.publish = Publish code audit
 auditor.code-audit.form.button.list.audit-record = See audit records
+
+auditor.code-audit.error.code =  A code audit already exists with that code
+auditor.code-audit.error.publish = Cannot delete a code audit that has already been published
+auditor.code-audit.error.publish.mark = A code audit that has a grade lower than C will not be published
