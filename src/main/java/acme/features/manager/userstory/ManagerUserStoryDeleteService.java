@@ -38,7 +38,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		Principal principal = super.getRequest().getPrincipal();
 		manager = this.managerUserStoryRepository.findManagerById(principal.getActiveRoleId());
 
-		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -68,6 +68,8 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
+		boolean condition = object.isDraftMode();
+		super.state(condition, "*", "manager.user-story.delete.error.draft-mode");
 	}
 
 	@Override
@@ -87,7 +89,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 		dataset.put("statuses", choices);
 		super.getResponse().addData(dataset);
 	}

@@ -12,6 +12,6 @@
 	<acme:list-column code="manager.user-story.list.label.link" path="link" width="10%"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list-mine'}">
+<jstl:if test="${_command == 'list'}">
 	<acme:button code="manager.user-story.list.button.create" action="/manager/user-story/create"/>
 </jstl:if>

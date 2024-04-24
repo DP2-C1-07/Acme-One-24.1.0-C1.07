@@ -55,7 +55,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		manager = this.managerUserStoryRepository.findManagerById(principal.getActiveRoleId());
 		object = new UserStory();
 		object.setManager(manager);
-
+		object.setDraftMode(true);
 		super.getBuffer().addData(object);
 	}
 
@@ -67,7 +67,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 		Dataset dataset;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 		dataset.put("statuses", choices);
 		super.getResponse().addData(dataset);
 	}

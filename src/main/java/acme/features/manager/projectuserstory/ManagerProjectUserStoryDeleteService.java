@@ -16,32 +16,31 @@ import acme.entities.userstories.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectUserStoryCreateService extends AbstractService<Manager, ProjectUserStory> {
-
-	// Internal state ---------------------------------------------------------
+public class ManagerProjectUserStoryDeleteService extends AbstractService<Manager, ProjectUserStory> {
 
 	@Autowired
 	private ManagerProjectUserStoryRepository repository;
 
-	// AbstractService interface ----------------------------------------------
-
 
 	@Override
 	public void authorise() {
+		int id = super.getRequest().getData("id", int.class);
+		ProjectUserStory projectUserStory = this.repository.findOneProjectUserStoryById(id);
+
 		Principal principal = super.getRequest().getPrincipal();
 		Manager manager = this.repository.findOneManagerById(principal.getActiveRoleId());
 
-		boolean status = super.getRequest().getPrincipal().hasRole(manager);
+		boolean status = projectUserStory != null && super.getRequest().getPrincipal().hasRole(manager) && projectUserStory.getProject().getManager().equals(manager) && projectUserStory.getUserStory().getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
 	public void load() {
-		ProjectUserStory object;
-		object = new ProjectUserStory();
-		super.getBuffer().addData(object);
+		int id = super.getRequest().getData("id", int.class);
+		ProjectUserStory projectUserStory = this.repository.findOneProjectUserStoryById(id);
+
+		super.getBuffer().addData(projectUserStory);
 	}
 
 	@Override
@@ -58,24 +57,18 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		object.setUserStory(userStory);
 
 		super.bind(object, "project", "userStory");
+
 	}
 
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
-		/*
-		 * int managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		 * Manager manager = this.repository.findOneManagerById(managerId);
-		 * 
-		 * boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
-		 * super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
-		 */
 	}
 
 	@Override
 	public void perform(final ProjectUserStory object) {
 		assert object != null;
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -85,18 +78,14 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		Principal principal = super.getRequest().getPrincipal();
 		int managerId = principal.getActiveRoleId();
 
-		Collection<Project> projects = this.repository.findProjectsByManagerId(managerId);
-		SelectChoices projectChoices = SelectChoices.from(projects, "title", object.getProject());
-
 		Collection<UserStory> userStories = this.repository.findUserStoriesByManagerId(managerId);
 		SelectChoices userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());
 
 		Dataset dataset = new Dataset();
-		dataset.put("project", projectChoices.getSelected().getKey());
-		dataset.put("projects", projectChoices);
-		dataset.put("userStory", userStoryChoices.getSelected().getKey());
+		dataset.put("userStoryId", userStoryChoices.getSelected().getKey());
 		dataset.put("userStories", userStoryChoices);
 
 		super.getResponse().addData(dataset);
 	}
+
 }

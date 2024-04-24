@@ -32,7 +32,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		manager = this.managerProjectRepository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Project();
 		object.setManager(manager);
-
+		object.setDraftMode(true);
 		super.getBuffer().addData(object);
 	}
 
@@ -51,7 +51,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 			Project existing;
 
 			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
-			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
+			super.state(existing == null, "code", "manager.project.publish.error.duplicated");
 		}
 	}
 
@@ -67,7 +67,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }

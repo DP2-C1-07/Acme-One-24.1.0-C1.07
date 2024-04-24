@@ -35,7 +35,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		userStoryId = super.getRequest().getData("id", int.class);
 		userStory = this.managerUserStoryRepository.findOneUserStoryById(userStoryId);
 
-		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
+		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager) && userStory.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -61,6 +61,8 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
+		boolean condition = object.isDraftMode();
+		super.state(condition, "*", "manager.user-story.publish.error.draft-mode");
 	}
 
 	@Override
@@ -78,7 +80,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 		dataset.put("statuses", choices);
 		super.getResponse().addData(dataset);
 	}
