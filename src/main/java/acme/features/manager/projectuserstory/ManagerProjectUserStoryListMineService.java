@@ -30,9 +30,10 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 	}
 	@Override
 	public void load() {
-		int id = super.getRequest().getData("id", int.class);
+		Principal principal = super.getRequest().getPrincipal();
+		Manager manager = this.repository.findOneManagerById(principal.getActiveRoleId());
 
-		Collection<ProjectUserStory> projectUserStories = this.repository.findProjectUserStoriesById(id);
+		Collection<ProjectUserStory> projectUserStories = this.repository.findProjectUserStoriesByManagerId(manager.getId());
 
 		super.getBuffer().addData(projectUserStories);
 	}
