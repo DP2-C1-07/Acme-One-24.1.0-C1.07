@@ -12,7 +12,6 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.audit_records.AuditRecord;
 import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
-import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
 import acme.forms.AuditorDashboard;
 import acme.roles.Auditor;
 
@@ -25,9 +24,6 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	private AuditorDashboardRepository		auditorDashboardRepository;
 
 	@Autowired
-	private AuditorCodeAuditRepository		auditorCodeAuditRepository;
-
-	@Autowired
 	private AuditorAuditRecordRepository	auditorAuditRecordRepository;
 
 
@@ -38,7 +34,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
 
-		super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -68,8 +64,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		auditRecords = this.auditorAuditRecordRepository.findAllByAuditorId(principal.getActiveRoleId());
 		listOfPeriodInAuditRecord = auditRecords.stream().map(auditRecord -> auditRecord.getPeriodInMinutes()).toList();
 
-		totalStaticCodeAudits = this.auditorDashboardRepository.totalStaticCodeAudits();
-		totalDynamicCodeAudits = this.auditorDashboardRepository.totalDynamicCodeAudits();
+		totalStaticCodeAudits = this.auditorDashboardRepository.totalStaticCodeAudits(principal.getActiveRoleId());
+		totalDynamicCodeAudits = this.auditorDashboardRepository.totalDynamicCodeAudits(principal.getActiveRoleId());
 
 		averageAuditRecord = this.calculateAverage(auditRecordCount);
 		deviationAuditRecord = this.calculateStandardDeviation(auditRecordCount);

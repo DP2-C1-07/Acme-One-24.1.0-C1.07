@@ -32,6 +32,7 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.banners = Carteles
 
 # master.menu.provider ########################################################
 
@@ -66,6 +67,7 @@ master.menu.any = Any
 master.menu.any.list-claim = Listar demandas
 master.menu.any.list-project = Listar proyectos
 master.menu.any.list-code-audit = Listar auditorias de código
+master.menu.any.list-contract = Listar contratos
 
 # master.menu.manager ########################################################
 master.menu.manager = Manager
@@ -77,3 +79,10 @@ master.menu.manager.project-user-stories = Asocia historias de usuario a proyect
 # master.menu.sponsor ########################################################
 master.menu.sponsor = Patrocinador
 master.menu.sponsor.my-sponsorships = Listar mis patrocinios
+
+# master.menu.client #########################################################
+master.menu.client = Cliente
+master.menu.client.list-contract = Ver mis contratos
+master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.client = Datos de cliente
+master.menu.client.dashboard = Panel de indicadores de cliente

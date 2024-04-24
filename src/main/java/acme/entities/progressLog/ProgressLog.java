@@ -36,7 +36,7 @@ public class ProgressLog extends AbstractEntity {
 		@NotBlank
 		@Column(unique = true)
 		@Pattern(regexp = "^PG-[A-Z]{1,2}-[0-9]{4}$", message = "{progressLog.recordIn.error}")
-		String recordIn;
+		String recordId;
 		
 		@Min(0)
 		@Max(1)
@@ -55,6 +55,9 @@ public class ProgressLog extends AbstractEntity {
 		@NotBlank
 		@Length(max = 75)
 		String responsiblePerson;
+		
+		@NotNull
+		boolean draftMode = true;
 		
 		@ManyToOne(optional = false)
 		@NotNull

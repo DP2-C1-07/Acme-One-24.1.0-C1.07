@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.CodeAuditType;
 import acme.entities.codeaudits.Mark;
+import acme.entities.projects.Project;
 import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
@@ -20,10 +23,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorCodeAuditRepository		auditorCodeAuditRespository;
+	private AuditorCodeAuditRepository		auditorCodeAuditRepository;
 
 	@Autowired
-	private AuditorAuditRecordRepository	auditorAuditRecordRespository;
+	private AuditorAuditRecordRepository	auditorAuditRecordRepository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -35,7 +38,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		CodeAudit codeAudit;
 
 		userStoryId = super.getRequest().getData("id", int.class);
-		codeAudit = this.auditorCodeAuditRespository.findOneById(userStoryId);
+		codeAudit = this.auditorCodeAuditRepository.findOneById(userStoryId);
 		auditor = codeAudit.getAuditor();
 
 		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
@@ -49,7 +52,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.auditorCodeAuditRespository.findOneById(id);
+		object = this.auditorCodeAuditRepository.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -67,28 +70,51 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 	@Override
 	public void validate(final CodeAudit object) {
-		Collection<AuditRecord> list = this.auditorAuditRecordRespository.findAllByCodeAuditId(object.getId());
-		assert object.getMark(list).getNumericMark() >= Mark.C.getNumericMark();
+		Collection<AuditRecord> list = this.auditorAuditRecordRepository.findAllByCodeAuditId(object.getId());
+		if (!super.getBuffer().getErrors().hasErrors("*")) {
+			super.state(!list.isEmpty() || object.getMark(list).getNumericMark() >= Mark.C.getNumericMark(), "*", "auditor.code-audit.error.publish.mark");
+
+			super.state(this.checkAllAuditRecordsArePublished(list), "*", "auditor.code-audit.error.publish.audit-records-published");
+		}
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
 		object.setDraftMode(false);
-		this.auditorCodeAuditRespository.save(object);
+		this.auditorCodeAuditRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
-
-		Auditor auditor;
-		auditor = object.getAuditor();
-
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
-		dataset.put("auditor", auditor);
+
+		Collection<Project> projects;
+		projects = this.auditorCodeAuditRepository.findAllProjects();	//TODO: cambiarlo por solo los projecto publicados
+
+		Collection<AuditRecord> list = this.auditorAuditRecordRepository.findAllByCodeAuditId(object.getId());
+		Mark mark = object.getMark(list);
+
+		SelectChoices choicesType;
+		choicesType = SelectChoices.from(CodeAuditType.class, object.getType());
+
+		SelectChoices choicesProject;
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link");
+		dataset.put("mark", mark);
+		dataset.put("types", choicesType);
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
 		super.getResponse().addData(dataset);
+	}
+
+	private boolean checkAllAuditRecordsArePublished(final Collection<AuditRecord> list) {
+		for (AuditRecord auditRecord : list)
+			if (auditRecord.getDraftMode())
+				return false;
+		return true;
 	}
 
 }

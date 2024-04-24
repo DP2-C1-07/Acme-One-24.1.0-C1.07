@@ -2,6 +2,7 @@
 package acme.features.auditor.codeaudit;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,12 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type");
 		dataset.put("mark", mark);
+		if (object.getDraftMode()) {
+			final Locale local = super.getRequest().getLocale();
+
+			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draftMode", "No");
 		super.getResponse().addData(dataset);
 	}
 }
