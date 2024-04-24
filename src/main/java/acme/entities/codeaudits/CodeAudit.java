@@ -3,6 +3,8 @@ package acme.entities.codeaudits;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 import javax.persistence.Column;
@@ -76,13 +78,27 @@ public class CodeAudit extends AbstractEntity {
 
 	@Transient
 	public Mark getMark(final Collection<AuditRecord> listOfAuditRecords) {
-		int sum = 0;
 		if (listOfAuditRecords.isEmpty())
 			return Mark.F_MINUS;
-		for (AuditRecord auditRecord : listOfAuditRecords)
-			sum += auditRecord.getMark().getNumericMark();
-		int media = sum / listOfAuditRecords.size();
-		return Mark.byNumericMark(media);
+
+		Map<Mark, Integer> count = new HashMap<>();
+		for (Mark mark : listOfAuditRecords.stream().map(AuditRecord::getMark).toList())
+			if (count.containsKey(mark))
+				count.put(mark, count.get(mark) + 1);
+			else
+				count.put(mark, 1);
+
+		Mark mode = null;
+		int maxCount = 0;
+		for (Map.Entry<Mark, Integer> entry : count.entrySet())
+			if (entry.getValue() == maxCount && entry.getKey().getNumericMark() < mode.getNumericMark())
+				mode = entry.getKey();
+			else if (entry.getValue() > maxCount) {
+				maxCount = entry.getValue();
+				mode = entry.getKey();
+			}
+
+		return mode;
 
 	}
 }

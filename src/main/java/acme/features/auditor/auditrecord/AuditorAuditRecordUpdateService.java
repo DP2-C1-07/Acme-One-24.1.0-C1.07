@@ -1,6 +1,7 @@
 
 package acme.features.auditor.auditrecord;
 
+import java.sql.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,11 +70,18 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			long diffInMili;
 			long diffInHour;
 
-			diffInMili = object.getPeriodEnd().getTime() - object.getPeriodBeginning().getTime();
-			diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
-			super.state(diffInHour >= 1, "periodEnd", "auditor.audit-record.error.duration");
-			super.state(object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
+			super.state(object.getPeriodEnd().after(Date.valueOf("2000-1-1")) || object.getPeriodEnd().equals(Date.valueOf("2000-1-1")), "periodEnd", "auditor.code-audit.error.executionDate");
+
+			if (object.getPeriodBeginning() != null) {
+				diffInMili = object.getPeriodEnd().getTime() - object.getPeriodBeginning().getTime();
+				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
+				super.state(diffInHour >= 1, "periodEnd", "auditor.audit-record.error.duration");
+				super.state(object.getPeriodBeginning() != null || object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
+			}
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("periodBeginning"))
+			super.state(object.getPeriodBeginning().after(Date.valueOf("2000-1-1")) || object.getPeriodBeginning().equals(Date.valueOf("2000-1-1")), "periodBeginning", "auditor.code-audit.error.executionDate");
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			AuditRecord existing;

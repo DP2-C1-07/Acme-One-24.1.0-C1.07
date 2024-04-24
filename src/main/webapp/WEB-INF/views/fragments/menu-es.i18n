@@ -60,6 +60,7 @@ master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.auditor = Detalles de auditor
 master.menu.user-account.risk = Listar riesgos
 
 # master.menu.any ############################################################
@@ -68,6 +69,10 @@ master.menu.any.list-claim = Listar demandas
 master.menu.any.list-project = Listar proyectos
 master.menu.any.list-code-audit = Listar auditorias de código
 master.menu.any.list-contract = Listar contratos
+
+
+# master.menu.authenticated ############################################################
+master.menu.authenticated = Autentificado
 
 # master.menu.manager ########################################################
 master.menu.manager = Manager

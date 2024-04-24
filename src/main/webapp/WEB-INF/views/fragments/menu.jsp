@@ -72,6 +72,10 @@
 			<acme:menu-suboption code="master.menu.client.list-contract" action="/client/contract/list-mine"/>
 			<acme:menu-suboption code="master.menu.client.dashboard" action="/client/client-dashboard/show"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+						<acme:menu-suboption code="master.menu.user-account.risk" action="/authenticated/risk/list"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -89,7 +93,6 @@
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-client" action="/authenticated/client/create" access="!hasRole('Client')"/>
 			<acme:menu-suboption code="master.menu.user-account.client" action="/authenticated/client/update" access="hasRole('Client')"/>
-			<acme:menu-suboption code="master.menu.user-account.risk" action="/authenticated/risk/list"/>
 			
 		</acme:menu-option>
 
