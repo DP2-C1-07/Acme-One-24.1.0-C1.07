@@ -1,6 +1,8 @@
 
 package acme.features.client.progressLogs;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +75,8 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 			super.state(existing == null, "recordId", "client.progress-log.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
+			super.state(object.getRegistrationMoment().after(Date.valueOf("2000-1-1")), "registrationMoment", "client.progress-log.form.error.executionDate");
 	}
 
 	@Override

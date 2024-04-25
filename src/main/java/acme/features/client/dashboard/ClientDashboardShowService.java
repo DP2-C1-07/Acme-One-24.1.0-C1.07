@@ -86,7 +86,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	
 	private Double countProgressLogs(Collection<Double> progressLogsCompleteness, double lowerBound, double upperBound) {
 	    long count = progressLogsCompleteness.stream()
-	                     .filter(log -> log >= lowerBound && log < upperBound)
+	                     .filter(log -> log >= lowerBound/100 && log < upperBound/100)
 	                     .count();
 	    return (double) count;
 	}
