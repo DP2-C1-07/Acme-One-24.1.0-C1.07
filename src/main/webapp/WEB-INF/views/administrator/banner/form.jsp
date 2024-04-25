@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-moment code="administrator.banner.form.label.instantiationLastUpdateMoment" path="instantiationLastUpdateMoment"/>	
+	<acme:input-moment readonly="true" code="administrator.banner.form.label.instantiationLastUpdateMoment" path="instantiationLastUpdateMoment"/>	
 	<acme:input-moment code="administrator.banner.form.label.displayPeriodBeginning" path="displayPeriodBeginning"/>
 	<acme:input-moment code="administrator.banner.form.label.displayPeriodEnd" path="displayPeriodEnd"/>
 	<acme:input-url code="administrator.banner.form.label.pictureLink" path="pictureLink"/>

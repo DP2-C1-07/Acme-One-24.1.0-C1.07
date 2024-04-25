@@ -14,6 +14,10 @@ administrator.banner.form.button.delete = Borrar
 
 administrator.banner.form.error.DisplayPeriodNotAfterILUMoment = El periodo de exhibición debe ser posterior al momento de instanciación/última actualización
 administrator.banner.form.error.too-close = El fin del periodo de exhibición debe ser al menos una semana posterior al inicio
+administrator.banner.form.error.before-min-date = Esta fecha es anterior a la fecha mínima soportada por el sistema
+administrator.banner.form.error.after-max-date = Esta fecha es posterior a la fecha máxima soportada por el sistema
+administrator.banner.form.error.no-time-for-min-period-b = Esta fecha no permite una duración mínima de 7 días con un fin previo a la fecha máxima soportada por el sistema
+administrator.banner.form.error.no-time-for-min-period-e = Esta fecha no permite una duración mínima de 7 días con un inicio posterior a la fecha mínima soportada por el sistema
 
 administrator.banner.list.label.instantiationLastUpdateMoment = Momento de instanciación/última actualización
 administrator.banner.list.label.displayPeriodBeginning = Inicio del periodo de exhibición

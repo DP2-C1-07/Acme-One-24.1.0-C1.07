@@ -50,6 +50,11 @@ master.menu.auditor = Auditor
 master.menu.auditor.code-audit = Mis auditorias de código
 master.menu.auditor.auditor-dashboard = Panel de datos de auditor
 
+#master.menu.developer ##########################################################
+master.menu.developer = Desarrollador
+master.menu.developer.training-modules = Mis módulos de entrenamiento
+master.menu.developer.developer-dashboard = Panel de datos del desarrollador
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

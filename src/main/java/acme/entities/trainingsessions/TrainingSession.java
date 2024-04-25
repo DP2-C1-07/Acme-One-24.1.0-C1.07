@@ -73,6 +73,6 @@ public class TrainingSession extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 
-	boolean						draft;
+	public boolean				draft;
 
 }
