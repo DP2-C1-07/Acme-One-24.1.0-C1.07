@@ -16,8 +16,7 @@ public class ClientDashboard extends AbstractForm{
 
 	// Attributes -------------------------------------------------------------
 	
-	//TODO: restrict map keys to 25, 50, 75
-	private Map<Integer, Double> progressLogByCompletenessRate;
+	private Map<String, Double> progressLogByCompletenessRate;
 	private Double averageBudget;
 	private Double deviationBudget;
 	private Double minimumBudget;
