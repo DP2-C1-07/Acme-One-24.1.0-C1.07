@@ -1,31 +1,31 @@
 key,reference,identificationDate,impact,probability,description,link
-risk-01,R-001,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-02,R-002,2000/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-03,R-003,2000/01/01 00:01,5,0.5,Risk description,https://www.google.com
-risk-04,R-004,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-05,R-005,2022/07/29 23:59,5,0.5,Risk description,https://www.google.com
-risk-06,R-006,2022/07/30 00:00,5,0.5,Risk description,https://www.google.com
-risk-07,R-007,2010/01/01 00:00,0,0.5,Risk description,https://www.google.com
-risk-08,R-008,2010/01/01 00:00,1,0.5,Risk description,https://www.google.com
-risk-09,R-009,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-10,R-010,2010/01/01 00:00,9,0.5,Risk description,https://www.google.com
-risk-11,R-011,2010/01/01 00:00,10,0.5,Risk description,https://www.google.com
-risk-12,R-012,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-13,R-013,2010/01/01 00:00,5,0.00,Risk description,https://www.google.com
-risk-14,R-014,2010/01/01 00:00,5,0.01,Risk description,https://www.google.com
-risk-15,R-015,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-16,R-016,2010/01/01 00:00,5,0.99,Risk description,https://www.google.com
-risk-17,R-017,2010/01/01 00:00,5,1.00,Risk description,https://www.google.com
-risk-18,R-018,2010/01/01 00:00,5,0.5,R,https://www.google.com
-risk-19,R-019,2010/01/01 00:00,5,0.5,Ri,https://www.google.com
-risk-20,R-020,2010/01/01 00:00,5,0.5,abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwx,https://www.google.com
-risk-21,R-021,2010/01/01 00:00,5,0.5,abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxy,https://www.google.com
-risk-22,R-022,2010/01/01 00:00,5,0.5,サンプルテキスト,https://www.google.com
-risk-23,R-023,2010/01/01 00:00,5,0.5,требовать,https://www.google.com
-risk-24,R-024,2010/01/01 00:00,5,0.5,<script>console.log('javascript')</script>,https://www.google.com
-risk-25,R-025,2010/01/01 00:00,5,0.5,or 'A'='A,https://www.g.es
-risk-26,R-026,2010/01/01 00:00,5,0.5,Risk description,https://www.go.ru
-risk-27,R-027,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-28,R-028,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-29,R-029,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
-risk-30,R-030,2010/01/01 00:00,5,0.5,Risk description,https://www.google.com
+risk-01,R-001,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-02,R-002,2000/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-03,R-003,2000/01/01 00:01,50,0.5,Risk description,https://www.google.com
+risk-04,R-004,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-05,R-005,2022/07/29 23:59,50,0.5,Risk description,https://www.google.com
+risk-06,R-006,2022/07/30 00:00,50,0.5,Risk description,https://www.google.com
+risk-07,R-007,2010/01/01 00:00,0.0,0.5,Risk description,https://www.google.com
+risk-08,R-008,2010/01/01 00:00,0.01,0.5,Risk description,https://www.google.com
+risk-09,R-009,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-10,R-010,2010/01/01 00:00,99.99,0.5,Risk description,https://www.google.com
+risk-11,R-011,2010/01/01 00:00,100,0.5,Risk description,https://www.google.com
+risk-12,R-012,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-13,R-013,2010/01/01 00:00,50,0.00,Risk description,https://www.google.com
+risk-14,R-014,2010/01/01 00:00,50,0.01,Risk description,https://www.google.com
+risk-15,R-015,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-16,R-016,2010/01/01 00:00,50,0.99,Risk description,https://www.google.com
+risk-17,R-017,2010/01/01 00:00,50,1.00,Risk description,https://www.google.com
+risk-18,R-018,2010/01/01 00:00,50,0.5,R,https://www.google.com
+risk-19,R-019,2010/01/01 00:00,50,0.5,Ri,https://www.google.com
+risk-20,R-020,2010/01/01 00:00,50,0.5,abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwx,https://www.google.com
+risk-21,R-021,2010/01/01 00:00,50,0.5,abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxy,https://www.google.com
+risk-22,R-022,2010/01/01 00:00,50,0.5,サンプルテキスト,https://www.google.com
+risk-23,R-023,2010/01/01 00:00,50,0.5,требовать,https://www.google.com
+risk-24,R-024,2010/01/01 00:00,50,0.5,<script>console.log('javascript')</script>,https://www.google.com
+risk-25,R-025,2010/01/01 00:00,50,0.5,' or 'A'='A,https://www.g.es
+risk-26,R-026,2010/01/01 00:00,50,0.5,Risk description,https://www.go.ru
+risk-27,R-027,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-28,R-028,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-29,R-029,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com
+risk-30,R-030,2010/01/01 00:00,50,0.5,Risk description,https://www.google.com

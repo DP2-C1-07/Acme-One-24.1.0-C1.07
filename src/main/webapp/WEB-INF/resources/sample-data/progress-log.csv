@@ -13,7 +13,7 @@ progressLog-11,PG-FG-0011,0.50,abcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwx
 progressLog-12,PG-VB-0012,0.50,サンプル,2010/01/01 00:00,Responsible Person,contract-12
 progressLog-13,PG-AS-0013,0.50,требовать,2010/01/01 00:00,Responsible Person,contract-13
 progressLog-14,PG-ZX-0014,0.50,<script>console.log('javascript')</script>,2010/01/01 00:00,Responsible Person,contract-14
-progressLog-15,PG-QW-0015,0.50,or 'A'='A,2010/01/01 00:00,Responsible Person,contract-15
+progressLog-15,PG-QW-0015,0.50,' or 'A'='A,2010/01/01 00:00,Responsible Person,contract-15
 progressLog-16,PG-PL-0016,0.50,Comment,2000/01/01 00:00,Responsible Person,contract-13
 progressLog-17,PG-OK-0017,0.50,Comment,2000/01/01 00:01,Responsible Person,contract-12
 progressLog-18,PG-RE-0018,0.50,Comment,2010/01/01 00:00,Responsible Person,contract-13
