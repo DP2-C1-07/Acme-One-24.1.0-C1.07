@@ -41,7 +41,8 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 	@Override
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
-		Dataset dataset = new Dataset();
+		Dataset dataset = super.unbind(object, "project", "userStory");
+		dataset.put("project", object.getProject().getTitle());
 		dataset.put("userStory", object.getUserStory().getTitle());
 		super.getResponse().addData(dataset);
 	}

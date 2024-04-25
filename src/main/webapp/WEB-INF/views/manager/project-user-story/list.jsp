@@ -8,4 +8,7 @@
     <acme:list-column code="manager.project-user-story.list.label.project" path="project"/>
     <acme:list-column code="manager.project-user-story.list.label.userStory" path="userStory"/>
     </acme:list>
-    <acme:submit code="manager.project-user-story.list.button.create" action="/manager/project-user-story/create"/>
+    
+    <jstl:if test="${_command == 'list'}">
+    <acme:button code="manager.project-user-story.list.button.create" action="/manager/project-user-story/create"/>
+</jstl:if>

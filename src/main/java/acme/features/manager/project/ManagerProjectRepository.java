@@ -13,7 +13,6 @@ import acme.entities.contract.Contract;
 import acme.entities.progressLog.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
-import acme.entities.risk.Risk;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Manager;
 

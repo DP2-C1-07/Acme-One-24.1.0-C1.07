@@ -63,13 +63,13 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
-		/*
-		 * int managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		 * Manager manager = this.repository.findOneManagerById(managerId);
-		 * 
-		 * boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
-		 * super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
-		 */
+
+		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		Manager manager = this.repository.findOneManagerById(managerId);
+
+		boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
+		super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
+
 	}
 
 	@Override
@@ -91,12 +91,13 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		Collection<UserStory> userStories = this.repository.findUserStoriesByManagerId(managerId);
 		SelectChoices userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());
 
-		Dataset dataset = new Dataset();
+		Dataset dataset = super.unbind(object, "project", "userStory");
+
 		dataset.put("project", projectChoices.getSelected().getKey());
 		dataset.put("projects", projectChoices);
 		dataset.put("userStory", userStoryChoices.getSelected().getKey());
 		dataset.put("userStories", userStoryChoices);
-
+		// super.getResponse().addGlobal("id", object.getId());
 		super.getResponse().addData(dataset);
 	}
 }
