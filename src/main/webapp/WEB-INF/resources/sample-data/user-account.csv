@@ -47,6 +47,7 @@ user-account-developer-01,true,"UserIdentity{name: 'Alfonso', surname: 'Alonso',
 user-account-developer-02,true,"UserIdentity{name: 'Alfonso', surname: 'Alonso', email: 'alfalolan@acme.com'}",developer2,developer2
 user-account-client-01,true,"UserIdentity{name: 'Marco', surname: 'Anarmo', email: 'mararnmon@acme.com'}",client1,client1
 user-account-client-02,true,"UserIdentity{name: 'Marco', surname: 'Arnaiz', email: 'mararnmon2@acme.com'}",client2,client2
+user-account-client-03,true,"UserIdentity{name: 'Marco', surname: 'Arnaiz', email: 'mararnmon3@acme.com'}",client3,client3
 user-account-auditor-01,true,"UserIdentity{name: 'Juan', surname: 'Garcia', email: 'juagarcar@acme.com'}",auditor1,auditor1
 user-account-auditor-02,true,"UserIdentity{name: 'Juan', surname: 'Garcia', email: 'juagarcar@acme.com'}",auditor2,auditor2
 user-account-sponsor-01,true,"UserIdentity{name: 'Alberto', surname: 'Mimbrero', email: 'albsanmim@acme.com'}",sponsor1,sponsor1

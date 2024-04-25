@@ -6,7 +6,6 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contract.Contract;
 import acme.entities.progressLog.ProgressLog;
@@ -22,8 +21,10 @@ public interface ClientDashboardRepository extends AbstractRepository {
 
 	@Query("select c from Contract c where c.client.id = :clientId")
 	Collection<Contract> findManyContractsByClientId(int clientId);
-
-	@Query("select c.budget from Contract c where c.client.id = :clientId and c.draftMode = false")
-	Collection<Money> findManyBudgetsByClientId(int clientId);
 	
+	@Query("select c.budget.amount from Contract c where c.client.id = :clientId and c.draftMode = false")
+	Collection<Double> findBudgetAmountsByClientId(int clientId);
+	
+	@Query("select pl.completeness from ProgressLog pl where pl.contract.client.id = :clientId")
+	Collection<Double> findProgressLogsCompletenessByClientId(int clientId);
 }

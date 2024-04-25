@@ -8,6 +8,10 @@ client.dashboard.form.title.general-indicators = Indicadores generales
 
 #Valores del formulario
 
+client.dashboard.form.label.progress-log-less-25 = Registros de progreso con una tasa de finalización inferior a 25
+client.dashboard.form.label.progress-log-between-25-50 = Registros de progreso con una tasa de finalización entre 25 y 50
+client.dashboard.form.label.progress-log-between-50-75 = Registros de progreso con una tasa de finalización entre 50 y 75
+client.dashboard.form.label.progress-log-more-75 = Registros de progreso con una tasa de finalización superior a 75
 client.dashboard.form.label.contract-average = Presupuesto promedio de contratos publicados
 client.dashboard.form.label.contract-deviation = Desviación de los contratos publicados
 client.dashboard.form.label.contract-minimum = Presupuesto mínimo de cada contrato publicado
