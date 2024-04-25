@@ -21,6 +21,10 @@ developer.training-module.form.error.duplicated = Este código ya existe
 developer.training-module.form.error.update-before-creation = El momento de actualización debe ser posterior al de creación.
 developer.training-module.form.error.all-training-sessions-must-be-published = Todas las sesiones de entrenamiento deben ser publicadas antes de publicar el módulo.
 developer.training-module.form.error.at-least-one-training-session = El módulo de entrenamiento debe tener al menos una sesión de entrenamiento antes de publicarse.
+developer.training-module.form.error.delete-published = Un módulo de entrenamiento publicado no puede ser eliminado
+developer.training-module.form.error.update-published = Un módulo de entrenamiento publicado no puede ser actualizado
+
+
 developer.training-module.list.label.code = Código
 developer.training-module.list.label.creation-moment = Momento de Creación
 developer.training-module.list.label.difficulty-level = Nivel de Dificultad
