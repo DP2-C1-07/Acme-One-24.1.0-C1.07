@@ -43,6 +43,8 @@ public class ManagerProjectUserStoryListMineService extends AbstractService<Mana
 		assert object != null;
 		Dataset dataset = new Dataset();
 		dataset.put("userStory", object.getUserStory().getTitle());
+		dataset.put("project", object.getProject().getTitle());
+		super.getResponse().addGlobal("aaaid", object.getId());
 		super.getResponse().addData(dataset);
 	}
 

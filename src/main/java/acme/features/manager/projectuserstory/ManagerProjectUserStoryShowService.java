@@ -10,6 +10,7 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.userstories.UserStory;
 import acme.roles.Manager;
@@ -37,9 +38,9 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		ProjectUserStory assignment = this.repository.findOneProjectUserStoryById(id);
+		ProjectUserStory projectUserStory = this.repository.findOneProjectUserStoryById(id);
 
-		super.getBuffer().addData(assignment);
+		super.getBuffer().addData(projectUserStory);
 	}
 
 	@Override
@@ -52,10 +53,15 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		Collection<UserStory> userStories = this.repository.findUserStoriesByManagerId(managerId);
 		SelectChoices userStoryChoices = SelectChoices.from(userStories, "title", object.getUserStory());
 
-		Dataset dataset = new Dataset();
+		Collection<Project> projects = this.repository.findProjectsByManagerId(managerId);
+		SelectChoices projectChoices = SelectChoices.from(projects, "title", object.getProject());
+
+		Dataset dataset = super.unbind(object, "project", "userStory");
+		dataset.put("project", object.getProject().getId());
+		dataset.put("projects", projectChoices);
 		dataset.put("userStory", object.getUserStory().getId());
 		dataset.put("userStories", userStoryChoices);
-
+		// super.getResponse().addGlobal("id", object.getId());
 		super.getResponse().addData(dataset);
 	}
 
