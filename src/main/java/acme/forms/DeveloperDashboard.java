@@ -14,10 +14,10 @@ public class DeveloperDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-	Integer						totalTrainingModulesWithUpdateMoment;
-	Integer						totalTrainingSessionsWithLink;
+	Double						totalTrainingModulesWithUpdateMoment;
+	Double						totalTrainingSessionsWithLink;
 	Double						trainingModuleEstimatedTimeAverage;
 	Double						trainingModuleEstimatedTimeDeviation;
-	Integer						trainingModuleMinimunEstimatedTime;
-	Integer						trainingModuleMaximumEstimatedTime;
+	Double						trainingModuleMinimunEstimatedTime;
+	Double						trainingModuleMaximumEstimatedTime;
 }
