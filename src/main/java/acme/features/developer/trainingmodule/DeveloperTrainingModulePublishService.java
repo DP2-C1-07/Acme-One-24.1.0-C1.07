@@ -1,6 +1,7 @@
 
-package acme.features.developer.trainingmodules;
+package acme.features.developer.trainingmodule;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,28 +13,29 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingmodules.TrainingModuleDifficultyLevel;
+import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
 
-	// AbstractService interface -------------------------------------
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int trainingModuleId;
 		TrainingModule trainingModule;
 		Developer developer;
 
-		masterId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		trainingModuleId = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(trainingModuleId);
 		developer = trainingModule == null ? null : trainingModule.getDeveloper();
 		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(developer);
 
@@ -69,6 +71,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+		Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
 
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(MomentHelper.isAfterOrEqual(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.update-before-creation");
@@ -79,6 +82,15 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 			existing = this.repository.findOneTrainingModuleByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicated");
 		}
+		if (trainingSessions.isEmpty())
+			super.state(true, "draft", "developer.training-module.form.error.at-least-one-training-session");
+		if (!trainingSessions.isEmpty()) {
+			Boolean allTSPublished;
+
+			allTSPublished = trainingSessions.stream().allMatch(t -> !t.draft);
+			super.state(!allTSPublished, "draft", "developer.training-module.form.error.all-training-sessions-must-be-published");
+
+		}
 
 	}
 
@@ -86,6 +98,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
+		object.setDraft(false);
 		this.repository.save(object);
 	}
 
