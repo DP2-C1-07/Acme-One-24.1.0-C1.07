@@ -15,7 +15,7 @@ import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionUpdateService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionPublishService extends AbstractService<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -108,6 +108,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void perform(final TrainingSession object) {
 		assert object != null;
 
+		object.setDraft(false);
 		this.repository.save(object);
 	}
 

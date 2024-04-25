@@ -89,7 +89,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			Boolean allTSPublished;
 
 			allTSPublished = trainingSessions.stream().allMatch(t -> !t.draft);
-			super.state(!allTSPublished, "draft", "developer.training-module.form.error.all-training-sessions-must-be-published");
+			super.state(allTSPublished, "draft", "developer.training-module.form.error.all-training-sessions-must-be-published");
 
 		}
 

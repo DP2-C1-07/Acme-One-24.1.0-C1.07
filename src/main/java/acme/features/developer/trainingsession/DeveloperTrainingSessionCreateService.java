@@ -1,12 +1,15 @@
 
 package acme.features.developer.trainingsession;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
@@ -26,12 +29,12 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingSessionId;
+		int masterId;
 		TrainingModule trainingModule;
 
-		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(trainingSessionId);
-		status = trainingModule != null && (!trainingModule.isDraft() || super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()));
+		masterId = super.getRequest().getData("masterId", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -56,13 +59,55 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "initiateMoment", "finalizationMoment", "location", "instructor", "contactEmail", "link", "trainingModule");
+		super.bind(object, "code", "initiateMoment", "finalizationMoment", "location", "instructor", "contactEmail", "link");
 		object.setDraft(true);
 	}
 
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
+
+		Date MIN_DATE;
+		Date MAX_DATE;
+
+		MIN_DATE = MomentHelper.parse("2000-01-01 00:00", "yyyy-MM-dd HH:mm");
+		MAX_DATE = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
+
+		if (!super.getBuffer().getErrors().hasErrors("initiateMoment"))
+			super.state(MomentHelper.isAfterOrEqual(object.getInitiateMoment(), MIN_DATE), "initiateMoment", "developer.training-session.form.error.before-min-date");
+
+		if (!super.getBuffer().getErrors().hasErrors("initiateMoment"))
+			super.state(MomentHelper.isBeforeOrEqual(object.getInitiateMoment(), MAX_DATE), "initiateMoment", "developer.training-session.form.error.after-max-date");
+
+		if (!super.getBuffer().getErrors().hasErrors("initiateMoment"))
+			super.state(MomentHelper.isBeforeOrEqual(object.getInitiateMoment(), MomentHelper.deltaFromMoment(MAX_DATE, -7, ChronoUnit.DAYS)), "initiateMoment", "developer.training-session.form.error.no-time-for-min-period-i");
+
+		if (!super.getBuffer().getErrors().hasErrors("initiateMoment"))
+			super.state(MomentHelper.isAfterOrEqual(object.getInitiateMoment(), MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS)), "initiateMoment",
+				"developer.training-session.form.error.initiate-one-week-after-tm-creation");
+
+		if (!super.getBuffer().getErrors().hasErrors("finalizationMoment"))
+			super.state(MomentHelper.isAfterOrEqual(object.getFinalizationMoment(), MIN_DATE), "finalizationMoment", "developer.training-session.form.error.before-min-date");
+
+		if (!super.getBuffer().getErrors().hasErrors("finalizationMoment"))
+			super.state(MomentHelper.isBeforeOrEqual(object.getFinalizationMoment(), MAX_DATE), "finalizationMoment", "developer.training-session.form.error.after-max-date");
+
+		if (!super.getBuffer().getErrors().hasErrors("finalizationMoment"))
+			super.state(MomentHelper.isAfterOrEqual(object.getFinalizationMoment(), MomentHelper.deltaFromMoment(MIN_DATE, 7, ChronoUnit.DAYS)), "finalizationMoment", "developer.training-session.form.error.no-time-for-min-period-f");
+
+		if (!super.getBuffer().getErrors().hasErrors("initiateMoment") && !super.getBuffer().getErrors().hasErrors("finalizationMoment")) {
+			Date minimumDisplayPeriod;
+			minimumDisplayPeriod = MomentHelper.deltaFromMoment(object.getInitiateMoment(), 7, ChronoUnit.DAYS);
+
+			super.state(MomentHelper.isAfterOrEqual(object.getFinalizationMoment(), minimumDisplayPeriod), "finalizationMoment", "developer.training-session.form.error.too-close");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingSession existing;
+
+			existing = this.repository.findOneTrainingSessionByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "developer.training-session.form.error.duplicated");
+		}
 	}
 
 	@Override

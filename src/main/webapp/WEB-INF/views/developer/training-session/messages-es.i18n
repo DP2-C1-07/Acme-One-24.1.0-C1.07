@@ -1,28 +1,32 @@
-# messages-es.i18n
-#
-# Copyright (C) 2012-2024 Rafael Corchuelo.
-#
-# In keeping with the traditional purpose of furthering education and research, it is
-# the policy of the copyright owner to permit non-commercial use and redistribution of
-# this software. It has been tested carefully, but it is not guaranteed for any particular
-# purposes.  The copyright owner does not offer any warranties or representations, nor do
-# they accept any liabilities with respect to them.
+developer.training-session.form.title = Detalles de las sesiones de entrenamiento
+developer.training-session.list.title = Listado de las sesiones de entrenamiento
 
-employer.duty.form.title = Detalles de responsabilidad
-employer.duty.list.title = Lista de responsabilidades
+developer.training-session.form.label.code = Código:
+developer.training-session.form.label.initiateMoment = Momento de inicio: 
+developer.training-session.form.label.finalizationMoment = Momento de fin:
+developer.training-session.form.label.location = Localización:
+developer.training-session.form.label.instructor = Instructor:
+developer.training-session.form.label.contactEmail = Email de contacto:
+developer.training-session.form.label.link = Enlace (Opcional):
+developer.training-session.form.label.draft = Mode borrador:
 
-employer.duty.form.label.title = Título:
-employer.duty.form.label.description = Descripción:
-employer.duty.form.label.workLoad = Carga de trabajo:
-employer.duty.form.label.moreInfo = Más información: (Opcional)
+developer.training-session.form.button.create = Crear		
+developer.training-session.form.button.update = Actualizar
+developer.training-session.form.button.delete = Borrar
+developer.training-session.form.button.publish = Publicar
 
-employer.duty.form.button.create = Crear	
-employer.duty.form.button.update = Actualizar
-employer.duty.form.button.delete = Borrar
+developer.training-session.form.error.duplicated = Este código ya existe
+developer.training-session.form.error.initiate-one-week-after-tm-creation = El momento de inicio debe ser al menos 7 días posterior al momento de creación del módulo de entrenamiento
+developer.training-session.form.error.too-close = El momento de finalización debe ser al menos 7 días posterior al momento de inicio
+developer.training-session.form.error.before-min-date = Esta fecha es anterior a la fecha mínima soportada por el sistema
+developer.training-session.form.error.after-max-date = Esta fecha es posterior a la fecha máxima soportada por el sistema
+developer.training-session.form.error.no-time-for-min-period-i = Esta fecha no permite una duración mínima de 7 días con un fin previo a la fecha máxima soportada por el sistema
+developer.training-session.form.error.no-time-for-min-period-f = Esta fecha no permite una duración mínima de 7 días con un inicio posterior a la fecha mínima soportada por el sistema
 
-employer.duty.form.placeholder.workLoad = 0.00 - 100.00
+developer.training-session.list.label.code = Código
+developer.training-session.list.label.initiateMoment = Momento de inicio
+developer.training-session.list.label.finalizationMoment = Momento de fin
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.draft = Modo Borrador
 
-employer.duty.list.label.title = Título
-employer.duty.list.label.workLoad = Carga
-
-employer.duty.list.button.create = Crear
+developer.training-session.list.button.create = Crear

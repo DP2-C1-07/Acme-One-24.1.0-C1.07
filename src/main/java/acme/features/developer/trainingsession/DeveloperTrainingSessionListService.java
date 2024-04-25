@@ -2,6 +2,7 @@
 package acme.features.developer.trainingsession;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,13 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "initiateMoment", "finalizationMoment", "location", "instructor", "contactEmail", "link", "trainingModule", "draft");
+
+		if (object.isDraft()) {
+			final Locale local = super.getRequest().getLocale();
+
+			dataset.put("draft", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draft", "No");
 
 		super.getResponse().addData(dataset);
 	}

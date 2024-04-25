@@ -28,5 +28,6 @@ developer.training-module.list.label.code = Code
 developer.training-module.list.label.creation-moment = Creation Moment
 developer.training-module.list.label.difficulty-level = Difficulty Level
 developer.training-module.list.label.total-time = Estimated Total Time
+developer.training-module.list.label.total-draft = Draft Mode
 
 developer.training-module.list.button.create = Create

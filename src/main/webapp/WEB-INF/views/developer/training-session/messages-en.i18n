@@ -1,28 +1,32 @@
-# messages-en.i18n
-#
-# Copyright (C) 2012-2024 Rafael Corchuelo.
-#
-# In keeping with the traditional purpose of furthering education and research, it is
-# the policy of the copyright owner to permit non-commercial use and redistribution of
-# this software. It has been tested carefully, but it is not guaranteed for any particular
-# purposes.  The copyright owner does not offer any warranties or representations, nor do
-# they accept any liabilities with respect to them.
+developer.training-session.form.title = Training Session form
+developer.training-session.list.title = Listing of training sessions
 
-employer.duty.form.title = Duty form
-employer.duty.list.title = Listing of duties
+developer.training-session.form.label.code = Code:
+developer.training-session.form.label.initiateMoment = Initiate Moment:
+developer.training-session.form.label.finalizationMoment = Finalization Moment:
+developer.training-session.form.label.location = Location:
+developer.training-session.form.label.instructor = Instructor:
+developer.training-session.form.label.contactEmail = Contact Email:
+developer.training-session.form.label.link = Link (Optional):
+developer.training-session.form.label.draft = Draft Mode:
 
-employer.duty.form.label.title = Title:
-employer.duty.form.label.description = Description:
-employer.duty.form.label.workLoad = Work load:
-employer.duty.form.label.moreInfo = More info: (Optional)
+developer.training-session.form.button.create = Create		
+developer.training-session.form.button.update = Update
+developer.training-session.form.button.delete = Delete
+developer.training-session.form.button.publish = Publish
 
-employer.duty.form.button.create = Create		
-employer.duty.form.button.update = Update
-employer.duty.form.button.delete = Delete
+developer.training-session.form.error.duplicated = This code is taken
+developer.training-session.form.error.initiate-one-week-after-tm-creation = Initiate moment must be at least 7 days after training module creation moment
+developer.training-session.form.error.too-close = Finalization moment end must be at least a week after display period beginning
+developer.training-session.form.error.before-min-date = This date is before system minimum supported date
+developer.training-session.form.error.after-max-date = This date is after system maximum supported date
+developer.training-session.form.error.no-time-for-min-period-i = This date don't allow a minimum duration of 7 days with an end before the system maximum supported date
+developer.training-session.form.error.no-time-for-min-period-f = This date don't allow a minimum duration of 7 days with a beginning after the system minimum supported date
 
-employer.duty.form.placeholder.workLoad = 0.00 - 100.00
+developer.training-session.list.label.code = Code
+developer.training-session.list.label.initiateMoment = Initiate Moment
+developer.training-session.list.label.finalizationMoment = Finalization Moment
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.draft = Draft Mode
 
-employer.duty.list.label.title = Title
-employer.duty.list.label.workLoad = Work load
-
-employer.duty.list.button.create = Create
+developer.training-session.list.button.create = Create

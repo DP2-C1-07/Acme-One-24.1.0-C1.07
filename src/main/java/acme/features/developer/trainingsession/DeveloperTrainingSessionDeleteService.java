@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
@@ -27,11 +26,11 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 	public void authorise() {
 		boolean status;
 		int trainingSessionId;
-		TrainingModule trainingModule;
+		TrainingSession trainingSession;
 
 		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(trainingSessionId);
-		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		trainingSession = this.repository.findOneTrainingSessionById(trainingSessionId);
+		status = trainingSession != null && trainingSession.isDraft() && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
