@@ -50,6 +50,11 @@ master.menu.auditor = Auditor
 master.menu.auditor.code-audit = My code audits
 master.menu.auditor.auditor-dashboard = Auditor dashboard
 
+#master.menu.developer ##########################################################
+master.menu.developer = Developer
+master.menu.developer.training-modules = My training modules
+master.menu.developer.developer-dashboard = Developer dashboard
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

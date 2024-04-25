@@ -36,9 +36,14 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.banners" action="/administrator/banner/list"/>
 		</acme:menu-option>
-
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training-module/list-mine"/>
+			<acme:menu-suboption code="master.menu.developer.developer-dashboard" action="/developer/developer-dashboard/show"/>		
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
