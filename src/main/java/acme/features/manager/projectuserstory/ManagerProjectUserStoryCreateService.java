@@ -28,7 +28,13 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Principal principal = super.getRequest().getPrincipal();
+		Manager manager = this.repository.findOneManagerById(principal.getActiveRoleId());
+
+		boolean status = super.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -41,25 +47,34 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void bind(final ProjectUserStory object) {
 		assert object != null;
+
 		int projectId = super.getRequest().getData("project", int.class);
-		int userStoryId = super.getRequest().getData("userstory", int.class);
+		int userStoryId = super.getRequest().getData("userStory", int.class);
 
 		Project project = this.repository.findOneProjectById(projectId);
 		UserStory userStory = this.repository.findOneUserStoryById(userStoryId);
 
 		object.setProject(project);
 		object.setUserStory(userStory);
+
+		super.bind(object, "project", "userStory");
 	}
 
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
+		/*
+		 * int managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		 * Manager manager = this.repository.findOneManagerById(managerId);
+		 * 
+		 * boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
+		 * super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
+		 */
 	}
 
 	@Override
 	public void perform(final ProjectUserStory object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
@@ -79,8 +94,8 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		Dataset dataset = new Dataset();
 		dataset.put("project", projectChoices.getSelected().getKey());
 		dataset.put("projects", projectChoices);
-		dataset.put("userstory", userStoryChoices.getSelected().getKey());
-		dataset.put("userstories", userStoryChoices);
+		dataset.put("userStory", userStoryChoices.getSelected().getKey());
+		dataset.put("userStories", userStoryChoices);
 
 		super.getResponse().addData(dataset);
 	}

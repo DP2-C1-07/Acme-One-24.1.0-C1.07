@@ -39,9 +39,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		Principal principal = super.getRequest().getPrincipal();
 		manager = this.managerProjectRepository.findManagerById(principal.getActiveRoleId());
 
-		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(projectId);
-
-		status = project != null && project.isDraftMode() && !userStories.isEmpty() && userStories.stream().noneMatch(u -> u.isDraftMode()) && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -73,6 +71,14 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
 			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
 		}
+
+		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(object.getId());
+		boolean conditionUserStory = !userStories.isEmpty() && userStories.stream().noneMatch(u -> u.isDraftMode());
+		super.state(conditionUserStory, "*", "manager.project.publish.error.draft-mode");
+
+		boolean conditionProject = object.isDraftMode();
+		super.state(conditionProject, "*", "manager.project.publish.error.draft-mode");
+
 	}
 
 	@Override
@@ -87,7 +93,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager");
+		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "manager", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

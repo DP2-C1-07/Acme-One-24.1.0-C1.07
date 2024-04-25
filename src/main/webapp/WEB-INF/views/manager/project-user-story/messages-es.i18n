@@ -1,5 +1,14 @@
 manager.project-user-story.form.title = Asocia historias de usuario a un proyecto
+manager.project-user-story.list.title = Lista de asignaciones
 
-manager.project-user-story.form.label.project = Seleccionar proyecto
-manager.project-user-story.form.label.user-stories = Seleccionar historia de usuario
-manager.project-user-story.form.button.create = Asociar
+manager.project-user-story.form.label.project = Selecciona proyecto
+manager.project-user-story.form.label.user-stories = Selecciona historia de usuario
+
+manager.project-user-story.form.button.create = Crear
+manager.project-user-story.form.button.delete = Borrar
+manager.project-user-story.form.button.update = Actualizar
+
+manager.project-user-story.list.label.project = Proyecto
+manager.project-user-story.list.label.user-stories = Historia de usuario
+
+manager.project-user-story.list.button.create = Crear

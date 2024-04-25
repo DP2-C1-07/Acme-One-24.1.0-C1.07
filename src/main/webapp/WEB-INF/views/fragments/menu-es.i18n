@@ -67,6 +67,7 @@ master.menu.any = Any
 master.menu.any.list-claim = Listar demandas
 master.menu.any.list-project = Listar proyectos
 master.menu.any.list-code-audit = Listar auditorias de código
+master.menu.any.list-contract = Listar contratos
 
 # master.menu.manager ########################################################
 master.menu.manager = Manager

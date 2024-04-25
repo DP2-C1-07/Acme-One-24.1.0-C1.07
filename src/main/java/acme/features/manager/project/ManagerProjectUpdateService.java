@@ -32,7 +32,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.managerProjectRepository.findOneProjectById(projectId);
 
-		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -65,6 +65,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 			existing = this.managerProjectRepository.findOneProjectByCode(object.getCode());
 			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "manager.project.publish.error.duplicated");
 		}
+
+		boolean condition = object.isDraftMode();
+		super.state(condition, "*", "manager.project.update.error.draft-mode");
 	}
 
 	@Override
@@ -79,7 +82,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }

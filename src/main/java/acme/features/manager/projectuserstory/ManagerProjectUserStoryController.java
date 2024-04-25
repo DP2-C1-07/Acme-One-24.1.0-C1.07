@@ -14,14 +14,25 @@ import acme.roles.Manager;
 public class ManagerProjectUserStoryController extends AbstractController<Manager, ProjectUserStory> {
 
 	// Internal state ---------------------------------------------------------
+	@Autowired
+	ManagerProjectUserStoryListMineService	listService;
 
 	@Autowired
-	ManagerProjectUserStoryCreateService createService;
+	ManagerProjectUserStoryShowService		showService;
+
+	@Autowired
+	ManagerProjectUserStoryCreateService	createService;
+
+	@Autowired
+	ManagerProjectUserStoryDeleteService	deleteService;
 
 
 	// Constructors -----------------------------------------------------------
 	@PostConstruct
 	protected void initialise() {
+		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
 	}
 }

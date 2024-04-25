@@ -26,4 +26,4 @@ auditor.code-audit.form.button.list.audit-record = Ver registros de auditoría
 auditor.code-audit.error.code = Ya existe una auditoria de codigo con ese código
 auditor.code-audit.error.publish = No se puede eliminar una auditoria de código que ya ha sido publicada
 auditor.code-audit.error.publish.mark = No se publicar una auditoria de código que tenga una nota inferior a C
-
+auditor.code-audit.error.publish.audit-records-published = No se publicar una auditoria de código que no tenga todos sus registros de auditoria publicados

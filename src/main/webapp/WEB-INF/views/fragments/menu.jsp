@@ -54,13 +54,14 @@
 			<acme:menu-suboption code="master.menu.any.list-claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.any.list-project" action="/any/project/list"/>	
 			<acme:menu-suboption code="master.menu.any.list-code-audit" action="/any/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.any.list-contract" action="/any/contract/list"/>
     	</acme:menu-option>
     	
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.my-projects" action="/manager/project/list-mine"/>	
 			<acme:menu-suboption code="master.menu.manager.my-user-stories" action="/manager/user-story/list"/>	
 			<acme:menu-suboption code="master.menu.manager.manager-dashboard" action="/manager/manager-dashboard/show"/>
-			<acme:menu-suboption code="master.menu.manager.project-user-stories" action="/manager/project-user-story/create"/>		
+			<acme:menu-suboption code="master.menu.manager.project-user-stories" action="/manager/project-user-story/list"/>		
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
@@ -71,7 +72,6 @@
 			<acme:menu-suboption code="master.menu.client.list-contract" action="/client/contract/list-mine"/>
 			<acme:menu-suboption code="master.menu.client.dashboard" action="/client/client-dashboard/show"/>
 		</acme:menu-option>
-		
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -87,6 +87,8 @@
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-client" action="/authenticated/client/create" access="!hasRole('Client')"/>
+			<acme:menu-suboption code="master.menu.user-account.client" action="/authenticated/client/update" access="hasRole('Client')"/>
 			<acme:menu-suboption code="master.menu.user-account.risk" action="/authenticated/risk/list"/>
 			
 		</acme:menu-option>

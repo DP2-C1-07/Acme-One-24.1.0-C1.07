@@ -15,7 +15,6 @@ import acme.entities.contract.Contract;
 import acme.entities.progressLog.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
-import acme.entities.risk.Risk;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.userstories.UserStory;
 import acme.features.manager.userstory.ManagerUserStoryRepository;
@@ -46,7 +45,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		Principal principal = super.getRequest().getPrincipal();
 		manager = this.managerProjectRepository.findManagerById(principal.getActiveRoleId());
 
-		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
+		status = project != null && super.getRequest().getPrincipal().hasRole(manager) && project.getManager().equals(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -72,6 +71,8 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
+		boolean condition = object.isDraftMode();
+		super.state(condition, "*", "manager.project.delete.error.draft-mode");
 	}
 
 	@Override
@@ -115,7 +116,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "projectAbstract", "indication", "cost", "link", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }
