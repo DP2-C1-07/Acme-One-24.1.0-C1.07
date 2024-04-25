@@ -1,6 +1,7 @@
 
 package acme.features.client.contracts;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+		
+		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
+			super.state(object.getInstantiationMoment().after(Date.valueOf("2000-1-1")), "instantiationMoment", "client.contract.form.error.executionDate");
 	}
 
 	@Override
