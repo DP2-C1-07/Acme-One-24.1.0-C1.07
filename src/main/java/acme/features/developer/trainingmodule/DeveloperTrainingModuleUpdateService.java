@@ -1,7 +1,8 @@
 
-package acme.features.developer.trainingmodules;
+package acme.features.developer.trainingmodule;
 
 import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,29 +16,38 @@ import acme.entities.trainingmodules.TrainingModuleDifficultyLevel;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractService interface -------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		TrainingModule trainingModule;
+		Developer developer;
+
+		masterId = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		developer = trainingModule == null ? null : trainingModule.getDeveloper();
+		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(developer);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		TrainingModule object;
-		Developer developer;
+		int id;
 
-		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new TrainingModule();
-		object.setDraft(true);
-		object.setDeveloper(developer);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingModuleById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -46,15 +56,26 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "updateMoment", "details", "difficultyLevel", "link", "totalTime", "draft");
+		Developer developer;
+		Date updateTime;
+
+		updateTime = MomentHelper.getCurrentMoment();
+		developer = object.getDeveloper();
+
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "link", "totalTime", "draft");
+		object.setUpdateMoment(updateTime);
+		object.setDeveloper(developer);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
+		if (!object.isDraft())
+			super.state(false, "draft", "developer.training-module.form.error.update-published");
+
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.update-before-creation");
+			super.state(MomentHelper.isAfterOrEqual(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.update-before-creation");
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existing;
@@ -62,17 +83,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			existing = this.repository.findOneTrainingModuleByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicated");
 		}
+
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
-		object.setCreationMoment(moment);
-		object.setDraft(true);
 		this.repository.save(object);
 	}
 
@@ -84,9 +101,14 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		Dataset dataset;
 
 		choices = SelectChoices.from(TrainingModuleDifficultyLevel.class, object.getDifficultyLevel());
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "totalTime", "draft");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "totalTime");
 		dataset.put("difficultyLevels", choices);
+		if (object.isDraft()) {
+			final Locale local = super.getRequest().getLocale();
 
+			dataset.put("draft", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draft", "No");
 		super.getResponse().addData(dataset);
 	}
 

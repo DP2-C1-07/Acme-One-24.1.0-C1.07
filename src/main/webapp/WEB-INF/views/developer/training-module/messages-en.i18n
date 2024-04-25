@@ -21,9 +21,13 @@ developer.training-module.form.error.duplicated = This code is taken
 developer.training-module.form.error.update-before-creation = Update moment must be after creation moment.
 developer.training-module.form.error.all-training-sessions-must-be-published = All training sessions must be published before publish a training module.
 developer.training-module.form.error.at-least-one-training-session = The training module must have at least an associated training sessions before publishing.
+developer.training-module.form.error.delete-published = A published training module can't be deleted
+developer.training-module.form.error.update-published = A published training module can't be updated
+
 developer.training-module.list.label.code = Code
 developer.training-module.list.label.creation-moment = Creation Moment
 developer.training-module.list.label.difficulty-level = Difficulty Level
 developer.training-module.list.label.total-time = Estimated Total Time
+developer.training-module.list.label.total-draft = Draft Mode
 
 developer.training-module.list.button.create = Create

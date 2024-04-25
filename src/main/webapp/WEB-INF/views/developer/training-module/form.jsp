@@ -14,10 +14,10 @@
 	<acme:input-textarea code="developer.training-module.form.label.more-info" path="moreInfo"/>
 	<acme:input-textbox readonly="true" code="developer.training-module.form.label.draft" path="draft"/>
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && draft == false}">
+		<jstl:when test="${_command == 'show' && draft == 'No'}">
 			<acme:button code="developer.training-module.form.button.training-sessions" action="/developer/training-session/list?masterId=${id}"/>			
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draft == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && (draft == 'Yes' ||draft == 'Sí')}">
 			<acme:button code="developer.training-module.form.button.training-sessions" action="/developer/training-session/list?masterId=${id}"/>
 			<acme:submit code="developer.training-module.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.training-module.form.button.delete" action="/developer/training-module/delete"/>

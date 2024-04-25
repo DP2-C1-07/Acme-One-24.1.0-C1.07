@@ -4,10 +4,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list navigable="true">
-	<acme:list-column code="developer.training-module.list.label.code" path="code" width="25%"/>
-	<acme:list-column code="developer.training-module.list.label.creation-moment" path="creationMoment" width="25%"/>
-	<acme:list-column code="developer.training-module.list.label.difficulty-level" path="difficultyLevel" width="25%"/>
-	<acme:list-column code="developer.training-module.list.label.total-time" path="totalTime" width="25%"/>	
+	<acme:list-column code="developer.training-module.list.label.code" path="code" width="20%"/>
+	<acme:list-column code="developer.training-module.list.label.creation-moment" path="creationMoment" width="20%"/>
+	<acme:list-column code="developer.training-module.list.label.difficulty-level" path="difficultyLevel" width="20%"/>
+	<acme:list-column code="developer.training-module.list.label.total-time" path="totalTime" width="20%"/>	
+	<acme:list-column code="developer.training-module.list.label.total-draft" path="draft" width="20%"/>	
 	
 </acme:list>
 

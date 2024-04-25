@@ -1,0 +1,32 @@
+developer.training-session.form.title = Detalles de las sesiones de entrenamiento
+developer.training-session.list.title = Listado de las sesiones de entrenamiento
+
+developer.training-session.form.label.code = Código:
+developer.training-session.form.label.initiateMoment = Momento de inicio: 
+developer.training-session.form.label.finalizationMoment = Momento de fin:
+developer.training-session.form.label.location = Localización:
+developer.training-session.form.label.instructor = Instructor:
+developer.training-session.form.label.contactEmail = Email de contacto:
+developer.training-session.form.label.link = Enlace (Opcional):
+developer.training-session.form.label.draft = Mode borrador:
+
+developer.training-session.form.button.create = Crear		
+developer.training-session.form.button.update = Actualizar
+developer.training-session.form.button.delete = Borrar
+developer.training-session.form.button.publish = Publicar
+
+developer.training-session.form.error.duplicated = Este código ya existe
+developer.training-session.form.error.initiate-one-week-after-tm-creation = El momento de inicio debe ser al menos 7 días posterior al momento de creación del módulo de entrenamiento
+developer.training-session.form.error.too-close = El momento de finalización debe ser al menos 7 días posterior al momento de inicio
+developer.training-session.form.error.before-min-date = Esta fecha es anterior a la fecha mínima soportada por el sistema
+developer.training-session.form.error.after-max-date = Esta fecha es posterior a la fecha máxima soportada por el sistema
+developer.training-session.form.error.no-time-for-min-period-i = Esta fecha no permite una duración mínima de 7 días con un fin previo a la fecha máxima soportada por el sistema
+developer.training-session.form.error.no-time-for-min-period-f = Esta fecha no permite una duración mínima de 7 días con un inicio posterior a la fecha mínima soportada por el sistema
+
+developer.training-session.list.label.code = Código
+developer.training-session.list.label.initiateMoment = Momento de inicio
+developer.training-session.list.label.finalizationMoment = Momento de fin
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.draft = Modo Borrador
+
+developer.training-session.list.button.create = Crear
