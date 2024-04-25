@@ -107,6 +107,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		dataset.put("types", choicesType);
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		dataset.put("draftMode", object.getDraftMode());
 		super.getResponse().addData(dataset);
 	}
 

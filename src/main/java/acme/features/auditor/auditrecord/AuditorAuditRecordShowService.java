@@ -56,7 +56,7 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 		Dataset dataset;
 
 		choices = SelectChoices.from(Mark.class, object.getMark());
-		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "link");
+		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "link", "draftMode");
 		dataset.put("mark", choices);
 
 		super.getResponse().addData(dataset);

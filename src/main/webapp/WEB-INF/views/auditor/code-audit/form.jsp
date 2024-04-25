@@ -13,10 +13,12 @@
 	<acme:input-select code="auditor.code-audit.form.label.project" path="project" choices="${projects}"/>	
 	
 	<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode}">
 			<acme:submit code="auditor.code-audit.form.button.update" action="/auditor/code-audit/update"/>
 			<acme:submit code="auditor.code-audit.form.button.delete" action="/auditor/code-audit/delete"/>
 			<acme:submit code="auditor.code-audit.form.button.publish" action="/auditor/code-audit/publish"/>
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:button code="auditor.code-audit.form.button.list.audit-record" action="/auditor/audit-record/list?codeAuditId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">

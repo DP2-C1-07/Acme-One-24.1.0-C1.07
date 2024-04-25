@@ -105,7 +105,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		codeAudit = object.getCodeAudit();
 
 		choices = SelectChoices.from(Mark.class, object.getMark());
-		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "link");
+		dataset = super.unbind(object, "code", "periodBeginning", "periodEnd", "link", "draftMode");
 		dataset.put("mark", choices);
 		dataset.put("codeAudit", codeAudit);
 		super.getResponse().addData(dataset);
