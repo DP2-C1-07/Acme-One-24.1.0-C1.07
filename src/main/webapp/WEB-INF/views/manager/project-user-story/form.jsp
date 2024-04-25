@@ -4,8 +4,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-select code="manager.project-user-story.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-select code="manager.project-user-story.form.label.user-stories" path="userStory" choices="${userStories}"/>
+	<acme:input-select code="manager.project-user-story.form.label.project" path="project" choices="${projects}" readonly="${acme:anyOf(_command, 'show|delete')}"/>
+	<acme:input-select code="manager.project-user-story.form.label.user-stories" path="userStory" choices="${userStories}" readonly="${acme:anyOf(_command, 'show|delete')}"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
