@@ -11,10 +11,10 @@
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	<acme:input-checkbox code="manager.project.form.label.indication" path="indication"/>	
 	<acme:input-textbox code="manager.project.form.label.draftMode" path="draftMode" readonly="true"/>
+					<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-mine?projectId=${id}"/>
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && (draftMode == 'Yes' ||draftMode == 'Sí')}">
-				<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-mine?projectId=${id}"/>
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>

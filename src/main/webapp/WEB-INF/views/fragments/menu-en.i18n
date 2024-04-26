@@ -74,7 +74,7 @@ master.menu.any.list-contract = List contracts
 master.menu.manager = Manager
 master.menu.manager.my-projects = List my projects
 master.menu.manager.my-user-stories = List my user stories
-master.menu.manager.project-user-stories = Link user stories to projects
+master.menu.manager.project-user-stories = Project-user story links
 master.menu.manager.manager-dashboard = Manager dashboard
 
 # master.menu.sponsor ########################################################

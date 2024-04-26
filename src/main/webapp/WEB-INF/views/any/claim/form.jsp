@@ -14,7 +14,7 @@
 	<acme:input-textbox code="any.claim.form.label.draftMode" path="draftMode" readonly="true"/>	
 	
 	<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(_command, 'show|publish') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|publish') && (draftMode == 'Yes' ||draftMode == 'Sí')}">
 			<acme:submit code="any.claim.form.button.publish" action="/any/claim/publish"/>
 		</jstl:when>
 				

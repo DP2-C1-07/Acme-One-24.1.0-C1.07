@@ -7,6 +7,7 @@ manager.project.list.label.projectAbstract = Resumen
 manager.project.list.label.indication = Indicación
 manager.project.list.label.cost = Coste
 manager.project.list.label.link = Enlace
+manager.project.list.label.draftMode = Draft mode
 
 manager.project.form.label.code = Código
 manager.project.form.label.title = Título
@@ -14,6 +15,7 @@ manager.project.form.label.projectAbstract = Resumen
 manager.project.form.label.indication = Indicación
 manager.project.form.label.cost = Coste
 manager.project.form.label.link = Enlace
+manager.project.form.label.draftMode = Draft mode
 
 manager.project.form.button.user-stories = Historias de usuario
 manager.project.form.button.create = Crear
@@ -24,3 +26,4 @@ manager.project.form.button.publish = Publicar
 manager.project.list.button.create = Crear
 
 manager.project.publish.error.duplicated = Ya existe un proyecto con este código
+manager.project.publish.error.draft-mode = Todas las historias de usuario deben estar publicadas
