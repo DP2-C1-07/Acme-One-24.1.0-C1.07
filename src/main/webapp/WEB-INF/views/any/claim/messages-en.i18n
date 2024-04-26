@@ -8,6 +8,7 @@ any.claim.list.label.description = Description
 any.claim.list.label.department = Department
 any.claim.list.label.emailAddress = Email address
 any.claim.list.label.link = Link
+any.claim.list.label.draftMode = Draft mode
 
 any.claim.form.label.code = Code
 any.claim.form.label.instantiationMoment = Instantiation moment
@@ -16,6 +17,7 @@ any.claim.form.label.description = Description
 any.claim.form.label.department = Department
 any.claim.form.label.emailAddress = Email address
 any.claim.form.label.link = Link
+any.claim.form.label.draftMode = Draft mode
 
 any.claim.form.button.publish = Publish
 

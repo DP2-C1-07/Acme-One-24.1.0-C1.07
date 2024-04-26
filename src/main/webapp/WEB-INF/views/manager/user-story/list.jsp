@@ -10,6 +10,7 @@
 	<acme:list-column code="manager.user-story.list.label.acceptanceCriteria" path="acceptanceCriteria" width="10%"/>
 	<acme:list-column code="manager.user-story.list.label.cost" path="cost" width="10%"/>
 	<acme:list-column code="manager.user-story.list.label.link" path="link" width="10%"/>
+	<acme:list-column code="manager.user-story.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">

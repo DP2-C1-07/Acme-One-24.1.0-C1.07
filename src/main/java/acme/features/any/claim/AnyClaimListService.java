@@ -2,6 +2,7 @@
 package acme.features.any.claim;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,12 @@ public class AnyClaimListService extends AbstractService<Any, Claim> {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "emailAddress", "link");
+		if (object.isDraftMode()) {
+			final Locale local = super.getRequest().getLocale();
 
+			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draftMode", "No");
 		super.getResponse().addData(dataset);
 	}
 }

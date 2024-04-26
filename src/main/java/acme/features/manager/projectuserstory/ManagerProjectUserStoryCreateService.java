@@ -64,12 +64,19 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
 
+		boolean nullProject = object.getProject() != null;
+		super.state(nullProject, "*", "manager.project-user-story.create.error.null-project");
+
+		boolean nullUserStory = object.getUserStory() != null;
+		super.state(nullUserStory, "*", "manager.project-user-story.create.error.null-user-story");
+
 		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		Manager manager = this.repository.findOneManagerById(managerId);
 
-		boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
-		super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
-
+		if (nullProject == false && nullUserStory == false) {
+			boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
+			super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
+		}
 	}
 
 	@Override
