@@ -11,4 +11,5 @@
 	<acme:list-column code="any.claim.list.label.department" path="department" width="10%"/>
 	<acme:list-column code="any.claim.list.label.emailAddress" path="emailAddress" width="10%"/>
 	<acme:list-column code="any.claim.list.label.link" path="link" width="10%"/>
+	<acme:list-column code="any.claim.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>

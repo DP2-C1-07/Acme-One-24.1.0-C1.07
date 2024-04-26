@@ -8,6 +8,7 @@ manager.user-story.list.label.acceptanceCriteria = Criterios de aceptación
 manager.user-story.list.label.cost = Coste
 manager.user-story.list.label.link = Enlace
 manager.user-story.list.label.priority = Prioridad
+manager.user-story.list.label.draftMode = Draft mode
 
 manager.user-story.form.label.title = Título
 manager.user-story.form.label.description = Descripción 
@@ -16,6 +17,7 @@ manager.user-story.form.label.acceptanceCriteria = Criterios de aceptación
 manager.user-story.form.label.cost = Coste
 manager.user-story.form.label.link = Enlace
 manager.user-story.form.label.priority = Prioridad
+manager.user-story.form.label.draftMode = Draft mode
 
 manager.user-story.form.button.create = Crear
 manager.user-story.form.button.update = Actualizar

@@ -12,3 +12,7 @@ manager.project-user-story.list.label.project = Project
 manager.project-user-story.list.label.user-stories = User story
 
 manager.project-user-story.list.button.create = Create
+
+manager.project-user-story.create.error.draft-mode = Project must not be published
+manager.project-user-story.create.error.null-user-story = User story must not be null
+manager.project-user-story.create.error.null-project = Project must not be null

@@ -12,3 +12,7 @@ manager.project-user-story.list.label.project = Proyecto
 manager.project-user-story.list.label.user-stories = Historia de usuario
 
 manager.project-user-story.list.button.create = Crear
+
+manager.project-user-story.create.error.draft-mode = El proyecto no debe estar publicado
+manager.project-user-story.create.error.null-user-story = La historia de usuario no debe ser nula
+manager.project-user-story.create.error.null-project = El proyecto no debe ser nulo
