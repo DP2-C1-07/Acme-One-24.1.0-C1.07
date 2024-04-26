@@ -16,7 +16,7 @@
 		<jstl:when test="${not published}">
 			<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
 			
-			<jstl:choose><jstl:when test="${_command == 'show'}">
+			<jstl:choose><jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 				<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
 				<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
 				<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>

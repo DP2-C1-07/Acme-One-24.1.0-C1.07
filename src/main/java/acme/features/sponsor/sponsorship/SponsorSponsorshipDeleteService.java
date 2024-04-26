@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.invoices.Invoice;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -75,5 +78,20 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		Collection<Invoice> invoices = this.sponsorSponsorshipRepository.findAllInvoicesBySponsorshipId(object.getId());
 		this.sponsorSponsorshipRepository.deleteAll(invoices);
 		this.sponsorSponsorshipRepository.delete(object);
+	}
+
+	@Override
+	public void unbind(final Sponsorship object) {
+		assert object != null;
+
+		Dataset dataset = super.unbind(object, "code", "published", "moment", "durationDays", "amount", "type", "contactEmail", "link", "project.code");
+
+		Collection<Project> projects = this.sponsorSponsorshipRepository.findAllProjects();
+		dataset.put("types", SelectChoices.from(SponsorshipType.class, object.getType()));
+
+		if (!object.isPublished())
+			dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
+
+		super.getResponse().addData(dataset);
 	}
 }
