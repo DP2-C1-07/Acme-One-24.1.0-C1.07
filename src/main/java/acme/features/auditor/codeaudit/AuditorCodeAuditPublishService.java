@@ -1,6 +1,7 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,12 +71,30 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 	@Override
 	public void validate(final CodeAudit object) {
+
 		Collection<AuditRecord> list = this.auditorAuditRecordRepository.findAllByCodeAuditId(object.getId());
 		if (!super.getBuffer().getErrors().hasErrors("*")) {
-			super.state(!list.isEmpty() || object.getMark(list).getNumericMark() >= Mark.C.getNumericMark(), "*", "auditor.code-audit.error.publish.mark");
 
+			super.state(!list.isEmpty() && object.getMark(list).getNumericMark() >= 3, "*", "auditor.code-audit.error.publish.mark");
 			super.state(this.checkAllAuditRecordsArePublished(list), "*", "auditor.code-audit.error.publish.audit-records-published");
 		}
+
+		assert object != null;
+		boolean status;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit existing;
+
+			existing = this.auditorCodeAuditRepository.findOneByCode(object.getCode());
+			if (existing != null)
+				status = existing.getId() == object.getId();
+			else
+				status = false;
+			super.state(existing == null || status, "code", "auditor.code-audit.error.code");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
+			super.state(object.getExecutionDate().after(Date.valueOf("2000-1-1")) || object.getExecutionDate().equals(Date.valueOf("2000-1-1")), "executionDate", "auditor.code-audit.error.executionDate");
 	}
 
 	@Override
