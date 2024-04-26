@@ -1,6 +1,9 @@
 
 package acme.features.auditor.auditrecord;
 
+import java.sql.Date;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorAuditRecordRepository auditorAuditRecordRespository;
+	private AuditorAuditRecordRepository auditorAuditRecordRepository;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -30,7 +33,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		AuditRecord auditRecord;
 
 		auditRecordId = super.getRequest().getData("id", int.class);
-		auditRecord = this.auditorAuditRecordRespository.findOneById(auditRecordId);
+		auditRecord = this.auditorAuditRecordRepository.findOneById(auditRecordId);
 		auditor = auditRecord.getCodeAudit().getAuditor();
 
 		status = auditRecord != null && super.getRequest().getPrincipal().hasRole(auditor) && auditRecord.getCodeAudit().getAuditor().equals(auditor);
@@ -44,7 +47,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.auditorAuditRecordRespository.findOneById(id);
+		object = this.auditorAuditRecordRepository.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -62,14 +65,43 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 
 	@Override
 	public void validate(final AuditRecord object) {
-		//TODO
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("periodEnd")) {
+			long diffInMili;
+			long diffInHour;
+
+			super.state(object.getPeriodEnd().after(Date.valueOf("2000-1-1")) || object.getPeriodEnd().equals(Date.valueOf("2000-1-1")), "periodEnd", "auditor.code-audit.error.executionDate");
+
+			if (object.getPeriodBeginning() != null) {
+				diffInMili = object.getPeriodEnd().getTime() - object.getPeriodBeginning().getTime();
+				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
+				super.state(diffInHour >= 1, "periodEnd", "auditor.audit-record.error.duration");
+				super.state(object.getPeriodBeginning() != null || object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
+			}
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("periodBeginning"))
+			super.state(object.getPeriodBeginning().after(Date.valueOf("2000-1-1")) || object.getPeriodBeginning().equals(Date.valueOf("2000-1-1")), "periodBeginning", "auditor.code-audit.error.executionDate");
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord existing;
+			boolean status;
+
+			existing = this.auditorAuditRecordRepository.findOneByCode(object.getCode());
+			if (existing != null)
+				status = existing.getId() == object.getId();
+			else
+				status = false;
+			super.state(existing == null || status, "code", "auditor.audit-record.error.code");
+		}
 	}
 
 	@Override
 	public void perform(final AuditRecord object) {
 		assert object != null;
 		object.setDraftMode(false);
-		this.auditorAuditRecordRespository.save(object);
+		this.auditorAuditRecordRepository.save(object);
 	}
 
 	@Override
