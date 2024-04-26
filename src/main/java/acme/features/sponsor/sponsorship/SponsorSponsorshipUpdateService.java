@@ -11,12 +11,13 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
+import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Sponsorship> {
+public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sponsorship> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -33,7 +34,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		Principal principal = super.getRequest().getPrincipal();
 		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
 
-		boolean authorised = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor) && sponsorship.getSponsor().equals(sponsor);
+		boolean authorised = sponsorship != null && !sponsorship.isPublished() && super.getRequest().getPrincipal().hasRole(sponsor) && sponsorship.getSponsor().equals(sponsor);
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -43,6 +44,43 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		Sponsorship sponsorship = this.sponsorSponsorshipRepository.findSponsorshipById(id);
 
 		super.getBuffer().addData(sponsorship);
+	}
+
+	@Override
+	public void bind(final Sponsorship object) {
+		assert object != null;
+
+		super.bind(object, "code", "moment", "durationDays", "amount", "type", "contactEmail", "link");
+
+		Principal principal = super.getRequest().getPrincipal();
+		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
+		object.setSponsor(sponsor);
+
+		int projectId = super.getRequest().getData("project", int.class);
+		Project project = this.sponsorSponsorshipRepository.findProjectById(projectId);
+		object.setProject(project);
+	}
+
+	@Override
+	public void validate(final Sponsorship object) {
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing = this.sponsorSponsorshipRepository.findSponsorshipByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated-code");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			Collection<Invoice> invoices = this.sponsorSponsorshipRepository.findAllInvoicesBySponsorshipId(object.getId());
+			boolean allInvoicesHaveSameCurrencyThanSponsorship = invoices.stream().allMatch(invoice -> invoice.getQuantity().getCurrency().equalsIgnoreCase(object.getAmount().getCurrency()));
+			super.state(allInvoicesHaveSameCurrencyThanSponsorship, "amount", "sponsor.sponsorship.form.error.different-currency");
+		}
+	}
+
+	@Override
+	public void perform(final Sponsorship object) {
+		assert object != null;
+		this.sponsorSponsorshipRepository.save(object);
 	}
 
 	@Override
