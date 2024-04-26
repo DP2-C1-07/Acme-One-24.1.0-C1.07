@@ -5,9 +5,11 @@ sponsor.sponsorship.list.label.moment = Moment
 sponsor.sponsorship.list.label.duration = Duration (in days)
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.type = Type
+sponsor.sponsorship.list.button.create = Create
 
 sponsor.sponsorship.form.title = Sponsorship details
 sponsor.sponsorship.form.label.code = Code
+sponsor.sponsorship.form.placeholder.code = ABC-000
 sponsor.sponsorship.form.label.project = Project
 sponsor.sponsorship.form.label.moment = Moment
 sponsor.sponsorship.form.label.duration = Duration (in days)
@@ -15,3 +17,12 @@ sponsor.sponsorship.form.label.amount = Amount
 sponsor.sponsorship.form.label.type = Type
 sponsor.sponsorship.form.label.email = Email
 sponsor.sponsorship.form.label.link = Link
+
+sponsor.sponsorship.form.button.create = Create
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.publish = Publish
+
+sponsor.sponsorship.form.error.duplicated-code = The given code is already in use
+sponsor.sponsorship.form.error.different-currency = The sponsorship currency must be the same than as all its invoices
+sponsor.sponsorship.form.error.wrong-amount = The sponsorship amount must be less or equal than the sum of all its invoices (taxes incl.)
