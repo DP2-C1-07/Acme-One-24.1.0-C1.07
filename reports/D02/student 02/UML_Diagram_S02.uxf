@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>385</x>
+      <x>392</x>
       <y>126</y>
       <w>322</w>
       <h>105</h>
@@ -18,6 +18,7 @@ Project
 +indication: boolean {NotNull}
 +cost: int {NotNull, Min(0), Max(100000)}
 -link: String {Length(0,255)}
++daftMode: Boolean{NotNull}
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -25,7 +26,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>791</x>
+      <x>798</x>
       <y>126</y>
       <w>357</w>
       <h>126</h>
@@ -35,7 +36,7 @@ Risk
 --
 +reference: String{Unique, NotBlank, Pattern(^R-[0-9]{3}$)}
 +identificationDate: Date{Temporal(TIMESTAMP), PastOrPresent}
-+impact: int{Min(0)}
++impact: double{Min(0), Max(100), Digits(fraction = 2, integer = 3)}
 +probability: double{Min(0), Max(1), Digits(fraction = 2, integer = 1)}
 +description: String{NotBlank, Length(0,100)}
 -link: String{URL, Length(0,255)}
@@ -48,7 +49,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>364</x>
+      <x>371</x>
       <y>287</y>
       <w>357</w>
       <h>112</h>
@@ -61,7 +62,8 @@ Contract
 +providerName: String{NotBlank, Length(0,75)}
 +customerName: String{NotBlank, Length(0,75)}
 +goals: String{NotBlank, Length(0,75)}
-+budget: double{Min(0), Digits(fraction = 2, integer = 5)}
++budget: Money{NotNull}
++daftMode: Boolean{NotNull}
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -69,7 +71,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>364</x>
+      <x>371</x>
       <y>455</y>
       <w>357</w>
       <h>98</h>
@@ -82,6 +84,7 @@ ProgressLog
 +comment: String{NotBlank, Length(0,100)}
 +registrationMoment: Date{Temporal(TIMESTAMP), PastOrPresent}
 +responsiblePerson: String{NotBlank, Length(0,75)}
++daftMode: Boolean{NotNull}
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -90,7 +93,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>238</y>
+      <y>287</y>
       <w>322</w>
       <h>91</h>
     </coordinates>
@@ -110,7 +113,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>343</y>
+      <y>406</y>
       <w>91</w>
       <h>56</h>
     </coordinates>
@@ -127,7 +130,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>126</y>
+      <y>133</y>
       <w>294</w>
       <h>98</h>
     </coordinates>
@@ -146,9 +149,9 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>952</x>
-      <y>273</y>
-      <w>196</w>
+      <x>798</x>
+      <y>364</y>
+      <w>252</w>
       <h>245</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
@@ -181,7 +184,7 @@ bg=blue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>532</x>
+      <x>539</x>
       <y>392</y>
       <w>35</w>
       <h>77</h>
@@ -194,7 +197,7 @@ m2=1..n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>532</x>
+      <x>539</x>
       <y>224</y>
       <w>35</w>
       <h>77</h>
@@ -207,7 +210,7 @@ m2=1..n</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>791</x>
+      <x>798</x>
       <y>280</y>
       <w>133</w>
       <h>70</h>
@@ -224,7 +227,7 @@ bg=yellow</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>119</x>
-      <y>343</y>
+      <y>406</y>
       <w>175</w>
       <h>63</h>
     </coordinates>
@@ -239,7 +242,7 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
+      <x>707</x>
       <y>182</y>
       <w>105</w>
       <h>28</h>
@@ -248,5 +251,18 @@ bg=yellow</panel_attributes>
 lt=&lt;-x
 m2=1..n</panel_attributes>
     <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>154</x>
+      <y>252</y>
+      <w>357</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>m1=1
+lt=&lt;-x
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0;470.0;10.0;470.0;50.0</additional_attributes>
   </element>
 </diagram>
