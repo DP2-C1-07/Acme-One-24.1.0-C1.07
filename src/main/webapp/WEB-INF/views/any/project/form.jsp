@@ -9,5 +9,6 @@
 	<acme:input-textbox code="any.project.form.label.projectAbstract" path="projectAbstract" readonly="true"/>	
 	<acme:input-integer code="any.project.form.label.cost" path="cost" readonly="true"/>	
 	<acme:input-url code="any.project.form.label.link" path="link" readonly="true"/>
-	<acme:input-checkbox code="any.project.form.label.indication" path="indication" readonly="true"/>	
+	<acme:input-checkbox code="any.project.form.label.indication" path="indication" readonly="true"/>
+	<acme:input-checkbox code="any.project.form.label.draftMode" path="draftMode" readonly="true"/>	
 </acme:form>

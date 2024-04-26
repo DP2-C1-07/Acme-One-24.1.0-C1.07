@@ -10,9 +10,10 @@
 	<acme:input-textbox code="manager.user-story.form.label.acceptanceCriteria" path="acceptanceCriteria"/>	
 	<acme:input-select code="manager.user-story.form.label.priority" path="priority" choices="${statuses}"/>
 	<acme:input-url code="manager.user-story.form.label.link" path="link"/>	
+	<acme:input-textbox code="manager.user-story.form.label.draftMode" path="draftMode" readonly="true"/>	
 	
 	<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && (draftMode == 'Yes' ||draftMode == 'Sí')}">
 			<acme:submit code="manager.user-story.form.button.update" action="/manager/user-story/update"/>
 			<acme:submit code="manager.user-story.form.button.delete" action="/manager/user-story/delete"/>
 			<acme:submit code="manager.user-story.form.button.publish" action="/manager/user-story/publish"/>
