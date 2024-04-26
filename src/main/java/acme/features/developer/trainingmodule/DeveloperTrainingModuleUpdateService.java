@@ -62,17 +62,15 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		updateTime = MomentHelper.getCurrentMoment();
 		developer = object.getDeveloper();
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "link", "totalTime", "draft");
+		super.bind(object, "code", "details", "difficultyLevel", "link", "totalTime");
 		object.setUpdateMoment(updateTime);
 		object.setDeveloper(developer);
+		object.setDraft(true);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-
-		if (!object.isDraft())
-			super.state(false, "draft", "developer.training-module.form.error.update-published");
 
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(MomentHelper.isAfterOrEqual(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.update-before-creation");
