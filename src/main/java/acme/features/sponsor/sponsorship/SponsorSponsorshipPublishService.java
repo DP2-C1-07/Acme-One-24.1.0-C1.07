@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -17,7 +18,7 @@ import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sponsorship> {
+public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, Sponsorship> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -69,15 +70,24 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 			Sponsorship existing = this.sponsorSponsorshipRepository.findSponsorshipByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated-code");
 		}
+
+		Collection<Invoice> invoices = this.sponsorSponsorshipRepository.findAllInvoicesBySponsorshipId(object.getId());
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			boolean allInvoicesHaveSameCurrencyThanSponsorship = invoices.stream().allMatch(invoice -> invoice.getQuantity().getCurrency().equalsIgnoreCase(object.getAmount().getCurrency()));
+			super.state(allInvoicesHaveSameCurrencyThanSponsorship, "amount", "sponsor.sponsorship.form.error.different-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			boolean invoicesAmountAddUp = invoices.stream().map(Invoice::getTotalAmount).mapToDouble(Money::getAmount).sum() >= object.getAmount().getAmount();
+			super.state(invoicesAmountAddUp, "amount", "sponsor.sponsorship.form.error.wrong-amount");
+		}
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
-
-		Collection<Invoice> invoices = this.sponsorSponsorshipRepository.findAllInvoicesBySponsorshipId(object.getId());
-		this.sponsorSponsorshipRepository.deleteAll(invoices);
-		this.sponsorSponsorshipRepository.delete(object);
+		object.setPublished(true);
+		this.sponsorSponsorshipRepository.save(object);
 	}
 
 	@Override

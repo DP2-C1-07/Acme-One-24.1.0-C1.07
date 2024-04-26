@@ -11,6 +11,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
+import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
@@ -67,6 +68,12 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing = this.sponsorSponsorshipRepository.findSponsorshipByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated-code");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			Collection<Invoice> invoices = this.sponsorSponsorshipRepository.findAllInvoicesBySponsorshipId(object.getId());
+			boolean allInvoicesHaveSameCurrencyThanSponsorship = invoices.stream().allMatch(invoice -> invoice.getQuantity().getCurrency().equalsIgnoreCase(object.getAmount().getCurrency()));
+			super.state(allInvoicesHaveSameCurrencyThanSponsorship, "amount", "sponsor.sponsorship.form.error.different-currency");
 		}
 	}
 

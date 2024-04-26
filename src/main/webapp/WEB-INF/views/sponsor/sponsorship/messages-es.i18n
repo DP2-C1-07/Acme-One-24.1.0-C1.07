@@ -21,3 +21,5 @@ sponsor.sponsorship.form.button.delete = Eliminar
 sponsor.sponsorship.form.button.publish = Publicar
 
 sponsor.sponsorship.form.error.duplicated-code = El código introducido ya está en uso
+sponsor.sponsorship.form.error.different-currency = La moneda del patrocinio debe ser la misma que la de todas las facturas
+sponsor.sponsorship.form.error.wrong-amount = La cantidad del patrocinio debe ser menor o igual a la suma de las cantidades de todas las facturas (con impuestos)

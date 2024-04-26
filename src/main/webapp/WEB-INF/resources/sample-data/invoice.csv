@@ -1,24 +1,24 @@
-key,code,key:sponsorship,registration-time,due-date,quantity,tax,currency,link
-invoice-01,IN-0001-0001,sponsorship-01,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-02,IN-9999-9999,sponsorship-01,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-03,IN-0001-0003,sponsorship-02,2000/01/01 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-04,IN-0001-0004,sponsorship-02,2000/01/01 00:15,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-05,IN-0001-0005,sponsorship-02,2002/05/20 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-06,IN-0001-0006,sponsorship-03,2022/07/29 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-07,IN-0001-0007,sponsorship-04,2022/07/29 00:00,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-08,IN-0001-0008,sponsorship-05,2022/07/29 23:59,2021/08/30 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-09,IN-0001-0009,sponsorship-06,2021/07/30 00:00,2000/01/01 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-10,IN-0001-0010,sponsorship-07,2021/07/30 00:00,2000/01/01 00:15,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-11,IN-0001-0011,sponsorship-08,2021/07/30 00:00,2002/05/20 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-12,IN-0001-0012,sponsorship-09,2021/07/30 00:00,2022/07/29 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-13,IN-0001-0013,sponsorship-10,2021/07/30 00:00,2022/07/29 00:00,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-14,IN-0001-0014,sponsorship-11,2021/07/30 00:00,2022/07/29 23:59,2500,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-15,IN-0001-0015,sponsorship-12,2021/07/30 00:00,2021/08/30 00:00,1,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-16,IN-0001-0016,sponsorship-13,2021/07/30 00:00,2021/08/30 00:00,9999999999.99,0.20,EUR,https://cajarural.com/invoice0982137
-invoice-17,IN-0001-0017,sponsorship-14,2021/07/30 00:00,2021/08/30 00:00,2500,0,EUR,https://cajarural.com/invoice0982137
-invoice-18,IN-0001-0018,sponsorship-15,2021/07/30 00:00,2021/08/30 00:00,2500,1,EUR,https://cajarural.com/invoice0982137
-invoice-19,IN-0001-0019,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,USD,https://cajarural.com/invoice0982137
-invoice-20,IN-0001-0020,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,GBP,https://cajarural.com/invoice0982137
-invoice-21,IN-0001-0021,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,
-invoice-22,IN-0001-0022,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://t.ly
-invoice-23,IN-0001-0023,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,2500,0.20,EUR,https://pdjqxqydibodqqzxtococqybygllvfnocwirixvvismirniwmovvidxipgrpcdkoxpqmunjjudzthmxxjzuabgwcsinaowqxtlvvejencuiwvaskozgipsqqjsqoouirhkczozxqmdmanpsyohemifibdtvpeeflqlbvxrvvvfultygerbxuckpsklwiqvdmjjlvqwrqymbygbtibomarltfrwqbwrbweklkjbdusdcsmddeldt.com
+key,code,key:sponsorship,registration-time,due-date,quantity,tax,link
+invoice-01,IN-0001-0001,sponsorship-01,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-02,IN-9999-9999,sponsorship-01,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-03,IN-0001-0003,sponsorship-02,2000/01/01 00:00,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-04,IN-0001-0004,sponsorship-02,2000/01/01 00:15,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-05,IN-0001-0005,sponsorship-02,2002/05/20 00:00,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-06,IN-0001-0006,sponsorship-03,2022/07/29 00:00,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-07,IN-0001-0007,sponsorship-04,2022/07/29 00:00,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-08,IN-0001-0008,sponsorship-05,2022/07/29 23:59,2021/08/30 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-09,IN-0001-0009,sponsorship-06,2021/07/30 00:00,2000/01/01 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-10,IN-0001-0010,sponsorship-07,2021/07/30 00:00,2000/01/01 00:15,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-11,IN-0001-0011,sponsorship-08,2021/07/30 00:00,2002/05/20 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-12,IN-0001-0012,sponsorship-09,2021/07/30 00:00,2022/07/29 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-13,IN-0001-0013,sponsorship-10,2021/07/30 00:00,2022/07/29 00:00,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-14,IN-0001-0014,sponsorship-11,2021/07/30 00:00,2022/07/29 23:59,EUR 2500,0.20,https://cajarural.com/invoice0982137
+invoice-15,IN-0001-0015,sponsorship-12,2021/07/30 00:00,2021/08/30 00:00,EUR 1,0.20,https://cajarural.com/invoice0982137
+invoice-16,IN-0001-0016,sponsorship-13,2021/07/30 00:00,2021/08/30 00:00,EUR 9999999999.99,0.20,https://cajarural.com/invoice0982137
+invoice-17,IN-0001-0017,sponsorship-14,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,0,https://cajarural.com/invoice0982137
+invoice-18,IN-0001-0018,sponsorship-15,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,1,https://cajarural.com/invoice0982137
+invoice-19,IN-0001-0019,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,USD 2500,0.20,https://cajarural.com/invoice0982137
+invoice-20,IN-0001-0020,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,GBP 2500,0.20,https://cajarural.com/invoice0982137
+invoice-21,IN-0001-0021,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,0.20,
+invoice-22,IN-0001-0022,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,0.20,https://t.ly
+invoice-23,IN-0001-0023,sponsorship-16,2021/07/30 00:00,2021/08/30 00:00,EUR 2500,0.20,https://pdjqxqydibodqqzxtococqybygllvfnocwirixvvismirniwmovvidxipgrpcdkoxpqmunjjudzthmxxjzuabgwcsinaowqxtlvvejencuiwvaskozgipsqqjsqoouirhkczozxqmdmanpsyohemifibdtvpeeflqlbvxrvvvfultygerbxuckpsklwiqvdmjjlvqwrqymbygbtibomarltfrwqbwrbweklkjbdusdcsmddeldt.com

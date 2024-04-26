@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.invoices.Invoice;
 import acme.entities.projects.Project;
+import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 

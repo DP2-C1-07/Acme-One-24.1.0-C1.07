@@ -1,17 +1,17 @@
 key,key:project,code,published,moment,durationDays,amount,type,contactEmail,link,key:sponsor
-sponsorship-01,project-01,ABC-001,true,2021/07/30 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-02,project-01,A-001,true,2021/07/30 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-03,project-01,AB-001,true,2021/07/30 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-04,project-01,ABC-004,true,2000/01/01 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-05,project-01,ABC-005,false,2000/01/01 00:15,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-06,project-01,ABC-006,false,2002/05/20 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-07,project-01,ABC-007,false,2022/07/29 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-08,project-01,ABC-008,false,2022/07/29 00:00,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-09,project-01,ABC-009,true,2022/07/29 23:59,60,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-10,project-01,ABC-010,true,2021/07/30 00:00,30,1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-11,project-01,ABC-011,true,2021/07/30 00:00,60,5,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-12,project-01,ABC-012,true,2021/07/30 00:00,60,1000,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-13,project-01,ABC-013,false,2021/07/30 00:00,60,1,FINANCIAL,sponsorship@example.co.uk,https://example.com,sponsor-02
-sponsorship-14,project-01,ABC-014,false,2021/07/30 00:00,60,1,IN_KIND,sponsorship@example.com,https://pdjqxqydibodqqzxtococqybygllvfnocwirixvvismirniwmovvidxipgrpcdkoxpqmunjjudzthmxxjzuabgwcsinaowqxtlvvejencuiwvaskozgipsqqjsqoouirhkczozxqmdmanpsyohemifibdtvpeeflqlbvxrvvvfultygerbxuckpsklwiqvdmjjlvqwrqymbygbtibomarltfrwqbwrbweklkjbdusdcsmddeldt.com,sponsor-02
-sponsorship-15,project-01,ABC-015,false,2021/07/30 00:00,60,1,IN_KIND,sponsorship@example.com,,sponsor-02
-sponsorship-16,project-01,ABC-016,false,2021/07/30 00:00,60,1,IN_KIND,sponsorship@example.com,https://t.ly,sponsor-02
+sponsorship-01,project-01,ABC-001,true,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-02,project-01,A-001,true,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-03,project-01,AB-001,true,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-04,project-01,ABC-004,true,2000/01/01 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-05,project-01,ABC-005,false,2000/01/01 00:15,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-06,project-01,ABC-006,false,2002/05/20 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-07,project-01,ABC-007,false,2022/07/29 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-08,project-01,ABC-008,false,2022/07/29 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-09,project-01,ABC-009,true,2022/07/29 23:59,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-10,project-01,ABC-010,true,2021/07/30 00:00,30,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-11,project-01,ABC-011,true,2021/07/30 00:00,60,EUR 5,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-12,project-01,ABC-012,true,2021/07/30 00:00,60,EUR 1000,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-13,project-01,ABC-013,false,2021/07/30 00:00,60,EUR 1,FINANCIAL,sponsorship@example.co.uk,https://example.com,sponsor-02
+sponsorship-14,project-01,ABC-014,false,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://pdjqxqydibodqqzxtococqybygllvfnocwirixvvismirniwmovvidxipgrpcdkoxpqmunjjudzthmxxjzuabgwcsinaowqxtlvvejencuiwvaskozgipsqqjsqoouirhkczozxqmdmanpsyohemifibdtvpeeflqlbvxrvvvfultygerbxuckpsklwiqvdmjjlvqwrqymbygbtibomarltfrwqbwrbweklkjbdusdcsmddeldt.com,sponsor-02
+sponsorship-15,project-01,ABC-015,false,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,,sponsor-02
+sponsorship-16,project-01,ABC-016,false,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://t.ly,sponsor-02

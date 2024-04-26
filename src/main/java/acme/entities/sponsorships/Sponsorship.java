@@ -15,12 +15,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.projects.Project;
 import acme.roles.Sponsor;
 import lombok.Getter;
@@ -52,8 +52,8 @@ public class Sponsorship extends AbstractEntity {
 	@Min(30)
 	private int					durationDays;
 
-	@Positive
-	private int					amount;
+	@NotNull
+	private Money				amount;
 
 	@NotNull
 	private SponsorshipType		type;
