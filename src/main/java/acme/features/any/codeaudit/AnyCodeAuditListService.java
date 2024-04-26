@@ -42,13 +42,16 @@ public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
+		String auditor;
 
+		auditor = object.getAuditor().getUserAccount().getUsername();
 		Collection<AuditRecord> list = this.repository.findAllAuditRecordsByCodeAuditId(object.getId());
 		Mark mark = object.getMark(list);
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type");
 		dataset.put("mark", mark);
+		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}
 

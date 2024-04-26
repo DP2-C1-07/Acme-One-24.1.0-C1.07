@@ -3,6 +3,7 @@ package acme.features.auditor.dashboard;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,14 +99,24 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	@Override
 	public void unbind(final AuditorDashboard object) {
 		assert object != null;
-
+		Collection<AuditRecord> auditRecords;
+		Principal principal;
 		Dataset dataset;
+		String emptyMessage;
+		Locale local;
+
+		local = super.getRequest().getLocale();
+		principal = super.getRequest().getPrincipal();
+		auditRecords = this.auditorAuditRecordRepository.findAllByAuditorId(principal.getActiveRoleId());
+
+		emptyMessage = local.equals(Locale.ENGLISH) ? "No Data" : "Sin Datos";
 
 		dataset = super.unbind(object,	//
 			"totalStaticCodeAudits", "totalDynamicCodeAudits", "averageAuditRecord", "deviationAuditRecord", //
 			"minimumAuditRecord", "maximumAuditRecord", "averageTimeOfPeriodInAuditRecord", //
 			"deviationTimeOfPeriodInAuditRecord", "minimumTimeOfPeriodInAuditRecord", "maximumTimeOfPeriodInAuditRecord");
-
+		dataset.put("emptyList", auditRecords.isEmpty());
+		dataset.put("emptyMessage", emptyMessage);
 		super.getResponse().addData(dataset);
 	}
 

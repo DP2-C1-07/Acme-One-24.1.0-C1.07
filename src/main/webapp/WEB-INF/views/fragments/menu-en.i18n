@@ -75,6 +75,11 @@ master.menu.any.list-project = List projects
 master.menu.any.list-code-audit = List code audits
 master.menu.any.list-contract = List contracts
 
+
+# master.menu.authenticated ############################################################
+master.menu.authenticated = Autenticado
+
+
 # master.menu.manager ########################################################
 master.menu.manager = Manager
 master.menu.manager.my-projects = List my projects

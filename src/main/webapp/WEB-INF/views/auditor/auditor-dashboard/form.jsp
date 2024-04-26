@@ -30,7 +30,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.average-audit-records"/>
 		</th>
 		<td>
-			<acme:print value="${averageAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:averageAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -38,7 +38,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.deviation-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${deviationAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:deviationAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -46,7 +46,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.minimum-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${minimumAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:minimumAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -54,7 +54,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.maximum-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${maximumAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:maximumAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -62,7 +62,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.average-time-of-period-in-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${averageTimeOfPeriodInAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:averageTimeOfPeriodInAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -70,7 +70,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.deviation-time-of-period-in-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${deviationTimeOfPeriodInAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:deviationTimeOfPeriodInAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -78,7 +78,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.minimum-time-of-period-in-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${minimumTimeOfPeriodInAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:minimumTimeOfPeriodInAuditRecord}"/>
 		</td>
 	</tr>
 	<tr>
@@ -86,7 +86,7 @@
 			<acme:message code="auditor.auditor-dashboard.form.label.maximum-time-of-period-in-audit-record"/>
 		</th>
 		<td>
-			<acme:print value="${maximumTimeOfPeriodInAuditRecord}"/>
+			<acme:print value="${emptyList?emptyMessage:maximumTimeOfPeriodInAuditRecord}"/>
 		</td>
 	</tr>
 	

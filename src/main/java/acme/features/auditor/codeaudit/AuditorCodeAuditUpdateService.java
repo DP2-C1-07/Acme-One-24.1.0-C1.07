@@ -1,6 +1,7 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +86,9 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 
 		if (!super.getBuffer().getErrors().hasErrors("*"))
 			super.state(object.getDraftMode(), "*", "auditor.code-audit.error.publish");
+
+		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
+			super.state(object.getExecutionDate().after(Date.valueOf("2000-1-1")) || object.getExecutionDate().equals(Date.valueOf("2000-1-1")), "executionDate", "auditor.code-audit.error.executionDate");
 	}
 
 	@Override
@@ -116,6 +120,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		dataset.put("types", choicesType);
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		dataset.put("draftMode", object.getDraftMode());
 		super.getResponse().addData(dataset);
 	}
 }

@@ -28,3 +28,4 @@ auditor.code-audit.error.code =  A code audit already exists with that code
 auditor.code-audit.error.publish = Cannot delete a code audit that has already been published
 auditor.code-audit.error.publish.mark = A code audit that has a grade lower than C will not be published
 auditor.code-audit.error.publish.audit-records-published = A code audit that does not have all of its audit records published will not be published
+auditor.code-audit.error.executionDate = Cannot use dates before 2000/01/01 00:00
