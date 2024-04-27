@@ -1,4 +1,4 @@
-package acme.entities.progressLog;
+package acme.entities.progresslog;
 
 import java.util.Date;
 

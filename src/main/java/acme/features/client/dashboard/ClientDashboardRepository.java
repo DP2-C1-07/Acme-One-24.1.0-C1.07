@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contract.Contract;
-import acme.entities.progressLog.ProgressLog;
+import acme.entities.progresslog.ProgressLog;
 
 @Repository
 public interface ClientDashboardRepository extends AbstractRepository {

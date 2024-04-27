@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
 import acme.entities.contract.Contract;
-import acme.entities.progressLog.ProgressLog;
+import acme.entities.progresslog.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.sponsorships.Sponsorship;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
-import acme.entities.progressLog.ProgressLog;
+import acme.entities.progresslog.ProgressLog;
 import acme.roles.client.Client;
 
 @Service

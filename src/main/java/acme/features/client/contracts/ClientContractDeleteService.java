@@ -10,7 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
-import acme.entities.progressLog.ProgressLog;
+import acme.entities.progresslog.ProgressLog;
 import acme.entities.projects.Project;
 import acme.roles.client.Client;
 
