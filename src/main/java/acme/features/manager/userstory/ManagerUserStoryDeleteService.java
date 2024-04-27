@@ -76,7 +76,6 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-		// assert object.isDraftMode();
 		Collection<ProjectUserStory> projectUserStories = this.managerUserStoryRepository.findProjectUserStoriesByUserStoryId(object.getId());
 		this.managerUserStoryRepository.deleteAll(projectUserStories);
 		this.managerUserStoryRepository.delete(object);

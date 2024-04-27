@@ -61,7 +61,6 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		dataset.put("projects", projectChoices);
 		dataset.put("userStory", object.getUserStory().getId());
 		dataset.put("userStories", userStoryChoices);
-		// super.getResponse().addGlobal("id", object.getId());
 		super.getResponse().addData(dataset);
 	}
 
