@@ -48,7 +48,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.user-story-estimated-cost-average"/>
 		</th>
 		<td>
-			<acme:print value="${userStoryEstimatedCostAverage}"/>
+			<jstl:choose>
+            <jstl:when test="${empty userStoryEstimatedCostAverage}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
+                <acme:print value="${userStoryEstimatedCostAverage}"/>
+            </jstl:otherwise>
+            </jstl:choose>
 		</td>
 	</tr>	
 	
@@ -57,7 +64,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.user-story-estimated-cost-deviation"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty userStoryEstimatedCostDeviation}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
 			<acme:print value="${userStoryEstimatedCostDeviation}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
@@ -66,7 +80,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.maximum-user-story-estimated-cost"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty maximumUserStoryEstimatedCost}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
 			<acme:print value="${maximumUserStoryEstimatedCost}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
@@ -75,7 +96,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.minimum-user-story-estimated-cost"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty minimumUserStoryEstimatedCost}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
 			<acme:print value="${minimumUserStoryEstimatedCost}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
@@ -84,7 +112,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.project-cost-average"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty projectCostAverage}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
 			<acme:print value="${projectCostAverage}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
@@ -93,7 +128,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.project-cost-deviation"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty projectCostDeviation}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
 			<acme:print value="${projectCostDeviation}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
@@ -102,7 +144,15 @@
 			<acme:message code="manager.manager-dashboard.form.label.maximum-project-cost"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty maximumProjectCost}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
+		
 			<acme:print value="${maximumProjectCost}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
@@ -111,7 +161,14 @@
 			<acme:message code="manager.manager-dashboard.form.label.minimum-project-cost"/>
 		</th>
 		<td>
+		<jstl:choose>
+            <jstl:when test="${empty minimumProjectCost}">
+                no data yet
+            </jstl:when>
+            <jstl:otherwise>
 			<acme:print value="${minimumProjectCost}"/>
+			</jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>	
 	
