@@ -79,7 +79,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-		// assert object.isDraftMode();
 		int projectId;
 		projectId = super.getRequest().getData("id", int.class);
 
