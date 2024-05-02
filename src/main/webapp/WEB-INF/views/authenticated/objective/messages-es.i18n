@@ -1,0 +1,20 @@
+authenticated.objective.form.title = Objetivo
+authenticated.objective.list.title = Lista de objetivos
+
+authenticated.objective.list.label.instantiationMoment = Momento de instanciación
+authenticated.objective.list.label.title = Título
+authenticated.objective.list.label.description = Descripción
+authenticated.objective.list.label.priority = Prioridad
+authenticated.objective.list.label.initiateMoment = Momento de inicio
+authenticated.objective.list.label.finalizationMoment = Momento de finalización
+authenticated.objective.list.label.critical = Crítico
+authenticated.objective.list.label.link = Enlace
+
+authenticated.objective.form.label.instantiationMoment = Momento de instanciación
+authenticated.objective.form.label.title = Título
+authenticated.objective.form.label.description = Descripción 
+authenticated.objective.form.label.priority = Prioridad
+authenticated.objective.form.label.initiateMoment = Momento de inicio
+authenticated.objective.form.label.finalizationMoment = Momento de finalización
+authenticated.objective.form.label.critical = Crítico
+authenticated.objective.form.label.link = Enlace
