@@ -13,3 +13,9 @@
 	<acme:input-textbox code="authenticated.objective.list.form.critical" path="critical"/>		
 	<acme:input-textbox code="authenticated.objective.list.form.link" path="link"/>
 </acme:form>
+
+<jstl:choose>	 
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="authenticated.objective.form.button.create" action="/authenticated/objective/create"/>
+		</jstl:when>		
+	</jstl:choose>

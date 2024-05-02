@@ -18,3 +18,6 @@ authenticated.objective.form.label.initiateMoment = Momento de inicio
 authenticated.objective.form.label.finalizationMoment = Momento de finalización
 authenticated.objective.form.label.critical = Crítico
 authenticated.objective.form.label.link = Enlace
+
+authenticated.objective.form.button.create = Crear
+authenticated.objective.list.button.create = Crear

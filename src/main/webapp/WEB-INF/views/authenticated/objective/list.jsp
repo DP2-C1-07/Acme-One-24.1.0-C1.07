@@ -14,3 +14,7 @@
 	<acme:list-column code="authenticated.objective.list.label.link" path="link" width="10%"/>		
 </acme:list>
 
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="authenticated.objective.list.button.create" action="/authenticated/objective/create"/>
+</jstl:if>

@@ -21,6 +21,9 @@ public class AuthenticatedObjectiveController extends AbstractController<Authent
 	@Autowired
 	private AuthenticatedObjectiveShowService	showService;
 
+	@Autowired
+	private AuthenticatedObjectiveCreateService	createService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -28,5 +31,6 @@ public class AuthenticatedObjectiveController extends AbstractController<Authent
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 	}
 }
