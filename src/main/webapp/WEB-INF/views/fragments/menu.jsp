@@ -82,6 +82,7 @@
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 						<acme:menu-suboption code="master.menu.user-account.risk" action="/authenticated/risk/list"/>
+						<acme:menu-suboption code="master.menu.authenticated.objective" action="/authenticated/objective/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

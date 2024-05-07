@@ -79,6 +79,7 @@ master.menu.any.list-contract = Listar contratos
 
 # master.menu.authenticated ############################################################
 master.menu.authenticated = Autentificado
+master.menu.authenticated.objective = Listar objetivos
 
 # master.menu.manager ########################################################
 master.menu.manager = Manager
