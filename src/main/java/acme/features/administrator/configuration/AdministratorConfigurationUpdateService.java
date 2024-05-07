@@ -38,10 +38,8 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 	@Override
 	public void load() {
 		Configuration object;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findConfigurationById(id);
+		object = this.repository.findConfiguration();
 
 		super.getBuffer().addData(object);
 	}
