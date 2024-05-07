@@ -21,3 +21,7 @@ authenticated.objective.form.label.link = Link
 
 authenticated.objective.form.button.create = Create
 authenticated.objective.list.button.create = Create
+
+authenticated.objective.create.error.initiate-moment = The initiate moment must be after the instantiation moment
+authenticated.objective.create.error.finalization-moment = The finalization moment must be after the initiate moment
+authenticated.objective.create.error.duration = The objective duration must be one hour long

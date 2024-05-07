@@ -4,18 +4,19 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="authenticated.objective.list.form.instantiationMoment" path="instantiationMoment"/>
-	<acme:input-textbox code="authenticated.objective.list.form.title" path="title"/>
-	<acme:input-textbox code="authenticated.objective.list.form.description" path="description"/>
-	<acme:input-textbox code="authenticated.objective.list.form.priority" path="priority"/>		
-	<acme:input-textbox code="authenticated.objective.list.form.initiateMoment" path="initiateMoment"/>		
-	<acme:input-textbox code="authenticated.objective.list.form.finalizationMoment" path="finalizationMoment"/>		
-	<acme:input-textbox code="authenticated.objective.list.form.critical" path="critical"/>		
-	<acme:input-textbox code="authenticated.objective.list.form.link" path="link"/>
-</acme:form>
+	<acme:input-moment code="authenticated.objective.form.label.instantiationMoment" path="instantiationMoment"/>
+	<acme:input-textbox code="authenticated.objective.form.label.title" path="title"/>
+	<acme:input-textbox code="authenticated.objective.form.label.description" path="description"/>
+	<acme:input-select code="authenticated.objective.form.label.priority" path="priority" choices="${statuses}"/>		
+	<acme:input-moment code="authenticated.objective.form.label.initiateMoment" path="initiateMoment"/>		
+	<acme:input-moment code="authenticated.objective.form.label.finalizationMoment" path="finalizationMoment"/>		
+	<acme:input-checkbox code="authenticated.objective.form.label.critical" path="critical"/>		
+	<acme:input-url code="authenticated.objective.form.label.link" path="link"/>
+
 
 <jstl:choose>	 
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="authenticated.objective.form.button.create" action="/authenticated/objective/create"/>
 		</jstl:when>		
-	</jstl:choose>
+</jstl:choose>
+</acme:form>
