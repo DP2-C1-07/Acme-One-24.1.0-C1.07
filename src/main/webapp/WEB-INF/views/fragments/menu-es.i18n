@@ -26,6 +26,7 @@ master.menu.anonymous.favourite-link.alfalolan = 77865211E: Alonso Lanzarán, Al
 
 # master.menu.administrator ###################################################
 
+master.menu.administrator.configuration = Configuración
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario

@@ -1,0 +1,6 @@
+administrator.configuration.form.title = Configuration details
+
+administrator.configuration.form.label.systemCurrency = System currency
+administrator.configuration.form.label.acceptedCurrencies = Accepted currencies
+
+administrator.configuration.form.button.update = Update

@@ -1,0 +1,6 @@
+administrator.configuration.form.title = Detalles de configuración
+
+administrator.configuration.form.label.systemCurrency = Divisa del sistema
+administrator.configuration.form.label.acceptedCurrencies = Divisas aceptadas
+
+administrator.configuration.form.button.update = Actualizar
