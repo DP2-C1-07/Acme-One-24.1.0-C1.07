@@ -1,0 +1,27 @@
+authenticated.objective.form.title = Objective
+authenticated.objective.list.title = List of objectives
+
+authenticated.objective.list.label.instantiationMoment = Instantiation moment
+authenticated.objective.list.label.title = Title
+authenticated.objective.list.label.description = Description 
+authenticated.objective.list.label.priority = Priority
+authenticated.objective.list.label.initiateMoment = Initiate moment
+authenticated.objective.list.label.finalizationMoment = Finalization moment
+authenticated.objective.list.label.critical = Critical
+authenticated.objective.list.label.link = Link
+
+authenticated.objective.form.label.instantiationMoment = Instantiation moment
+authenticated.objective.form.label.title = Title
+authenticated.objective.form.label.description = Description 
+authenticated.objective.form.label.priority = Priority
+authenticated.objective.form.label.initiateMoment = Initiate moment
+authenticated.objective.form.label.finalizationMoment = Finalization moment
+authenticated.objective.form.label.critical = Critical
+authenticated.objective.form.label.link = Link
+
+authenticated.objective.form.button.create = Create
+authenticated.objective.list.button.create = Create
+
+authenticated.objective.create.error.initiate-moment = The initiate moment must be after the instantiation moment
+authenticated.objective.create.error.finalization-moment = The finalization moment must be after the initiate moment
+authenticated.objective.create.error.duration = The objective duration must be one hour long
