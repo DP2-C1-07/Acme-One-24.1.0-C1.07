@@ -14,3 +14,6 @@ audit-record-12,AU-0008-012,2022/01/16 12:00,2022/01/16 13:10,B,https://www.goog
 audit-record-13,AU-0008-013,2022/01/17 12:00,2022/01/17 13:15,C,"https://www.google.com/<script>console.log(""hacked"")</script>",code-audit-03
 audit-record-14,AU-0008-014,2022/01/15 12:00,2022/01/15 13:15,A_PLUS,https://www.google.com/плоский текст,code-audit-03
 audit-record-15,AU-0008-015,2022/01/16 12:00,2022/01/16 13:15,F_MINUS,https://www.google.com/平面テキスト,code-audit-04
+audit-record-16,AU-0008-016,2022/01/16 12:00,2022/01/16 13:15,F_MINUS,,code-audit-04
+audit-record-17,AU-0008-017,2022/01/16 12:00,2022/01/16 13:15,F_MINUS,https://,code-audit-04
+audit-record-19,AU-0008-018,2022/01/16 12:00,2022/01/16 13:15,F_MINUS,https://1,code-audit-04
