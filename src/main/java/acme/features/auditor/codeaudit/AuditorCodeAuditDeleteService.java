@@ -41,7 +41,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		codeAudit = this.auditorCodeAuditRepository.findOneById(codeAuditId);
 		auditor = codeAudit.getAuditor();
 
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
+		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor) && codeAudit.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
