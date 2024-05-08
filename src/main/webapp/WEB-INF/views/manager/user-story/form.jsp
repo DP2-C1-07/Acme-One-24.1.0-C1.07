@@ -10,7 +10,12 @@
 	<acme:input-textbox code="manager.user-story.form.label.acceptanceCriteria" path="acceptanceCriteria"/>	
 	<acme:input-select code="manager.user-story.form.label.priority" path="priority" choices="${statuses}"/>
 	<acme:input-url code="manager.user-story.form.label.link" path="link"/>	
-	<acme:input-textbox code="manager.user-story.form.label.draftMode" path="draftMode" readonly="true"/>	
+	
+	<jstl:choose>
+		<jstl:when test="${_command != 'create'}">
+			<acme:input-textbox code="manager.user-story.form.label.draftMode" path="draftMode" readonly="true"/>	
+		</jstl:when>
+	</jstl:choose>		
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && (draftMode == 'Yes' ||draftMode == 'Sí')}">

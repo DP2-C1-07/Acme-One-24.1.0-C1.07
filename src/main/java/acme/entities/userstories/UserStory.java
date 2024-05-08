@@ -35,8 +35,7 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 100)
 	String						description;
 
-	@NotNull
-	@Min(value = 1)
+	@Min(value = 0)
 	@Max(value = 100000)
 	int							estimatedCost;
 
@@ -51,7 +50,6 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 255)
 	String						link;
 
-	@NotNull
 	boolean						draftMode			= true;
 
 	// Relationships ----------------------------------------------------------

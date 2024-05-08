@@ -42,10 +42,8 @@ public class Project extends AbstractEntity {
 	@Length(max = 100)
 	String						projectAbstract;
 
-	@NotNull
 	boolean						indication;
 
-	@NotNull
 	@Min(value = 0)
 	@Max(value = 100000)
 	int							cost;
@@ -54,7 +52,6 @@ public class Project extends AbstractEntity {
 	@Length(max = 255)
 	String						link;
 
-	@NotNull
 	boolean						draftMode			= true;
 
 	// Relationships ----------------------------------------------------------
