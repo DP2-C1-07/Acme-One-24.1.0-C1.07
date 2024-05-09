@@ -13,6 +13,7 @@ import acme.entities.contract.Contract;
 import acme.entities.progresslog.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
+import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Manager;
 
@@ -48,4 +49,7 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select s from Sponsorship s where s.project.id = :projectId")
 	Collection<Sponsorship> findAllSponsorshipsByProjectId(int projectId);
+
+	@Query("select i from Invoice i where i.sponsorship.id = :sponsorshipId")
+	Collection<Invoice> findAllInvoicesBySponsorshipId(int sponsorshipId);
 }

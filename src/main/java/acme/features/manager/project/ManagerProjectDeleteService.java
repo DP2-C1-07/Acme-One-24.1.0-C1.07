@@ -16,6 +16,7 @@ import acme.entities.contract.Contract;
 import acme.entities.progresslog.ProgressLog;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
+import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.userstories.UserStory;
 import acme.features.manager.userstory.ManagerUserStoryRepository;
@@ -102,7 +103,20 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		this.managerProjectRepository.deleteAll(contracts);
 
 		Collection<Sponsorship> sponsorships = this.managerProjectRepository.findAllSponsorshipsByProjectId(projectId);
+		for (Sponsorship sponsorship : sponsorships) {
+			Collection<Invoice> invoices = this.managerProjectRepository.findAllInvoicesBySponsorshipId(sponsorship.getId());
+			this.managerProjectRepository.deleteAll(invoices);
+		}
 		this.managerProjectRepository.deleteAll(sponsorships);
+
+		/*
+		 * Collection<TrainingModule> trainingModules = this.managerProjectRepository.findAllTrainingModulesByProjectId(projectId);
+		 * for (TrainingModule trainingModule : trainingModules) {
+		 * Collection<TrainingSession> trainingSessions = this.managerProjectRepository.findAllTrainingSessionsFromTrainingModuleId(trainingModule.getId());
+		 * this.managerProjectRepository.deleteAll(trainingSessions);
+		 * }
+		 * this.managerProjectRepository.deleteAll(trainingModules);
+		 */
 
 		Collection<UserStory> userStories;
 		userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(projectId);
