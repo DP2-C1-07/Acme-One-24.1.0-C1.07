@@ -73,7 +73,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		Manager manager = this.repository.findOneManagerById(managerId);
 
-		if (!nullProject && !nullUserStory) {
+		if (nullProject && nullUserStory) {
 			boolean condition = object.getProject().isDraftMode() && object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager);
 			super.state(condition, "*", "manager.project-user-story.create.error.draft-mode");
 		}
