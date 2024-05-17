@@ -1,0 +1,19 @@
+request-id,request-method,request-path,request-query,request-payload,response-status,response-content-type,response-payload,response-oops,pre-handle-timestamp,post-handle-timestamp,"after-completion-timestamp"
+"ea69b925-6ca5-e22f-bacc-6cea5afa0013",GET,/manager/project/update,id=145,,500,text/html;charset=utf-8,banner=231,"Access is not authorised",2269420488530800,2269420837990400,2269435608719900
+"a17834ea-2056-de70-b935-75e5e2a1307b",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,2269436004944100,2269436024956600,2269436030185300
+"9f22b406-69db-0cfc-7521-b05258f47eb2",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,2269436049725600,2269436054203900,2269436056328800
+"a0b275d9-ad79-6cf9-213e-c42d922e2719",GET,"/libraries/datatables/1.10.18/css/datatables.min.css",,,200,text/css,,,2269436074020700,2269436082349400,2269436085097200
+"e0dd7479-96c9-e0e5-dbe3-b223cfca85c4",GET,"/libraries/acme/css/acme.css",,,200,text/css,,,2269436132038100,2269436137638100,2269436139629700
+"affd0755-2a2a-495b-9663-e45fc52bf989",GET,"/libraries/jquery/3.3.1/js/jquery.min.js",,,200,application/javascript,,,2269436157228600,2269436165048700,2269436167394900
+"8cda33bb-0109-35a6-dcf5-87b5374c3451",GET,"/libraries/popper.js/1.14.4/js/popper.min.js",,,200,application/javascript,,,2269436258625200,2269436265938600,2269436268579200
+"176c66bc-205b-083a-a99b-e96a53dcc909",GET,"/libraries/bootstrap/4.1.3/js/bootstrap.min.js",,,200,application/javascript,,,2269436303550700,2269436313697300,2269436315718800
+"aca044e4-2c04-c2fe-5096-9bca2ff4a5ba",GET,"/libraries/datatables/1.10.18/js/jquery.datatables.min.js",,,200,application/javascript,,,2269436384505400,2269436389150400,2269436390594400
+"e9c26c0e-33ba-43e6-2713-3eab7fdeb1f5",GET,"/libraries/datatables/1.10.18/js/datatables.min.js",,,200,application/javascript,,,2269436421083000,2269436430141400,2269436431801400
+"2236112b-4b23-86e5-2501-0d7136e2754f",GET,"/libraries/chart.js/2.7.2/js/chart.bundle.min.js",,,200,application/javascript,,,2269436454013000,2269436458497700,2269436465635700
+"38f33fdd-1c18-d1ad-e2c5-88eb16198943",GET,"/libraries/areyousure/1.9.0/js/areyousure.min.js",,,200,application/javascript,,,2269436507769600,2269436512893700,2269436514388200
+"e54d9b34-14de-2b4d-f5fe-c1cc59794ff3",GET,"/libraries/acme/js/acme.js",,,200,application/javascript,,,2269436546397000,2269436551257800,2269436553012700
+"c847c6f3-3fcf-cc14-068b-37777dd6acb6",GET,/images/banner.png,,,200,image/png,,,2269436570751000,2269436579759400,2269436581993900
+"5dc58621-5c51-a02a-0512-76fd811f38c0",GET,/images/logo.png,,,200,image/png,,,2269436618042800,2269436623721200,2269436625229100
+"248f0fc9-a011-6076-2264-6f5edc97d89d",GET,"/libraries/fontawesome/5.2.0/webfonts/fa-solid-900.woff2",,,200,application/font-woff2,,,2269436748778000,2269436753690300,2269436754971500
+"77ea8c52-1cf3-9588-f63c-d22be978adbf",GET,"/libraries/fontawesome/5.2.0/webfonts/fa-brands-400.woff2",,,200,application/font-woff2,,,2269436806275700,2269436812039600,2269436813423400
+"d1080da3-83ad-e879-6a49-1ac6cefeab02",GET,/images/favicon.ico,,,200,image/x-icon,,,2269437115155900,2269437157426600,2269437158633900
