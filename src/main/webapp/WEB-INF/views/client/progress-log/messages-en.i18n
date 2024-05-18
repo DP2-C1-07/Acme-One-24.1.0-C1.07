@@ -31,7 +31,6 @@ client.progress-log.form.button.create = Create
 
 #Errors
 client.progress-log.form.error.duplicated = This id is already in use
-client.progress-log.form.error.executionDate = The date must be after 2000-1-1
 
 #Placeholder
 client.progress-log.form.recordId.placeholder = PG-[A-Z]{1,2}-[0-9]{4}

@@ -1,13 +1,14 @@
 
 package acme.features.client.contracts;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
@@ -54,6 +55,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
 		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
 		object.setProject(project);
 	}
 
@@ -71,15 +73,18 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
-
-		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
-			super.state(object.getInstantiationMoment().after(Date.valueOf("2000-1-1")), "instantiationMoment", "client.contract.form.error.executionDate");
 	}
 
 	@Override
 	public void perform(final Contract object) {
 
 		assert object != null;
+		
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
+		object.setInstantiationMoment(moment);
+		
 		this.clientContractRepository.save(object);
 	}
 
@@ -96,7 +101,9 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
+		
+		dataset.put("instantationMoment", MomentHelper.getCurrentMoment());
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

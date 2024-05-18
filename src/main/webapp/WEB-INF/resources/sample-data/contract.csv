@@ -13,7 +13,7 @@ contract-11,FGH-011,2010/01/01 00:00,abcdefghijklmnopqrstuvwxyabcdefghijklmnopqr
 contract-12,VBN-012,2010/01/01 00:00,サンプル,Customer,Goal,"USD 50,000.00",project-12,client-02
 contract-13,ASD-013,2010/01/01 00:00,требовать,Customer,Goal,"USD 50,000.00",project-13,client-01
 contract-14,ZXC-014,2010/01/01 00:00,<script>console.log('javascript')</script>,Customer,Goal,"USD 50,000.00",project-14,client-02
-contract-15,QWE-015,2010/01/01 00:00,or 'A'='A,Customer,Goal,"USD 50,000.00",project-15,client-01
+contract-15,QWE-015,2010/01/01 00:00,' or 'A'='A,Customer,Goal,"USD 50,000.00",project-15,client-01
 contract-16,PLM-016,2010/01/01 00:00,Proveedor,C,Goal,"USD 50,000.00",project-16,client-02
 contract-17,OKN-017,2010/01/01 00:00,Proveedor,Cu,Goal,"USD 50,000.00",project-17,client-01
 contract-18,REW-018,2010/01/01 00:00,Proveedor,Customer,Goal,"USD 50,000.00",project-18,client-02
@@ -31,7 +31,7 @@ contract-29,GHI-029,2010/01/01 00:00,Proveedor,Customer,abcdefghijklmnopqrstuvwx
 contract-30,GHI-030,2010/01/01 00:00,Proveedor,Customer,サンプル,"USD 50,000.00",project-30,client-02
 contract-31,GHI-031,2010/01/01 00:00,Proveedor,Customer,требовать,"USD 50,000.00",project-31,client-01
 contract-32,GHI-032,2010/01/01 00:00,Proveedor,Customer,<script>console.log('javascript')</script>,"USD 50,000.00",project-32,client-02
-contract-33,GHI-033,2010/01/01 00:00,Proveedor,Customer,or 'A'='A,"USD 50,000.00",project-33,client-01
+contract-33,GHI-033,2010/01/01 00:00,Proveedor,Customer,' or 'A'='A,"USD 50,000.00",project-33,client-01
 contract-34,GHI-034,2010/01/01 00:00,Proveedor,Customer,Goal,USD 0.01,project-34,client-01
 contract-35,GHI-035,2010/01/01 00:00,Proveedor,Customer,Goal,USD 0.02,project-35,client-02
 contract-36,GHI-036,2010/01/01 00:00,Proveedor,Customer,Goal,"USD 50,000.00",project-36,client-01

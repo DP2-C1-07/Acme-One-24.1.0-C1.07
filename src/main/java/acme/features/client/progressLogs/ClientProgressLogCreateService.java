@@ -1,12 +1,13 @@
 
 package acme.features.client.progressLogs;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
 import acme.entities.progresslog.ProgressLog;
@@ -61,6 +62,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		assert object != null;
 
 		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		object.setRegistrationMoment(MomentHelper.getCurrentMoment());
 	}
 
 	@Override
@@ -74,15 +76,15 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
 			super.state(existing == null, "recordId", "client.progress-log.form.error.duplicated");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-			super.state(object.getRegistrationMoment().after(Date.valueOf("2000-1-1")), "registrationMoment", "client.progress-log.form.error.executionDate");
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
-
-		assert object != null;
+		
+		Date moment;
+		
+		moment = MomentHelper.getCurrentMoment();
+		object.setRegistrationMoment(moment);
 
 		object.setDraftMode(true);
 		this.repository.save(object);
@@ -94,8 +96,9 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "responsiblePerson", "draftMode");
 
+		dataset.put("registrationMoment", MomentHelper.getCurrentMoment());
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.isDraftMode());
 

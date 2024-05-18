@@ -1,13 +1,13 @@
 
 package acme.features.client.contracts;
 
-import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
@@ -58,7 +58,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -74,9 +74,6 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 			if (!super.getBuffer().getErrors().hasErrors("budget"))
 				super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget");
-			
-			if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
-				super.state(object.getInstantiationMoment().after(Date.valueOf("2000-1-1")), "instantiationMoment", "client.contract.form.error.executionDate");
 		}
 
 	}
@@ -100,6 +97,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
+		
 		object.setDraftMode(false);
 		this.clientContractRepository.save(object);
 	}

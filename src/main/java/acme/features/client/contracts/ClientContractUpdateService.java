@@ -1,13 +1,13 @@
 
 package acme.features.client.contracts;
 
-import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
@@ -58,7 +58,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -75,9 +75,6 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
-		
-		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
-			super.state(object.getInstantiationMoment().after(Date.valueOf("2000-1-1")), "instantiationMoment", "client.contract.form.error.executionDate");
 	}
 
 	@Override

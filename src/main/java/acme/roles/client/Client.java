@@ -29,7 +29,7 @@ public class Client extends AbstractRole{
 	String identification;
 	
 	@NotBlank
-	@Length(max = 100)
+	@Length(max = 75)
 	String companyName;
 	
 	@NotNull
