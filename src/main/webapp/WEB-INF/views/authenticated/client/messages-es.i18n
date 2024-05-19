@@ -4,7 +4,7 @@ authenticated.client.form.label.identification = Identificador
 authenticated.client.form.label.companyName = Nombre de la compañía
 authenticated.client.form.label.type = Tipo
 authenticated.client.form.label.email = Email 
-authenticated.client.form.label.link = Link
+authenticated.client.form.label.link = Link opcional
 
 authenticated.client.form.button.create = Registrar
 authenticated.client.form.button.update = Actualizar
