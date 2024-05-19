@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
 import acme.entities.projects.Project;
 import acme.roles.client.Client;
+import acme.utils.Validators;
 
 @Service
 public class ClientContractUpdateService extends AbstractService<Client, Contract> {
@@ -20,7 +20,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	@Autowired
 	ClientContractRepository clientContractRepository;
 
-
+	@Autowired
+	Validators validator;
+	
 	@Override
 	public void authorise() {
 		boolean status;
@@ -73,8 +75,28 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.excededMaximum");
+			super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget", object.getProject().getCost());
+			super.state(validator.moneyValidator(object.getBudget().getCurrency()), "budget", "client.contract.form.error.currency-not-suported");
+		}
+	}
+
+	private Boolean checkContractsAmountsLessThanProjectCost(final Contract object) {
+		assert object != null;
+
+		if (object.getProject() != null) {
+			Collection<Contract> contratos = this.clientContractRepository.findManyContractByProjectId(object.getProject().getId());
+
+			Double budgetTotal = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
+
+			Double projectCost = (double) object.getProject().getCost();
+
+			return projectCost >= budgetTotal + object.getBudget().getAmount();
+		}
+
+		return true;
 	}
 
 	@Override
