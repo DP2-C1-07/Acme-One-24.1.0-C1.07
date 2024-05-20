@@ -12,7 +12,7 @@ administrator.banner.form.button.create = Create
 administrator.banner.form.button.update = Update
 administrator.banner.form.button.delete = Delete
 
-administrator.banner.form.error.DisplayPeriodNotAfterILUMoment = Display period beginning must be after instantiation/last update moment
+administrator.banner.form.error.display-period-not-after-ILUMoment = Display period beginning must be after instantiation/last update moment
 administrator.banner.form.error.too-close = Display period end must be at least a week after display period beginning
 administrator.banner.form.error.before-min-date = This date is before system minimum supported date
 administrator.banner.form.error.after-max-date = This date is after system maximum supported date

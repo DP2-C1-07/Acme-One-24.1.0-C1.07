@@ -71,7 +71,10 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 			super.state(MomentHelper.isBeforeOrEqual(object.getDisplayPeriodBeginning(), MomentHelper.deltaFromMoment(MAX_DATE, -7, ChronoUnit.DAYS)), "displayPeriodBeginning", "administrator.banner.form.error.no-time-for-min-period-b");
 
 		if (!super.getBuffer().getErrors().hasErrors("displayPeriodBeginning"))
-			super.state(MomentHelper.isAfterOrEqual(object.getDisplayPeriodBeginning(), object.getInstantiationLastUpdateMoment()), "displayPeriodBeginning", "administrator.banner.form.error.DisplayPeriodNotAfterILUMoment");
+			super.state(MomentHelper.isAfterOrEqual(object.getDisplayPeriodBeginning(), object.getInstantiationLastUpdateMoment()), "displayPeriodBeginning", "administrator.banner.form.error.display-period-not-after-ILUMoment");
+
+		if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
+			super.state(MomentHelper.isAfterOrEqual(object.getDisplayPeriodEnd(), object.getInstantiationLastUpdateMoment()), "displayPeriodEnd", "administrator.banner.form.error.display-period-not-after-ILUMoment");
 
 		if (!super.getBuffer().getErrors().hasErrors("displayPeriodEnd"))
 			super.state(MomentHelper.isAfterOrEqual(object.getDisplayPeriodEnd(), MIN_DATE), "displayPeriodEnd", "administrator.banner.form.error.before-min-date");

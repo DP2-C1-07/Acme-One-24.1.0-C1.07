@@ -10,7 +10,8 @@ developer.training-module.form.label.link = Enlace: (Opcional)
 developer.training-module.form.label.total-time = Tiempo Total Estimado:
 developer.training-module.form.label.more-info = Información Adicional: (Opcional)
 developer.training-module.form.label.draft = Modo Borrador:
-		
+developer.training-module.form.label.project = Proyecto: 
+
 developer.training-module.form.button.training-sessions = Sesiones de Entrenamiento
 developer.training-module.form.button.update = Actualizar
 developer.training-module.form.button.delete = Eliminar
