@@ -6,13 +6,17 @@ code-audit-04,CA-004,2022/07/29 22:59,DYNAMIC,Fix security vulnerability,https:/
 code-audit-05,CA-005,2022/07/29 23:00,STATIC,Fix security vulnerability,https://example.com/project-5,project-01,auditor-01
 code-audit-06,CA-006,2018/01/06 00:00,DYNAMIC,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m",https://example.com/project-6,project-01,auditor-01
 code-audit-07,CA-007,2018/01/07 00:00,STATIC,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean",https://example.com/project-7,project-01,auditor-01
-code-audit-08,CA-008,2018/01/08 00:00,DYNAMIC,or 'A' = A',https://example.com/project-8,project-01,auditor-01
+code-audit-08,CA-008,2018/01/08 00:00,DYNAMIC,'' or 'A'='A,https://example.com/project-8,project-01,auditor-01
 code-audit-09,CA-009,2018/01/09 00:00,STATIC,"<script>console.log(""hacked"")</script>",https://example.com/project-9,project-01,auditor-01
 code-audit-10,CA-010,2018/01/10 00:00,DYNAMIC,плоский текст,https://example.com/project-10,project-01,auditor-01
 code-audit-11,CA-011,2018/01/11 00:00,STATIC,平面テキスト,https://example.com/project-11,project-01,auditor-01
+code-audit-21,CA-021,2018/01/11 00:00,STATIC,a,https://example.com/project-11,project-01,auditor-01
+code-audit-22,CA-022,2018/01/11 00:00,STATIC,aa,https://example.com/project-11,project-01,auditor-01
 code-audit-12,CA-012,2018/01/12 00:00,DYNAMIC,Fix security vulnerability,https://www.google.com/upTo254--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,project-01,auditor-01
 code-audit-13,CA-013,2018/01/13 00:00,STATIC,Fix security vulnerability,https://www.google.com/upTo255---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,project-01,auditor-01
-code-audit-14,CA-014,2018/01/14 00:00,DYNAMIC,Fix security vulnerability,https://www.google.com/or 'A' = A',project-01,auditor-01
+code-audit-14,CA-014,2018/01/14 00:00,DYNAMIC,Fix security vulnerability,https://www.google.com/'' or 'A'='A,project-01,auditor-01
 code-audit-15,CA-015,2018/01/15 00:00,STATIC,Fix security vulnerability,"https://www.google.com/<script>console.log(""hacked"")</script>",project-01,auditor-01
 code-audit-16,CA-016,2018/01/16 00:00,DYNAMIC,Fix security vulnerability,https://www.google.com/плоский текст,project-01,auditor-01
-code-audit-17,CA-017,2018/01/17 00:00,STATIC,Fix security vulnerability,https://www.google.com/平面テキスト,project-01,auditor-01
+code-audit-17,CA-017,2018/01/17 00:00,STATIC,Fix security vulnerability,,project-01,auditor-01
+code-audit-18,CA-018,2018/01/17 00:00,STATIC,Fix security vulnerability,https://,project-01,auditor-01
+code-audit-19,CA-019,2018/01/17 00:00,STATIC,Fix security vulnerability,https://w,project-01,auditor-01

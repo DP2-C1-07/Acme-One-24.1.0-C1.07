@@ -42,7 +42,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		codeAudit = this.auditorCodeAuditRepository.findOneById(userStoryId);
 		auditor = codeAudit.getAuditor();
 
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
+		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor) && codeAudit.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
