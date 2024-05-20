@@ -13,6 +13,7 @@
 	<acme:input-integer code="developer.training-module.form.label.total-time" path="totalTime"/>
 	<acme:input-textarea code="developer.training-module.form.label.more-info" path="moreInfo"/>
 	<acme:input-textbox readonly="true" code="developer.training-module.form.label.draft" path="draft"/>
+	<acme:input-select code="developer.training-module.form.label.project" path="project" choices="${projects}"/>	
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draft == 'No'}">
 			<acme:button code="developer.training-module.form.button.training-sessions" action="/developer/training-session/list?masterId=${id}"/>			

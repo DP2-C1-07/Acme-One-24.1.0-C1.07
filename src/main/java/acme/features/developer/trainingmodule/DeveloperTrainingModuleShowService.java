@@ -1,6 +1,7 @@
 
 package acme.features.developer.trainingmodule;
 
+import java.util.Collection;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingmodules.TrainingModuleDifficultyLevel;
 import acme.roles.Developer;
@@ -56,6 +58,11 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 
 		SelectChoices choices;
 		Dataset dataset;
+		Collection<Project> projects;
+		SelectChoices choicesProject;
+
+		projects = this.repository.findAllPublishedProjects();
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 
 		choices = SelectChoices.from(TrainingModuleDifficultyLevel.class, object.getDifficultyLevel());
 
@@ -67,6 +74,8 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 			dataset.put("draft", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
 		} else
 			dataset.put("draft", "No");
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
 		super.getResponse().addData(dataset);
 	}
 

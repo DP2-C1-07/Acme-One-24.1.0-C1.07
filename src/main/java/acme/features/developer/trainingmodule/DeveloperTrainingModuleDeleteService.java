@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projects.Project;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingmodules.TrainingModuleDifficultyLevel;
 import acme.entities.trainingsessions.TrainingSession;
@@ -56,7 +57,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "updateMoment", "details", "difficultyLevel", "link", "totalTime", "draft");
+		super.bind(object, "code", "creationMoment", "updateMoment", "details", "difficultyLevel", "link", "totalTime", "draft", "project");
 	}
 
 	@Override
@@ -84,9 +85,14 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 
 		SelectChoices choices;
 		Dataset dataset;
+		Collection<Project> projects;
+		SelectChoices choicesProject;
+
+		projects = this.repository.findAllPublishedProjects();
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 
 		choices = SelectChoices.from(TrainingModuleDifficultyLevel.class, object.getDifficultyLevel());
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "totalTime");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "totalTime", "project");
 		dataset.put("difficultyLevels", choices);
 		if (object.isDraft()) {
 			final Locale local = super.getRequest().getLocale();
@@ -94,7 +100,8 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 			dataset.put("draft", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
 		} else
 			dataset.put("draft", "No");
-
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
 		super.getResponse().addData(dataset);
 	}
 
