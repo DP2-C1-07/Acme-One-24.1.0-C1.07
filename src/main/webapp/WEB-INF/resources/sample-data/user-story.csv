@@ -49,3 +49,14 @@ user-story-47,"user story title","user story description",50000,"user story acce
 user-story-48,"user story title","user story description",50000,"user story acceptance criteria",MUST,"https://www.google.com",manager-01
 user-story-49,"user story title","user story description",50000,"user story acceptance criteria",MUST,"https://www.google.com",manager-02
 user-story-50,"user story title","user story description",50000,"user story acceptance criteria",MUST,"https://www.google.com",manager-03
+user-story-51,"user story title","user story description",50000,"user story acceptance criteria",MUST,"https://www.lorem-ipsum.org",manager-03
+user-story-52,"user story title","user story description",50000,"user story acceptance criteria",MUST,"ftp://www.lorem-ipsum.org",manager-03
+user-story-53,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://www.lorem-ipsum.org/dolor/sit.html",manager-03
+user-story-54,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",manager-03
+user-story-55,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org?a=1&b=2",manager-03
+user-story-56,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org?a",manager-03
+user-story-57,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org/",manager-03
+user-story-58,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org/a",manager-03
+user-story-59,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org/a/b",manager-03
+user-story-60,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org/a/b?",manager-03
+user-story-61,"user story title","user story description",50000,"user story acceptance criteria",MUST,"http://example.org/a/b?a&b",manager-03

@@ -50,4 +50,14 @@ claim-48,"C-0048",2010/01/01 00:00,"claim heading","claim description","claim de
 claim-49,"C-0049",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com","https://www.требовать.com"
 claim-50,"C-0050",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com","https://www.google.com?"
 claim-51,"C-0051",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com","https://www.google.com?a&b"
-claim-52,"C-0052",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",
+claim-52,"C-0052",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",https://www.lorem-ipsum.org
+claim-53,"C-0053",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",ftp://www.lorem-ipsum.org
+claim-54,"C-0054",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://www.lorem-ipsum.org/dolor/sit.html
+claim-55,"C-0055",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://www.lorem-ipsum.org/dolor/sit.html#dolor
+claim-56,"C-0056",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org?a=1&b=2
+claim-57,"C-0057",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org?a
+claim-58,"C-0058",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org/
+claim-59,"C-0059",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org/a
+claim-60,"C-0060",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org/a/b
+claim-61,"C-0061",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org/a/b?
+claim-62,"C-0062",2010/01/01 00:00,"claim heading","claim description","claim department","pabcabmar3@gmail.com",http://example.org/a/b?a&b
