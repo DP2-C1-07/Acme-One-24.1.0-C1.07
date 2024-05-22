@@ -38,3 +38,14 @@ project-36,AAA-0036,"project title","project abstract",0,50000,,true,manager-01
 project-37,AAA-0037,"project title","project abstract",0,50000,"https://www.google.com",true,manager-01
 project-38,AAA-0038,"project title","project abstract",0,50000,"https://www.google.com",true,manager-02
 project-39,AAA-0039,"project title","project abstract",0,50000,"https://www.google.com",false,manager-03
+project-40,AAA-0040,"project title","project abstract",0,50000,"https://www.lorem-ipsum.org",false,manager-03
+project-41,AAA-0041,"project title","project abstract",0,50000,"ftp://www.lorem-ipsum.org",false,manager-03
+project-42,AAA-0042,"project title","project abstract",0,50000,"http://www.lorem-ipsum.org/dolor/sit.html",false,manager-03
+project-43,AAA-0043,"project title","project abstract",0,50000,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",false,manager-03
+project-44,AAA-0044,"project title","project abstract",0,50000,"http://example.org?a=1&b=2",false,manager-03
+project-45,AAA-0045,"project title","project abstract",0,50000,"http://example.org?a",false,manager-03
+project-46,AAA-0046,"project title","project abstract",0,50000,"http://example.org/",false,manager-03
+project-47,AAA-0047,"project title","project abstract",0,50000,"http://example.org/a",false,manager-03
+project-48,AAA-0048,"project title","project abstract",0,50000,"http://example.org/a/b",false,manager-03
+project-49,AAA-0049,"project title","project abstract",0,50000,"http://example.org/a/b?",false,manager-03
+project-50,AAA-0050,"project title","project abstract",0,50000,"http://example.org/a/b?a&b",false,manager-03
