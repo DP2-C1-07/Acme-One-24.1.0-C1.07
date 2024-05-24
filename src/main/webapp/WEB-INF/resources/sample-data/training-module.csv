@@ -35,8 +35,8 @@ training-module-33,"A-033",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/0
 training-module-34,"A-034",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",false,1,developer-01,project-02
 training-module-35,"A-035",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,2,developer-01,project-02
 training-module-36,"A-036",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,8,developer-01,project-02
-training-module-37,"A-037",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,2147483646,developer-01,project-02
-training-module-38,"A-038",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,2147483647,developer-01,project-02
+training-module-37,"A-037",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,9999,developer-01,project-02
+training-module-38,"A-038",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,10000,developer-01,project-02
 training-module-39,"A-039",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,5,developer-02,project-02
 training-module-40,"A-040",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,5,developer-02,project-02
 training-module-41,"A-041",2021/07/30 00:00,INTERMEDIATE,"Random details",2022/07/30 00:00,"https://www.microsoft.com/es-es",true,5,developer-03,project-02

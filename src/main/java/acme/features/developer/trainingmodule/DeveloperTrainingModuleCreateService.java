@@ -48,8 +48,12 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
+		Date moment;
 
-		super.bind(object, "code", "creationMoment", "updateMoment", "details", "difficultyLevel", "link", "totalTime", "draft", "project");
+		moment = MomentHelper.getCurrentMoment();
+		object.setCreationMoment(moment);
+		object.setDraft(true);
+		super.bind(object, "code", "details", "difficultyLevel", "link", "totalTime", "project");
 	}
 
 	@Override

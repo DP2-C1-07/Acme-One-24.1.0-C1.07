@@ -1,44 +1,34 @@
 
-package acme.features.developer.trainingmodule;
+package acme.features.any.trainingModule;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingmodules.TrainingModuleDifficultyLevel;
-import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleShowService extends AbstractService<Developer, TrainingModule> {
-
+public class AnyTrainingModuleShowService extends AbstractService<Any, TrainingModule> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingModuleRepository repository;
+	private AnyTrainingModuleRepository repository;
+
 
 	// AbstractService interface ----------------------------------------------
-
-
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		TrainingModule trainingModule;
-		Developer developer;
 
-		masterId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
-		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(developer) && trainingModule.getDeveloper().equals(developer);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -47,7 +37,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneTrainingModuleById(id);
+		object = this.repository.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -61,7 +51,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		Collection<Project> projects;
 		SelectChoices choicesProject;
 
-		projects = this.repository.findAllPublishedProjects();
+		projects = List.of(object.getProject());
 		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 
 		choices = SelectChoices.from(TrainingModuleDifficultyLevel.class, object.getDifficultyLevel());
@@ -78,5 +68,4 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		dataset.put("projects", choicesProject);
 		super.getResponse().addData(dataset);
 	}
-
 }

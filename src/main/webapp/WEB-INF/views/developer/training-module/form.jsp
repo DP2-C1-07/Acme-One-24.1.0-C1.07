@@ -11,7 +11,6 @@
 	<acme:input-textarea code="developer.training-module.form.label.details" path="details"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
 	<acme:input-integer code="developer.training-module.form.label.total-time" path="totalTime"/>
-	<acme:input-textarea code="developer.training-module.form.label.more-info" path="moreInfo"/>
 	<acme:input-textbox readonly="true" code="developer.training-module.form.label.draft" path="draft"/>
 	<acme:input-select code="developer.training-module.form.label.project" path="project" choices="${projects}"/>	
 	<jstl:choose>	 
