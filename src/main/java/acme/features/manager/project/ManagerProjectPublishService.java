@@ -74,6 +74,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		}
 
 		Collection<UserStory> userStories = this.managerUserStoryRepository.findAllUserStoriesByProjectId(object.getId());
+
 		boolean conditionUserStory = !userStories.isEmpty() && userStories.stream().noneMatch(u -> u.isDraftMode());
 		super.state(conditionUserStory, "*", "manager.project.publish.error.draft-mode");
 

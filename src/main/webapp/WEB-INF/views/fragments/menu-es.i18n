@@ -26,6 +26,8 @@ master.menu.anonymous.favourite-link.alfalolan = 77865211E: Alonso Lanzarán, Al
 
 # master.menu.administrator ###################################################
 
+master.menu.administrator.administrator-dashboard = Panel de administrador
+master.menu.administrator.risks = Riesgos
 master.menu.administrator.configuration = Configuración
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
@@ -78,6 +80,7 @@ master.menu.any.list-contract = Listar contratos
 
 
 # master.menu.authenticated ############################################################
+master.menu.authenticated.notice = Notificaciones
 master.menu.authenticated = Autentificado
 master.menu.authenticated.objective = Listar objetivos
 

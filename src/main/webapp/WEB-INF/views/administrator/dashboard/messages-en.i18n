@@ -1,0 +1,22 @@
+administrator.administrator-dashboard.form.title = Administrator dashboard
+
+administrator.administrator-dashboard.form.title.general-indicators = General indicators
+
+administrator.administrator-dashboard.form.label.total-administrator = Total of administrator
+administrator.administrator-dashboard.form.label.total-auditor = Total of auditors
+administrator.administrator-dashboard.form.label.total-client = Total of clients
+administrator.administrator-dashboard.form.label.total-consumer = Total of consumers
+administrator.administrator-dashboard.form.label.total-developer = Total of developers
+administrator.administrator-dashboard.form.label.total-manager = Total of managers
+administrator.administrator-dashboard.form.label.total-provider = Total of providers
+administrator.administrator-dashboard.form.label.total-sponsor = Total of sponsors
+administrator.administrator-dashboard.form.label.ratio-notices-with-email-and-link = Ratio of notices with email and link
+administrator.administrator-dashboard.form.label.ratio-critical-objectives = Ratio of critical objectives
+administrator.administrator-dashboard.form.label.ratio-non-critical-objectives = Ratio of non critical objectives
+administrator.administrator-dashboard.form.label.risk-value-average = Risk value average
+administrator.administrator-dashboard.form.label.risk-value-deviation = Risk value deviation
+administrator.administrator-dashboard.form.label.risk-value-minimum = Risk value minimum
+administrator.administrator-dashboard.form.label.claims-posted-average = Claims posted average
+administrator.administrator-dashboard.form.label.claims-posted-deviation = Claims posted deviation
+administrator.administrator-dashboard.form.label.claims-posted-maximum = Claims posted maximum
+administrator.administrator-dashboard.form.label.claims-posted-minimum = Claims posted minimum
