@@ -77,7 +77,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 				diffInMili = object.getPeriodEnd().getTime() - object.getPeriodBeginning().getTime();
 				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
 				super.state(diffInHour >= 1, "periodEnd", "auditor.audit-record.error.duration");
-				super.state(object.getPeriodBeginning() != null || object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
+				super.state(object.getPeriodBeginning() != null && object.getPeriodBeginning().before(object.getPeriodEnd()), "periodEnd", "auditor.audit-record.error.consecutiveDates");
 			}
 		}
 
