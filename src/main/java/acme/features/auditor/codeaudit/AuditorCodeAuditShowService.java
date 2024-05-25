@@ -63,8 +63,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		Dataset dataset;
 
 		Collection<Project> projects;
-		projects = this.auditorCodeAuditRepository.findAllProjects();	//TODO: cambiarlo por solo los projecto publicados
-
+		projects = this.auditorCodeAuditRepository.findAllPublishedProjects();
 		Collection<AuditRecord> list = this.auditorAuditRecordRespository.findAllByCodeAuditId(object.getId());
 		Mark mark = object.getMark(list);
 
