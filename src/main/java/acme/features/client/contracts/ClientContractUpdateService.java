@@ -60,7 +60,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "instantationMoment", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -76,7 +76,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+			super.state(object.getBudget().getAmount() >= 0, "budget", "client.contract.form.error.negative-amount");
 			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.excededMaximum");
 			super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget", object.getProject().getCost());
 			super.state(validator.moneyValidator(object.getBudget().getCurrency()), "budget", "client.contract.form.error.currency-not-suported");
@@ -118,6 +118,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
+		dataset.put("instantiationMoment", object.getInstantiationMoment());
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

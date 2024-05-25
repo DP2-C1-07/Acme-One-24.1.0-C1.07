@@ -75,27 +75,10 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+			super.state(object.getBudget().getAmount() >= 0, "budget", "client.contract.form.error.negative-amount");
 			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.excededMaximum");
-			super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget", object.getProject().getCost());
 			super.state(validator.moneyValidator(object.getBudget().getCurrency()), "budget", "client.contract.form.error.currency-not-suported");
 		}
-	}
-
-	private Boolean checkContractsAmountsLessThanProjectCost(final Contract object) {
-		assert object != null;
-
-		if (object.getProject() != null) {
-			Collection<Contract> contratos = this.clientContractRepository.findManyContractByProjectId(object.getProject().getId());
-
-			Double budgetTotal = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
-
-			Double projectCost = (double) object.getProject().getCost();
-
-			return projectCost >= budgetTotal + object.getBudget().getAmount();
-		}
-
-		return true;
 	}
 	
 	@Override
