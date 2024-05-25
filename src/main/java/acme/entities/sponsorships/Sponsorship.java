@@ -10,7 +10,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -49,8 +48,10 @@ public class Sponsorship extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@Min(30)
-	private int					durationDays;
+	// the "duration" specified by the client: after the field moment, at least 1 month later
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
 	@NotNull
 	private Money				amount;
