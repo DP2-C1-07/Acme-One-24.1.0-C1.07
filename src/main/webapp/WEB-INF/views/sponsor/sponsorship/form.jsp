@@ -6,7 +6,7 @@
 <acme:form>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" placeholder="sponsor.sponsorship.form.placeholder.code" path="code"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>
-	<acme:input-integer code="sponsor.sponsorship.form.label.duration" path="durationDays"/>	
+	<acme:input-moment code="sponsor.sponsorship.form.label.duration" path="endDate"/>	
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>	
 	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices="${types}"/>	
 	<acme:input-email code="sponsor.sponsorship.form.label.email" path="contactEmail"/>

@@ -43,7 +43,7 @@ public class SponsorSponsorshipListMineService extends AbstractService<Sponsor, 
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "moment", "durationDays", "amount", "type", "project.code");
+		Dataset dataset = super.unbind(object, "code", "moment", "endDate", "amount", "type", "project.code");
 
 		super.getResponse().addData(dataset);
 	}
