@@ -2,11 +2,13 @@
 package acme.forms;
 
 import acme.client.data.AbstractForm;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class SponsorDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
@@ -15,8 +17,8 @@ public class SponsorDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	private Integer				invoicesWithTaxLessOrEqualThan21Percent;
-	private Integer				sponsorshipsWithLink;
+	private Long				invoicesWithTaxLessOrEqualThan21Percent;
+	private Long				sponsorshipsWithLink;
 
 	private Double				averageSponsorshipAmount;
 	private Double				deviationSponsorshipAmount;

@@ -70,6 +70,8 @@ master.menu.user-account.developer = Developer data
 master.menu.user-account.auditor = Auditor data
 master.menu.user-account.become-auditor = Become an auditor
 master.menu.user-account.risk = List risk
+master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.user-account.sponsor = Sponsor data
 
 # master.menu.any ############################################################
 master.menu.any = Any
@@ -94,6 +96,8 @@ master.menu.user-account.manager = Update account
 # master.menu.sponsor ########################################################
 master.menu.sponsor = Sponsor
 master.menu.sponsor.my-sponsorships = List my sponsorships
+master.menu.sponsor.my-invoices = List my invoices
+master.menu.sponsor.sponsor-dashboard = Sponsor dashboard
 
 # master.menu.client #########################################################
 master.menu.client = Client
