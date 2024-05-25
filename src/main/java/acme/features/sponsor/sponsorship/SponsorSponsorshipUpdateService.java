@@ -3,6 +3,7 @@ package acme.features.sponsor.sponsorship;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,9 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.project-draft-mode");
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing = this.sponsorSponsorshipRepository.findSponsorshipByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated-code");
@@ -91,13 +95,14 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "published", "moment", "endDate", "amount", "type", "contactEmail", "link", "project.code");
+		Dataset dataset = super.unbind(object, "code", "published", "moment", "endDate", "amount", "type", "contactEmail", "link");
 
-		Collection<Project> projects = this.sponsorSponsorshipRepository.findAllProjects();
+		Collection<Project> projects = object.isPublished() ? Collections.singletonList(object.getProject()) : this.sponsorSponsorshipRepository.findPublishedProjects();
+		if (object.getProject() != null && !projects.contains(object.getProject()))
+			projects.add(object.getProject());
+
 		dataset.put("types", SelectChoices.from(SponsorshipType.class, object.getType()));
-
-		if (!object.isPublished())
-			dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
+		dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
 
 		super.getResponse().addData(dataset);
 	}

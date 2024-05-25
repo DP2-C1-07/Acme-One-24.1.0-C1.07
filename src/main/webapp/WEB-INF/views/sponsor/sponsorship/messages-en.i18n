@@ -5,6 +5,7 @@ sponsor.sponsorship.list.label.moment = Moment
 sponsor.sponsorship.list.label.duration = Until
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.type = Type
+sponsor.sponsorship.list.label.published = Published
 sponsor.sponsorship.list.button.create = Create
 
 sponsor.sponsorship.form.title = Sponsorship details
@@ -23,6 +24,8 @@ sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
 
+sponsor.sponsorship.form.error.project-draft-mode = The project needs to be published
+sponsor.sponsorship.form.error.code-format = Code must follow the format ABC-000
 sponsor.sponsorship.form.error.duplicated-code = The given code is already in use
 sponsor.sponsorship.form.error.endDate-one-month = Sponsorships must last at least one month
 sponsor.sponsorship.form.error.different-currency = The sponsorship currency must be the same than as all its invoices

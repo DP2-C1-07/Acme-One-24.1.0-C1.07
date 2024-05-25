@@ -30,8 +30,8 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("select s from Sponsor s where s.id = :id")
 	Sponsor findSponsorById(int id);
 
-	@Query("select p from Project p")
-	Collection<Project> findAllProjects();
+	@Query("select p from Project p where p.draftMode = 0")
+	Collection<Project> findPublishedProjects();
 
 	@Query("select p from Project p where p.id = :projectId")
 	Project findProjectById(int projectId);

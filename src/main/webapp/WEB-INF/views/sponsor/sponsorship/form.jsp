@@ -10,13 +10,11 @@
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>	
 	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices="${types}"/>	
 	<acme:input-email code="sponsor.sponsorship.form.label.email" path="contactEmail"/>
-	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>	
+	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>
+	<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
 	
 	<jstl:choose>
-	
 		<jstl:when test="${not published}">
-			<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
-			
 			<jstl:choose>
 				<jstl:when test="${_command == 'create'}">
 					<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
@@ -27,10 +25,6 @@
 					<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
 				</jstl:when>
 			</jstl:choose>
-		</jstl:when>
-		
-		<jstl:when test="${published}">
-			<acme:input-textbox code="sponsor.sponsorship.form.label.project" path="project.code"/>
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

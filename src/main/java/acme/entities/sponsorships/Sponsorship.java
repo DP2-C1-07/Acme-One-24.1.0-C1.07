@@ -38,7 +38,7 @@ public class Sponsorship extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{sponsor.sponsorship.form.error.code-format}")
 	private String				code;
 
 	private boolean				published;

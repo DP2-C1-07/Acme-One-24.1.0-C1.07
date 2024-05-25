@@ -37,7 +37,7 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	@Column(unique = true)
-	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$")
+	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.form.error.code-format}")
 	private String				code;
 
 	@NotNull

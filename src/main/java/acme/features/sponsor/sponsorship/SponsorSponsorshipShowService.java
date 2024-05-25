@@ -2,6 +2,7 @@
 package acme.features.sponsor.sponsorship;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,13 +50,14 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "published", "moment", "endDate", "amount", "type", "contactEmail", "link", "project.code");
+		Dataset dataset = super.unbind(object, "code", "published", "moment", "endDate", "amount", "type", "contactEmail", "link");
 
-		Collection<Project> projects = this.sponsorSponsorshipRepository.findAllProjects();
+		Collection<Project> projects = object.isPublished() ? Collections.singletonList(object.getProject()) : this.sponsorSponsorshipRepository.findPublishedProjects();
+		if (object.getProject() != null && !projects.contains(object.getProject()))
+			projects.add(object.getProject());
+
 		dataset.put("types", SelectChoices.from(SponsorshipType.class, object.getType()));
-
-		if (!object.isPublished())
-			dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
+		dataset.put("projects", SelectChoices.from(projects, "code", object.getProject()));
 
 		super.getResponse().addData(dataset);
 	}
