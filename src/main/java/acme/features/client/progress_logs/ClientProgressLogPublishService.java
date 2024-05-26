@@ -1,6 +1,5 @@
 
-package acme.features.client.progressLogs;
-
+package acme.features.client.progress_logs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import acme.entities.progresslog.ProgressLog;
 import acme.roles.client.Client;
 
 @Service
-public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogPublishService extends AbstractService<Client, ProgressLog> {
 
 	@Autowired
 	private ClientProgressLogRepository repository;
@@ -68,7 +67,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 			ProgressLog existing;
 
 			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null || existing.equals(object), "recordId", "client.progress-log.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "recordId", "client.progressLog.form.error.duplicated");
 		}
 	}
 
@@ -76,6 +75,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void perform(final ProgressLog object) {
 		assert object != null;
 
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

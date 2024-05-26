@@ -1,5 +1,6 @@
 
-package acme.features.client.progressLogs;
+package acme.features.client.progress_logs;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import acme.entities.progresslog.ProgressLog;
 import acme.roles.client.Client;
 
 @Service
-public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
 
 	@Autowired
 	private ClientProgressLogRepository repository;
@@ -67,7 +68,7 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 			ProgressLog existing;
 
 			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null || existing.equals(object), "recordId", "client.progressLog.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "recordId", "client.progress-log.form.error.duplicated");
 		}
 	}
 
@@ -75,7 +76,7 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 	public void perform(final ProgressLog object) {
 		assert object != null;
 
-		this.repository.delete(object);
+		this.repository.save(object);
 	}
 
 	@Override
@@ -84,8 +85,8 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
-
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "responsiblePerson");
+		dataset.put("registrationMoment", object.getRegistrationMoment());
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.isDraftMode());
 
