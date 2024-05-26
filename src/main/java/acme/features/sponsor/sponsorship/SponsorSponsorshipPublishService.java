@@ -57,7 +57,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "moment", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "endDate", "amount", "type", "contactEmail", "link");
 
 		Principal principal = super.getRequest().getPrincipal();
 		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
@@ -80,7 +80,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated-code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("moment") && !super.getBuffer().getErrors().hasErrors("endDate"))
+		if (!super.getBuffer().getErrors().hasErrors("endDate"))
 			super.state(object.getMoment().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getEndDate().toInstant()), "endDate", "sponsor.sponsorship.form.error.endDate-one-month");
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {

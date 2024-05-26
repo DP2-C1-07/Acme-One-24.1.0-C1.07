@@ -50,7 +50,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 			super.state(object.getQuantity().getCurrency().equalsIgnoreCase(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.different-currency");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("registrationTime") && !super.getBuffer().getErrors().hasErrors("dueDate"))
+		if (!super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(object.getRegistrationTime().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getDueDate().toInstant()), "dueDate", "sponsor.invoice.form.error.dueDate-one-month");
 	}
 

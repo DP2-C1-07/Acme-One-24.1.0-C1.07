@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
@@ -46,6 +47,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 		Invoice invoice = new Invoice();
 		invoice.setSponsorship(sponsorship);
+		invoice.setRegistrationTime(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(invoice);
 	}
@@ -54,7 +56,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(object.getQuantity().getCurrency().equalsIgnoreCase(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.different-currency");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("registrationTime") && !super.getBuffer().getErrors().hasErrors("dueDate"))
+		if (!super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(object.getRegistrationTime().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getDueDate().toInstant()), "dueDate", "sponsor.invoice.form.error.dueDate-one-month");
 	}
 
