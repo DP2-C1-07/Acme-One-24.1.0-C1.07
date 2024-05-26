@@ -89,6 +89,9 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			boolean invoicesAmountAddUp = invoices.stream().map(Invoice::getTotalAmount).mapToDouble(Money::getAmount).sum() >= object.getAmount().getAmount();
 			super.state(invoicesAmountAddUp, "amount", "sponsor.sponsorship.form.error.wrong-amount");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("*"))
+			super.state(invoices.stream().allMatch(Invoice::isPublished), "*", "sponsor.sponsorship.form.error.not-all-invoices-published");
 	}
 
 	@Override

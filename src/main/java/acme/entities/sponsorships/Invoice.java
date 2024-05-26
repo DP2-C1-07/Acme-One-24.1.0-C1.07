@@ -40,6 +40,8 @@ public class Invoice extends AbstractEntity {
 	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.form.error.code-format}")
 	private String				code;
 
+	private boolean				published;
+
 	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
@@ -47,11 +49,9 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	// TODO: at least one month ahead the registration time
 	private Date				dueDate;
 
 	@NotNull
-	// TODO: not nought
 	private Money				quantity;
 
 	@Min(0)
