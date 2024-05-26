@@ -15,6 +15,6 @@
 	<acme:list-column code="sponsor.invoice.list.label.published" path="published" width="10%"/>
 </acme:list>
 
-<jstl:if test="${param.sponsorshipId != null}">
+<jstl:if test="${param.sponsorshipId != null && modifiable}">
 	<acme:button code="sponsor.invoice.list.button.create" action="/sponsor/invoice/create?sponsorshipId=${param.sponsorshipId}"/>
 </jstl:if>

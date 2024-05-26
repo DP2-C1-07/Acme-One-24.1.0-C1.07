@@ -46,6 +46,9 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		if (super.getRequest().hasData("sponsorshipId")) {
 			Integer sponsorshipId = super.getRequest().getData("sponsorshipId", Integer.class);
 			invoices = this.repository.findAllInvoicesBySponsorshipId(sponsorshipId);
+
+			Sponsorship sponsorship = this.repository.findSponsorshipById(sponsorshipId);
+			super.getResponse().addGlobal("modifiable", !sponsorship.isPublished());
 		} else {
 			int sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 			invoices = this.repository.findAllInvoicesBySponsorId(sponsorId);
