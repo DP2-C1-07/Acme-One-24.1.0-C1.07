@@ -21,6 +21,9 @@ public class SponsorInvoiceController extends AbstractController<Sponsor, Invoic
 	@Autowired
 	private SponsorInvoiceCreateService	createService;
 
+	@Autowired
+	private SponsorInvoiceUpdateService	updateService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -29,5 +32,6 @@ public class SponsorInvoiceController extends AbstractController<Sponsor, Invoic
 		super.addBasicCommand("list", this.listService);
 		super.addCustomCommand("list-mine", "list", this.listService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 	}
 }
