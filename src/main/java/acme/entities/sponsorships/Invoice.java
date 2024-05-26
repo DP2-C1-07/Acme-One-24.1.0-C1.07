@@ -40,6 +40,8 @@ public class Invoice extends AbstractEntity {
 	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.form.error.code-format}")
 	private String				code;
 
+	private boolean				published;
+
 	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)

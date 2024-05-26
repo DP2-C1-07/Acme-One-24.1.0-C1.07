@@ -30,3 +30,4 @@ sponsor.sponsorship.form.error.duplicated-code = The given code is already in us
 sponsor.sponsorship.form.error.endDate-one-month = Sponsorships must last at least one month
 sponsor.sponsorship.form.error.different-currency = The sponsorship currency must be the same than as all its invoices
 sponsor.sponsorship.form.error.wrong-amount = The sponsorship amount must be less or equal than the sum of all its invoices (taxes incl.)
+sponsor.sponsorship.form.error.not-all-invoices-published = You must first publish all invoices for this project
