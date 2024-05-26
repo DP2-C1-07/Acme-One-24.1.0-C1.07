@@ -14,6 +14,12 @@ import acme.roles.Sponsor;
 @Repository
 public interface SponsorInvoiceRepository extends AbstractRepository {
 
+	@Query("select i from Invoice i where i.id = :id")
+	Invoice findInvoiceById(int id);
+
+	@Query("select i from Invoice i where i.code = :code")
+	Invoice findInvoiceByCode(String code);
+
 	@Query("select s from Sponsorship s where s.id = :id")
 	Sponsorship findSponsorshipById(int id);
 

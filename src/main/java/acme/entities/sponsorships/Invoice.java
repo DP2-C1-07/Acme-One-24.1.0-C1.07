@@ -49,11 +49,9 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	// TODO: at least one month ahead the registration time
 	private Date				dueDate;
 
 	@NotNull
-	// TODO: not nought
 	private Money				quantity;
 
 	@Min(0)

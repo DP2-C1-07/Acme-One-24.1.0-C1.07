@@ -7,3 +7,27 @@ sponsor.invoice.list.label.due-date = Fecha de vecimiento
 sponsor.invoice.list.label.total-amount = Cuantía total
 sponsor.invoice.list.label.published = Publicado
 sponsor.invoice.list.button.create = Crear
+
+sponsor.invoice.form.title = Detalles de la factura
+sponsor.invoice.form.label.code = Código
+sponsor.invoice.form.placeholder.code = IN-0000-0000
+sponsor.invoice.form.label.project = Proyecto
+sponsor.invoice.form.label.sponsorship = Patrocinio
+sponsor.invoice.form.label.registration-time = Fecha de registro
+sponsor.invoice.form.label.due-date = Fecha de vecimiento (al menos un mes después)
+sponsor.invoice.form.label.quantity = Cuantía
+sponsor.invoice.form.label.tax = Impuestos
+sponsor.invoice.form.label.total-amount = Cuantía total
+sponsor.invoice.form.label.link = Enlace
+
+sponsor.invoice.form.button.create = Crear
+sponsor.invoice.form.button.update = Actualizar
+sponsor.invoice.form.button.delete = Eliminar
+sponsor.invoice.form.button.publish = Publicar
+
+sponsor.invoice.form.error.code-format = El código debe seguir el formato IN-0000-0000
+sponsor.invoice.form.error.duplicated-code = El código introducido ya está en uso
+sponsor.invoice.form.error.wrong-quantity = La cuantía debe ser positiva
+sponsor.invoice.form.error.different-currency = La moneda debe ser la misma que la de su patrocinio
+sponsor.invoice.form.error.dueDate-one-month = Las facturas deben durar al menos un mes desde su fecha de registro
+sponsor.invoice.form.error.sponsorship-published = El patrocinio al que esta factura está asociado ya ha sido publicado
