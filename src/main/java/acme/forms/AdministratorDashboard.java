@@ -31,8 +31,8 @@ public class AdministratorDashboard extends AbstractForm {
 	private Double				riskValueDeviation;
 	private Double				maximumRiskValue;
 	private Double				minimumRiskValue;
-	private Double				averageClaimsPosted;
-	private Double				claimsPostedDeviation;
-	private Long				maximumClaimsPosted;
-	private Long				minimumClaimsPosted;
+	private double				averageClaimsPosted;
+	private double				claimsPostedDeviation;
+	private long				maximumClaimsPosted;
+	private long				minimumClaimsPosted;
 }
