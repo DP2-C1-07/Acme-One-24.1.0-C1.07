@@ -28,7 +28,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		Principal principal = super.getRequest().getPrincipal();
 		Sponsor sponsor = this.repository.findSponsorById(principal.getActiveRoleId());
 
-		Integer sponsorshipId = super.getRequest().getData("sponsorshipId", Integer.class);
+		int sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
 		Sponsorship sponsorship = this.repository.findSponsorshipById(sponsorshipId);
 
 		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor) && sponsorship.getSponsor().equals(sponsor);
@@ -37,9 +37,8 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void load() {
-		Integer sponsorshipId = super.getRequest().getData("sponsorshipId", Integer.class);
+		int sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
 		Sponsorship sponsorship = this.repository.findSponsorshipById(sponsorshipId);
-		//		super.getResponse().addGlobal("sponsorshipId", sponsorshipId);
 
 		Invoice invoice = new Invoice();
 		invoice.setSponsorship(sponsorship);
@@ -86,9 +85,8 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "registrationTime", "dueDate", "published");
-		dataset.put("projectCode", object.getSponsorship().getProject().getCode());
-		dataset.put("sponsorshipCode", object.getSponsorship().getCode());
+		Dataset dataset = super.unbind(object, "code", "registrationTime", "dueDate", "published", "quantity", "tax", "sponsorship.code");
+		dataset.put("project.code", object.getSponsorship().getProject().getCode());
 		dataset.put("totalAmount", object.getQuantity() == null ? null : object.getTotalAmount());
 
 		super.getResponse().addData(dataset);
