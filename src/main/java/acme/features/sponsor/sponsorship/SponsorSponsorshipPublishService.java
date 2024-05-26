@@ -18,6 +18,7 @@ import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
+import acme.utils.Validators;
 
 @Service
 public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, Sponsorship> {
@@ -25,7 +26,10 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository sponsorSponsorshipRepository;
+	private SponsorSponsorshipRepository	sponsorSponsorshipRepository;
+
+	@Autowired
+	private Validators						validators;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -78,6 +82,12 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 
 		if (!super.getBuffer().getErrors().hasErrors("moment") && !super.getBuffer().getErrors().hasErrors("endDate"))
 			super.state(object.getMoment().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getEndDate().toInstant()), "endDate", "sponsor.sponsorship.form.error.endDate-one-month");
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			super.state(object.getAmount().getAmount() >= 0, "amount", "money.error.negative-amount");
+			super.state(object.getAmount().getAmount() <= 1000000, "amount", "money.error.exceeded-maximum");
+			super.state(this.validators.moneyValidator(object.getAmount().getCurrency()), "amount", "money.error.unsupported-currency");
+		}
 
 		Collection<Invoice> invoices = this.sponsorSponsorshipRepository.findAllInvoicesBySponsorshipId(object.getId());
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {

@@ -11,6 +11,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
 import acme.roles.Sponsor;
+import acme.utils.Validators;
 
 @Service
 public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoice> {
@@ -18,7 +19,10 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorInvoiceRepository repository;
+	private SponsorInvoiceRepository	repository;
+
+	@Autowired
+	private Validators					validators;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -61,11 +65,12 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicated-code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.wrong-quantity");
-
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			super.state(object.getQuantity().getAmount() > 0, "quantity", "money.error.must-be-positive");
+			super.state(object.getQuantity().getAmount() <= 1000000, "quantity", "money.error.exceeded-maximum");
+			super.state(this.validators.moneyValidator(object.getQuantity().getCurrency()), "quantity", "money.error.unsupported-currency");
 			super.state(object.getQuantity().getCurrency().equalsIgnoreCase(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.different-currency");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationTime") && !super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(object.getRegistrationTime().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getDueDate().toInstant()), "dueDate", "sponsor.invoice.form.error.dueDate-one-month");
