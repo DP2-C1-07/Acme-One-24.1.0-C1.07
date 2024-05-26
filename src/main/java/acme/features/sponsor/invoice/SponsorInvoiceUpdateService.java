@@ -30,7 +30,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		int id = super.getRequest().getData("id", int.class);
 		Invoice invoice = this.repository.findInvoiceById(id);
 
-		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor) && invoice.getSponsorship().getSponsor().equals(sponsor);
+		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor) && invoice.getSponsorship().getSponsor().equals(sponsor) && !invoice.isPublished();
 		super.getResponse().setAuthorised(authorised);
 	}
 

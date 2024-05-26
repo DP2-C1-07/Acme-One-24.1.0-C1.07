@@ -31,7 +31,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		int sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
 		Sponsorship sponsorship = this.repository.findSponsorshipById(sponsorshipId);
 
-		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor) && sponsorship.getSponsor().equals(sponsor);
+		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor) && sponsorship.getSponsor().equals(sponsor) && !sponsorship.isPublished();
 		super.getResponse().setAuthorised(authorised);
 	}
 
