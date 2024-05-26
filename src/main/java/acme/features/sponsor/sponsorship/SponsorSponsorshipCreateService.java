@@ -29,11 +29,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		Principal principal = super.getRequest().getPrincipal();
-		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
-
-		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor);
-		super.getResponse().setAuthorised(authorised);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
