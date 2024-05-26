@@ -1,17 +1,50 @@
-key,key:project,code,published,moment,durationDays,amount,type,contactEmail,link,key:sponsor
-sponsorship-01,project-01,ABC-001,true,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-02,project-01,A-001,true,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-03,project-01,AB-001,true,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-04,project-01,ABC-004,true,2000/01/01 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-05,project-01,ABC-005,false,2000/01/01 00:15,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-06,project-01,ABC-006,false,2002/05/20 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-07,project-01,ABC-007,false,2022/07/29 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-08,project-01,ABC-008,false,2022/07/29 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
-sponsorship-09,project-01,ABC-009,true,2022/07/29 23:59,60,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-10,project-01,ABC-010,true,2021/07/30 00:00,30,EUR 1,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-11,project-01,ABC-011,true,2021/07/30 00:00,60,EUR 5,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-12,project-01,ABC-012,true,2021/07/30 00:00,60,EUR 1000,IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
-sponsorship-13,project-01,ABC-013,false,2021/07/30 00:00,60,EUR 1,FINANCIAL,sponsorship@example.co.uk,https://example.com,sponsor-02
-sponsorship-14,project-01,ABC-014,false,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://pdjqxqydibodqqzxtococqybygllvfnocwirixvvismirniwmovvidxipgrpcdkoxpqmunjjudzthmxxjzuabgwcsinaowqxtlvvejencuiwvaskozgipsqqjsqoouirhkczozxqmdmanpsyohemifibdtvpeeflqlbvxrvvvfultygerbxuckpsklwiqvdmjjlvqwrqymbygbtibomarltfrwqbwrbweklkjbdusdcsmddeldt.com,sponsor-02
-sponsorship-15,project-01,ABC-015,false,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,,sponsor-02
-sponsorship-16,project-01,ABC-016,false,2021/07/30 00:00,60,EUR 1,IN_KIND,sponsorship@example.com,https://t.ly,sponsor-02
+key,key:project,code,published,moment,endDate,amount,type,contactEmail,link,key:sponsor
+sponsorship-01,project-39,ABC-001,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-02,project-39,A-002,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-03,project-39,AB-003,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-04,project-39,ABC-004,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-05,project-39,ABC-005,true,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-06,project-39,ABC-006,false,2000/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-07,project-39,ABC-007,false,2000/01/01 00:01,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-08,project-39,ABC-008,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-09,project-39,ABC-009,false,2022/07/29 23:59,2022/09/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-10,project-39,ABC-010,false,2022/07/30 00:00,2022/09/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-11,project-39,ABC-011,false,2010/01/01 00:00,2010/02/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-12,project-39,ABC-012,false,2010/01/01 00:00,2010/02/01 00:01,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-13,project-39,ABC-013,false,2010/01/01 00:00,2022/05/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-14,project-39,ABC-014,false,2010/01/01 00:00,2022/09/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-15,project-39,ABC-015,false,2010/01/01 00:00,2010/03/01 00:00,"USD 0.01",IN_KIND,sponsorship@example.com,https://example.com,sponsor-01
+sponsorship-16,project-39,ABC-016,false,2010/01/01 00:00,2010/03/01 00:00,"USD 0.02",IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-17,project-39,ABC-017,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-18,project-39,ABC-018,false,2010/01/01 00:00,2010/03/01 00:00,"USD 999,999.99",IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-19,project-39,ABC-019,false,2010/01/01 00:00,2010/03/01 00:00,"USD 1,000,000.00",IN_KIND,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-20,project-39,ABC-020,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",FINANCIAL,sponsorship@example.com,https://example.com,sponsor-02
+sponsorship-21,project-39,ABC-021,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,p@gmail.com,https://example.com,sponsor-02
+sponsorship-22,project-39,ABC-022,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,pa@gmail.com,https://example.com,sponsor-02
+sponsorship-23,project-39,ABC-023,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,pabcabmar3@gmail.com,https://example.com,sponsor-02
+sponsorship-24,project-39,ABC-024,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,qxzbMcvPcfLGjpPDfLREzEKJYBPSNcGwnBEHCVFMQkfkYxYDBFmbucYyKaYirNt@gmail.com,https://example.com,sponsor-02
+sponsorship-25,project-39,ABC-025,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,qxzbMcvPcfLGjpPDfLREzEKJYBPSNcGwnBEHCVFMQkfkYxYDBFmbucYyKaYirNtj@gmail.com,https://example.com,sponsor-02
+sponsorship-26,project-39,ABC-026,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,サンプルテキスト@gmail.com,https://example.com,sponsor-02
+sponsorship-27,project-39,ABC-027,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,требовать@gmail.com,https://example.com,sponsor-02
+sponsorship-28,project-39,ABC-028,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,,https://example.com,sponsor-02
+sponsorship-29,project-39,ABC-029,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.g.com,sponsor-02
+sponsorship-30,project-39,ABC-030,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.go.com,sponsor-02
+sponsorship-31,project-39,ABC-031,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.google.com,sponsor-02
+sponsorship-32,project-39,ABC-032,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.fzkPWQdvCzbEVjbJmKmUdcRPExDfEDdFfFYtmdeRCutDttRmhHktmNPntKqzZhMNuaYcMvnPbuBdVSKTtHhMdDMBkHdeqkZQZMptMDDXtYcXDkABgTBLVtRWgzgWVXrBfiBaNYyhFTuCrUnuhYGWuGtBPnNtGJmDcWcUScRcHLKCeTcVDPqqAWRUSAhWGgZchjbiBrcbiUZDypbUaYHzHeVVZzYRPNNubwGcNSwTrStZcZ.com,sponsor-02
+sponsorship-33,project-39,ABC-033,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.fzkPWQdvCzbEVjbJmKmUdcRPExDfEDdFfFYtmdeRCutDttRmhHktmNPntKqzZhMNuaYcMvnPbuBdVSKTtHhMdDMBkHdeqkZQZMptMDDXtYcXDkABgTBLVtRWgzgWVXrBfiBaNYyhFTuCrUnuhYGWuGtBPnNtGJmDcWcUScRcHLKCeTcVDPqqAWRUSAhWGgZchjbiBrcbiUZDypbUaYHzHeVVZzYRPNNubwGcNSwTrStZcZY.com,sponsor-02
+sponsorship-34,project-39,ABC-034,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.サンプルテキスト.com,sponsor-02
+sponsorship-35,project-39,ABC-035,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.требовать.com,sponsor-02
+sponsorship-36,project-39,ABC-036,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.google.com?,sponsor-02
+sponsorship-37,project-39,ABC-037,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.google.com?a&b,sponsor-02
+sponsorship-38,project-39,ABC-038,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,https://www.lorem-ipsum.org,sponsor-02
+sponsorship-39,project-39,ABC-039,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,ftp://www.lorem-ipsum.org,sponsor-02
+sponsorship-40,project-39,ABC-040,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://www.lorem-ipsum.org/dolor/sit.html,sponsor-02
+sponsorship-41,project-39,ABC-041,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://www.lorem-ipsum.org/dolor/sit.html#dolor,sponsor-02
+sponsorship-42,project-39,ABC-042,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org?a=1&b=2,sponsor-02
+sponsorship-43,project-39,ABC-043,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org?a,sponsor-02
+sponsorship-44,project-39,ABC-044,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org/,sponsor-02
+sponsorship-45,project-39,ABC-045,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org/a,sponsor-02
+sponsorship-46,project-39,ABC-046,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org/a/b,sponsor-02
+sponsorship-47,project-39,ABC-047,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org/a/b?,sponsor-02
+sponsorship-48,project-39,ABC-048,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,http://example.org/a/b?a&b,sponsor-02
+sponsorship-49,project-39,ABC-049,false,2010/01/01 00:00,2010/03/01 00:00,"USD 50,000.00",IN_KIND,sponsorship@example.com,,sponsor-02

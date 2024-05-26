@@ -24,11 +24,7 @@ public class SponsorSponsorshipListMineService extends AbstractService<Sponsor, 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		Principal principal = super.getRequest().getPrincipal();
-		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
-
-		boolean authorised = super.getRequest().getPrincipal().hasRole(sponsor);
-		super.getResponse().setAuthorised(authorised);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -43,7 +39,7 @@ public class SponsorSponsorshipListMineService extends AbstractService<Sponsor, 
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "moment", "durationDays", "amount", "type", "project.code");
+		Dataset dataset = super.unbind(object, "code", "moment", "endDate", "amount", "type", "project.code", "published");
 
 		super.getResponse().addData(dataset);
 	}

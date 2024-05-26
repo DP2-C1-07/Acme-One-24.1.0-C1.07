@@ -1,22 +1,29 @@
 administrator.administrator-dashboard.form.title = Administrator dashboard
 
-administrator.administrator-dashboard.form.title.general-indicators = General indicators
+administrator.dashboard.form.title.role-indicators = Users by role
 
-administrator.administrator-dashboard.form.label.total-administrator = Total of administrator
-administrator.administrator-dashboard.form.label.total-auditor = Total of auditors
-administrator.administrator-dashboard.form.label.total-client = Total of clients
-administrator.administrator-dashboard.form.label.total-consumer = Total of consumers
-administrator.administrator-dashboard.form.label.total-developer = Total of developers
-administrator.administrator-dashboard.form.label.total-manager = Total of managers
-administrator.administrator-dashboard.form.label.total-provider = Total of providers
-administrator.administrator-dashboard.form.label.total-sponsor = Total of sponsors
-administrator.administrator-dashboard.form.label.ratio-notices-with-email-and-link = Ratio of notices with email and link
-administrator.administrator-dashboard.form.label.ratio-critical-objectives = Ratio of critical objectives
-administrator.administrator-dashboard.form.label.ratio-non-critical-objectives = Ratio of non critical objectives
-administrator.administrator-dashboard.form.label.risk-value-average = Risk value average
-administrator.administrator-dashboard.form.label.risk-value-deviation = Risk value deviation
-administrator.administrator-dashboard.form.label.risk-value-minimum = Risk value minimum
-administrator.administrator-dashboard.form.label.claims-posted-average = Claims posted average
-administrator.administrator-dashboard.form.label.claims-posted-deviation = Claims posted deviation
-administrator.administrator-dashboard.form.label.claims-posted-maximum = Claims posted maximum
-administrator.administrator-dashboard.form.label.claims-posted-minimum = Claims posted minimum
+administrator.dashboard.form.label.administrators = Administrators
+administrator.dashboard.form.label.auditors = Auditors
+administrator.dashboard.form.label.clients = Clients
+administrator.dashboard.form.label.consumers = Consumers
+administrator.dashboard.form.label.developers = Developers
+administrator.dashboard.form.label.managers = Managers
+administrator.dashboard.form.label.providers = Providers
+administrator.dashboard.form.label.sponsors = Sponsors
+
+administrator.dashboard.form.title.general-indicators = General indicators
+
+administrator.dashboard.form.label.notices-with-email-and-link-ratio = Notices with email and link ratio
+administrator.dashboard.form.label.critical-objectives-ratio = Critical objectives ratio
+administrator.dashboard.form.label.non-critical-objectives-ratio = Non-critical objectives ratio
+administrator.dashboard.form.label.average-risk-value = Average risk value
+administrator.dashboard.form.label.risk-value-deviation = Risk value deviation
+administrator.dashboard.form.label.minimum-risk-value = Minimum risk value
+administrator.dashboard.form.label.maximum-risk-value = Maximum risk value
+
+administrator.dashboard.form.title.claims-posted-by-week = Claims posted by week (using the last 10 weeks, if any claim)
+
+administrator.dashboard.form.label.average-claims-posted = Average
+administrator.dashboard.form.label.claims-posted-deviation = Deviation
+administrator.dashboard.form.label.minimum-claims-posted = Minimum
+administrator.dashboard.form.label.maximum-claims-posted = Maximum

@@ -70,6 +70,8 @@ master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.become-auditor = Hazte auditor
 master.menu.user-account.auditor = Detalles de auditor
 master.menu.user-account.risk = Listar riesgos
+master.menu.user-account.become-sponsor = Hazte patrocinador
+master.menu.user-account.sponsor = Datos de patrocinador
 
 # master.menu.any ############################################################
 master.menu.any = Any
@@ -95,6 +97,8 @@ master.menu.user-account.manager = Actualizar cuenta
 # master.menu.sponsor ########################################################
 master.menu.sponsor = Patrocinador
 master.menu.sponsor.my-sponsorships = Listar mis patrocinios
+master.menu.sponsor.my-invoices = Listar mis facturas
+master.menu.sponsor.sponsor-dashboard = Panel de indicadores
 
 # master.menu.client #########################################################
 master.menu.client = Cliente

@@ -13,57 +13,67 @@ import acme.entities.claims.Claim;
 @Repository
 public interface AdministratorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(a) from Administrator a")
-	Integer totalAdministrator();
+	@Query("select count(u) from Administrator u")
+	long countAdministrators();
 
-	@Query("select count(a) from Auditor a")
-	Integer totalAuditor();
+	@Query("select count(u) from Auditor u")
+	long countAuditors();
 
-	@Query("select count(c) from Client c")
-	Integer totalClient();
+	@Query("select count(u) from Client u")
+	long countClients();
 
-	@Query("select count(c) from Consumer c")
-	Integer totalConsumer();
+	@Query("select count(u) from Consumer u")
+	long countConsumers();
 
-	@Query("select count(d) from Developer d")
-	Integer totalDeveloper();
+	@Query("select count(u) from Developer u")
+	long countDevelopers();
 
-	@Query("select count(m) from Manager m")
-	Integer totalManager();
+	@Query("select count(u) from Manager u")
+	long countManagers();
 
-	@Query("select count(p) from Provider p")
-	Integer totalProvider();
+	@Query("select count(u) from Provider u")
+	long countProviders();
 
-	@Query("select count(s) from Sponsor s")
-	Integer totalSponsor();
-
-	@Query("select count(n) from Notice n where n.email is not null and n.link is not null")
-	Integer countNoticesWithEmailAndLink();
+	@Query("select count(u) from Sponsor u")
+	long countSponsors();
 
 	@Query("select count(n) from Notice n")
-	Integer countTotalNotices();
+	long countNotices();
 
-	@Query("select count(o) from Objective o where o.critical = true")
-	Integer criticalObjectives();
-
-	@Query("select count(o) from Objective o where o.critical = false")
-	Integer nonCriticalObjectives();
+	@Query("select count(n) from Notice n where n.email is not null and n.email != '' and n.link is not null and n.link != ''")
+	long countNoticesWithEmailAndLink();
 
 	@Query("select count(o) from Objective o")
-	Integer totalObjectives();
+	long countObjectives();
+
+	@Query("select count(o) from Objective o where o.critical = true")
+	long countCriticalObjectives();
 
 	@Query("select avg(r.impact * r.probability) from Risk r")
-	Double riskValueAverage();
+	Double calculateAverageRiskValue();
 
 	@Query("select stddev(r.impact * r.probability) from Risk r")
-	Double riskValueDeviation();
+	Double calculateRiskValueDeviation();
 
 	@Query("select min(r.impact * r.probability) from Risk r")
-	Double riskValueMinimum();
+	Double calculateMinimumRiskValue();
 
-	@Query("select c from Claim c")
-	List<Claim> totalClaims();
+	@Query("select max(r.impact * r.probability) from Risk r")
+	Double calculateMaximumRiskValue();
 
 	@Query("select c from Claim c where c.instantiationMoment >= :date")
-	List<Claim> recentClaims(Date date);
+	List<Claim> findClaimsPostedAfter(Date date);
+
+	@Query(value = "SELECT AVG(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
+	Double calculateAverageClaimsPerWeekPostedAfter(Date date);
+
+	@Query(value = "SELECT STDDEV(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
+	Double calculateClaimsPerWeekDeviationPostedAfter(Date date);
+
+	@Query(value = "SELECT MIN(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
+	Long calculateMinimumClaimsPerWeekPostedAfter(Date date);
+
+	@Query(value = "SELECT MAX(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
+	Long calculateMaximumClaimsPerWeekPostedAfter(Date date);
+
 }

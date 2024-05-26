@@ -5,245 +5,175 @@
 
 
 <h2>
-	<acme:message code="administrator.administrator-dashboard.form.title.general-indicators"/>
+	<acme:message code="administrator.dashboard.form.title.role-indicators"/>
 </h2>
 
 <table class="table table-sm">
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-administrator"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.administrators"/>
 		</th>
 		<td>
-			<acme:print value="${totalAdministrator}"/>
+			<acme:print value="${administrators}"/>
 		</td>
 	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-auditor"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.auditors"/>
 		</th>
 		<td>
-			<acme:print value="${totalAuditor}"/>
+			<acme:print value="${auditors}"/>
 		</td>
 	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-client"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.clients"/>
 		</th>
 		<td>
-			<acme:print value="${totalClient}"/>
+			<acme:print value="${clients}"/>
 		</td>
-	</tr>		
-	
+	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-consumer"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.consumers"/>
 		</th>
 		<td>
-			<acme:print value="${totalConsumer}"/>
+			<acme:print value="${consumers}"/>
 		</td>
-	</tr>	
-	
+	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-developer"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.developers"/>
 		</th>
 		<td>
-			<acme:print value="${totalDeveloper}"/>
+			<acme:print value="${developers}"/>
 		</td>
-	</tr>	
-	
+	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-manager"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.managers"/>
 		</th>
 		<td>
-			<acme:print value="${totalManager}"/>
+			<acme:print value="${managers}"/>
 		</td>
-	</tr>	
-	
+	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-provider"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.providers"/>
 		</th>
 		<td>
-			<acme:print value="${totalProvider}"/>
+			<acme:print value="${providers}"/>
 		</td>
-	</tr>	
-	
+	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.total-sponsor"/>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.sponsors"/>
 		</th>
 		<td>
-			<acme:print value="${totalSponsor}"/>
+			<acme:print value="${sponsors}"/>
 		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.ratio-notices-with-email-and-link"/>
-		</th>
-		<td>
-			<jstl:choose>
-            <jstl:when test="${empty ratioNoticesWithEmailAndLink}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-                <acme:print value="${ratioNoticesWithEmailAndLink}"/>
-            </jstl:otherwise>
-            </jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.ratio-critical-objectives"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty ratioCriticalObjectives}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${ratioCriticalObjectives}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.ratio-non-critical-objectives"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty ratioNonCriticalObjectives}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${ratioNonCriticalObjectives}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.risk-value-average"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty riskValueAverage}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${riskValueAverage}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.risk-value-deviation"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty riskValueDeviation}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${riskValueDeviation}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.risk-value-minimum"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty riskValueMinimum}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${riskValueMinimum}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.claims-posted-average"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty claimsPostedAverage}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-		
-			<acme:print value="${claimsPostedAverage}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.claims-posted-deviation"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty claimsPostedDeviation}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${claimsPostedDeviation}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.claims-posted-maximum"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty claimsPostedMaximum}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${claimsPostedMaximum}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.label.claims-posted-minimum"/>
-		</th>
-		<td>
-		<jstl:choose>
-            <jstl:when test="${empty claimsPostedMinimum}">
-                no data yet
-            </jstl:when>
-            <jstl:otherwise>
-			<acme:print value="${claimsPostedMinimum}"/>
-			</jstl:otherwise>
-			</jstl:choose>
-		</td>
-	</tr>	
-	
+	</tr>
 </table>
 
-<div>
-	<canvas id="canvas"></canvas>
-</div>
+<h2>
+	<acme:message code="administrator.dashboard.form.title.general-indicators"/>
+</h2>
 
-<acme:return/>
+<table class="table table-sm">
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.notices-with-email-and-link-ratio"/>
+		</th>
+		<td>
+			<acme:print value="${noticesWithEmailAndLinkRatio}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%" width="90%">
+			<acme:message code="administrator.dashboard.form.label.critical-objectives-ratio"/>
+		</th>
+		<td>
+			<acme:print value="${criticalObjectivesRatio}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.non-critical-objectives-ratio"/>
+		</th>
+		<td>
+			<acme:print value="${nonCriticalObjectivesRatio}"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.average-risk-value"/>
+		</th>
+		<td>
+			<acme:print value="${averageRiskValue}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.risk-value-deviation"/>
+		</th>
+		<td>
+			<acme:print value="${riskValueDeviation}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.minimum-risk-value"/>
+		</th>
+		<td>
+			<acme:print value="${minimumRiskValue}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.maximum-risk-value"/>
+		</th>
+		<td>
+			<acme:print value="${maximumRiskValue}"/>
+		</td>
+	</tr>
+</table>
+
+<h2>
+	<acme:message code="administrator.dashboard.form.title.claims-posted-by-week"/>
+</h2>
+
+<table class="table table-sm">
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.average-claims-posted"/>
+		</th>
+		<td>
+			<acme:print value="${averageClaimsPosted}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.claims-posted-deviation"/>
+		</th>
+		<td>
+			<acme:print value="${claimsPostedDeviation}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.minimum-claims-posted"/>
+		</th>
+		<td>
+			<acme:print value="${minimumClaimsPosted}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" width="90%">
+			<acme:message code="administrator.dashboard.form.label.maximum-claims-posted"/>
+		</th>
+		<td>
+			<acme:print value="${maximumClaimsPosted}"/>
+		</td>
+	</tr>
+</table>

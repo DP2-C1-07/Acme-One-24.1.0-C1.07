@@ -10,6 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -40,7 +41,9 @@ public class Notice extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 75)
-	// TODO: The author must be computed as follows: “〈username〉 - 〈surname, name〉”
+	@Pattern(regexp = "^(.{5,60}) - (.+), (.+)$", // “<username> - <surname, name>”, following UserAccount validation annotation limits
+		// and logical limits with this field's max length
+		message = "{notice.author.error}")
 	private String				author;
 
 	@NotBlank

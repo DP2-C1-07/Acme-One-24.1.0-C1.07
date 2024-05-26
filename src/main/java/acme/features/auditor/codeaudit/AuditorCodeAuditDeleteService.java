@@ -90,7 +90,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		Dataset dataset;
 
 		Collection<Project> projects;
-		projects = this.auditorCodeAuditRepository.findAllProjects();	//TODO: cambiarlo por solo los projecto publicados
+		projects = this.auditorCodeAuditRepository.findAllPublishedProjects();
 
 		Collection<AuditRecord> list = this.auditorAuditRecordRepository.findAllByCodeAuditId(object.getId());
 		Mark mark = object.getMark(list);

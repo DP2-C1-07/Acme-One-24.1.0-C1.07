@@ -1,22 +1,29 @@
-administrator.administrator-dashboard.form.title = Panel de administrator
+administrator.administrator-dashboard.form.title = Panel de administrador
 
-administrator.administrator-dashboard.form.title.general-indicators = Indicadores generales
+administrator.dashboard.form.title.role-indicators = Usuarios por rol
 
-administrator.administrator-dashboard.form.label.total-administrator = Total de administradores
-administrator.administrator-dashboard.form.label.total-auditor = Total de auditores
-administrator.administrator-dashboard.form.label.total-client = Total de clientes
-administrator.administrator-dashboard.form.label.total-consumer = Total de consumidores
-administrator.administrator-dashboard.form.label.total-developer = Total de desarrolladores
-administrator.administrator-dashboard.form.label.total-manager = Total de directores
-administrator.administrator-dashboard.form.label.total-provider = Total de proveedores
-administrator.administrator-dashboard.form.label.total-sponsor = Total de patrocinadores
-administrator.administrator-dashboard.form.label.ratio-notices-with-email-and-link = Ratio de de notificaciones con correo y enlace
-administrator.administrator-dashboard.form.label.ratio-critical-objectives = Ratio de objetivos críticos
-administrator.administrator-dashboard.form.label.ratio-non-critical-objectives = Ratio de objetivos no críticos
-administrator.administrator-dashboard.form.label.risk-value-average = Media del valor de los riesgos
-administrator.administrator-dashboard.form.label.risk-value-deviation = Desviación del valor de los riesgos
-administrator.administrator-dashboard.form.label.risk-value-minimum = Valor de riesgo mínimo
-administrator.administrator-dashboard.form.label.claims-posted-average = Media de reclamaciones enviadas
-administrator.administrator-dashboard.form.label.claims-posted-deviation = Desviación de reclamaciones enviadas
-administrator.administrator-dashboard.form.label.claims-posted-maximum = Máximo de reclamaciones enviadas
-administrator.administrator-dashboard.form.label.claims-posted-minimum = Mínimo de reclamaciones enviadas
+administrator.dashboard.form.label.administrators = Administradores
+administrator.dashboard.form.label.auditors = Auditores
+administrator.dashboard.form.label.clients = Clientes
+administrator.dashboard.form.label.consumers = Consumidores
+administrator.dashboard.form.label.developers = Desarrolladores
+administrator.dashboard.form.label.managers = Gerentes
+administrator.dashboard.form.label.providers = Proveedores
+administrator.dashboard.form.label.sponsors = Patrocinadores
+
+administrator.dashboard.form.title.general-indicators = Indicadores generales
+
+administrator.dashboard.form.label.notices-with-email-and-link-ratio = Proporción de avisos con correo electrónico y enlace
+administrator.dashboard.form.label.critical-objectives-ratio = Proporción de objetivos críticos
+administrator.dashboard.form.label.non-critical-objectives-ratio = Proporción de objetivos no críticos
+administrator.dashboard.form.label.average-risk-value = Valor de riesgo promedio
+administrator.dashboard.form.label.risk-value-deviation = Desviación del valor de riesgo
+administrator.dashboard.form.label.minimum-risk-value = Valor de riesgo mínimo
+administrator.dashboard.form.label.maximum-risk-value = Valor de riesgo máximo
+
+administrator.dashboard.form.title.claims-posted-by-week = Demandas publicadas por semana (utilizando las últimas 10 semanas, si es que hay alguna demanda)
+
+administrator.dashboard.form.label.average-claims-posted = Promedio
+administrator.dashboard.form.label.claims-posted-deviation = Desviación
+administrator.dashboard.form.label.minimum-claims-posted = Mínimo
+administrator.dashboard.form.label.maximum-claims-posted = Máximo

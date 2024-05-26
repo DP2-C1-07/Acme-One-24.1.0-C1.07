@@ -37,7 +37,7 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	@Column(unique = true)
-	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$")
+	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.form.error.code-format}")
 	private String				code;
 
 	@NotNull
@@ -51,10 +51,11 @@ public class Invoice extends AbstractEntity {
 	private Date				dueDate;
 
 	@NotNull
+	// TODO: not nought
 	private Money				quantity;
 
 	@Min(0)
-	@Max(1)
+	@Max(5) // there are governments applying taxes higher than 100% in some products
 	private double				tax;
 
 	@URL
