@@ -2,6 +2,7 @@
 package acme.features.administrator.dashboard;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
@@ -84,11 +85,11 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 
 		claimsPostedAverage = stats.getAverage();
 
-		Double variance = claimsCountByWeek.values().stream().mapToDouble(count -> Math.pow(count - claimsPostedAverage, 2)).sum() / claimsCountByWeek.size();
+		Double variance = claimsCountByWeek.isEmpty() ? 0 : claimsCountByWeek.values().stream().mapToDouble(count -> Math.pow(count - claimsPostedAverage, 2)).sum() / claimsCountByWeek.size();
 
 		claimsPostedDeviation = Math.sqrt(variance);
-		claimsPostedMaximum = (int) stats.getMax();
-		claimsPostedMinimum = (int) stats.getMin();
+		claimsPostedMaximum = claimsCountByWeek.isEmpty() ? 0 : Collections.max(claimsCountByWeek.values()).intValue();
+		claimsPostedMinimum = claimsCountByWeek.isEmpty() ? 0 : Collections.min(claimsCountByWeek.values()).intValue();
 
 		dashboard = new AdministratorDashboard();
 		dashboard.setTotalAdministrator(totalAdministrator);

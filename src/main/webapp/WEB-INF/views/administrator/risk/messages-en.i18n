@@ -20,3 +20,5 @@ administrator.risk.list.button.create = Create
 administrator.risk.form.button.update = Update
 administrator.risk.form.button.delete = Delete
 administrator.risk.form.button.create = Create
+
+administrator.risk.create.error.duplicated = There already exits a risk with this reference

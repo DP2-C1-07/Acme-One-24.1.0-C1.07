@@ -60,6 +60,6 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select min(r.impact * r.probability) from Risk r")
 	Double riskValueMinimum();
 
-	@Query("select count(c) from Claim c where c.draftMode = :false")
+	@Query("select c from Claim c where c.draftMode = false")
 	List<Claim> totalClaims();
 }
