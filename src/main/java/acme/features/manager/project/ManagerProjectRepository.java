@@ -15,6 +15,8 @@ import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.trainingmodules.TrainingModule;
+import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Manager;
 
 @Repository
@@ -52,4 +54,10 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select i from Invoice i where i.sponsorship.id = :sponsorshipId")
 	Collection<Invoice> findAllInvoicesBySponsorshipId(int sponsorshipId);
+
+	@Query("select t from TrainingModule t where t.project.id = :projectId")
+	Collection<TrainingModule> findAllTrainingModulesByProjectId(int projectId);
+
+	@Query("select t from TrainingSession t where t.trainingModule.id = :trainingModuleId")
+	Collection<TrainingSession> findAllTrainingSessionsFromTrainingModuleId(int trainingModuleId);
 }
