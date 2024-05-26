@@ -3,7 +3,9 @@ package acme.features.administrator.dashboard;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
+import java.util.Date;
 import java.util.DoubleSummaryStatistics;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -76,11 +78,21 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		riskValueDeviation = this.repository.riskValueDeviation();
 		riskValueMinimum = this.repository.riskValueMinimum();
 
-		List<Claim> totalClaims = this.repository.totalClaims();
-		List<Claim> recentClaims = totalClaims.stream().filter(c -> MomentHelper.isLongEnough(c.getInstantiationMoment(), MomentHelper.getCurrentMoment(), 10, ChronoUnit.WEEKS)).toList();
+		Date tenWeeksDelta = MomentHelper.deltaFromCurrentMoment(-10, ChronoUnit.WEEKS);
+
+		List<Claim> recentClaims = this.repository.recentClaims(tenWeeksDelta);
 
 		Function<Claim, Integer> claimToWeeks = c -> (int) MomentHelper.computeDuration(c.getInstantiationMoment(), MomentHelper.getCurrentMoment()).toDays() / 7;
-		Map<Integer, Long> claimsCountByWeek = recentClaims.stream().map(claimToWeeks).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+		Map<Integer, Long> claimsCountByWeek = new HashMap<>();
+		for (int i = 0; i < 10; i++)
+			claimsCountByWeek.put(i, 0L);
+
+		Map<Integer, Long> recentClaimsCountByWeek = recentClaims.stream().map(claimToWeeks).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+		for (Map.Entry<Integer, Long> entry : recentClaimsCountByWeek.entrySet())
+			claimsCountByWeek.put(entry.getKey(), entry.getValue());
+
 		DoubleSummaryStatistics stats = claimsCountByWeek.values().stream().mapToDouble(Long::doubleValue).summaryStatistics();
 
 		claimsPostedAverage = stats.getAverage();

@@ -1,6 +1,7 @@
 
 package acme.features.administrator.dashboard;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -60,6 +61,9 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select min(r.impact * r.probability) from Risk r")
 	Double riskValueMinimum();
 
-	@Query("select c from Claim c where c.draftMode = false")
+	@Query("select c from Claim c")
 	List<Claim> totalClaims();
+
+	@Query("select c from Claim c where c.instantiationMoment >= :date")
+	List<Claim> recentClaims(Date date);
 }
