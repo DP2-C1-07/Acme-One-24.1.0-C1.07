@@ -23,6 +23,7 @@ import acme.forms.AdministratorDashboard;
 @Service
 public class AdministratorDashboardShowService extends AbstractService<Administrator, AdministratorDashboard> {
 
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -38,6 +39,7 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 
 	@Override
 	public void load() {
+
 		long notices = this.repository.countNotices();
 		double noticesWithEmailAndLinkRatio = notices > 0 ? (double) this.repository.countNoticesWithEmailAndLink() / notices : Double.NaN;
 

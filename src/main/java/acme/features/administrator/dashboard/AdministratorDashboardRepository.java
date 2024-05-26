@@ -75,4 +75,5 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query(value = "SELECT MAX(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
 	Long calculateMaximumClaimsPerWeekPostedAfter(Date date);
+
 }

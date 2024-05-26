@@ -1,0 +1,24 @@
+administrator.risk.form.title = Riesgo
+administrator.risk.list.title = Listado de riesgos
+
+administrator.risk.form.label.reference = Referencia
+administrator.risk.form.label.identificationDate = Fecha de identificación
+administrator.risk.form.label.impact = Impacto
+administrator.risk.form.label.probability = Probabilidad
+administrator.risk.form.label.description = Descripción
+administrator.risk.form.label.link = Link opcional
+administrator.risk.form.label.project  = Proyecto
+
+administrator.risk.list.label.reference = Referencia
+administrator.risk.list.label.identificationDate = Fecha de identificación
+administrator.risk.list.label.impact = Impacto
+administrator.risk.list.label.probability = Probabilidad
+administrator.risk.list.label.description = Descripción
+administrator.risk.list.label.link = Link opcional
+
+administrator.risk.list.button.create = Crear
+administrator.risk.form.button.update = Actualizar
+administrator.risk.form.button.delete = Borrar
+administrator.risk.form.button.create = Crear
+
+administrator.risk.create.error.duplicated = Ya existe un riesgo con esta referencia
