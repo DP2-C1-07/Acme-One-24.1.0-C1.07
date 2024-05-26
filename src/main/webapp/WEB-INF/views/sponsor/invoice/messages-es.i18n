@@ -1,0 +1,9 @@
+sponsor.invoice.list.title = Facturas
+sponsor.invoice.list.label.project-code = Proyecto
+sponsor.invoice.list.label.sponsorship-code = Patrocinio
+sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.registration-time = Fecha de registro
+sponsor.invoice.list.label.due-date = Fecha de vecimiento
+sponsor.invoice.list.label.total-amount = Cuantía total
+sponsor.invoice.list.label.published = Publicado
+sponsor.invoice.list.button.create = Crear
