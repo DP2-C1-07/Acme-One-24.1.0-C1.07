@@ -2,12 +2,14 @@
 package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
 import acme.roles.Sponsor;
@@ -72,8 +74,11 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			super.state(object.getQuantity().getCurrency().equalsIgnoreCase(object.getSponsorship().getAmount().getCurrency()), "quantity", "sponsor.invoice.form.error.different-currency");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("registrationTime") && !super.getBuffer().getErrors().hasErrors("dueDate"))
+		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
 			super.state(object.getRegistrationTime().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getDueDate().toInstant()), "dueDate", "sponsor.invoice.form.error.dueDate-one-month");
+			Date maxDate = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
+			super.state(MomentHelper.isBeforeOrEqual(object.getDueDate(), maxDate), "dueDate", "moment.error.after-max-moment");
+		}
 	}
 
 	@Override

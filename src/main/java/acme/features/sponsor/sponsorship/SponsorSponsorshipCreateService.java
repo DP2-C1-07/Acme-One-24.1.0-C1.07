@@ -4,6 +4,7 @@ package acme.features.sponsor.sponsorship;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,8 +83,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(this.validators.moneyValidator(object.getAmount().getCurrency()), "amount", "money.error.unsupported-currency");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endDate"))
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
 			super.state(object.getMoment().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getEndDate().toInstant()), "endDate", "sponsor.sponsorship.form.error.endDate-one-month");
+			Date maxDate = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
+			super.state(MomentHelper.isBeforeOrEqual(object.getEndDate(), maxDate), "endDate", "moment.error.after-max-moment");
+		}
 	}
 
 	@Override
