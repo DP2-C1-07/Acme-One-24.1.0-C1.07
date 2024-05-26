@@ -35,7 +35,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		trainingModule = this.repository.findOneTrainingModuleById(masterId);
 		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		status = trainingModule != null && (!trainingModule.isDraft() || trainingModule.getDeveloper().equals(developer));
+		status = trainingModule != null && (!trainingModule.isDraft() || super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()) && trainingModule.getDeveloper().equals(developer));
 
 		super.getResponse().setAuthorised(status);
 	}

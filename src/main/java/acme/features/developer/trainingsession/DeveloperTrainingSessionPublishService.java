@@ -36,7 +36,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 		trainingSession = this.repository.findOneTrainingSessionById(trainingSessionId);
 		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		status = trainingSession != null && trainingSession.isDraft() && trainingSession.getTrainingModule().getDeveloper().equals(developer);
+		status = trainingSession != null && trainingSession.isDraft() && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper()) && trainingSession.getTrainingModule().getDeveloper().equals(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
