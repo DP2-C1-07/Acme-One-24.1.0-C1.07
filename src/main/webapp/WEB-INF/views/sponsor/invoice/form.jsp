@@ -7,7 +7,7 @@
 	<acme:input-textbox code="sponsor.invoice.form.label.code" placeholder="sponsor.invoice.form.placeholder.code" path="code"/>
 	<acme:input-textbox code="sponsor.invoice.form.label.project" path="project.code" readonly="true"/>
 	<acme:input-textbox code="sponsor.invoice.form.label.sponsorship" path="sponsorship.code" readonly="true"/>
-	<acme:input-moment code="sponsor.invoice.form.label.registration-time" path="registrationTime"/>
+	<acme:input-moment code="sponsor.invoice.form.label.registration-time" path="registrationTime" readonly="true"/>
 	<acme:input-moment code="sponsor.invoice.form.label.due-date" path="dueDate"/>	
 	<acme:input-money code="sponsor.invoice.form.label.quantity" path="quantity"/>	
 	<acme:input-double code="sponsor.invoice.form.label.tax" path="tax"/>

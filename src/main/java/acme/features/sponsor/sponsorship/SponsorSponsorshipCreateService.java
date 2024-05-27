@@ -4,12 +4,14 @@ package acme.features.sponsor.sponsorship;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
@@ -43,6 +45,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		Sponsorship sponsorship = new Sponsorship();
 		sponsorship.setSponsor(sponsor);
+		sponsorship.setMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(sponsorship);
 	}
@@ -51,7 +54,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "moment", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "endDate", "amount", "type", "contactEmail", "link");
 
 		Principal principal = super.getRequest().getPrincipal();
 		Sponsor sponsor = this.sponsorSponsorshipRepository.findSponsorById(principal.getActiveRoleId());
@@ -80,8 +83,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(this.validators.moneyValidator(object.getAmount().getCurrency()), "amount", "money.error.unsupported-currency");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("moment") && !super.getBuffer().getErrors().hasErrors("endDate"))
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
 			super.state(object.getMoment().toInstant().plus(30, ChronoUnit.DAYS).isBefore(object.getEndDate().toInstant()), "endDate", "sponsor.sponsorship.form.error.endDate-one-month");
+			Date maxDate = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
+			super.state(MomentHelper.isBeforeOrEqual(object.getEndDate(), maxDate), "endDate", "moment.error.after-max-moment");
+		}
 	}
 
 	@Override
