@@ -57,4 +57,4 @@ training-session-55,"TS-A-055",2022/07/30 00:00,2022/08/20 00:00,"Sevilla","alfa
 training-session-56,"TS-A-056",2022/07/30 00:00,2022/08/20 00:00,"Sevilla","alfalolan","alfalolan@acme.es",false,"http://example.org/a",training-module-01
 training-session-57,"TS-A-057",2022/07/30 00:00,2022/08/20 00:00,"Sevilla","alfalolan","alfalolan@acme.es",false,"http://example.org/a/b",training-module-01
 training-session-58,"TS-A-058",2022/07/30 00:00,2022/08/20 00:00,"Sevilla","alfalolan","alfalolan@acme.es",false,"http://example.org/a/b?",training-module-01
-training-session-59,"TS-A-059",2022/07/30 00:00,2022/08/20 00:00,"Sevilla","alfalolan","alfalolan@acme.es",false,"http://example.org/a/b?a&b",training-module-01
+training-session-59,"TS-A-059",2022/07/30 00:00,2022/08/20 00:00,"Sevilla","alfalolan","alfalolan@acme.es",true,"http://example.org/a/b?a&b",training-module-01
