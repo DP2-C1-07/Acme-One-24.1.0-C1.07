@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.audit_records.AuditRecord;
+import acme.entities.codeaudits.CodeAudit;
+import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -17,13 +19,27 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuditorAuditRecordRepository auditorAuditRecordRepository;
+	protected AuditorAuditRecordRepository	auditorAuditRecordRepository;
+
+	@Autowired
+	protected AuditorCodeAuditRepository	auditorCodeAuditRepository;
 
 
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int codeAuditId;
+		Auditor auditor;
+		CodeAudit codeAudit;
+
+		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
+		codeAudit = this.auditorCodeAuditRepository.findOneById(codeAuditId);
+		auditor = codeAudit.getAuditor();
+
+		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor) && codeAudit.getAuditor().equals(auditor);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
