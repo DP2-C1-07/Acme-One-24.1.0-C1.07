@@ -31,10 +31,12 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		boolean status;
 		int masterId;
 		TrainingModule trainingModule;
+		Developer developer;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()) && trainingModule.getDeveloper().equals(developer);
 
 		super.getResponse().setAuthorised(status);
 	}

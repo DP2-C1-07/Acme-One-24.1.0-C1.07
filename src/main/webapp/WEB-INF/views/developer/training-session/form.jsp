@@ -14,7 +14,7 @@
 	<acme:input-textbox readonly="true" code="developer.training-session.form.label.draft" path="draft"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && (draft == 'Yes' ||draft == 'Sí')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && (draft == 'Yes' ||draft == 'Sí')}">
 			<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
 			<acme:submit code="developer.training-session.form.button.delete" action="/developer/training-session/delete"/>
 			<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>

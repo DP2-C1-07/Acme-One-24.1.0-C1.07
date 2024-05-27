@@ -5,10 +5,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -27,6 +30,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "draft", unique = false), @Index(columnList = "code", unique = true)
+})
 public class TrainingModule extends AbstractEntity {
 
 	//Serialisation identifier -----------------------------------------------------------------
@@ -51,7 +57,6 @@ public class TrainingModule extends AbstractEntity {
 	@NotNull
 	TrainingModuleDifficultyLevel	difficultyLevel;
 
-	//TODO: cuando sepamos hacer servicios añadir la restricción de que el updateMoment debe ser posterior al creationMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
 	Date							updateMoment;
@@ -61,6 +66,7 @@ public class TrainingModule extends AbstractEntity {
 	String							link;
 
 	@Min(1)
+	@Max(10000)
 	int								totalTime;
 
 	boolean							draft;

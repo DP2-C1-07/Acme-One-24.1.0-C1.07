@@ -67,6 +67,8 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.become-developer = Become a developer
+master.menu.user-account.developer = Developer data
 master.menu.user-account.auditor = Auditor data
 master.menu.user-account.become-auditor = Become an auditor
 master.menu.user-account.risk = List risk
@@ -79,7 +81,7 @@ master.menu.any.list-claim = List claims
 master.menu.any.list-project = List projects
 master.menu.any.list-code-audit = List code audits
 master.menu.any.list-contract = List contracts
-
+master.menu.any.list-training-module = List training modules
 
 # master.menu.authenticated ############################################################
 master.menu.authenticated.notice = Notices

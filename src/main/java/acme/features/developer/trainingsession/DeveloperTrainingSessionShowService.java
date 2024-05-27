@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
@@ -26,12 +25,16 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingSessionId;
-		TrainingModule trainingModule;
+		int id;
+		TrainingSession trainingSession;
+		Developer developer;
 
-		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(trainingSessionId);
-		status = trainingModule != null && (!trainingModule.isDraft() || super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()));
+		id = super.getRequest().getData("id", int.class);
+		trainingSession = this.repository.findOneTrainingSessionById(id);
+		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		status = trainingSession.getTrainingModule() != null
+			&& (!trainingSession.getTrainingModule().isDraft() || super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper()) && trainingSession.getTrainingModule().getDeveloper().equals(developer));
 
 		super.getResponse().setAuthorised(status);
 	}

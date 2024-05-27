@@ -28,12 +28,16 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingSessionId;
+		int id;
 		TrainingSession trainingSession;
+		Developer developer;
 
-		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingSession = this.repository.findOneTrainingSessionById(trainingSessionId);
-		status = trainingSession != null && trainingSession.isDraft() && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper());
+		id = super.getRequest().getData("id", int.class);
+		trainingSession = this.repository.findOneTrainingSessionById(id);
+		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		status = trainingSession.getTrainingModule() != null && trainingSession.getTrainingModule().isDraft() && trainingSession.isDraft() && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper())
+			&& trainingSession.getTrainingModule().getDeveloper().equals(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,8 +57,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "initiateMoment", "finalizationMoment", "location", "instructor", "contactEmail", "link");
-		object.setDraft(true);
+		super.bind(object, "code", "initiateMoment", "finalizationMoment", "location", "instructor", "contactEmail", "link", "draft");
 	}
 
 	@Override

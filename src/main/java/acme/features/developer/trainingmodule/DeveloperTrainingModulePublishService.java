@@ -38,8 +38,9 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		trainingModuleId = super.getRequest().getData("id", int.class);
 		trainingModule = this.repository.findOneTrainingModuleById(trainingModuleId);
-		developer = trainingModule == null ? null : trainingModule.getDeveloper();
-		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(developer);
+
+		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = trainingModule != null && trainingModule.isDraft() && super.getRequest().getPrincipal().hasRole(developer) && trainingModule.getDeveloper().equals(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -85,7 +86,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicated");
 		}
 		if (trainingSessions.isEmpty())
-			super.state(true, "draft", "developer.training-module.form.error.at-least-one-training-session");
+			super.state(false, "draft", "developer.training-module.form.error.at-least-one-training-session");
 		if (!trainingSessions.isEmpty()) {
 			Boolean allTSPublished;
 
