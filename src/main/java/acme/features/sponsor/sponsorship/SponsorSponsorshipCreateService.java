@@ -16,6 +16,7 @@ import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
+import acme.utils.Validators;
 
 @Service
 public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sponsorship> {
@@ -23,7 +24,10 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository sponsorSponsorshipRepository;
+	private SponsorSponsorshipRepository	sponsorSponsorshipRepository;
+
+	@Autowired
+	private Validators						validators;
 
 
 	// AbstractService interface ----------------------------------------------
@@ -68,6 +72,12 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing = this.sponsorSponsorshipRepository.findSponsorshipByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated-code");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			super.state(object.getAmount().getAmount() >= 0, "amount", "money.error.negative-amount");
+			super.state(object.getAmount().getAmount() <= 1000000, "amount", "money.error.exceeded-maximum");
+			super.state(this.validators.moneyValidator(object.getAmount().getCurrency()), "amount", "money.error.unsupported-currency");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("moment") && !super.getBuffer().getErrors().hasErrors("endDate"))

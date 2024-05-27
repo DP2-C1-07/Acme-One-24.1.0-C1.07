@@ -12,19 +12,21 @@
 	<acme:input-email code="sponsor.sponsorship.form.label.email" path="contactEmail"/>
 	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>
 	<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
-	
-	<jstl:choose>
-		<jstl:when test="${not published}">
-			<jstl:choose>
-				<jstl:when test="${_command == 'create'}">
-					<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
-				</jstl:when>
-				<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
-					<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
-					<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
-					<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
-				</jstl:when>
-			</jstl:choose>
-		</jstl:when>
-	</jstl:choose>
+
+	<jstl:if test="${not published}">
+		<jstl:choose>
+			<jstl:when test="${_command == 'create'}">
+				<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
+			</jstl:when>
+			<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+				<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
+				<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
+				<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
+			</jstl:when>
+		</jstl:choose>
+	</jstl:if>
+
+	<jstl:if test="${_command != 'create'}">
+		<acme:button code="sponsor.sponsorship.form.button.show-invoices" action="/sponsor/invoice/list?sponsorshipId=${id}"/>
+	</jstl:if>
 </acme:form>

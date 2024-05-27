@@ -1,0 +1,4 @@
+money.error.negative-amount = Money can't be negative
+money.error.must-be-positive = Amount must be greater than 0
+money.error.exceeded-maximum = Amount can't be greater than 1,000,000.00
+money.error.unsupported-currency = Unsupported currency. Supported: EUR, USD, GBP
