@@ -78,11 +78,10 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			super.state(object.getBudget().getAmount() >= 0, "budget", "client.contract.form.error.negative-amount");
 			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.excededMaximum");
-
 			super.state(validator.moneyValidator(object.getBudget().getCurrency()), "budget", "client.contract.form.error.currency-not-suported");
 		}
 	}
-	
+
 	@Override
 	public void perform(final Contract object) {
 
