@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	 @Index(columnList = "display_period_beginning, display_period_end", unique = false)
+	 @Index(columnList = "displayPeriodBeginning, displayPeriodEnd", unique = false)
 })
 public class Banner extends AbstractEntity {
 	//Serialisation identifier -----------------------------------------------------------------
