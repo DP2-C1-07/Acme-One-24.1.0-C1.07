@@ -1,0 +1,20 @@
+authenticated.objective.form.title = Objectivo
+authenticated.objective.list.title = Lista de objectivos
+
+authenticated.notice.form.label.instantiationMoment = Momento de instanciación
+authenticated.notice.form.label.title = Título
+authenticated.notice.form.label.author = Autor
+authenticated.notice.form.label.message = Mensaje
+authenticated.notice.form.label.email = Correo
+authenticated.notice.form.label.link = Enlace
+authenticated.notice.form.button.create = Crear
+
+authenticated.notice.list.label.instantiationMoment = Momento de instanciación
+authenticated.notice.list.label.title = Título
+authenticated.notice.list.label.author = Autor
+authenticated.notice.list.label.message = Mensaje
+authenticated.notice.list.label.email = Correo
+authenticated.notice.list.label.link = Enlace
+authenticated.notice.list.button.create = Crear
+
+authenticated.notice.list.button.create = Crear

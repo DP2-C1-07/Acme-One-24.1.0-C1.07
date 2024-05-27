@@ -23,10 +23,12 @@ sponsor.sponsorship.form.button.create = Crear
 sponsor.sponsorship.form.button.update = Guardar
 sponsor.sponsorship.form.button.delete = Eliminar
 sponsor.sponsorship.form.button.publish = Publicar
+sponsor.sponsorship.form.button.show-invoices = Ver facturas
 
 sponsor.sponsorship.form.error.project-draft-mode = El proyecto necesita estar publicado
 sponsor.sponsorship.form.error.code-format = El código debe seguir el formato ABC-000
 sponsor.sponsorship.form.error.duplicated-code = El código introducido ya está en uso
 sponsor.sponsorship.form.error.endDate-one-month = Los patrocinios deben durar al menos un mes
 sponsor.sponsorship.form.error.different-currency = La moneda del patrocinio debe ser la misma que la de todas las facturas
-sponsor.sponsorship.form.error.wrong-amount = La cantidad del patrocinio debe ser menor o igual a la suma de las cantidades de todas las facturas (con impuestos)
+sponsor.sponsorship.form.error.wrong-amount = La cantidad del patrocinio debe ser igual a la suma de las cantidades de todas las facturas (con impuestos)
+sponsor.sponsorship.form.error.not-all-invoices-published = Primero debes publicar todas las facturas de este proyecto

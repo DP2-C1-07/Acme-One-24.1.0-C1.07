@@ -23,10 +23,12 @@ sponsor.sponsorship.form.button.create = Create
 sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
+sponsor.sponsorship.form.button.show-invoices = Show invoices
 
 sponsor.sponsorship.form.error.project-draft-mode = The project needs to be published
 sponsor.sponsorship.form.error.code-format = Code must follow the format ABC-000
 sponsor.sponsorship.form.error.duplicated-code = The given code is already in use
 sponsor.sponsorship.form.error.endDate-one-month = Sponsorships must last at least one month
 sponsor.sponsorship.form.error.different-currency = The sponsorship currency must be the same than as all its invoices
-sponsor.sponsorship.form.error.wrong-amount = The sponsorship amount must be less or equal than the sum of all its invoices (taxes incl.)
+sponsor.sponsorship.form.error.wrong-amount = The sponsorship amount must be equal to the sum of all its invoices (taxes incl.)
+sponsor.sponsorship.form.error.not-all-invoices-published = You must first publish all invoices for this project

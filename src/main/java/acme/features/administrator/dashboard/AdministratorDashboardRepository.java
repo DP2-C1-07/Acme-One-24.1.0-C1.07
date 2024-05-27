@@ -2,11 +2,13 @@
 package acme.features.administrator.dashboard;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.claims.Claim;
 
 @Repository
 public interface AdministratorDashboardRepository extends AbstractRepository {
@@ -59,6 +61,9 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select max(r.impact * r.probability) from Risk r")
 	Double calculateMaximumRiskValue();
 
+	@Query("select c from Claim c where c.instantiationMoment >= :date")
+	List<Claim> findClaimsPostedAfter(Date date);
+
 	@Query(value = "SELECT AVG(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
 	Double calculateAverageClaimsPerWeekPostedAfter(Date date);
 
@@ -70,4 +75,5 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query(value = "SELECT MAX(weekly_count) AS average_claims_per_week FROM (SELECT COUNT(*) AS weekly_count FROM claim WHERE instantiation_moment >= :date GROUP BY YEARWEEK(instantiation_moment)) AS weekly_counts", nativeQuery = true)
 	Long calculateMaximumClaimsPerWeekPostedAfter(Date date);
+
 }
