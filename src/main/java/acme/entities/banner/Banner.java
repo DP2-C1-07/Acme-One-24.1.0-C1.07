@@ -4,6 +4,8 @@ package acme.entities.banner;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -20,6 +22,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	 @Index(columnList = "display_period_beginning, display_period_end", unique = false)
+})
 public class Banner extends AbstractEntity {
 	//Serialisation identifier -----------------------------------------------------------------
 
@@ -32,8 +37,6 @@ public class Banner extends AbstractEntity {
 	@NotNull
 	Date						instantiationLastUpdateMoment;
 
-	//TODO: añadir al service la logica para que el displayPeriod ocurra despues que lastUpdateMoment / instantiationMoment
-	//TODO: comprobar que tiene una duracion minima de 7 dias entre el beginning y el end
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	Date						displayPeriodBeginning;
