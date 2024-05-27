@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -29,6 +31,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "code_audit_id", unique = false), @Index(columnList = "code", unique = false)
+})
 public class AuditRecord extends AbstractEntity {
 
 	//Serialisation identifier -----------------------------------------------------------------
