@@ -30,7 +30,7 @@ client.progress-log.form.button.publish = Publish
 client.progress-log.form.button.create = Create
 
 #Errors
-client.progress-log.form.error.duplicated = This id is already in use
+client.progressLog.form.error.duplicated= This id is already in use
 
 #Placeholder
 client.progress-log.form.recordId.placeholder = PG-[A-Z]{1,2}-[0-9]{4}

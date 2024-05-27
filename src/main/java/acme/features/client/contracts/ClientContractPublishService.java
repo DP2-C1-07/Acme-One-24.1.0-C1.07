@@ -60,7 +60,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -73,15 +73,14 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 			existing = this.clientContractRepository.findOneContractByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
-
-			if (!super.getBuffer().getErrors().hasErrors("budget")) {
-				super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
-				super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.excededMaximum");
-				super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget", object.getProject().getCost());
-				super.state(validator.moneyValidator(object.getBudget().getCurrency()), "budget", "client.contract.form.error.currency-not-suported");
-			}
 		}
-
+		
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			super.state(object.getBudget().getAmount() >= 0, "budget", "client.contract.form.error.negative-amount");
+			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.excededMaximum");
+			super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget", object.getProject().getCost());
+			super.state(validator.moneyValidator(object.getBudget().getCurrency()), "budget", "client.contract.form.error.currency-not-suported");
+		}
 	}
 
 	private Boolean checkContractsAmountsLessThanProjectCost(final Contract object) {
@@ -121,6 +120,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
+		dataset.put("instantiationMoment", object.getInstantiationMoment());
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
